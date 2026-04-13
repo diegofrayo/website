@@ -4,7 +4,7 @@ export function throwError(message: string): never {
 	throw new Error(message);
 }
 
-export function getErrorMessage(error: unknown, defaultMessage?: string) {
+export function getErrorMessage(error: unknown, defaultMessage?: string): string {
 	if (isHttpError(error)) {
 		return error.response.data.message;
 	}

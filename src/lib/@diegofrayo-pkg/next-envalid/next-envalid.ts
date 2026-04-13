@@ -39,7 +39,7 @@ export default envalid;
 
 export function str(config?: Config & { choices?: string[] }): EnvVarConfigAPI {
 	return {
-		validate: (input) => {
+		validate: (input): boolean => {
 			if (config?.optional === true) {
 				return true;
 			}
@@ -54,7 +54,7 @@ export function str(config?: Config & { choices?: string[] }): EnvVarConfigAPI {
 
 export function url(config?: Config): EnvVarConfigAPI {
 	return {
-		validate: (input) => {
+		validate: (input): boolean => {
 			try {
 				if (config?.optional === true) {
 					return true;
@@ -72,7 +72,7 @@ export function url(config?: Config): EnvVarConfigAPI {
 
 export function number(config?: Config): EnvVarConfigAPI {
 	return {
-		validate: (input) => {
+		validate: (input): boolean => {
 			if (config?.optional === true) {
 				return true;
 			}
@@ -85,6 +85,6 @@ export function number(config?: Config): EnvVarConfigAPI {
 
 // --- UTILS ---
 
-function getErrorMessage(key: string, value: unknown) {
+function getErrorMessage(key: string, value: unknown): string {
 	return `Invalid env var => KEY: "${key}" | VALUE: "${value}"`;
 }

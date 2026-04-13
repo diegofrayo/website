@@ -7,7 +7,7 @@
 		"husky:install": "husky",
 		"===== DEV =====": "",
 		"dev": "npm-run-all --parallel build:env-file dev:next",
-		"dev:next": "next dev",
+		"dev:next": "portless website next dev",
 		"build:ts": "tsc --noEmit",
 		"build:env-file": "tsx --tsconfig ./scripts/tsconfig.json scripts/src/env-file.ts",
 		"===== PROD =====": "",

@@ -8,9 +8,9 @@ const BrowserStorageManager = {
 		saveDuringCreation = false,
 		readInitialValueFromStorage = false,
 		storage = "localStorage",
-	}: BrowserStorageStateConfig<ValueType>) {
+	}: BrowserStorageStateConfig<ValueType>): BrowserStorageState<ValueType> {
 		if (isBrowser()) {
-			const storageValue = getItem({ key, type: typeof value, storage });
+			const storageValue = getItem<ValueType>({ key, type: typeof value, storage });
 			const itemDoesNotExist = storageValue === null;
 			const itemExists = itemDoesNotExist === false;
 			const shouldReadInitialValueFromStorage = readInitialValueFromStorage === true && itemExists;
@@ -24,28 +24,29 @@ const BrowserStorageManager = {
 			get: (): ValueType => {
 				if (isServer()) return value;
 
-				const valueFromStorage = getItem({ key, type: typeof value, storage });
+				// TODO: Try to not use 'as'
+				const valueFromStorage = getItem({ key, type: typeof value, storage }) as ValueType;
 				return valueFromStorage === null ? value : valueFromStorage;
 			},
 
-			set: (newValue: ValueType) => {
+			set: (newValue: ValueType): void => {
 				if (isServer()) return;
 
 				setItem(key, newValue, storage);
 			},
 
-			remove: () => {
+			remove: (): void => {
 				if (isServer()) return;
 
 				window[storage].removeItem(key);
 			},
 
-			exists: () => {
+			exists: (): boolean => {
 				if (isServer()) return false;
 
 				return window[storage].getItem(key) !== null;
 			},
-		} as BrowserStorageState<ValueType>;
+		};
 	},
 };
 
@@ -53,7 +54,7 @@ export default BrowserStorageManager;
 
 // --- UTILS ---
 
-function setItem(key: string, newValue: unknown, storage: BrowserStorage) {
+function setItem(key: string, newValue: unknown, storage: BrowserStorage): void {
 	try {
 		if (isPlainObject(newValue) || isArray(newValue)) {
 			window[storage].setItem(key, JSON.stringify(newValue));
@@ -66,15 +67,17 @@ function setItem(key: string, newValue: unknown, storage: BrowserStorage) {
 	}
 }
 
-function getItem({
-	key,
-	type,
-	storage,
-}: {
+type GetItemParams = {
 	key: string;
 	type: string | number | boolean | unknown[] | Record<string, unknown>;
 	storage: BrowserStorage;
-}) {
+};
+
+function getItem<ValueType>({
+	key,
+	type,
+	storage,
+}: GetItemParams): GetItemParams["type"] | null | ValueType {
 	const value = window[storage].getItem(key);
 
 	try {

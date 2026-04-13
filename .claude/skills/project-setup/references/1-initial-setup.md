@@ -22,7 +22,7 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
   "===== SETUP =====": "",
   "husky:install": "husky",
   "===== DEV =====": "",
-  "dev": "next dev",
+  "dev": "portless <project-name> next dev",
   "build:ts": "tsc --noEmit",
   "===== PROD =====": "",
   "build": "next build",

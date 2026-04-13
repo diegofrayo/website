@@ -26,14 +26,14 @@ function ProjectsPage() {
 			title: "dranki",
 			image: `${PROJECTS_IMAGES_PATH}/dranki.png`,
 			url: "https://dranki.diegofrayo.dev",
-			description: `A vibe coded web app to practice english.
-      👷 In progress...`,
+			description: "A vibe coded web app to practice english.",
 		},
 		{
 			title: "kordz",
 			image: `${PROJECTS_IMAGES_PATH}/kordz.webp`,
 			url: "https://kordz.diegofrayo.dev",
-			description: "Chords and lyrics for the songs I can play on guitar.",
+			description:
+				"A web app to host and browse chords and lyrics for the songs I can play on guitar.",
 		},
 		{
 			title: "blog",
@@ -45,7 +45,8 @@ function ProjectsPage() {
 			title: "bets",
 			image: `${PROJECTS_IMAGES_PATH}/bets.webp`,
 			url: "https://bets.diegofrayo.dev",
-			description: "A tool for personal use that shows analysis to support my soccer bets.",
+			description:
+				"A web app that displays daily fixtures for various soccer leagues, providing stats and predictions for each match to support sports betting decisions.",
 		},
 	];
 

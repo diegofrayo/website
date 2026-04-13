@@ -16,6 +16,7 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
   import { defineConfig, globalIgnores } from "eslint/config";
   import globals from "globals";
   import tseslint from "typescript-eslint";
+
   import css from "@eslint/css";
 
   const JAVASCRIPT_CONFIG = {
@@ -35,6 +36,16 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
     extends: [pluginReact.configs.flat["recommended"], reactHooks.configs.flat.recommended],
     settings: { react: { version: "19" } },
     rules: {
+      // NOTE: Ifs statements rules
+      "no-extra-boolean-cast": "error",
+      "no-negated-condition": "error",
+      "no-else-return": "error",
+      "no-lonely-if": "error",
+
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "max-lines": ["error", { max: 300, skipBlankLines: true }],
+      "max-lines-per-function": ["error", { max: 150, skipBlankLines: true, skipComments: true }],
+
       "react/react-in-jsx-scope": ["off"],
       "no-console": ["warn"],
       "@typescript-eslint/ban-ts-comment": ["warn"],
@@ -55,8 +66,8 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
   export default defineConfig([
     JAVASCRIPT_CONFIG,
     TYPESCRIPT_CONFIG,
-    REACT_CONFIG,
     CSS_CONFIG,
+    REACT_CONFIG,
     globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
   ]);
   ```

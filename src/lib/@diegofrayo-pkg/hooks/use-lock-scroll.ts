@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function useLockScroll(shouldLockScroll: boolean) {
+function useLockScroll(shouldLockScroll: boolean): void {
 	useEffect(() => {
 		if (shouldLockScroll) {
 			document.body.classList.add("scroll-disabled");

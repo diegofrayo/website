@@ -72,7 +72,7 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 
 	// --- ACTIONS ---
 	const enhancedAsyncFn: AsyncFn<AsyncFnArgs, AsyncFnReturn> = useCallback(
-		async function enhancedAsyncFn(...args) {
+		async function enhancedAsyncFn(...args): Promise<AsyncFnReturn> {
 			try {
 				console.log("LOG", `Executing "${key}"...`);
 

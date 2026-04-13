@@ -1,4 +1,4 @@
-export function waitFor(time: number, unit: "miliseconds" | "seconds") {
+export function waitFor(time: number, unit: "miliseconds" | "seconds"): Promise<void> {
 	return new Promise((resolve) => {
 		setTimeout(resolve, unit === "miliseconds" ? time : time * 1000);
 	});
@@ -28,7 +28,7 @@ export function attempt<Return>(callback: () => Return): [Return, undefined] | [
 
 export async function resolvePromisesSequentially<ArrayElement>(
 	tasks: (() => ArrayElement | Promise<ArrayElement>)[],
-) {
+): Promise<Array<ArrayElement>> {
 	return tasks.reduce(
 		async (resultPromised, task) => {
 			const result = await resultPromised;

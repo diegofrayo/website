@@ -61,12 +61,10 @@ export function withAuthRulesPage<ComponentProps extends object>(
 				} else {
 					setRenderStatus("RENDER");
 				}
+			} else if (AuthService.isUserLoggedIn()) {
+				redirect();
 			} else {
-				if (AuthService.isUserLoggedIn()) {
-					redirect();
-				} else {
-					setRenderStatus("RENDER");
-				}
+				setRenderStatus("RENDER");
 			}
 		}
 

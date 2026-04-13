@@ -1,7 +1,7 @@
 import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isEmptyArray, isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import BoxWithTitle from "~/components/common/box-with-title";
 import ImageGallery from "~/components/common/image-gallery";
@@ -37,6 +37,8 @@ type SPVEEQPlacesProps = {
 		}[]
 	>;
 };
+
+type Place = SPVEEQPlacesProps["data"][string][number];
 
 function SPVEEQPlaces({ data }: SPVEEQPlacesProps) {
 	return (
@@ -78,137 +80,22 @@ function SPVEEQPlaces({ data }: SPVEEQPlacesProps) {
 											title="Información"
 											className="px-2 pt-4 pb-3"
 										>
-											{isNotEmptyArray(place.category) ? (
-												<InfoBox
-													title="Categoría"
-													icon={{ name: IconCatalog.TAG, color: "text-amber-600" }}
-												>
-													<Box className="flex flex-wrap gap-2">
-														{place.category.map((category) => {
-															return (
-																<InlineText
-																	key={generateSlug(`${place.name}-${category}`)}
-																	className="inline-block rounded-md border border-zinc-300 bg-zinc-200 px-2 py-0.5 text-xs text-zinc-700"
-																>
-																	{category}
-																</InlineText>
-															);
-														})}
-													</Box>
-												</InfoBox>
-											) : null}
+											<PlaceCategoryInfo
+												name={place.name}
+												category={place.category}
+											/>
 
-											{isNotEmptyString(place.price) ? (
-												<InfoBox
-													title="Precio"
-													icon={{ name: IconCatalog.DOLLAR_SIGN, color: "text-green-600" }}
-												>
-													{place.price}
-												</InfoBox>
-											) : null}
+											<PlacePriceInfo price={place.price} />
 
-											<InfoBox
-												title="Links"
-												icon={{ name: IconCatalog.LINK }}
-											>
-												<Box className="flex flex-wrap items-center gap-1">
-													{isNotEmptyString(place.instagram) ? (
-														<Link
-															variant={Link.variant.SMOOTH}
-															href={place.instagram}
-															className="inline-block"
-															onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
-																place: place.id,
-																link: "instagram",
-															})}
-															isExternalLink
-														>
-															<Icon
-																icon={IconCatalog.INSTAGRAM}
-																iconClassName="p-[3px]"
-																size={32}
-															/>
-														</Link>
-													) : null}
+											<PlaceLinksInfo
+												id={place.id}
+												instagram={place.instagram}
+												maps={place.maps}
+												website={place.website}
+												links={place.links}
+											/>
 
-													{isNotEmptyString(place.maps) ? (
-														<Link
-															variant={Link.variant.SMOOTH}
-															href={place.maps}
-															className="inline-block"
-															onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
-																place: place.id,
-																link: "maps",
-															})}
-															isExternalLink
-														>
-															<Icon
-																icon={IconCatalog.MAPS}
-																iconClassName="rounded-full p-[3px]"
-																size={32}
-															/>
-														</Link>
-													) : null}
-
-													{isNotEmptyString(place.website) ? (
-														<Link
-															variant={Link.variant.SMOOTH}
-															href={place.website}
-															className="inline-block"
-															onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
-																place: place.id,
-																link: "website",
-															})}
-															isExternalLink
-														>
-															<Icon
-																icon={IconCatalog.GLOBE}
-																size={32}
-															/>
-														</Link>
-													) : null}
-
-													{isNotEmptyArray(place.links) ? (
-														<Box className="w-full px-0.5">
-															{place.links.map((link) => {
-																return (
-																	<Link
-																		key={link}
-																		variant={Link.variant.SMOOTH}
-																		href={link}
-																		className="mb-1 flex flex-nowrap items-center last:mb-0"
-																		onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
-																			place: place.id,
-																			link: "info",
-																		})}
-																		isExternalLink
-																	>
-																		<Icon
-																			icon={IconCatalog.INFO}
-																			size={28}
-																		/>
-																		<InlineText className="ml-1 flex-1 truncate align-middle">
-																			{link
-																				.replace("https://", "")
-																				.replace("http://", "")
-																				.replace("www.", "")}
-																		</InlineText>
-																	</Link>
-																);
-															})}
-														</Box>
-													) : null}
-												</Box>
-											</InfoBox>
-
-											{place.description ? (
-												<InfoBox
-													title="Detalles"
-													icon={{ name: IconCatalog.INFO, color: "text-blue-600" }}
-												>
-													{place.description}
-												</InfoBox>
-											) : null}
+											<PlaceDetailsInfo description={place.description} />
 										</BoxWithTitle>
 										<Space size={2} />
 
@@ -255,5 +142,156 @@ function InfoBox({ icon, title, children }: InfoBoxProps) {
 			</Box>
 			<Box className="pl-5 text-base font-bold">{children}</Box>
 		</Box>
+	);
+}
+
+function PlaceCategoryInfo({ name, category }: Pick<Place, "name" | "category">) {
+	if (isEmptyArray(category)) return null;
+
+	return (
+		<InfoBox
+			title="Categoría"
+			icon={{ name: IconCatalog.TAG, color: "text-amber-600" }}
+		>
+			<Box className="flex flex-wrap gap-2">
+				{category.map((cat) => {
+					return (
+						<InlineText
+							key={generateSlug(`${name}-${cat}`)}
+							className="inline-block rounded-md border border-zinc-300 bg-zinc-200 px-2 py-0.5 text-xs text-zinc-700"
+						>
+							{cat}
+						</InlineText>
+					);
+				})}
+			</Box>
+		</InfoBox>
+	);
+}
+
+function PlacePriceInfo({ price }: Pick<Place, "price">) {
+	if (!price) return null;
+
+	return (
+		<InfoBox
+			title="Precio"
+			icon={{ name: IconCatalog.DOLLAR_SIGN, color: "text-green-600" }}
+		>
+			{price}
+		</InfoBox>
+	);
+}
+
+function PlaceLinksInfo({
+	id,
+	instagram,
+	maps,
+	website,
+	links,
+}: Pick<Place, "id" | "instagram" | "maps" | "website" | "links">) {
+	return (
+		<InfoBox
+			title="Links"
+			icon={{ name: IconCatalog.LINK }}
+		>
+			<Box className="flex flex-wrap items-center gap-1">
+				{isNotEmptyString(instagram) ? (
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={instagram}
+						className="inline-block"
+						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+							place: id,
+							link: "instagram",
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.INSTAGRAM}
+							iconClassName="p-[3px]"
+							size={32}
+						/>
+					</Link>
+				) : null}
+
+				{isNotEmptyString(maps) ? (
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={maps}
+						className="inline-block"
+						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+							place: id,
+							link: "maps",
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.MAPS}
+							iconClassName="rounded-full p-[3px]"
+							size={32}
+						/>
+					</Link>
+				) : null}
+
+				{isNotEmptyString(website) ? (
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={website}
+						className="inline-block"
+						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+							place: id,
+							link: "website",
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.GLOBE}
+							size={32}
+						/>
+					</Link>
+				) : null}
+
+				{isNotEmptyArray(links) ? (
+					<Box className="w-full px-0.5">
+						{links.map((link) => {
+							return (
+								<Link
+									key={link}
+									variant={Link.variant.SMOOTH}
+									href={link}
+									className="mb-1 flex flex-nowrap items-center last:mb-0"
+									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+										place: id,
+										link: "info",
+									})}
+									isExternalLink
+								>
+									<Icon
+										icon={IconCatalog.INFO}
+										size={28}
+									/>
+									<InlineText className="ml-1 flex-1 truncate align-middle">
+										{link.replace("https://", "").replace("http://", "").replace("www.", "")}
+									</InlineText>
+								</Link>
+							);
+						})}
+					</Box>
+				) : null}
+			</Box>
+		</InfoBox>
+	);
+}
+
+function PlaceDetailsInfo({ description }: Pick<Place, "description">) {
+	if (!description) return null;
+
+	return (
+		<InfoBox
+			title="Detalles"
+			icon={{ name: IconCatalog.INFO, color: "text-blue-600" }}
+		>
+			{description}
+		</InfoBox>
 	);
 }

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import type UtilsTypes from "../types";
 
-function useTypingTextEffect(text: string) {
+function useTypingTextEffect(text: string): string {
 	// --- STATE & REFS ---
 	const [output, setOutput] = useState(text.charAt(0));
 	const outputIndexRef = useRef(1);
@@ -22,7 +22,7 @@ function useTypingTextEffect(text: string) {
 				}, 250);
 			}
 
-			return () => {
+			return (): void => {
 				if (intervalRef.current) {
 					clearInterval(intervalRef.current);
 					intervalRef.current = null;

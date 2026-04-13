@@ -4,7 +4,7 @@ import { isArrayBufferView } from "util/types";
 
 import { isArray, isBoolean } from "../../validator";
 
-export function writeFile(filePath: string, content: unknown) {
+export function writeFile(filePath: string, content: unknown): void {
 	createOutputFolder(filePath);
 	fs.writeFileSync(
 		filePath,
@@ -15,7 +15,7 @@ export function writeFile(filePath: string, content: unknown) {
 export function readFile(filePath: string): string;
 export function readFile(filePath: string, type: "blob"): Buffer;
 export function readFile<JSON>(filePath: string, type: "json"): JSON;
-export function readFile(filePath: string, type?: unknown) {
+export function readFile(filePath: string, type?: unknown): string | Buffer | JSON {
 	if (type === "blob") {
 		return fs.readFileSync(filePath) as Buffer;
 	}
@@ -27,7 +27,7 @@ export function readFile(filePath: string, type?: unknown) {
 	return fs.readFileSync(filePath).toString().trimEnd();
 }
 
-export function copyFolder(sourcePath: string, targetPath: string) {
+export function copyFolder(sourcePath: string, targetPath: string): void {
 	if (!isDirectory(sourcePath)) return;
 
 	const targetFolderPath = path.resolve(targetPath, getBasename(sourcePath));
@@ -47,7 +47,7 @@ export function copyFolder(sourcePath: string, targetPath: string) {
 export function copyFile(
 	sourcePath: string,
 	opts: { outputFolderPath: string; outputFileName?: string },
-) {
+): void {
 	createOutputFolder(opts.outputFolderPath, { isDirectory: true });
 
 	fs.copyFileSync(
@@ -56,18 +56,18 @@ export function copyFile(
 	);
 }
 
-export function createFolder(outputFolderPath: string) {
+export function createFolder(outputFolderPath: string): void {
 	fs.mkdirSync(outputFolderPath, { recursive: true });
 }
 
-export function fileExists(sourcePath: string) {
+export function fileExists(sourcePath: string): boolean {
 	return fs.existsSync(sourcePath);
 }
 
 export function renameFile(
 	currentFilePath: string,
 	opts: { newFilePath?: string; newFileName: string },
-) {
+): void {
 	if (opts.newFilePath) {
 		createOutputFolder(opts.newFilePath, { isDirectory: true });
 		fs.renameSync(currentFilePath, path.resolve(opts.newFilePath, opts.newFileName));
@@ -79,30 +79,30 @@ export function renameFile(
 	}
 }
 
-export function isMediaFile(extension: string) {
+export function isMediaFile(extension: string): boolean {
 	return (
 		isImageFile(extension) || ["heic", "mp4", "mov", "avi", "wmv"].includes(extension.toLowerCase())
 	);
 }
 
-export function isImageFile(extension: string) {
+export function isImageFile(extension: string): boolean {
 	return ["jpg", "jpeg", "png", "gif", "webp", "avif"].includes(extension.toLowerCase());
 }
 
-export function isDirectory(sourcePath: string) {
+export function isDirectory(sourcePath: string): boolean {
 	return fs.lstatSync(sourcePath).isDirectory();
 }
 
-export function isHiddenPath(path: string) {
+export function isHiddenPath(path: string): boolean {
 	return /(^|\/)\.[^/.]/g.test(path);
 }
 
 // NOTE: Needed to ensure compatibility with Windows OS
-export function normaliceSlashes(winPath: string) {
+export function normaliceSlashes(winPath: string): string {
 	return winPath.replace(/\\/g, "/");
 }
 
-export function createOutputFolder(outputPath: string, opts?: { isDirectory?: boolean }) {
+export function createOutputFolder(outputPath: string, opts?: { isDirectory?: boolean }): void {
 	const folderPath = opts?.isDirectory ? outputPath : getParentFolderPath(outputPath);
 
 	if (!fileExists(folderPath)) {
@@ -110,7 +110,7 @@ export function createOutputFolder(outputPath: string, opts?: { isDirectory?: bo
 	}
 }
 
-export function setFileModifiedDate(filePath: string, fileStats: CustomFile["stats"]) {
+export function setFileModifiedDate(filePath: string, fileStats: CustomFile["stats"]): void {
 	/*
   console.log(
     new Date(fileStats.atimeMs),
@@ -125,11 +125,11 @@ export function setFileModifiedDate(filePath: string, fileStats: CustomFile["sta
 	// fs.utimesSync(filePath, new Date(), new Date(fileStats.mtimeMs)); // For WINDOWS
 }
 
-export function deleteFolder(folderPath: string) {
+export function deleteFolder(folderPath: string): void {
 	fs.rmSync(folderPath, { recursive: true, force: true });
 }
 
-export function deleteFile(filePath: string) {
+export function deleteFile(filePath: string): void {
 	fs.rmSync(filePath);
 }
 
@@ -137,7 +137,7 @@ export function deleteFile(filePath: string) {
  * @param sourcePath: "/Users/diegofrayo/Downloads/Fotos/image.jpg"
  * @returns "/Users/diegofrayo/Downloads/Fotos"
  */
-export function getParentFolderPath(sourcePath: string) {
+export function getParentFolderPath(sourcePath: string): string {
 	return path.dirname(sourcePath);
 }
 
@@ -145,7 +145,7 @@ export function getParentFolderPath(sourcePath: string) {
  * @param sourcePath: "/Users/diegofrayo/Downloads/Fotos/image.jpg"
  * @returns "image.jpg"
  */
-export function getBasename(sourcePath: string) {
+export function getBasename(sourcePath: string): string {
 	return path.basename(sourcePath);
 }
 
@@ -154,7 +154,7 @@ export function getBasename(sourcePath: string) {
  * @param rootFolderPath: "src/scripts/blog"
  * @returns "images/1.jpg"
  */
-export function getRelativePathFromRootFolder(filePath: string, rootFolderPath: string) {
+export function getRelativePathFromRootFolder(filePath: string, rootFolderPath: string): string {
 	return filePath.replace(rootFolderPath, "").substring(1);
 }
 
@@ -163,7 +163,7 @@ export function getRelativePathFromRootFolder(filePath: string, rootFolderPath: 
  * @param foldersName: ["scripts", "blog"]
  * @returns "src/images/1.jpg"
  */
-export function removeFoldersFromPath(filePath: string, foldersName: string[]) {
+export function removeFoldersFromPath(filePath: string, foldersName: string[]): string {
 	return filePath
 		.split("/")
 		.filter((folderName) => !foldersName.includes(folderName))
@@ -197,7 +197,7 @@ export function jsonToBlob(object: Record<string, unknown> | Array<unknown>): Bl
 	return blob;
 }
 
-export function checkIsDirectory(sourcePath: string) {
+export function checkIsDirectory(sourcePath: string): boolean {
 	const stats = fs.statSync(sourcePath);
 	return stats.isDirectory();
 }

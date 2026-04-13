@@ -1,6 +1,6 @@
 import { isServer } from "../../validator";
 
-export function isSmallScreen() {
+export function isSmallScreen(): boolean {
 	return getScreenSize() === "XS";
 }
 
@@ -26,7 +26,7 @@ export function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
 	return "XL";
 }
 
-export function isiOSAndMobileDevice() {
+export function isiOSAndMobileDevice(): boolean {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.userAgentData) on navigator object.
@@ -46,7 +46,7 @@ export function isiOSAndMobileDevice() {
 	return APPLE_DEVICES_NAMES.includes(browserPlatform) || isIpadWithIOS13;
 }
 
-export function getAndroidVersion() {
+export function getAndroidVersion(): number {
 	try {
 		const ua: string = navigator.userAgent.toLowerCase();
 		const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
@@ -59,11 +59,11 @@ export function getAndroidVersion() {
 	}
 }
 
-export function isAndroid() {
+export function isAndroid(): boolean {
 	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
 
-export function isWindowsDevice() {
+export function isWindowsDevice(): boolean {
 	if (isServer()) {
 		return process.platform === "win32";
 	}
@@ -71,7 +71,7 @@ export function isWindowsDevice() {
 	return navigator.platform.indexOf("Win") > -1;
 }
 
-export async function deletePWACache() {
+export async function deletePWACache(): Promise<boolean[]> {
 	const cacheKeys = await window.caches.keys();
 
 	return Promise.all(
@@ -81,14 +81,14 @@ export async function deletePWACache() {
 	);
 }
 
-export function isMobileDevice() {
+export function isMobileDevice(): boolean {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (window.opera) on window object.
 	 */
 	// @ts-expect-error This code is irrelevant, i'm not going to try to fix this
 	const navigatorDetails = navigator.userAgent || navigator.vendor || window.opera;
-	const isMobileResult = (function checker(input: string) {
+	const isMobileResult = (function checker(input: string): boolean {
 		if (
 			/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
 				input,
@@ -107,7 +107,7 @@ export function isMobileDevice() {
 	return isMobileResult;
 }
 
-export function isPWA() {
+export function isPWA(): boolean {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.standalone) on navigator object.

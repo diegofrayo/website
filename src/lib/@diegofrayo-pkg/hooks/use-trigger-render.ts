@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-function useTriggerRender() {
+function useTriggerRender(): { triggerRender: () => void } {
 	// --- STATES & REFS ---
 	const [_, setValue] = useState(0); // eslint-disable-line @typescript-eslint/no-unused-vars
 

@@ -1,6 +1,8 @@
 import { useCallback, useRef, useState } from "react";
 
-function useBoolean(initialState: boolean) {
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
+function useBoolean(initialState: boolean): UseBooleanResult {
 	// --- STATE & REFS ---
 	const initialStateRef = useRef<typeof initialState>(initialState);
 	const [state, setState] = useState<typeof initialState>(initialState);
@@ -26,3 +28,14 @@ function useBoolean(initialState: boolean) {
 }
 
 export default useBoolean;
+
+// --- TYPES ---
+
+type UseBooleanResult = {
+	state: boolean;
+	set: ReactTypes.SetState<boolean>;
+	setTrue: () => void;
+	setFalse: () => void;
+	toggleState: () => void;
+	reset: () => void;
+};

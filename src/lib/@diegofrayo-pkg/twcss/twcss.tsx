@@ -79,7 +79,7 @@ function generateClassName({
 	classNameProp,
 	TWCSSVariant,
 	componentProps,
-}: GenerateClassNameParams) {
+}: GenerateClassNameParams): string {
 	// twcss.a`x y z` | twcss.a("x y z")
 	if (isArray(componentStyles) || isString(componentStyles)) {
 		return cn(componentStyles.toString(), classNameProp);

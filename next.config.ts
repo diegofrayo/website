@@ -8,13 +8,6 @@ const nextConfig: NextConfig = {
 	experimental: {
 		optimizePackageImports: ["~/components/primitive"],
 	},
-	// modularizeImports: {
-	// 	"~/components/primitive": {
-	// 		transform: "~/components/primitive/{{lowerCase member}}",
-	//    skipDefaultConversion: true,
-	//    preventFullImport: true,
-	// 	},
-	// },
 };
 
 export default nextConfig;

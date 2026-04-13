@@ -64,20 +64,22 @@ export function sortObjectKeys<Object extends object, ObjectKeys extends keyof O
 export function getOrFail<ObjectInput extends object, ObjectKeys extends keyof ObjectInput>(
 	object: ObjectInput,
 	opts: { key: ObjectKeys; error: string },
-) {
+): ObjectInput[ObjectKeys] {
 	return object[opts.key] || throwError(opts.error);
 }
 
-export function batch<Element>(elements: Element[], batchSize: number) {
-	const result = [];
-	let currentBatch = [];
+export function batch<Element>(elements: Element[], batchSize: number): Array<Array<Element>> {
+	const result: Element[][] = [];
+	let currentBatch: Element[] = [];
 
 	if (elements.length <= batchSize) {
 		return [elements];
 	}
 
 	for (let i = 1; i <= elements.length; i += 1) {
-		currentBatch.push(elements[i - 1]);
+		const currentElement = elements[i - 1];
+
+		if (currentElement !== undefined) currentBatch.push(currentElement);
 
 		if (i % batchSize === 0) {
 			result.push(currentBatch);

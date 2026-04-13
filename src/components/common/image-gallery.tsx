@@ -168,45 +168,13 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 				})}
 			</Box>
 
-			{totalNumberOfImages > 1 ? (
-				<Box className="mt-2 flex w-full items-center justify-between gap-3">
-					<Box className="flex w-8 items-center justify-start">
-						<NavigationArrow
-							direction="left"
-							noBounds={noBounds}
-							activeIndex={activeIndex}
-							totalNumberOfImages={totalNumberOfImages}
-							onClick={handleChangeImage}
-						/>
-					</Box>
-
-					<Box className="inline-flex h-8 items-center justify-center rounded-md bg-zinc-800 px-1">
-						{createArray(totalNumberOfImages, 0).map((index) => {
-							return (
-								<Button
-									key={generateSlug(`${id}-Button-${index}`)}
-									className={cn(
-										"mx-1 inline-block size-3 rounded-full leading-0",
-										index === activeIndex ? "bg-zinc-200" : "bg-zinc-500",
-									)}
-									data-index={String(index)}
-									onClick={handleChangeImage}
-								/>
-							);
-						})}
-					</Box>
-
-					<Box className="flex w-8 items-center justify-end">
-						<NavigationArrow
-							direction="right"
-							noBounds={noBounds}
-							activeIndex={activeIndex}
-							totalNumberOfImages={totalNumberOfImages}
-							onClick={handleChangeImage}
-						/>
-					</Box>
-				</Box>
-			) : null}
+			<GalleryControls
+				id={id}
+				activeIndex={activeIndex}
+				noBounds={noBounds}
+				totalNumberOfImages={totalNumberOfImages}
+				onClick={handleChangeImage}
+			/>
 		</Box>
 	);
 }
@@ -214,6 +182,76 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 export default ImageGallery;
 
 // --- COMPONENTS ---
+
+type GalleryControlsProps = {
+	activeIndex: number;
+	id: string;
+	noBounds: boolean | undefined;
+	totalNumberOfImages: number;
+	onClick: ReactTypes.Events.OnMouseEventHandler<HTMLButtonElement>;
+};
+
+function GalleryControls({
+	activeIndex,
+	id,
+	noBounds,
+	totalNumberOfImages,
+	onClick,
+}: GalleryControlsProps) {
+	// --- STYLES ---
+	const classes = {
+		container: cn("mt-2 flex w-full items-center justify-between gap-3"),
+		leftArrow: cn("flex w-8 items-center justify-start"),
+		dots: cn("inline-flex h-8 items-center justify-center rounded-md bg-zinc-800 px-1"),
+		rightArrow: cn("flex w-8 items-center justify-end"),
+		dot: (index: number) =>
+			cn(
+				"mx-1 inline-block size-3 rounded-full leading-0",
+				index === activeIndex ? "bg-zinc-200" : "bg-zinc-500",
+			),
+	};
+
+	if (totalNumberOfImages <= 1) {
+		return null;
+	}
+
+	return (
+		<Box className={classes.container}>
+			<Box className={classes.leftArrow}>
+				<NavigationArrow
+					direction="left"
+					noBounds={noBounds}
+					activeIndex={activeIndex}
+					totalNumberOfImages={totalNumberOfImages}
+					onClick={onClick}
+				/>
+			</Box>
+
+			<Box className={classes.dots}>
+				{createArray(totalNumberOfImages, 0).map((index) => {
+					return (
+						<Button
+							key={generateSlug(`${id}-Button-${index}`)}
+							className={classes.dot(index)}
+							data-index={String(index)}
+							onClick={onClick}
+						/>
+					);
+				})}
+			</Box>
+
+			<Box className={classes.rightArrow}>
+				<NavigationArrow
+					direction="right"
+					noBounds={noBounds}
+					activeIndex={activeIndex}
+					totalNumberOfImages={totalNumberOfImages}
+					onClick={onClick}
+				/>
+			</Box>
+		</Box>
+	);
+}
 
 type NavigationArrowProps = {
 	direction: "right" | "left";

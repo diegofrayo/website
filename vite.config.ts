@@ -8,7 +8,7 @@ import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vite";
 
 const dirname =
-	typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+	typeof __dirname === "undefined" ? path.dirname(fileURLToPath(import.meta.url)) : __dirname;
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({

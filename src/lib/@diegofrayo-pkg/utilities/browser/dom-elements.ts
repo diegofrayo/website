@@ -1,16 +1,16 @@
 import { isNull } from "../../validator";
 
-export function focusElement(element: HTMLElement) {
+export function focusElement(element: HTMLElement): void {
 	element.focus();
 	element.click();
 }
 
-export function focusInputAndSelectText(element: HTMLInputElement) {
+export function focusInputAndSelectText(element: HTMLInputElement): void {
 	element.focus();
 	element.select();
 }
 
-export function isElementInViewport(element: Element) {
+export function isElementInViewport(element: Element): boolean {
 	const bounding = element.getBoundingClientRect();
 
 	return (

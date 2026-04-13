@@ -18,7 +18,7 @@ function useBrowserStorage<ValueType>(
 	}, []);
 
 	// --- API ---
-	function setEnhancedState(newValue: ValueType) {
+	function setEnhancedState(newValue: ValueType): void {
 		BS_StateRef.current.set(newValue);
 		setState(newValue);
 	}
