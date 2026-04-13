@@ -10,13 +10,13 @@ This skill automates the initial setup of a new project through 5 sequential ste
 
 ## Steps
 
-| # | Name | Description |
-|---|------|-------------|
-| 1 | initial-setup | Base project with TanStack Start, pnpm, Tailwind CSS, and core dependencies |
-| 2 | typescript-setup | TypeScript v6+ with strict `tsconfig.json` |
-| 3 | eslint-setup | ESLint flat config with JS, TS, React, and CSS rules |
-| 4 | prettier-setup | Prettier with import-sorting and Tailwind plugins |
-| 5 | husky-setup | Husky + lint-staged pre-commit hook |
+| #   | Name             | Description                                                                           |
+| --- | ---------------- | ------------------------------------------------------------------------------------- |
+| 1   | initial-setup    | Base project pnpm, Tailwind CSS, core dependencies and the framework the user chooses |
+| 2   | typescript-setup | TypeScript v6+ with strict `tsconfig.json`                                            |
+| 3   | eslint-setup     | ESLint flat config with JS, TS, React, and CSS rules                                  |
+| 4   | prettier-setup   | Prettier with import-sorting and Tailwind plugins                                     |
+| 5   | husky-setup      | Husky + lint-staged pre-commit hook                                                   |
 
 ## How to run
 

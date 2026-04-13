@@ -1,7 +1,7 @@
 import { isArray } from "../validator/validator";
 import { createArray } from "./arrays-and-objects";
 
-export function generateSlug(str: string) {
+export function generateSlug(str: string): string {
 	let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
 	result = removeAccents(result)
@@ -12,7 +12,7 @@ export function generateSlug(str: string) {
 	return result;
 }
 
-export function removeAccents(input: string) {
+export function removeAccents(input: string): string {
 	const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
 	const TO = "aaaaeeeeiiiioooouuuunc------";
 	let result = input;
@@ -24,7 +24,7 @@ export function removeAccents(input: string) {
 	return result;
 }
 
-export function replaceAll(str: string, toReplace: string | string[], replacement: string) {
+export function replaceAll(str: string, toReplace: string | string[], replacement: string): string {
 	if (isArray(toReplace)) {
 		return toReplace.reduce(
 			(result, item) => result.replace(new RegExp(escapeRegExp(item), "g"), replacement),
@@ -35,7 +35,7 @@ export function replaceAll(str: string, toReplace: string | string[], replacemen
 	return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
 }
 
-export function generateRandomString(length: number) {
+export function generateRandomString(length: number): string {
 	const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	const charactersLength = CHARACTERS.length;
 
@@ -46,20 +46,20 @@ export function generateRandomString(length: number) {
 	return result.toUpperCase();
 }
 
-export function addLeftPadding(number: number) {
+export function addLeftPadding(number: number): string {
 	return String(number).padStart(2, "0");
 }
 
-export function capitalize(input: string) {
+export function capitalize(input: string): string {
 	return (input[0] || "").toUpperCase() + input.slice(1);
 }
 
-export function join(items: string[], separator?: string) {
+export function join(items: string[], separator?: string): string {
 	return items.join(separator || "");
 }
 
 // --- UTILS ---
 
-function escapeRegExp(text: string) {
+function escapeRegExp(text: string): string {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }

@@ -59,7 +59,7 @@ export function isFunction<InputType = Function>(input: unknown): input is Input
 
 // --- STRINGS ---
 
-export function isEmptyString(input: unknown) {
+export function isEmptyString(input: unknown): boolean {
 	return typeof input === "string" && input.trim().length === 0;
 }
 
@@ -79,7 +79,7 @@ export function isFalse(input: unknown): input is boolean {
 
 // --- ARRAYS ---
 
-export function isEmptyArray(input: unknown) {
+export function isEmptyArray(input: unknown): boolean {
 	return isArray(input) && input.length === 0;
 }
 
@@ -99,7 +99,7 @@ export function isEmptyObject(input: unknown): input is object {
 
 // --- SEMANTICS ---
 
-export function isEmpty(input: unknown) {
+export function isEmpty(input: unknown): boolean {
 	return isEmptyString(input) || isEmptyObject(input) || isEmptyArray(input);
 }
 
@@ -107,15 +107,15 @@ export function isNil(input: unknown): input is null | undefined {
 	return input === null || input === undefined;
 }
 
-export function isNotNil(input: unknown) {
+export function isNotNil(input: unknown): boolean {
 	return input !== null && input !== undefined;
 }
 
-export function isFalsy(input: unknown) {
+export function isFalsy(input: unknown): boolean {
 	return !input;
 }
 
-export function isEqual(input1: unknown, input2: unknown) {
+export function isEqual(input1: unknown, input2: unknown): boolean {
 	return input1 === input2;
 }
 
@@ -133,11 +133,11 @@ export function isEmail(email: unknown): email is string {
 
 // --- ENVIRONMENT ---
 
-export function isBrowser() {
+export function isBrowser(): boolean {
 	return typeof window !== "undefined";
 }
 
-export function isServer() {
+export function isServer(): boolean {
 	return !isBrowser();
 }
 

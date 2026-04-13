@@ -6,17 +6,22 @@ description: Generates new UI from an image. Use this skill when the user attach
 ## Steps
 
 ### Step 1 — Analyze the image
+
 Examine the attached image carefully. Note the layout, sections, colors, typography, interactive elements, and overall visual structure.
 
 ### Step 2 — Ask for context
+
 Ask the user:
+
 > "Before I start, a few quick questions:
+>
 > 1. What is this component/page called, and what is its purpose?
 > 2. Where should the new files live in the project?"
 
 Wait for the user's answers before continuing.
 
 ### Step 3 — Confirm requirements
+
 Show the user this requirements list and ask them to confirm or adjust it:
 
 > Here are the default requirements I'll follow. Let me know if you want to change or add anything:
@@ -30,9 +35,7 @@ Show the user this requirements list and ask them to confirm or adjust it:
 Wait for confirmation or adjustments before continuing.
 
 ### Step 4 — Build the UI
+
 Implement the component(s) following all confirmed requirements and the `react-guidelines` skill. Additionally:
 
-- **Icons:** If the UI requires icons, use `https://react-icons.github.io/react-icons/` as the library. Create a thin wrapper component (e.g. `Icon`) to avoid importing icon library components directly in consuming code. Define an icon catalog object with uppercase keys (e.g. `INSTAGRAM`, `PHONE`).
 - **File placement:** Create files in the location the user specified in Step 2.
-- **Primitive components:** Use `~/components/primitive` components (`Box`, `Text`, `Title`, `Image`, `Link`, `InlineText`, etc.) instead of raw HTML elements. Flag any missing primitives.
-- **No inline functions as props**, no `cn(...)` directly in `className` — follow all react-guidelines rules.

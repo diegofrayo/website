@@ -107,8 +107,10 @@ function ResumePage({ data }: ResumePageProps) {
 								asChild
 							>
 								<DownloadActions
+									contentMode={contentMode}
 									design={design}
 									lang={lang}
+									onContentModeChange={setContentMode}
 									onDesignChange={setDesign}
 									onLangChange={setLang}
 								/>
@@ -918,11 +920,20 @@ function ActionButtons({
 type DownloadActionsProps = {
 	design: Design;
 	lang: Lang;
+	contentMode: ContentMode;
 	onDesignChange: (design: Design) => void;
 	onLangChange: (lang: Lang) => void;
+	onContentModeChange: (contentMode: ContentMode) => void;
 };
 
-function DownloadActions({ design, lang, onDesignChange, onLangChange }: DownloadActionsProps) {
+function DownloadActions({
+	design,
+	lang,
+	contentMode,
+	onDesignChange,
+	onLangChange,
+	onContentModeChange,
+}: DownloadActionsProps) {
 	// --- STATE ---
 	const [downloadMode, setDownloadMode] = useBrowserStorage<DownloadMode>({
 		key: "DR_RESUME_DOWNLOAD_MODE",
@@ -959,19 +970,26 @@ function DownloadActions({ design, lang, onDesignChange, onLangChange }: Downloa
 	function downloadAll() {
 		const originalDesign = design;
 		const originalLang = lang;
+		const originalContentMode = contentMode;
 		const originalTitle = document.title;
-		const variants: Array<{ lang: Lang; design: Design }> = [
-			{ lang: "EN", design: "SIMPLE" },
-			{ lang: "ES", design: "SIMPLE" },
-			{ lang: "EN", design: "COLORFUL" },
-			{ lang: "ES", design: "COLORFUL" },
+		const variants: Array<{ lang: Lang; design: Design; contentMode: ContentMode }> = [
+			{ design: "SIMPLE", contentMode: "SHORT", lang: "EN" },
+			{ design: "SIMPLE", contentMode: "SHORT", lang: "ES" },
+			{ design: "SIMPLE", contentMode: "FULL", lang: "EN" },
+			{ design: "SIMPLE", contentMode: "FULL", lang: "ES" },
+			{ design: "COLORFUL", contentMode: "SHORT", lang: "EN" },
+			{ design: "COLORFUL", contentMode: "SHORT", lang: "ES" },
+			{ design: "COLORFUL", contentMode: "FULL", lang: "EN" },
+			{ design: "COLORFUL", contentMode: "FULL", lang: "ES" },
 		];
 
 		let index = 0;
 
-		const triggerPrint = (lang: Lang, design: Design) => {
+		const triggerPrint = (lang: Lang, design: Design, contentMode: ContentMode) => {
 			const isDefaultResume = lang === "EN" && design === "SIMPLE";
-			document.title = isDefaultResume ? "2026" : `2026 - ${lang} - ${design}`.toUpperCase();
+			document.title = isDefaultResume
+				? "2026"
+				: `2026 - ${contentMode} - ${lang} - ${design}`.toUpperCase();
 			window.print();
 		};
 
@@ -980,6 +998,7 @@ function DownloadActions({ design, lang, onDesignChange, onLangChange }: Downloa
 				document.title = originalTitle;
 				onDesignChange(originalDesign);
 				onLangChange(originalLang);
+				onContentModeChange(originalContentMode);
 				return;
 			}
 
@@ -992,7 +1011,7 @@ function DownloadActions({ design, lang, onDesignChange, onLangChange }: Downloa
 
 			setTimeout(() => {
 				window.addEventListener("afterprint", printNext, { once: true });
-				triggerPrint(variant.lang, variant.design);
+				triggerPrint(variant.lang, variant.design, variant.contentMode);
 			}, 1000);
 		};
 

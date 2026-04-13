@@ -4,11 +4,11 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
 
 ## Instructions
 
-- Follow this guide to create a basic setup of TanStack Start: https://tanstack.com/start/latest/docs/framework/react/build-from-scratch
+- Ask the user for the framework to use and how to generate the initial setup.
 - Ask the user for the project name. Use it as the `name` field in `package.json` and as the main title in `README.md`.
-- Use `pnpm` as the package manager.
-- Set up Tailwind CSS v4+.
-- Install `react` and `react-dom` v19+.
+- Use `pnpm` as the package manager. (Skip if it is already installed)
+- Set up Tailwind CSS v4+. (Skip if it is already installed)
+- Install `react` and `react-dom` v19+. (Skip if it is already installed)
 - Install runtime dependencies:
   ```sh
   pnpm i @base-ui/react class-variance-authority classnames lucide-react remeda tailwind-merge sonner
@@ -31,7 +31,7 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
   "lint": "eslint",
   "format": "prettier --write \"./src/**/*.{ts,tsx,json,css,mjs,js}\""
   ```
-- Create a `.gitignore` file:
+- Create a `.gitignore` file. (Skip if it is already exists)
   ```
   # --- Tan stack start project ---
 

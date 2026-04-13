@@ -1,4 +1,4 @@
-export function encodeRequestParams(body: Record<string, string | number>) {
+export function encodeRequestParams(body: Record<string, string | number>): URLSearchParams {
 	const params = new URLSearchParams();
 
 	Object.entries(body).forEach(([key, value]) => {
@@ -8,6 +8,6 @@ export function encodeRequestParams(body: Record<string, string | number>) {
 	return params;
 }
 
-export function goBack() {
+export function goBack(): void {
 	window.history.back();
 }
