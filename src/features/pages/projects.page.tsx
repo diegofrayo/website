@@ -26,7 +26,8 @@ function ProjectsPage() {
 			title: "dranki",
 			image: `${PROJECTS_IMAGES_PATH}/dranki.png`,
 			url: "https://dranki.diegofrayo.dev",
-			description: "A vibe coded web app to practice english.",
+			description:
+				"A mobile-first web app to learn English through flashcard decks, grammar lessons, and reading comprehension texts.",
 		},
 		{
 			title: "kordz",

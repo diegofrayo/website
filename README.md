@@ -1,8 +1,10 @@
 # website
 
-My personal website | [[diegofrayo.dev]](https://diegofrayo.dev)
+My personal website.
 
-## Tech stack
+**URL:** [diegofrayo.dev](https://diegofrayo.dev)
+
+## 🛠️ Tech stack
 
 - TypeScript
 - React.js
@@ -12,7 +14,7 @@ My personal website | [[diegofrayo.dev]](https://diegofrayo.dev)
 - ESLint & Prettier & Husky
 - Storybook
 
-## Setup
+## ⚡ Setup
 
 1. Clone the repo: `git clone https://github.com/diegofrayo/website.git`
 1. Create a `.env` file

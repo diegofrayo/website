@@ -30,4 +30,8 @@ declare namespace UtilsTypes {
 	}
 }
 
-export type { UtilsTypes as default };
+type NonNullableObject<T> = {
+	[P in keyof T]: NonNullable<T[P]>;
+};
+
+export type { UtilsTypes as default, NonNullableObject };

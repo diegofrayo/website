@@ -156,10 +156,9 @@ function Page({ children, config }: PageProps) {
 								address: WEBSITE_METADATA.address,
 								sameAs: [
 									WEBSITE_METADATA.social.github,
-									WEBSITE_METADATA.social.linkedin,
-									WEBSITE_METADATA.social.twitter,
 									WEBSITE_METADATA.social.instagram,
-									WEBSITE_METADATA.social.spotify,
+									WEBSITE_METADATA.social.linkedin,
+									WEBSITE_METADATA.social.x,
 								],
 							}),
 						}}
@@ -182,7 +181,7 @@ function composeTitle(title: string, shouldAppendWebsiteNameInTitle: boolean) {
 	}
 
 	if (shouldAppendWebsiteNameInTitle) {
-		return `${title} -  ${WEBSITE_METADATA.title}`;
+		return `${title} - ${WEBSITE_METADATA.title}`;
 	}
 
 	return title;

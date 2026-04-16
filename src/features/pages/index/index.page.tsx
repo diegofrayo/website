@@ -111,7 +111,7 @@ function Footer() {
 		{
 			icon: IconCatalog.TWITTER,
 			name: "twitter",
-			url: WEBSITE_METADATA.social.twitter,
+			url: WEBSITE_METADATA.social.x,
 		},
 		{
 			icon: IconCatalog.INSTAGRAM_MONO,
