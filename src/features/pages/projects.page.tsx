@@ -24,27 +24,23 @@ function ProjectsPage() {
 	const PROJECTS = [
 		{
 			title: "dranki",
-			image: `${PROJECTS_IMAGES_PATH}/dranki.png`,
 			url: "https://dranki.diegofrayo.dev",
 			description:
 				"A mobile-first web app to learn English through flashcard decks, grammar lessons, and reading comprehension texts.",
 		},
 		{
 			title: "kordz",
-			image: `${PROJECTS_IMAGES_PATH}/kordz.webp`,
 			url: "https://kordz.diegofrayo.dev",
 			description:
 				"A web app to host and browse chords and lyrics for the songs I can play on guitar.",
 		},
 		{
 			title: "blog",
-			image: `${PROJECTS_IMAGES_PATH}/blog.jpeg`,
 			url: Routes.BLOG,
 			description: "A static blog, built with React, MDX, and Next.js.",
 		},
 		{
 			title: "bets",
-			image: `${PROJECTS_IMAGES_PATH}/bets.webp`,
 			url: "https://bets.diegofrayo.dev",
 			description:
 				"A web app that displays daily fixtures for various soccer leagues, providing stats and predictions for each match to support sports betting decisions.",
@@ -95,10 +91,11 @@ function ProjectBox({ item }: { item: Project }) {
 					className="group relative h-48 cursor-zoom-in overflow-hidden border-b border-zinc-200 bg-zinc-100 shadow-inner"
 					onClick={() => setIsModalOpen(true)}
 				>
-					<img
-						src={item.image}
+					<Image
+						src={`${PROJECTS_IMAGES_PATH}/${item.title}.png`}
 						alt={item.title}
 						className="h-full w-full object-cover object-top"
+						useNativeElement
 					/>
 					<Box className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover:bg-black/40">
 						<Icon
@@ -161,7 +158,7 @@ function ProjectBox({ item }: { item: Project }) {
 					/>
 				</Button>
 				<Image
-					src={item.image}
+					src={`${PROJECTS_IMAGES_PATH}/${item.title}.png`}
 					alt={`${item.title} project thumbnail`}
 					className="max-h-[90vh] max-w-[90vw] object-contain"
 					useNativeElement
@@ -175,7 +172,6 @@ function ProjectBox({ item }: { item: Project }) {
 
 type Project = {
 	title: string;
-	image: string;
 	url: string;
 	description: string;
 };

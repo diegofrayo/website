@@ -95,17 +95,33 @@ function MyComponent({ viewMode, lang, onViewModeChange, onLangChange }: MyCompo
 - Source code file names must use kebab-case (e.g. `my-component.tsx`, not `MyComponent.tsx` or `myComponent.tsx`).
 - Never import icons directly from an icon library package. Always use the `Icon` primitive component with `IconCatalog` to pass the icon name as a prop. If the needed icon does not exist in `IconCatalog`, add it there before using it.
 - Never use `@radix-ui/*` packages when building or rewriting components. Use `@base-ui/react` instead — import the component namespace (e.g. `import { Progress } from "@base-ui/react"`) and use its subcomponents (`Progress.Root`, `Progress.Track`, `Progress.Indicator`, etc.).
-- When creating a new Next.js page, follow this folder structure (using `my-page` as an example):
+- When creating a new Next.js page, split it into two folders: a thin **framework-attached** entry under `src/app/` and a **framework-agnostic** implementation under `src/features/pages/`. The rule below uses `my-page` as an example — replace it with the real page slug.
+
+  **Folder structure:**
   ```
-  src/app/my-page/page.tsx          → re-export only: export { default } from "~/features/pages/my-page"
+  src/app/my-page/
+    page.tsx                        → framework-attached entry. Renders the page UI and is the ONLY place allowed to
+                                      call Next.js APIs: invoke loaders, declare server actions, export `generateMetadata`,
+                                      read `params`/`searchParams`, etc. Keep it thin — delegate all logic to the feature folder.
+
   src/features/pages/my-page/
-    my-page.page.tsx                → default-exported React component (the page UI)
-    my-page.types.ts                → types used only within this page folder
-    my-page.config.ts               → framework-level functions: loaders, generateMetadata, etc.
-    index.ts                        → barrel file; default export is my-page.page.tsx
+    my-page.page.tsx                → default-exported React component (the page UI). Framework-agnostic: must not
+                                      import from `next/*` or call Next.js-only APIs. Receives data via props.
+    my-page.types.ts                → types scoped to this page folder
+    my-page.loader.server.ts        → data-fetching function for the page. Framework-agnostic (plain async function);
+                                      called from `src/app/my-page/page.tsx`. The `.server.ts` suffix marks it as
+                                      server-only.
+    my-page.metadata.ts             → function that builds the page metadata object. Framework-agnostic; the result is
+                                      returned from `generateMetadata` in `src/app/my-page/page.tsx`.
+    index.ts                        → barrel file. Re-exports the default from `my-page.page.tsx` plus any public
+                                      types/loaders the `app/` entry needs.
     components/                     → components used only within this page
       component-1.tsx
       component-2.tsx
-    pages/                          → nested routes (e.g. my-page/sub-route)
-      my-subpage/                   → same structure as above, recursively
+    pages/                          → nested routes (e.g. `my-page/my-subpage`). Each child follows this same
+                                      structure recursively.
+      my-subpage/
+        ...
   ```
+
+  **Why the split:** `src/app/*` is coupled to Next.js; `src/features/pages/*` stays portable and testable. If you ever need Next.js APIs inside the feature folder, stop and reconsider — that logic belongs in `src/app/`.

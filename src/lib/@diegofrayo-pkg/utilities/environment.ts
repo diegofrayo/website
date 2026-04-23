@@ -10,6 +10,8 @@ const WEBSITE_DOMAIN = isBrowser()
 
 export function isDevelopmentEnvironment(): boolean {
 	return (
+		WEBSITE_DOMAIN.includes(".local") ||
+		WEBSITE_DOMAIN.includes(".localhost") ||
 		WEBSITE_DOMAIN.includes("//localhost") ||
 		WEBSITE_DOMAIN.includes("//127.0.0.1") ||
 		WEBSITE_DOMAIN.includes("//192.")

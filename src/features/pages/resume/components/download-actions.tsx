@@ -39,10 +39,10 @@ export function DownloadActions({
 		radioGroup: "flex gap-5 py-1",
 		radioItem: cn("flex cursor-pointer items-center gap-1"),
 		radio: cn(
-			"m-0 box-border flex size-4 items-center justify-center rounded-full border border-black bg-black p-0 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 data-unchecked:bg-black",
+			"m-0 box-border flex size-4 items-center justify-center rounded-full bg-slate-300 p-0 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 data-unchecked:bg-slate-300",
 		),
 		indicator: cn(
-			"&:data-unchecked:hiddenw flex items-center justify-center before:size-1.5 before:rounded-full before:bg-slate-300 before:content-['']",
+			"&:data-unchecked:hiddenw flex items-center justify-center before:size-2 before:rounded-full before:bg-slate-700 before:content-['']",
 		),
 		downloadButton:
 			"flex h-full cursor-pointer items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-white ml-2",
