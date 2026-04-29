@@ -20,8 +20,8 @@ import {
 	InlineText,
 	Link,
 	List,
+	Paragraph,
 	Space,
-	Text,
 	Title,
 	type ImageProps,
 	type TitleProps,
@@ -85,7 +85,7 @@ export const MDXComponents = {
 		return <Space variant={Space.variant.DASHED} />;
 	},
 	li: List.Item,
-	p: Text,
+	p: Paragraph,
 	pre: function CustomPre({ children }: ReactTypes.DOM.HTMLElementAttributes["pre"]) {
 		return <SourceCode code={children} />;
 	},

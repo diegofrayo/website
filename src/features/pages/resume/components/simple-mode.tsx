@@ -1,7 +1,7 @@
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Link, List, Pre, Space, Text, Title } from "~/components/primitive";
+import { Box, Link, List, Paragraph, Pre, Space, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -34,7 +34,7 @@ export function SimpleMode({ data, contentMode }: SimpleModeProps) {
 					{data.contactInfo.name}
 				</Title>
 
-				<Text>{data.contactInfo.label}</Text>
+				<Paragraph>{data.contactInfo.label}</Paragraph>
 				<Space size={1.5} />
 
 				<ContactInfo
@@ -92,7 +92,7 @@ function EducationList({ education }: { education: Resume["education"] }) {
 				key={generateSlug(`short-education-${item.institution}`)}
 				className="mb-3 last:mb-0"
 			>
-				<Text className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Text>
+				<Paragraph className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Paragraph>
 				<Link
 					variant={Link.variant.SMOOTH}
 					href={item.institutionWebsite}
@@ -105,9 +105,9 @@ function EducationList({ education }: { education: Resume["education"] }) {
 					{item.institution}
 				</Link>
 				{item.startDate ? (
-					<Text className="text-xs lowercase italic">
+					<Paragraph className="text-xs lowercase italic">
 						{item.startDate} / {item.endDate}
-					</Text>
+					</Paragraph>
 				) : null}
 			</Box>
 		);
@@ -150,22 +150,24 @@ function ExperienceList({
 									{name}
 								</Link>
 							) : (
-								<Text>{name}</Text>
+								<Paragraph>{name}</Paragraph>
 							)}
 						</Title>
-						<Text className="shrink-0 text-right text-xs leading-none lowercase">
+						<Paragraph className="shrink-0 text-right text-xs leading-none lowercase">
 							{startDate} - {endDate || texts.PRESENT}
-						</Text>
+						</Paragraph>
 					</Box>
 					<Space size={0.5} />
 					<Box className="-mt-0.5 flex items-end justify-between gap-4 text-xs italic">
-						<Text className="shrink-0 leading-none">{role}</Text>
-						<Text className="inline-block text-right leading-none capitalize">{mode}</Text>
+						<Paragraph className="shrink-0 leading-none">{role}</Paragraph>
+						<Paragraph className="inline-block text-right leading-none capitalize">
+							{mode}
+						</Paragraph>
 					</Box>
 					<Space size={1} />
 
 					<Box className="flex flex-col gap-1">
-						<Text>{content.summary}</Text>
+						<Paragraph>{content.summary}</Paragraph>
 
 						{content.achievements.length > 0 ? (
 							<List

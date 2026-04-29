@@ -5,7 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Button, Icon, IconCatalog, InlineText, Text } from "../primitive";
+import { Box, Button, Icon, IconCatalog, InlineText, Paragraph } from "../primitive";
 import SourceCode, { type SourceCodeProps } from "./source-code";
 
 type PlaygroundProps = {
@@ -77,9 +77,9 @@ function Playground({
 									);
 								})}
 							</Box>
-							<Text className="flex-1 truncate rounded-full bg-zinc-700 px-4 py-1.5 text-xs font-bold text-white">
+							<Paragraph className="flex-1 truncate rounded-full bg-zinc-700 px-4 py-1.5 text-xs font-bold text-white">
 								{window.location.href}
-							</Text>
+							</Paragraph>
 						</Box>
 						<Box className="hide-scrollbar flex-1 overflow-auto p-2">
 							<Preview />

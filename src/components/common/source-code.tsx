@@ -9,7 +9,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { throwError } from "@diegofrayo-pkg/utilities/errors";
 import { isNotEmptyString, isString } from "@diegofrayo-pkg/validator";
 
-import { Box, Button, Icon, IconCatalog, InlineText, Link, Pre, Text } from "../primitive";
+import { Box, Button, Icon, IconCatalog, InlineText, Link, Paragraph, Pre } from "../primitive";
 import CopyToClipboardPopover from "./copy-to-clipboard-popover";
 
 export type SourceCodeProps = {
@@ -80,10 +80,10 @@ function SourceCode({
 				as="header"
 				className="flex shrink-0 justify-between border-b border-zinc-700 bg-zinc-900"
 			>
-				<Text className="flex gap-2 bg-zinc-700 p-2 pr-8 text-sm text-zinc-100">
+				<Paragraph className="flex gap-2 bg-zinc-700 p-2 pr-8 text-sm text-zinc-100">
 					<Icon icon={IconCatalog.CODE_XML} />
 					<InlineText>{`${title}.${language}`}</InlineText>
-				</Text>
+				</Paragraph>
 
 				<Box className="flex items-center gap-2 px-2 text-white">
 					{isNotEmptyString(sourceURL) && (

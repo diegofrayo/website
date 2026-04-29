@@ -1,4 +1,4 @@
-import { Box, Icon, IconCatalog, Link, Text, Title } from "~/components/primitive";
+import { Box, Icon, IconCatalog, Link, Paragraph, Title } from "~/components/primitive";
 
 type MFMAMGitHubRepoProps = {
 	name: string;
@@ -32,7 +32,7 @@ function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps) {
 					>
 						{name}
 					</Title>
-					<Text className="text-sm">{description}</Text>
+					<Paragraph className="text-sm">{description}</Paragraph>
 				</Box>
 
 				<Icon

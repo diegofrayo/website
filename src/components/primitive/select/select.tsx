@@ -3,7 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import Text from "../text";
+import Paragraph from "../paragraph";
 import styles from "./select.styles.module.css";
 
 // --- PROPS & TYPES ---
@@ -86,11 +86,11 @@ Select.Option = function SelectOption({
 
 export function Label({ children, className, ...rest }: ReactTypes.DOM.HTMLElementAttributes["p"]) {
 	return (
-		<Text
+		<Paragraph
 			className={cn("cursor-pointer font-bold", className)}
 			{...rest}
 		>
 			{children}
-		</Text>
+		</Paragraph>
 	);
 }

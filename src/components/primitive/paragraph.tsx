@@ -12,7 +12,7 @@ type TextProps = ReactTypes.DOM.HTMLElementAttributes["p"];
 function Text({ children, className = "", ...rest }: TextProps) {
 	return (
 		<p
-			className={cn("dr-text", className)}
+			className={cn("dr-paragraph", className)}
 			{...rest}
 		>
 			{removeTextElements(children)}

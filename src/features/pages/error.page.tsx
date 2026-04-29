@@ -1,5 +1,5 @@
 import { MainLayout, Page } from "~/components/layout";
-import { Box, Button, Space, Text, Title } from "~/components/primitive";
+import { Box, Button, Paragraph, Space, Title } from "~/components/primitive";
 
 function ErrorPage({ title, variant }: { variant: "404" | "500"; title: string }) {
 	// --- COMPUTED STATES ---
@@ -19,16 +19,16 @@ function ErrorPage({ title, variant }: { variant: "404" | "500"; title: string }
 		<Page config={{ title, pathname: "/" }}>
 			<MainLayout>
 				<Box className="flex min-h-[80vh] flex-col items-center justify-center text-center">
-					<Text className="text-10xl mb-4 leading-none">{is404Error ? "👀" : "🙉"}</Text>
+					<Paragraph className="text-10xl mb-4 leading-none">{is404Error ? "👀" : "🙉"}</Paragraph>
 					<Title
 						as="h1"
 						size={Title.size.LG}
 					>
 						{is404Error ? "404 " : ""}ERROR
 					</Title>
-					<Text>
+					<Paragraph>
 						{is404Error ? "Sorry, this page does not exist" : "Sorry, something went wrong"}
-					</Text>
+					</Paragraph>
 					<Space size={6} />
 
 					<Box className="flex flex-col gap-2">

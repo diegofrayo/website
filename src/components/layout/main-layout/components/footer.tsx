@@ -1,7 +1,15 @@
 import { useBoolean, useOnScroll } from "@diegofrayo-pkg/hooks";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser";
 
-import { Box, Button, Icon, IconCatalog, InlineText, Link, Text } from "~/components/primitive";
+import {
+	Box,
+	Button,
+	Icon,
+	IconCatalog,
+	InlineText,
+	Link,
+	Paragraph,
+} from "~/components/primitive";
 import { Routes } from "~/constants";
 import AnalyticsService from "~/features/analytics";
 
@@ -11,7 +19,7 @@ function Footer() {
 			as="footer"
 			className="bg-black py-4 text-center text-zinc-500 print:hidden"
 		>
-			<Text className="text-sm text-white">
+			<Paragraph className="text-sm text-white">
 				<InlineText>© 2026 All rights reserved | Coded by </InlineText>
 				<Link
 					href={Routes.INDEX}
@@ -20,7 +28,7 @@ function Footer() {
 				>
 					Diego Rayo
 				</Link>
-			</Text>
+			</Paragraph>
 
 			<GoToTopButton />
 		</Box>

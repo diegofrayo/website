@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
 
-import { Box, InlineText, Text } from "../primitive";
+import { Box, InlineText, Paragraph } from "../primitive";
 import Loader from "./loader";
 
 type RenderProps<Data> = {
@@ -22,10 +22,10 @@ function RenderData<Data>({ isLoading, error, data, children }: RenderProps<Data
 
 	if (error) {
 		return (
-			<Text className="p-2 text-center text-sm text-red-600">
+			<Paragraph className="p-2 text-center text-sm text-red-600">
 				<InlineText className="mr-2">😵</InlineText>
 				<InlineText>{getErrorMessage(error)}</InlineText>
-			</Text>
+			</Paragraph>
 		);
 	}
 

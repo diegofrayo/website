@@ -14,5 +14,5 @@ export { default as Link } from "./link";
 export { default as Modal } from "./modal";
 export { default as Pre } from "./pre";
 export { default as Space } from "./space";
-export { default as Text } from "./text";
+export { default as Paragraph } from "./paragraph";
 export { default as Title } from "./title";

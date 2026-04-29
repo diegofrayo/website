@@ -12,8 +12,8 @@ import {
 	Image,
 	Link,
 	Modal,
+	Paragraph,
 	Pre,
-	Text,
 	Title,
 } from "~/components/primitive";
 import { Routes } from "~/constants";
@@ -57,7 +57,9 @@ function ProjectsPage() {
 			}}
 		>
 			<MainLayout title="Projects">
-				<Text className="mb-4 text-center text-sm italic">Some side projects for personal use</Text>
+				<Paragraph className="mb-4 text-center text-sm italic">
+					Some side projects for personal use
+				</Paragraph>
 				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{PROJECTS.map((item, index) => {
 						return (

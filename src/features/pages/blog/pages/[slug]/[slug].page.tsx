@@ -23,8 +23,8 @@ import {
 	InlineText,
 	Link,
 	List,
+	Paragraph,
 	Space,
-	Text,
 } from "~/components/primitive";
 import { BLOG_IMAGES_PATH, Routes } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
@@ -156,14 +156,14 @@ function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) 
 function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["details"] }) {
 	return (
 		<Box className="border border-zinc-200 bg-zinc-50 py-4 text-center text-sm">
-			<Text>
+			<Paragraph>
 				<Icon
 					icon={IconCatalog.CALENDAR}
 					wrapperClassName="relative -top-px"
 				/>{" "}
 				<InlineText>Published at</InlineText>{" "}
 				<InlineText as="strong">{details.published_at}</InlineText>
-			</Text>
+			</Paragraph>
 			<Space size={0.5} />
 			<Box className="flex flex-wrap items-center justify-center gap-x-2">
 				{details.categories.map((category) => {
@@ -200,7 +200,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 							>
 								{source.title}
 							</Link>
-							<Text className="text-xs italic">{host}</Text>
+							<Paragraph className="text-xs italic">{host}</Paragraph>
 						</List.Item>
 					);
 				})}

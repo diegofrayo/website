@@ -2,7 +2,7 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import { Box, Image, InlineText, Link, List, Text, Title } from "~/components/primitive";
+import { Box, Image, InlineText, Link, List, Paragraph, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -74,18 +74,20 @@ export function ExperienceTimeline({ experience, contentMode }: ExperienceTimeli
 												name
 											)}
 										</Title>
-										<Text className="text-xs leading-none lowercase sm:text-sm print:text-xs">
+										<Paragraph className="text-xs leading-none lowercase sm:text-sm print:text-xs">
 											<InlineText>{startDate}</InlineText> /{" "}
 											<InlineText>{endDate || texts.PRESENT}</InlineText>
-										</Text>
+										</Paragraph>
 									</Box>
 									<Box className="flex justify-between gap-4 text-xs italic">
-										<Text className="shrink-0">{role}</Text>
-										<Text className="-mt-0.5 truncate pr-px text-right capitalize">{mode}</Text>
+										<Paragraph className="shrink-0">{role}</Paragraph>
+										<Paragraph className="-mt-0.5 truncate pr-px text-right capitalize">
+											{mode}
+										</Paragraph>
 									</Box>
 								</Box>
 
-								<Text>{content.summary}</Text>
+								<Paragraph>{content.summary}</Paragraph>
 
 								{isNotEmptyArray(content.achievements) ? (
 									<List

@@ -1,7 +1,7 @@
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Image, InlineText, Link, Pre, Space, Text, Title } from "~/components/primitive";
+import { Box, Image, InlineText, Link, Paragraph, Pre, Space, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -36,7 +36,7 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 				</Title>
 				<Space size={1} />
 
-				<Text>{data.contactInfo.label}</Text>
+				<Paragraph>{data.contactInfo.label}</Paragraph>
 				<Space size={1} />
 
 				<Location location={data.contactInfo.location} />
@@ -97,10 +97,10 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 										{item.institution}
 									</Link>
 									{item.startDate ? (
-										<Text className="text-xs lowercase italic">
+										<Paragraph className="text-xs lowercase italic">
 											<InlineText>{item.startDate}</InlineText> /{" "}
 											<InlineText>{item.endDate}</InlineText>
-										</Text>
+										</Paragraph>
 									) : null}
 								</Box>
 							</Box>

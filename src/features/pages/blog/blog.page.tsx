@@ -6,7 +6,7 @@ import {
 	Image,
 	InlineText,
 	Link,
-	Text,
+	Paragraph,
 	Title,
 } from "~/components/primitive";
 import { Routes } from "~/constants";
@@ -58,7 +58,7 @@ function BlogPage({ data: posts }: BlogPageProps) {
 										{post.title}
 									</Title>
 
-									<Text className="text-sm text-zinc-600">{post.description}</Text>
+									<Paragraph className="text-sm text-zinc-600">{post.description}</Paragraph>
 
 									<Box className="mt-auto flex items-center gap-1 pt-2">
 										<Icon

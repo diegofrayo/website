@@ -2,7 +2,7 @@ import cn from "@diegofrayo-pkg/cn";
 import { useTypingTextEffect } from "@diegofrayo-pkg/hooks";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
-import { InlineText, Text } from "../primitive";
+import { InlineText, Paragraph } from "../primitive";
 
 // --- PROPS DEFINITIONS ---
 
@@ -35,11 +35,11 @@ function TypingTextEffect({ align, className = "", text }: TypingTextEffectProps
 	};
 
 	return (
-		<Text className={classes.container}>
+		<Paragraph className={classes.container}>
 			{isCenterAlign && <InlineText className={classes.spaceHelperForCenterAlignment} />}
 			<InlineText>{textForTyping}</InlineText>
 			<InlineText className={classes.cursor}>|</InlineText>
-		</Text>
+		</Paragraph>
 	);
 }
 

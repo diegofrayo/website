@@ -1,7 +1,7 @@
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, List, Space, Text } from "~/components/primitive";
+import { Box, List, Paragraph, Space } from "~/components/primitive";
 
 import { useIntl } from "../resume.context";
 import { ResumeBox } from "./resume-box";
@@ -25,7 +25,7 @@ export function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE
 					{data.skills.map((item, index) => {
 						return (
 							<List.Item key={generateSlug(`skills-label-${item.category}`)}>
-								<Text>{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:</Text>
+								<Paragraph>{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:</Paragraph>
 								<Box className="mt-1 mb-3 flex flex-wrap items-center gap-x-1 gap-y-1">
 									{item.items.map((item) => {
 										return <Skill key={`skills-tech-stack-${item}`}>{item}</Skill>;
