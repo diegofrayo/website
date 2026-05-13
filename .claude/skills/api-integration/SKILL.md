@@ -1,5 +1,5 @@
 ---
-name: api-structure
+name: api-integration
 description: Enforces the API layer architecture for diegofrayo's TypeScript/Next.js projects. Use this skill whenever creating, editing, or reviewing files inside the `src/api/` folder, adding a new API endpoint function, creating a route module, or wiring up a new data source call. Triggers on requests like "add an API call for X", "create a new endpoint for X", "fetch data from X", "add a new route to the api folder", "create the api module for X", or any task that involves defining how the frontend communicates with a backend or external data source. Apply these guidelines proactively — don't wait to be asked.
 ---
 
@@ -35,9 +35,9 @@ Each endpoint file owns exactly one API call. It defines the function, its raw a
 // src/api/routes/users/endpoints/get-user-info.ts
 
 async function getUserInfo(userId: string): Promise<GetUserInfoResponse> {
-  const rawResponse = await fetchData<RawGetUserInfoResponse>(`/users/${userId}`);
+	const rawResponse = await fetchData<RawGetUserInfoResponse>(`/users/${userId}`);
 
-  return transformResponse(rawResponse);
+	return transformResponse(rawResponse);
 }
 
 export default getUserInfo;
@@ -46,26 +46,26 @@ export default getUserInfo;
 
 // Shape of the data as it arrives from the server (before any transformation)
 export type RawGetUserInfoResponse = {
-  user_id: string;
-  full_name: string;
-  created_at: string; // ISO string from the server
+	user_id: string;
+	full_name: string;
+	created_at: string; // ISO string from the server
 };
 
 // Shape of the data after transformation — what the rest of the app uses
 export type GetUserInfoResponse = {
-  id: string;
-  name: string;
-  createdAt: Date;
+	id: string;
+	name: string;
+	createdAt: Date;
 };
 
 // --- TRANSFORMS ---
 
 function transformResponse(raw: RawGetUserInfoResponse): GetUserInfoResponse {
-  return {
-    id: raw.user_id,
-    name: raw.full_name,
-    createdAt: new Date(raw.created_at),
-  };
+	return {
+		id: raw.user_id,
+		name: raw.full_name,
+		createdAt: new Date(raw.created_at),
+	};
 }
 ```
 
@@ -88,8 +88,8 @@ import getUserInfo from "./endpoints/get-user-info";
 import updateUserProfile from "./endpoints/update-user-profile";
 
 const usersRouter = {
-  getUserInfo,
-  updateUserProfile,
+	getUserInfo,
+	updateUserProfile,
 };
 
 export default usersRouter;
@@ -109,12 +109,12 @@ Composes all entity routers into a single `api` object. This is the only export 
 ```ts
 // src/api/index.ts
 
-import usersRouter from "./routes/users";
 import productsRouter from "./routes/products";
+import usersRouter from "./routes/users";
 
 const api = {
-  users: usersRouter,
-  products: productsRouter,
+	users: usersRouter,
+	products: productsRouter,
 };
 
 export default api;
@@ -144,10 +144,10 @@ Defines the shared HTTP client. Typically an axios instance with base URL, defau
 import axios from "axios";
 
 const httpClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+	baseURL: process.env.NEXT_PUBLIC_API_URL,
+	headers: {
+		"Content-Type": "application/json",
+	},
 });
 
 export default httpClient;
