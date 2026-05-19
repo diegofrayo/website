@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
 	experimental: {
 		optimizePackageImports: ["~/components/primitive"],
 	},
+	allowedDevOrigins: ["website.local"],
 };
 
 export default nextConfig;

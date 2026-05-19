@@ -34,7 +34,7 @@
 		"experience": [
 			{
 				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
-				"name": "Print World",
+				"name": "Crypto trading platform",
 				"role": "Software Engineer",
 				"startDate": "Aug 2024",
 				"endDate": "",
@@ -53,7 +53,7 @@
 				],
 				"company": {
 					"logo": "/assets/pages/resume/images/print-world.png",
-					"website": "https://print.world",
+					"website": "",
 					"linkedin": ""
 				},
 				"mode": "Remote",
@@ -65,7 +65,7 @@
 					]
 				},
 				"fullContent": {
-					"summary": "Print World is a crypto trading platform. I led the development of the web application from scratch using React and TypeScript, while actively contributing to back-end development.",
+					"summary": "I led the development of a crypto trading platform from scratch using React and TypeScript, while actively contributing to back-end development.",
 					"achievements": [
 						"Implemented an authentication system supporting multiple providers, including Solana wallets and Google.",
 						"Contributed the migration from a legacy component library based on Styled Components to a custom component library built with Tailwind CSS."
@@ -291,15 +291,6 @@
 				"endDate": "2018-12-31",
 				"area": "Systems Engineering",
 				"studyType": "Engineer's degree"
-			},
-			{
-				"institution": "Platzi",
-				"institutionWebsite": "https://platzi.com/@diegofrayo",
-				"institutionLogo": "/assets/pages/resume/images/platzi.webp",
-				"startDate": "",
-				"endDate": "",
-				"area": "AI, Programming and English",
-				"studyType": "Courses"
 			}
 		],
 		"languages": [
@@ -377,7 +368,7 @@
 		"experience": [
 			{
 				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
-				"name": "Print World",
+				"name": "Plataforma de trading de criptomonedas",
 				"role": "Software Engineer",
 				"startDate": "ago 2024",
 				"endDate": "",
@@ -396,7 +387,7 @@
 				],
 				"company": {
 					"logo": "/assets/pages/resume/images/print-world.png",
-					"website": "https://print.world",
+					"website": "",
 					"linkedin": ""
 				},
 				"mode": "Remoto",
@@ -408,7 +399,7 @@
 					]
 				},
 				"fullContent": {
-					"summary": "Print World es una plataforma de trading de criptomonedas. Participé activamente en el desarrollo de la aplicación web desde cero usando React y TypeScript, además de contribuir al desarrollo del back-end.",
+					"summary": "Participé activamente en el desarrollo de la aplicación web de una plataforma de trading de criptomonedas desde cero usando React y TypeScript, además de contribuir al desarrollo del back-end.",
 					"achievements": [
 						"Implementé un sistema de autenticación con soporte para múltiples proveedores, incluyendo wallets de Solana y Google.",
 						"Lideré la migración de una librería de componentes legacy basada en Styled Components a una librería personalizada construida con Tailwind CSS."
@@ -634,15 +625,6 @@
 				"endDate": "2018-12-31",
 				"studyType": "Pregrado en Ingeniería",
 				"area": "Ingeniería de Sistemas y Computación"
-			},
-			{
-				"institution": "Platzi",
-				"institutionWebsite": "https://platzi.com/@diegofrayo",
-				"institutionLogo": "/assets/pages/resume/images/platzi.webp",
-				"startDate": "",
-				"endDate": "",
-				"area": "IA, Programación e Inglés",
-				"studyType": "Cursos"
 			}
 		],
 		"languages": [
