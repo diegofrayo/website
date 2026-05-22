@@ -143,10 +143,10 @@ function NavigationMenuList({ className }: { className?: string }) {
 					Resume
 				</NavigationMenuItem>
 				<NavigationMenuItem
-					href={Routes.PROJECTS}
+					href={Routes.PORTFOLIO}
 					icon={IconCatalog.CODE_XML}
 				>
-					Projects
+					Portfolio
 				</NavigationMenuItem>
 			</RadixNavigationMenu.List>
 		</RadixNavigationMenu.Root>

@@ -17,11 +17,11 @@ import {
 	Title,
 } from "~/components/primitive";
 import { Routes } from "~/constants";
-import { PROJECTS_IMAGES_PATH } from "~/constants/assets";
+import { PORTFOLIO_IMAGES_PATH } from "~/constants/assets";
 import AnalyticsService from "~/features/analytics";
 
-function ProjectsPage() {
-	const PROJECTS = [
+function PortfolioPage() {
+	const SIDE_PROJECTS = [
 		{
 			title: "dranki",
 			url: "https://dranki.diegofrayo.dev",
@@ -50,21 +50,21 @@ function ProjectsPage() {
 	return (
 		<Page
 			config={{
-				title: "Projects",
-				description: "Some projects for learning purposes and personal use",
-				pathname: "/projects",
+				title: "Portfolio",
+				description: "A showcase of some side projects I've built for personal use.",
+				pathname: "/portfolio",
 				isSEOEnabled: false,
 			}}
 		>
-			<MainLayout title="Projects">
+			<MainLayout title="Portfolio">
 				<Paragraph className="mb-4 text-center text-sm italic">
 					Some side projects for personal use
 				</Paragraph>
 				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-					{PROJECTS.map((item, index) => {
+					{SIDE_PROJECTS.map((item, index) => {
 						return (
 							<ProjectBox
-								key={generateSlug(`ProjectsPage-item-ProjectBox-${index}`)}
+								key={generateSlug(`PortfolioPage-item-ProjectBox-${index}`)}
 								item={item}
 							/>
 						);
@@ -75,7 +75,7 @@ function ProjectsPage() {
 	);
 }
 
-export default ProjectsPage;
+export default PortfolioPage;
 
 // --- COMPONENTS ---
 
@@ -94,7 +94,7 @@ function ProjectBox({ item }: { item: Project }) {
 					onClick={() => setIsModalOpen(true)}
 				>
 					<Image
-						src={`${PROJECTS_IMAGES_PATH}/${item.title}.png`}
+						src={`${PORTFOLIO_IMAGES_PATH}/${item.title}.png`}
 						alt={item.title}
 						className="h-full w-full object-cover object-top"
 						useNativeElement
@@ -131,7 +131,7 @@ function ProjectBox({ item }: { item: Project }) {
 						href={item.url}
 						variant={Link.variant.SMOOTH}
 						isExternalLink={isPWA() === false || !item.url.startsWith("/")}
-						onClick={AnalyticsService.trackClickEvent("PROJECTS|OPEN_PROJECT", {
+						onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT", {
 							project: item.title,
 						})}
 					>
@@ -160,7 +160,7 @@ function ProjectBox({ item }: { item: Project }) {
 					/>
 				</Button>
 				<Image
-					src={`${PROJECTS_IMAGES_PATH}/${item.title}.png`}
+					src={`${PORTFOLIO_IMAGES_PATH}/${item.title}.png`}
 					alt={`${item.title} project thumbnail`}
 					className="max-h-[90vh] max-w-[90vw] object-contain"
 					useNativeElement
