@@ -1,3 +1,5 @@
+// NOTE: Inspiration: https://www.npmjs.com/package/envalid
+
 import { isArray, isBrowser, isNumber, isServer, isString } from "../validator";
 
 type EnvVarConfigAPI = {
