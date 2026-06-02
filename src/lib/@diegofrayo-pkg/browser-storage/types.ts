@@ -9,7 +9,7 @@ export type BrowserStorageStateConfig<ValueType> = {
 };
 
 export type BrowserStorageState<ValueType> = {
-	get: () => ValueType;
+	get: (fallback?: ValueType) => ValueType;
 	set: (newValue: ValueType) => void;
 	remove: () => void;
 	exists: () => boolean;

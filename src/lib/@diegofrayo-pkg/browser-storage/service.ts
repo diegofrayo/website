@@ -20,33 +20,35 @@ const BrowserStorageManager = {
 			}
 		}
 
-		return {
-			get: (): ValueType => {
+		const api: BrowserStorageState<ValueType> = {
+			get: (fallback) => {
 				if (isServer()) return value;
 
 				// TODO: Try to not use 'as'
 				const valueFromStorage = getItem({ key, type: typeof value, storage }) as ValueType;
-				return valueFromStorage === null ? value : valueFromStorage;
+				return valueFromStorage === null ? (fallback ?? value) : valueFromStorage;
 			},
 
-			set: (newValue: ValueType): void => {
+			set: (newValue) => {
 				if (isServer()) return;
 
 				setItem(key, newValue, storage);
 			},
 
-			remove: (): void => {
+			remove: () => {
 				if (isServer()) return;
 
 				window[storage].removeItem(key);
 			},
 
-			exists: (): boolean => {
+			exists: () => {
 				if (isServer()) return false;
 
 				return window[storage].getItem(key) !== null;
 			},
 		};
+
+		return api;
 	},
 };
 
