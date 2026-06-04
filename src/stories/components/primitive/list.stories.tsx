@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { List } from "~/components/primitive/list";
+import List from "~/components/primitive/list";
 
 // --- META ---
 

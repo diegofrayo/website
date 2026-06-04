@@ -5,7 +5,7 @@ import ImageGallery from "~/components/common/image-gallery";
 // --- META ---
 
 const meta: Meta<typeof ImageGallery> = {
-	title: "Shared/ImageGallery",
+	title: "Common/ImageGallery",
 	component: ImageGallery,
 	tags: ["autodocs"],
 	argTypes: {

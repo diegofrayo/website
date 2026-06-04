@@ -5,7 +5,8 @@ import { flushSync } from "react-dom";
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
 
-import { Box, Button, Icon, IconCatalog, InlineText } from "~/components/primitive";
+import { Box, Button, Icon, InlineText } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 import type { ContentMode, Design, DownloadMode, Lang } from "../resume.types";
 

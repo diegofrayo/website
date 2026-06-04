@@ -18,7 +18,6 @@ import {
 	Box,
 	Button,
 	Icon,
-	IconCatalog,
 	Image,
 	InlineText,
 	Link,
@@ -26,6 +25,7 @@ import {
 	Paragraph,
 	Space,
 } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 import { BLOG_IMAGES_PATH, Routes } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/features/analytics";
@@ -246,7 +246,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 	] as const;
 
 	return (
-		<Box className="flex flex-col flex-wrap justify-between gap-2 border border-x-8 border-black p-4 text-black sm:flex-row">
+		<Box className="flex flex-col flex-wrap items-start justify-between gap-2 border border-x-8 border-black p-4 text-black sm:flex-row">
 			{ACTIONS.map((action) => {
 				return (
 					<BlogPostActionsItemWrapper
@@ -254,7 +254,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 						popoverConfig={action.popoverConfig}
 					>
 						<Button
-							className="flex items-center justify-start text-left text-sm"
+							className="inline-flex items-center justify-start text-left text-sm"
 							render={action.type === "LINK" ? <Link {...action.props} /> : undefined}
 						>
 							<Icon
@@ -280,7 +280,14 @@ const BlogPostActionsItemWrapper = ({
 	popoverConfig,
 }: BlogPostActionsItemWrapperProps) => {
 	if (popoverConfig) {
-		return <CopyToClipboardPopover {...popoverConfig}>{children}</CopyToClipboardPopover>;
+		return (
+			<CopyToClipboardPopover
+				popoverInnerWrapperClassName="leading-none"
+				{...popoverConfig}
+			>
+				{children}
+			</CopyToClipboardPopover>
+		);
 	}
 
 	return children;

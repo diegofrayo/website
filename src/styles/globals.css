@@ -1,6 +1,5 @@
 /* --- LIBS --- */
 
-@import "./radix-ui.css";
 @import "./sugar-high.css";
 
 /* --- TAILWIND CONFIG --- */
@@ -64,10 +63,6 @@ body > #__next {
 	height: 100%;
 }
 
-html {
-	scrollbar-gutter: stable;
-}
-
 body {
 	@apply font-texts;
 	@apply bg-white;
@@ -103,6 +98,10 @@ dialog {
 button {
 	outline: 0;
 	cursor: pointer;
+}
+
+.root {
+	isolation: isolate;
 }
 
 /* --- SCROLLBAR --- */

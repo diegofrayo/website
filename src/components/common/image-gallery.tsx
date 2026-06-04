@@ -11,7 +11,8 @@ import { safeCastNumber } from "@diegofrayo-pkg/utilities/numbers";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNumber, isString } from "@diegofrayo-pkg/validator";
 
-import { Box, Button, Icon, IconCatalog, Image } from "../primitive";
+import { Box, Button, Icon, Image } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 type ImageGalleryProps = {
 	id: string;

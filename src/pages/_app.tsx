@@ -1,13 +1,13 @@
 import "~/styles/globals.css";
 
 import { Component, useEffect, type ErrorInfo } from "react";
+import { Tooltip } from "@base-ui/react/tooltip";
 import type { AppProps } from "next/app";
 import {
 	Kaushan_Script as FontSpecial,
 	Bitter as FontTexts,
 	Domine as FontTitles,
 } from "next/font/google";
-import { Tooltip as RadixTooltip } from "radix-ui";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "sonner";
 
@@ -40,6 +40,9 @@ function CustomApp({ Component, pageProps }: CustomAppProps) {
 		if (isMobileDevice()) {
 			document.body.classList.add("mobile");
 		}
+
+		// NOTE: it is performed because of Base UI
+		document.getElementById("__next")?.classList.add("root");
 
 		return () => undefined;
 	});
@@ -76,7 +79,7 @@ function CustomApp({ Component, pageProps }: CustomAppProps) {
 		>
 			<style dangerouslySetInnerHTML={{ __html: fontsConfig }} />
 
-			<RadixTooltip.Provider>
+			<Tooltip.Provider>
 				<CustomErrorBoundary>
 					{isSessionLoaded ? <Component {...pageProps} /> : null}
 					<Toaster
@@ -91,7 +94,7 @@ function CustomApp({ Component, pageProps }: CustomAppProps) {
 						closeButton
 					/>
 				</CustomErrorBoundary>
-			</RadixTooltip.Provider>
+			</Tooltip.Provider>
 		</ErrorBoundary>
 	);
 }

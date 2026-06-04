@@ -1,7 +1,8 @@
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import BoxWithTitle from "~/components/common/box-with-title";
-import { BlockQuote, Box, Collapsible, Icon, IconCatalog, Link, Pre } from "~/components/primitive";
+import { Blockquote, Box, Collapsible, Icon, Link, Pre } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
 
 type SPVEEQRecommendationsProps = {
@@ -96,9 +97,9 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 							)}
 						</BoxWithTitle>
 
-						<BlockQuote>
+						<Blockquote>
 							<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>{recommendation.description}</Pre>
-						</BlockQuote>
+						</Blockquote>
 					</Collapsible>
 				);
 			})}

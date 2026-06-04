@@ -2,7 +2,7 @@ import cn from "@diegofrayo-pkg/cn";
 import { useTypingTextEffect } from "@diegofrayo-pkg/hooks";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
-import { InlineText, Paragraph } from "../primitive";
+import { InlineText, Paragraph } from "~/components/primitive";
 
 // --- PROPS DEFINITIONS ---
 

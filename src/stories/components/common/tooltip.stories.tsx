@@ -1,12 +1,12 @@
+import { Tooltip as BaseUITooltip } from "@base-ui/react/tooltip";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Tooltip as RadixTooltip } from "radix-ui";
 
 import Tooltip from "~/components/common/tooltip";
 
 // --- META ---
 
 const meta: Meta<typeof Tooltip> = {
-	title: "Shared/Tooltip",
+	title: "Common/Tooltip",
 	component: Tooltip,
 	tags: ["autodocs"],
 	argTypes: {
@@ -29,14 +29,14 @@ export const Default: StoryObj<typeof Tooltip> = {
 	render() {
 		return (
 			<div>
-				<RadixTooltip.Provider>
+				<BaseUITooltip.Provider>
 					<Tooltip
 						text="This is a tooltip"
 						triggerAsChild
 					>
-						<p className="text-center">Hover me!</p>
+						<span className="text-center">Hover me!</span>
 					</Tooltip>
-				</RadixTooltip.Provider>
+				</BaseUITooltip.Provider>
 			</div>
 		);
 	},

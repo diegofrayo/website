@@ -11,7 +11,7 @@ import CopyToClipboardPopover from "~/components/common/copy-to-clipboard-popove
 import ImageWithLink from "~/components/common/image-with-link";
 import SourceCode from "~/components/common/source-code";
 import {
-	BlockQuote,
+	Blockquote,
 	Box,
 	Button,
 	Code,
@@ -23,9 +23,9 @@ import {
 	Paragraph,
 	Space,
 	Title,
-	type ImageProps,
-	type TitleProps,
 } from "~/components/primitive";
+import { type ImageProps } from "~/components/primitive/image";
+import { type TitleProps } from "~/components/primitive/title";
 import { WithAuth } from "~/features/auth";
 
 import styles from "./styles.module.css";
@@ -63,7 +63,7 @@ export const MDXComponents = {
 			</Link>
 		);
 	},
-	blockquote: BlockQuote,
+	blockquote: Blockquote,
 	code: function CustomCode({ children }: ReactTypes.DOM.HTMLElementAttributes["code"]) {
 		if (isString(children)) {
 			return (

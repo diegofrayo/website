@@ -5,7 +5,7 @@ import BoxWithTitle from "~/components/common/box-with-title";
 // --- META ---
 
 const meta: Meta<typeof BoxWithTitle> = {
-	title: "Shared/BoxWithTitle",
+	title: "Common/BoxWithTitle",
 	component: BoxWithTitle,
 	tags: ["autodocs"],
 	argTypes: {

@@ -1,22 +1,25 @@
 import { Children, cloneElement, isValidElement, useState } from "react";
-import type { PopoverPositionerProps } from "@base-ui/react";
+import type { PopoverPositionerProps } from "@base-ui/react/popover";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { copyToClipboard } from "@diegofrayo-pkg/utilities/browser";
 import { isFunction, isString } from "@diegofrayo-pkg/validator";
 
-import { Box } from "../primitive";
+import { Box } from "~/components/primitive";
+
 import Popover from "./popover";
 
 export type CopyToClipboardPopoverProps = PopoverPositionerProps & {
 	textToCopy: string | (() => string);
 	popoverText?: string;
+	popoverInnerWrapperClassName?: string;
 };
 
 function CopyToClipboardPopover({
 	children,
 	textToCopy,
 	popoverText = "copied!",
+	popoverInnerWrapperClassName,
 	...rest
 }: CopyToClipboardPopoverProps) {
 	// --- STATE & REFS ---
@@ -42,7 +45,10 @@ function CopyToClipboardPopover({
 			nativeButton={false}
 			{...rest}
 		>
-			<Box as="span">
+			<Box
+				as="span"
+				className={popoverInnerWrapperClassName}
+			>
 				{Children.map(children, (child) => {
 					if (isValidElement<ChildElementProps>(child)) {
 						return cloneElement(child as ReactTypes.JSXElement, {

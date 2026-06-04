@@ -1,6 +1,7 @@
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import { Image, Link, type ImageProps } from "../primitive";
+import { Image, Link } from "~/components/primitive";
+import { type ImageProps } from "~/components/primitive/image";
 
 function ImageWithLink({ src, alt, ...rest }: ImageProps) {
 	if (isNotEmptyString(src)) {

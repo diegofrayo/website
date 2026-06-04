@@ -5,7 +5,7 @@ import SourceCode from "~/components/common/source-code";
 // --- META ---
 
 const meta: Meta<typeof SourceCode> = {
-	title: "Shared/SourceCode",
+	title: "Common/SourceCode",
 	component: SourceCode,
 	tags: ["autodocs"],
 	argTypes: {

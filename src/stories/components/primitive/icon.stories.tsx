@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { Icon, IconCatalog } from "~/components/primitive/icon";
+import Icon, { IconCatalog } from "~/components/primitive/icon";
 import { ArgTypes } from "~/stories/config/arg-types";
 
 // --- META ---

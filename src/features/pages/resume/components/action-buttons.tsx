@@ -3,7 +3,8 @@ import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
 
-import { Box, Icon, IconCatalog } from "~/components/primitive";
+import { Box, Icon } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
 
 import type { ContentMode, Design, Lang } from "../resume.types";

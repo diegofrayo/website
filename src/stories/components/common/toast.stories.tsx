@@ -7,7 +7,7 @@ import toast from "~/components/common/toast";
 // --- META ---
 
 const meta: Meta = {
-	title: "Shared/Toast",
+	title: "Common/Toast",
 	component: toast,
 	tags: ["autodocs"],
 	argTypes: {

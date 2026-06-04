@@ -1,4 +1,4 @@
-import { Separator } from "radix-ui";
+import { Separator } from "@base-ui/react/separator";
 
 import cn from "@diegofrayo-pkg/cn";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
@@ -86,7 +86,7 @@ function Space({
 	}
 
 	return (
-		<Separator.Root
+		<Separator
 			className={composeStyles()}
 			orientation={isVerticalOrientation ? "vertical" : "horizontal"}
 		/>

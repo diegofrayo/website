@@ -5,7 +5,7 @@ import Callout from "~/components/common/callout";
 // --- META ---
 
 const meta: Meta<typeof Callout> = {
-	title: "Shared/Callout",
+	title: "Common/Callout",
 	component: Callout,
 	tags: ["autodocs"],
 	argTypes: {

@@ -5,7 +5,7 @@ import CopyToClipboardPopover from "~/components/common/copy-to-clipboard-popove
 // --- META ---
 
 const meta: Meta<typeof CopyToClipboardPopover> = {
-	title: "Shared/CopyToClipboardPopover",
+	title: "Common/CopyToClipboardPopover",
 	component: CopyToClipboardPopover,
 	tags: ["autodocs"],
 	argTypes: {

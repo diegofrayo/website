@@ -1,21 +1,12 @@
 import { forwardRef } from "react";
-import { NavigationMenu as RadixNavigationMenu } from "radix-ui";
+import { NavigationMenu as BaseUINavigationMenu } from "@base-ui/react/navigation-menu";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useBoolean, useLockScroll } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import {
-	Box,
-	Button,
-	Icon,
-	IconCatalog,
-	InlineText,
-	Link,
-	List,
-	Title,
-	type IconName,
-} from "~/components/primitive";
+import { Box, Button, Icon, InlineText, Link, List, Title } from "~/components/primitive";
+import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import { Routes, WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
 import { useRouting } from "~/features/routing";
@@ -125,11 +116,11 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 
 function NavigationMenuList({ className }: { className?: string }) {
 	return (
-		<RadixNavigationMenu.Root
-			className={cn("radix-navigation-menu-root w-full", className)}
-			delayDuration={0}
+		<BaseUINavigationMenu.Root
+			className={cn("w-full", className)}
+			delay={0}
 		>
-			<RadixNavigationMenu.List className="radix-navigation-menu-list block px-4 text-center sm:flex sm:w-full sm:justify-end sm:gap-6 sm:px-0">
+			<BaseUINavigationMenu.List className="block px-4 text-center sm:flex sm:w-full sm:justify-end sm:gap-6 sm:px-0">
 				<NavigationMenuItem
 					href={Routes.BLOG}
 					icon={IconCatalog.RSS}
@@ -148,8 +139,8 @@ function NavigationMenuList({ className }: { className?: string }) {
 				>
 					Portfolio
 				</NavigationMenuItem>
-			</RadixNavigationMenu.List>
-		</RadixNavigationMenu.Root>
+			</BaseUINavigationMenu.List>
+		</BaseUINavigationMenu.Root>
 	);
 }
 

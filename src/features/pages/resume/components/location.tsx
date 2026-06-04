@@ -1,6 +1,7 @@
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
-import { Icon, IconCatalog, InlineText, Paragraph } from "~/components/primitive";
+import { Icon, InlineText, Paragraph } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 export function Location({ location }: { location: Resume["contactInfo"]["location"] }) {
 	return (

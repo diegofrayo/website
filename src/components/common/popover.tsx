@@ -4,7 +4,6 @@ import {
 	type PopoverTriggerProps,
 } from "@base-ui/react/popover";
 
-import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 type PopoverProps = Partial<PopoverPositionerProps> &
@@ -18,16 +17,12 @@ function Popover({ children, text, open = false, ...rest }: PopoverProps) {
 	return (
 		<BaseUIPopover.Root open={open}>
 			<BaseUIPopover.Trigger
-				className="radix-popover-trigger"
 				render={children}
 				nativeButton={rest.nativeButton ?? true}
 			/>
 			<BaseUIPopover.Portal>
 				<BaseUIPopover.Positioner
-					className={cn(
-						"radix-popover-content",
-						"rounded-md bg-zinc-700 px-2 py-0.5 text-xs font-bold text-zinc-200 shadow-sm shadow-zinc-400",
-					)}
+					className="rounded-md bg-zinc-700 px-2 py-0.5 text-xs font-bold text-zinc-200 shadow-sm shadow-zinc-400"
 					side={rest.side || "top"}
 					align={rest.align || "center"}
 					sideOffset={8}

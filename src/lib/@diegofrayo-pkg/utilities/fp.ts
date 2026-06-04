@@ -1,8 +1,6 @@
-import * as R from "remeda";
-
 // --- USUAL FP FUNCTIONS ---
 
-export const { pipe } = R;
+export { pipe } from "remeda";
 
 // --- UTILS ---
 

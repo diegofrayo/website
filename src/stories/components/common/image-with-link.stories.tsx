@@ -5,7 +5,7 @@ import ImageWithLink from "~/components/common/image-with-link";
 // --- META ---
 
 const meta: Meta<typeof ImageWithLink> = {
-	title: "Shared/ImageWithLink",
+	title: "Common/ImageWithLink",
 	component: ImageWithLink,
 	tags: ["autodocs"],
 	argTypes: {

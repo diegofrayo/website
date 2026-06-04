@@ -3,11 +3,11 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type BlockQuoteProps = ReactTypes.DOM.HTMLElementAttributes["blockquote"];
+type BlockquoteProps = ReactTypes.DOM.HTMLElementAttributes["blockquote"];
 
 // --- COMPONENT DEFINITION ---
 
-function BlockQuote({ children, className, ...rest }: BlockQuoteProps) {
+function Blockquote({ children, className, ...rest }: BlockquoteProps) {
 	return (
 		<blockquote
 			className={cn("dr-blockquote", "border-l-4 border-black pl-3 text-black", className)}
@@ -18,4 +18,4 @@ function BlockQuote({ children, className, ...rest }: BlockQuoteProps) {
 	);
 }
 
-export default BlockQuote;
+export default Blockquote;

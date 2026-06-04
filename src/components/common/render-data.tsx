@@ -1,7 +1,8 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
 
-import { Box, InlineText, Paragraph } from "../primitive";
+import { Box, InlineText, Paragraph } from "~/components/primitive";
+
 import Loader from "./loader";
 
 type RenderProps<Data> = {

@@ -7,4 +7,5 @@ export { default as useNumber } from "./use-number";
 export { default as useOnScroll } from "./use-on-scroll";
 export { default as useTriggerRender } from "./use-trigger-render";
 export { default as useTypingTextEffect } from "./use-typing-text-effect";
+export { default as useUrlParams } from "./use-url-params";
 export { default as useWindowSize } from "./use-window-size";

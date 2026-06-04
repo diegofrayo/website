@@ -4,7 +4,8 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
-import { Box, Icon, IconCatalog } from "../primitive";
+import { Box, Icon } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 const Variant = mirror(["WARNING", "ERROR"]);
 type Variant = keyof typeof Variant;

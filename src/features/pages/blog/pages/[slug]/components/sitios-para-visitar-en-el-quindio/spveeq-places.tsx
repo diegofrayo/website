@@ -5,17 +5,8 @@ import { isEmptyArray, isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg
 
 import BoxWithTitle from "~/components/common/box-with-title";
 import ImageGallery from "~/components/common/image-gallery";
-import {
-	Box,
-	Collapsible,
-	Icon,
-	IconCatalog,
-	InlineText,
-	Link,
-	Space,
-	Title,
-	type IconName,
-} from "~/components/primitive";
+import { Box, Collapsible, Icon, InlineText, Link, Space, Title } from "~/components/primitive";
+import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
 
 type SPVEEQPlacesProps = {

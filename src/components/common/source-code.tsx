@@ -9,7 +9,9 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { throwError } from "@diegofrayo-pkg/utilities/errors";
 import { isNotEmptyString, isString } from "@diegofrayo-pkg/validator";
 
-import { Box, Button, Icon, IconCatalog, InlineText, Link, Paragraph, Pre } from "../primitive";
+import { Box, Button, Icon, InlineText, Link, Paragraph, Pre } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
+
 import CopyToClipboardPopover from "./copy-to-clipboard-popover";
 
 export type SourceCodeProps = {

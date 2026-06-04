@@ -6,7 +6,8 @@ import { withConditionalRender, withRenderInBrowser } from "@diegofrayo-pkg/hocs
 import { useDidMount, useWindowSize } from "@diegofrayo-pkg/hooks";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
-import { Box, Button, Icon, IconCatalog, InlineText } from "~/components/primitive";
+import { Box, Button, Icon, InlineText } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 import { AuthService } from "../auth";
 import ToolsMenu from "./components/tools-menu";
@@ -110,10 +111,10 @@ const WindowSize = withRenderInBrowser(function WindowSize() {
 	return (
 		<Box className="text-sm font-bold text-white">
 			<InlineText>{size.join("x")} | </InlineText>
-			<InlineText className="inline-block sm:hidden">📱</InlineText>
-			<InlineText className="hidden sm:inline-block md:hidden">sm</InlineText>
-			<InlineText className="hidden md:inline-block lg:hidden">md</InlineText>
-			<InlineText className="hidden lg:inline-block">lg</InlineText>
+			<InlineText className="relative top-0.5 inline-block sm:hidden">📱</InlineText>
+			<InlineText className="hidden uppercase sm:inline-block md:hidden">sm</InlineText>
+			<InlineText className="hidden uppercase md:inline-block lg:hidden">md</InlineText>
+			<InlineText className="hidden uppercase lg:inline-block">lg</InlineText>
 		</Box>
 	);
 });

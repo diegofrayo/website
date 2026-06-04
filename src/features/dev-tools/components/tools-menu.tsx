@@ -1,4 +1,4 @@
-import { DropdownMenu } from "radix-ui";
+import { Menu } from "@base-ui/react/menu";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -8,18 +8,10 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import CopyToClipboardPopover, {
 	type CopyToClipboardPopoverProps,
 } from "~/components/common/copy-to-clipboard-popover";
-import {
-	Button,
-	Icon,
-	IconCatalog,
-	InlineText,
-	Link,
-	List,
-	type IconName,
-} from "~/components/primitive";
+import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
+import { IconCatalog, type IconName } from "~/components/primitive/icon";
 
 import { AuthService, withAuth, type AuthUserRole } from "../../auth";
-import styles from "./tools-menu.styles.module.css";
 
 type ToolsMenuProps = {
 	productionURL: string;
@@ -27,32 +19,36 @@ type ToolsMenuProps = {
 
 function ToolsMenu({ productionURL }: ToolsMenuProps) {
 	return (
-		<DropdownMenu.Root>
-			<DropdownMenu.Trigger className="leading-none">
+		<Menu.Root>
+			<Menu.Trigger className="group leading-none">
 				<Icon
 					icon={IconCatalog.SETTINGS}
-					wrapperClassName={styles["radix-navigation-menu-trigger-icon"]}
+					wrapperClassName="transition-transform duration-300 ease-[ease] group-data-popup-open:rotate-180"
 					size="size-6"
 					color="text-white"
 				/>
-			</DropdownMenu.Trigger>
+			</Menu.Trigger>
 
-			<DropdownMenu.Portal>
-				<DropdownMenu.Content
+			<Menu.Portal>
+				<Menu.Positioner
 					sideOffset={12}
+					alignOffset={0}
 					className="z-50"
+					style={{ left: -5 }}
 				>
-					<List className="block overflow-hidden border border-zinc-300">
-						<CopyURLMenuItem />
-						<EnvironmentMenuItem productionURL={productionURL} />
-						<SwitchUserModeMenuItem />
-						<SignOutMenuItem />
-					</List>
+					<Menu.Popup>
+						<List className="block overflow-hidden border border-zinc-300">
+							<CopyURLMenuItem />
+							<EnvironmentMenuItem productionURL={productionURL} />
+							<SwitchUserModeMenuItem />
+							<SignOutMenuItem />
+						</List>
 
-					<DropdownMenu.Separator />
-				</DropdownMenu.Content>
-			</DropdownMenu.Portal>
-		</DropdownMenu.Root>
+						<Menu.Separator />
+					</Menu.Popup>
+				</Menu.Positioner>
+			</Menu.Portal>
+		</Menu.Root>
 	);
 }
 

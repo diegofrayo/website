@@ -5,7 +5,7 @@ import Playground from "~/components/common/playground";
 // --- META ---
 
 const meta: Meta<typeof Playground> = {
-	title: "Shared/Playground",
+	title: "Common/Playground",
 	component: Playground,
 	tags: ["autodocs"],
 	argTypes: {

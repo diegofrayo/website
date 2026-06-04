@@ -5,7 +5,7 @@ import RenderData from "~/components/common/render-data";
 // --- META ---
 
 const meta: Meta<typeof RenderData> = {
-	title: "Shared/RenderData",
+	title: "Common/RenderData",
 	component: RenderData,
 	tags: ["autodocs"],
 	argTypes: {

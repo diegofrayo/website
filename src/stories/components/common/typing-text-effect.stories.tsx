@@ -5,7 +5,7 @@ import TypingTextEffect from "~/components/common/typing-text-effect";
 // --- META ---
 
 const meta: Meta<typeof TypingTextEffect> = {
-	title: "Shared/TypingTextEffect",
+	title: "Common/TypingTextEffect",
 	component: TypingTextEffect,
 	tags: ["autodocs"],
 	argTypes: {

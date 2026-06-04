@@ -6,7 +6,7 @@ import Popover from "~/components/common/popover";
 // --- META ---
 
 const meta: Meta<typeof Popover> = {
-	title: "Shared/Popover",
+	title: "Common/Popover",
 	component: Popover,
 	tags: ["autodocs"],
 	argTypes: {

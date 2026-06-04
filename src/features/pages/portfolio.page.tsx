@@ -8,7 +8,6 @@ import {
 	Box,
 	Button,
 	Icon,
-	IconCatalog,
 	Image,
 	Link,
 	Modal,
@@ -16,6 +15,7 @@ import {
 	Pre,
 	Title,
 } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 import { Routes } from "~/constants";
 import { PORTFOLIO_IMAGES_PATH } from "~/constants/assets";
 import AnalyticsService from "~/features/analytics";

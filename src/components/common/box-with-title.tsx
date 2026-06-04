@@ -1,7 +1,7 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Paragraph } from "../primitive";
+import { Box, Paragraph } from "~/components/primitive";
 
 type BoxWithTitleProps = {
 	children: ReactTypes.Children;

@@ -1,7 +1,8 @@
 import cn from "@diegofrayo-pkg/cn";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
-import { Box, Icon, IconCatalog, InlineText, Link } from "~/components/primitive";
+import { Box, Icon, InlineText, Link } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
 
 export function ContactInfo({
 	contactInfo,

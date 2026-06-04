@@ -5,7 +5,9 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Button, Icon, IconCatalog, InlineText, Paragraph } from "../primitive";
+import { Box, Button, Icon, InlineText, Paragraph } from "~/components/primitive";
+import { IconCatalog } from "~/components/primitive/icon";
+
 import SourceCode, { type SourceCodeProps } from "./source-code";
 
 type PlaygroundProps = {

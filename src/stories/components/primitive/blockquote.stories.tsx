@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import BlockQuote from "~/components/primitive/blockquote";
+import Blockquote from "~/components/primitive/blockquote";
 
 // --- META ---
 
-const meta: Meta<typeof BlockQuote> = {
-	title: "Primitive/BlockQuote",
-	component: BlockQuote,
+const meta: Meta<typeof Blockquote> = {
+	title: "Primitive/Blockquote",
+	component: Blockquote,
 	tags: ["autodocs"],
 	argTypes: {
 		children: { control: "text" },
@@ -22,13 +22,13 @@ export default meta;
 
 // --- STORIES ---
 
-export const Default: StoryObj<typeof BlockQuote> = {
+export const Default: StoryObj<typeof Blockquote> = {
 	args: {
 		children: "This is a blockquote.",
 	},
 };
 
-export const CustomClass: StoryObj<typeof BlockQuote> = {
+export const CustomClass: StoryObj<typeof Blockquote> = {
 	args: {
 		children: "Blockquote with custom class.",
 		className: "text-lg italic text-zinc-600",
