@@ -69,10 +69,12 @@ body {
 	@apply text-zinc-700;
 	cursor: default;
 	font-size: 18px;
-	overflow: auto;
-	scroll-behavior: smooth;
-	scrollbar-gutter: stable;
 	word-break: break-word;
+
+	/* SCROLLING STYLES */
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scroll-behavior: smooth;
 
 	/* PRINT STYLES */
 	-webkit-print-color-adjust: exact !important;
@@ -91,6 +93,11 @@ body:not(.visible) {
 	visibility: hidden;
 }
 
+/* NOTE: For base-ui config purposes */
+.root {
+	isolation: isolate;
+}
+
 dialog {
 	overscroll-behavior: contain;
 }
@@ -100,33 +107,7 @@ button {
 	cursor: pointer;
 }
 
-.root {
-	isolation: isolate;
-}
-
 /* --- SCROLLBAR --- */
-
-::-webkit-scrollbar {
-	@apply bg-zinc-400;
-	height: 7.5px;
-	width: 7.5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-	background-color: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	@apply bg-zinc-600;
-	@apply rounded-md;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	@apply bg-zinc-700;
-}
 
 body.mobile ::-webkit-scrollbar-thumb {
 	display: none;

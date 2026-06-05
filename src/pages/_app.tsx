@@ -49,9 +49,7 @@ function CustomApp({ Component, pageProps }: CustomAppProps) {
 
 	useEffect(
 		function checkUserSession() {
-			if (isSessionLoaded) {
-				setTimeout(() => document.body.classList.add("visible"), 500);
-			}
+			if (isSessionLoaded) document.body.classList.add("visible");
 		},
 		[isSessionLoaded],
 	);
