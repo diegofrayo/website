@@ -41,14 +41,19 @@ function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: 
 
 	useEffect(() => {
 		const dialog = dialogRef.current;
-
 		if (!dialog) return;
 
-		dialog.addEventListener("close", () => {
+		const callback = () => {
 			onCloseHandler();
 			setScrollPosition(scrollPosition.current, "auto");
-		});
-	}, []);
+		};
+
+		dialog.addEventListener("close", callback);
+
+		return () => {
+			dialog.removeEventListener("close", callback);
+		};
+	}, [onCloseHandler]);
 
 	// --- HANDLERS ---
 	function handleBackdropClick(event: ReactTypes.Events.OnClickEvent<HTMLDialogElement>) {

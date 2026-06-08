@@ -1,5 +1,6 @@
 export { default as useAsync } from "./use-async";
 export { default as useBoolean } from "./use-boolean";
+export { default as useDebouncedCallback } from "./use-debounce-callback";
 export { default as useDidMount } from "./use-did-mount";
 export { default as useDocumentTitle } from "./use-document-title";
 export { default as useLockScroll } from "./use-lock-scroll";
