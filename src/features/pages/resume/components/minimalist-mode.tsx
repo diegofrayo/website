@@ -12,9 +12,9 @@ import { OtherSection } from "./other-section";
 import { ResumeBox } from "./resume-box";
 import { Skill } from "./skill";
 
-type SimpleModeProps = { data: Resume; contentMode: ContentMode };
+type MinimalistModeProps = { data: Resume; contentMode: ContentMode };
 
-export function SimpleMode({ data, contentMode }: SimpleModeProps) {
+export function MinimalistMode({ data, contentMode }: MinimalistModeProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 

@@ -76,18 +76,18 @@ export function ActionButtons({
 						className={classes.toggleGroup}
 					>
 						<Toggle
-							value="SIMPLE"
-							aria-label="Simple design"
+							value="MINIMALIST"
+							aria-label="Minimalist design"
 							className={classes.toggle}
 						>
-							Simple
+							Minimalist
 						</Toggle>
 						<Toggle
-							value="COLORFUL"
-							aria-label="Colorful design"
+							value="STYLISH"
+							aria-label="Stylish design"
 							className={classes.toggle}
 						>
-							Colorful
+							Stylish
 						</Toggle>
 					</ToggleGroup>
 				</Box>
@@ -111,11 +111,11 @@ export function ActionButtons({
 							Short
 						</Toggle>
 						<Toggle
-							value="FULL"
-							aria-label="Full content"
+							value="LONG"
+							aria-label="Long content"
 							className={classes.toggle}
 						>
-							Full
+							Long
 						</Toggle>
 					</ToggleGroup>
 				</Box>

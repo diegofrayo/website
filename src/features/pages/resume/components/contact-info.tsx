@@ -9,7 +9,7 @@ export function ContactInfo({
 	variant,
 }: {
 	contactInfo: Resume["contactInfo"];
-	variant: "SIMPLE" | "COLORFUL";
+	variant: "SIMPLE" | "STYLISH";
 }) {
 	const classes = {
 		item: cn(

@@ -66,20 +66,20 @@ export function DownloadActions({
 		const originalContentMode = contentMode;
 		const originalTitle = document.title;
 		const variants: Array<{ lang: Lang; design: Design; contentMode: ContentMode }> = [
-			{ design: "SIMPLE", contentMode: "SHORT", lang: "EN" },
-			{ design: "SIMPLE", contentMode: "SHORT", lang: "ES" },
-			{ design: "SIMPLE", contentMode: "FULL", lang: "EN" },
-			{ design: "SIMPLE", contentMode: "FULL", lang: "ES" },
-			{ design: "COLORFUL", contentMode: "SHORT", lang: "EN" },
-			{ design: "COLORFUL", contentMode: "SHORT", lang: "ES" },
-			{ design: "COLORFUL", contentMode: "FULL", lang: "EN" },
-			{ design: "COLORFUL", contentMode: "FULL", lang: "ES" },
+			{ design: "MINIMALIST", contentMode: "SHORT", lang: "EN" },
+			{ design: "MINIMALIST", contentMode: "SHORT", lang: "ES" },
+			{ design: "MINIMALIST", contentMode: "LONG", lang: "EN" },
+			{ design: "MINIMALIST", contentMode: "LONG", lang: "ES" },
+			{ design: "STYLISH", contentMode: "SHORT", lang: "EN" },
+			{ design: "STYLISH", contentMode: "SHORT", lang: "ES" },
+			{ design: "STYLISH", contentMode: "LONG", lang: "EN" },
+			{ design: "STYLISH", contentMode: "LONG", lang: "ES" },
 		];
 
 		let index = 0;
 
 		const triggerPrint = (lang: Lang, design: Design, contentMode: ContentMode) => {
-			const isDefaultResume = lang === "EN" && design === "SIMPLE" && contentMode === "SHORT";
+			const isDefaultResume = lang === "EN" && design === "MINIMALIST" && contentMode === "SHORT";
 			document.title = isDefaultResume
 				? "2026"
 				: `2026 - ${contentMode} - ${lang} - ${design}`.toUpperCase();

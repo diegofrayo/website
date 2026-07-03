@@ -7,7 +7,7 @@ import { MainLayout, Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
 import { WithAuth } from "~/features/auth";
 
-import { ActionButtons, ColorfulMode, DownloadActions, SimpleMode } from "./components";
+import { ActionButtons, DownloadActions, MinimalistMode, StylishMode } from "./components";
 import { IntlContext, IntlProviderValue } from "./resume.context";
 import type { ContentMode, Design, Lang } from "./resume.types";
 
@@ -24,7 +24,7 @@ function ResumePage({ data }: ResumePageProps) {
 	// --- STATE ---
 	const [design, setDesign] = useBrowserStorage<Design>({
 		key: "DR_RESUME_DESIGN",
-		value: "SIMPLE",
+		value: "MINIMALIST",
 		readInitialValueFromStorage: true,
 		saveDuringCreation: true,
 	});
@@ -50,7 +50,7 @@ function ResumePage({ data }: ResumePageProps) {
 			const tag = document.getElementById("print-styles");
 
 			if (tag) {
-				tag.innerHTML = design === "SIMPLE" ? SIMPLE_MODE_STYLES : COLORFUL_MODE_STYLES;
+				tag.innerHTML = design === "MINIMALIST" ? MINIMALIST_MODE_STYLES : STYLISH_MODE_STYLES;
 			}
 		},
 		[design],
@@ -97,13 +97,13 @@ function ResumePage({ data }: ResumePageProps) {
 						</Box>
 
 						<Box className="text-base">
-							{design === "SIMPLE" ? (
-								<SimpleMode
+							{design === "MINIMALIST" ? (
+								<MinimalistMode
 									contentMode={contentMode}
 									data={currentData}
 								/>
 							) : (
-								<ColorfulMode
+								<StylishMode
 									contentMode={contentMode}
 									data={currentData}
 								/>
@@ -120,7 +120,7 @@ export default ResumePage;
 
 // --- STYLES ---
 
-const SIMPLE_MODE_STYLES = `
+const MINIMALIST_MODE_STYLES = `
   @media print {
     @page {
       margin: 0cm;
@@ -134,7 +134,7 @@ const SIMPLE_MODE_STYLES = `
   }
 `;
 
-const COLORFUL_MODE_STYLES = `
+const STYLISH_MODE_STYLES = `
   @media print {
     @page {
       margin: 0.8cm;

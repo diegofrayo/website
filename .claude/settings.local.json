@@ -8,7 +8,12 @@
       "Bash(grep -h \"^export\" /Users/diegofrayo/Documents/Programming/Personal/website/src/components/common/*.tsx /Users/diegofrayo/Documents/Programming/Personal/website/src/components/common/loader/loader.tsx)",
       "Bash(npm run:*)",
       "Bash(git mv:*)",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(npx tsc *)",
+      "Bash(npx eslint *)",
+      "Bash(head -217 /Users/diegofrayo/Documents/Programming/Personal/website/src/features/pages/portfolio.page.tsx)",
+      "Bash(mv /tmp/portfolio.page.tsx.new /Users/diegofrayo/Documents/Programming/Personal/website/src/features/pages/portfolio.page.tsx)",
+      "Bash(npx prettier *)"
     ]
   }
 }

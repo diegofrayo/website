@@ -12,9 +12,9 @@ import { Location } from "./location";
 import { OtherSection } from "./other-section";
 import { ResumeBox } from "./resume-box";
 
-type ColorfulModeProps = { data: Resume; contentMode: ContentMode };
+type StylishModeProps = { data: Resume; contentMode: ContentMode };
 
-export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
+export function StylishMode({ data, contentMode }: StylishModeProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -44,12 +44,12 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 
 				<ContactInfo
 					contactInfo={data.contactInfo}
-					variant="COLORFUL"
+					variant="STYLISH"
 				/>
 			</Box>
 
 			<ResumeBox
-				variant="COLORFUL"
+				variant="STYLISH"
 				title={texts.SUMMARY}
 			>
 				<Pre
@@ -61,7 +61,7 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 			</ResumeBox>
 
 			<ResumeBox
-				variant="COLORFUL"
+				variant="STYLISH"
 				title={texts.EDUCATION}
 			>
 				<Box>
@@ -110,7 +110,7 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 			</ResumeBox>
 
 			<ResumeBox
-				variant="COLORFUL"
+				variant="STYLISH"
 				title={texts.EXPERIENCE}
 			>
 				<ExperienceTimeline
@@ -121,7 +121,7 @@ export function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 
 			<OtherSection
 				data={data}
-				variant="COLORFUL"
+				variant="STYLISH"
 			/>
 		</Box>
 	);

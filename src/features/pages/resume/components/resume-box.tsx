@@ -5,7 +5,7 @@ import { Box, Title } from "~/components/primitive";
 type ResumeBoxProps = {
 	title: string;
 	children: ReactTypes.Children;
-	variant: "SIMPLE" | "COLORFUL";
+	variant: "SIMPLE" | "STYLISH";
 	style?: ReactTypes.Styles;
 };
 

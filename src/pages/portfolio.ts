@@ -1,1 +1,1 @@
-export { default } from "~/features/pages/portfolio.page";
+export { default } from "~/features/pages/portfolio";

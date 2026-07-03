@@ -7,7 +7,7 @@ import { useIntl } from "../resume.context";
 import { ResumeBox } from "./resume-box";
 import { Skill } from "./skill";
 
-export function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE" | "COLORFUL" }) {
+export function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE" | "STYLISH" }) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
