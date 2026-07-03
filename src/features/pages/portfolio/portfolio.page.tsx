@@ -126,6 +126,7 @@ function ProjectRow({ item }: { item: Project }) {
 
 	// --- HANDLERS ---
 	function handleThumbnailClick() {
+		AnalyticsService.trackEvent("PORTFOLIO|ZOOM_IN_PROJECT", { project: item.title });
 		setIsModalOpen(true);
 	}
 
@@ -251,9 +252,7 @@ function ProjectTitle({ item }: { item: Project }) {
 			variant={Link.variant.SMOOTH}
 			isExternalLink={isPWA() === false || !item.url.startsWith("/")}
 			className="flex w-fit items-center gap-1.5"
-			onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT", {
-				project: item.title,
-			})}
+			onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT", { project: item.title })}
 		>
 			{titleContent}
 		</Link>
