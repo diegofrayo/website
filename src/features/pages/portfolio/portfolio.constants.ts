@@ -9,8 +9,10 @@ export type Project = {
 	description: string;
 	date: string;
 	techStack: string[];
-	type: "SIDE_PROJECT" | "PROFESSIONAL_PROJECT";
+	type: ProjectType;
 };
+
+export type ProjectType = "SIDE_PROJECT" | "PROFESSIONAL_PROJECT";
 
 // --- CONSTANTS ---
 
@@ -28,7 +30,7 @@ export const SIDE_PROJECTS: Array<Project> = [
 	{
 		id: "bets",
 		title: "Bets",
-		url: "https://bets.diegofrayo.dev",
+		url: "/assets/pages/demo/bets/index.html",
 		date: "2024",
 		description:
 			"A web app that displays daily fixtures for various soccer leagues, providing stats and predictions for each match to support sports betting decisions.",
@@ -50,7 +52,7 @@ export const SIDE_PROJECTS: Array<Project> = [
 		title: "Blog",
 		url: Routes.BLOG,
 		date: "2022",
-		description: "A static blog",
+		description: "A static blog.",
 		techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase", "MDX"],
 		type: "SIDE_PROJECT",
 	},
@@ -100,6 +102,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 	{
 		id: "career-circle",
 		title: "CareerCircle",
+		url: "https://www.careercircle.com",
 		date: "2019",
 		description:
 			"A job search web application. Led the front-end development integrating it with back-end services provided by the client's team.",

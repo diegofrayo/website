@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
 
+import cn from "@diegofrayo-pkg/cn";
 import { isPWA } from "@diegofrayo-pkg/utilities/browser";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
@@ -23,11 +24,16 @@ import { IconCatalog } from "~/components/primitive/icon";
 import { PORTFOLIO_IMAGES_PATH } from "~/constants/assets";
 import AnalyticsService from "~/features/analytics";
 
-import { PROFESSIONAL_PROJECTS, SIDE_PROJECTS, type Project } from "./portfolio.constants";
+import {
+	PROFESSIONAL_PROJECTS,
+	SIDE_PROJECTS,
+	type Project,
+	type ProjectType,
+} from "./portfolio.constants";
 
 function PortfolioPage() {
 	// --- STATE & REFS ---
-	const [projectsFilter, setProjectsFilter] = useState<Project["type"]>("SIDE_PROJECT");
+	const [projectsFilter, setProjectsFilter] = useState<ProjectType>("PROFESSIONAL_PROJECT");
 
 	// --- COMPUTED STATES ---
 	const projects = projectsFilter === "SIDE_PROJECT" ? SIDE_PROJECTS : PROFESSIONAL_PROJECTS;
@@ -44,7 +50,7 @@ function PortfolioPage() {
 	function handleProjectsFilterChange(newValue: string[]) {
 		if (newValue.length === 0) return;
 
-		const newFilter = newValue[0] as Project["type"];
+		const newFilter = newValue[0] as ProjectType;
 		setProjectsFilter(newFilter);
 		AnalyticsService.trackEvent("PORTFOLIO|SET_PROJECTS_FILTER", { filter: newFilter });
 	}
@@ -53,9 +59,9 @@ function PortfolioPage() {
 		<Page
 			config={{
 				title: "Portfolio",
-				description: "A showcase of some side projects I've built for personal use.",
+				description: "A showcase of my work and experience.",
 				pathname: "/portfolio",
-				isSEOEnabled: false,
+				isSEOEnabled: true,
 			}}
 		>
 			<MainLayout title="Portfolio">
@@ -110,8 +116,10 @@ function ProjectRow({ item }: { item: Project }) {
 
 	// --- STYLES ---
 	const classes = {
-		thumbnailButton:
-			"group relative aspect-video w-20 h-20 shrink-0 cursor-zoom-in overflow-hidden rounded-md  bg-zinc-100 border border-zinc-200 p-0",
+		thumbnailButton: cn(
+			"group relative aspect-video size-20 shrink-0 cursor-zoom-in overflow-hidden rounded-md border border-zinc-200 bg-white p-0",
+			{ "bg-black": item.id.includes("festa") },
+		),
 		techPill:
 			"rounded-full bg-zinc-50 px-2.5 py-0.5 text-xs font-bold text-zinc-700 border border-zinc-200",
 	};
@@ -139,7 +147,7 @@ function ProjectRow({ item }: { item: Project }) {
 					<Image
 						src={imageUrl}
 						alt={item.title}
-						className="size-20 object-contain object-center"
+						className="size-full object-contain object-center"
 						useNativeElement
 					/>
 					<Box className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover:bg-black/40">
@@ -186,16 +194,16 @@ function ProjectRow({ item }: { item: Project }) {
 				className="hide-scrollbar relative flex-col overflow-hidden rounded-md bg-white"
 				onCloseHandler={handleModalClose}
 			>
-				<Box className="flex w-full items-center justify-between gap-2 bg-zinc-100">
-					<Paragraph className="px-2 text-sm font-bold italic">{item.title}</Paragraph>
+				<Box className="relative flex w-full items-center justify-center gap-2 bg-zinc-100 py-2">
+					<Paragraph className="px-2 text-sm font-bold">{item.title}</Paragraph>
 					<Button
-						variant={Button.variant.SMOOTH}
-						className="block bg-red-500/60 px-2 text-white"
+						variant={Button.variant.UNSTYLED}
+						className="absolute right-2 flex size-4 items-center justify-center rounded-full bg-red-600"
 						onClick={handleModalClose}
 					>
 						<Icon
 							icon={IconCatalog.X}
-							size={16}
+							size={10}
 							color="text-white"
 						/>
 					</Button>
