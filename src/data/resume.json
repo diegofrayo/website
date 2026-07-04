@@ -25,7 +25,7 @@
 					"url": "https://www.github.com/diegofrayo"
 				}
 			],
-			"label": "Software Developer | JavaScript, TypeScript, React, and Node.js"
+			"label": "Software Developer | TypeScript, React, and Node.js"
 		},
 		"summary": {
 			"short": "I'm Diego, a Systems and Computing Engineer from Universidad del Quindío, Colombia, with 8 years of experience developing web applications. I specialize in front-end development with JavaScript/TypeScript and React/Next.js, and also have experience working with Node.js, ORMs, and SQL/NoSQL databases. I’ve worked with startups, digital agencies, and as a freelancer. I have a B1 level of English. I'm interested in remote Front-end Developer roles to continue strengthening my experience in this area while further adopting AI in my workflow to improve productivity and maintain a high standard of work.",
@@ -41,7 +41,6 @@
 				"location": "",
 				"skills": [
 					"React",
-					"JavaScript",
 					"TypeScript",
 					"Storybook",
 					"Tailwind CSS",
@@ -79,7 +78,7 @@
 				"startDate": "Jan 2024",
 				"endDate": "Jun 2024",
 				"location": "",
-				"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
+				"skills": ["React", "TypeScript", "Firebase", "Node.js"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
 					"website": "",
@@ -104,7 +103,6 @@
 				"location": "",
 				"skills": [
 					"React",
-					"JavaScript",
 					"TypeScript",
 					"Svelte",
 					"Firebase",
@@ -168,7 +166,6 @@
 				"endDate": "Mar 2021",
 				"location": "",
 				"skills": [
-					"JavaScript",
 					"TypeScript",
 					"React",
 					"React Native",
@@ -246,7 +243,6 @@
 				"endDate": "Dec 2016",
 				"location": "Armenia, Quindío, Colombia",
 				"skills": [
-					"JavaScript",
 					"Angular.js",
 					"Bootstrap Material",
 					"Node.js",
@@ -359,7 +355,7 @@
 					"url": "https://www.github.com/diegofrayo"
 				}
 			],
-			"label": "Desarrollador de Software | JavaScript, TypeScript, React y Node.js"
+			"label": "Desarrollador de Software | TypeScript, React y Node.js"
 		},
 		"summary": {
 			"short": "Soy Diego, Ingeniero de Sistemas y Computación de la Universidad del Quindío de Colombia, con 8 años de experiencia desarrollando aplicaciones web. Me especializo en desarrollo front-end con JavaScript/TypeScript y React/Next.js; también tengo experiencia trabajando con Node.js, ORMs y bases de datos SQL/NoSQL. He trabajado con startups, agencias digitales y como freelancer. Tengo un nivel de inglés B1. Me interesan roles de Desarrollador Front-end remotos, con el fin de seguir fortaleciendo mi experiencia en esta área además de seguir adoptando la IA en mi flujo de trabajo para mejorar mi productividad manteniendo una alta calidad de trabajo.",
@@ -375,7 +371,6 @@
 				"location": "",
 				"skills": [
 					"React",
-					"JavaScript",
 					"TypeScript",
 					"Storybook",
 					"Tailwind CSS",
@@ -413,7 +408,7 @@
 				"startDate": "ene 2024",
 				"endDate": "jun 2024",
 				"location": "",
-				"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
+				"skills": ["React", "TypeScript", "Firebase", "Node.js"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
 					"website": "",
@@ -438,7 +433,6 @@
 				"location": "",
 				"skills": [
 					"React",
-					"JavaScript",
 					"TypeScript",
 					"Svelte",
 					"Firebase",
@@ -502,7 +496,6 @@
 				"endDate": "mar 2021",
 				"location": "",
 				"skills": [
-					"JavaScript",
 					"TypeScript",
 					"React",
 					"React Native",
@@ -580,7 +573,6 @@
 				"endDate": "dic 2016",
 				"location": "Armenia, Quindío, Colombia",
 				"skills": [
-					"JavaScript",
 					"Angular.js",
 					"Bootstrap Material",
 					"Node.js",
