@@ -51,7 +51,7 @@ export const SIDE_PROJECTS: Array<Project> = [
 		id: "blog",
 		title: "Blog",
 		url: Routes.BLOG,
-		date: "2022",
+		date: "2020",
 		description: "A static blog.",
 		techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase", "MDX"],
 		type: "SIDE_PROJECT",
