@@ -25,7 +25,7 @@
 					"url": "https://www.github.com/diegofrayo"
 				}
 			],
-			"label": "Software Developer | TypeScript, React, and Node.js"
+			"label": "Software Developer | JavaScript, TypeScript, React, and Node.js"
 		},
 		"summary": {
 			"short": "I'm Diego, a Systems and Computing Engineer from Universidad del Quindío, Colombia, with 8 years of experience developing web applications. I specialize in front-end development with JavaScript/TypeScript and React/Next.js, and also have experience working with Node.js, ORMs, and SQL/NoSQL databases. I’ve worked with startups, digital agencies, and as a freelancer. I have a B1 level of English. I'm interested in remote Front-end Developer roles to continue strengthening my experience in this area while further adopting AI in my workflow to improve productivity and maintain a high standard of work.",
@@ -34,9 +34,9 @@
 		"experience": [
 			{
 				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
-				"name": "Crypto trading platform",
+				"name": "Crypto Trading Platform",
 				"role": "Software Engineer",
-				"startDate": "Aug 2024",
+				"startDate": "Jul 2024",
 				"endDate": "",
 				"location": "",
 				"skills": [
@@ -72,33 +72,10 @@
 				}
 			},
 			{
-				"id": "9df79600-0924-42ef-8bdf-74264f755c09",
-				"name": "Freelance",
-				"role": "Software Engineer",
-				"startDate": "Jan 2024",
-				"endDate": "Jun 2024",
-				"location": "",
-				"skills": ["React", "TypeScript", "Firebase", "Node.js"],
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelanceweb/"
-				},
-				"mode": "Remote",
-				"shortContent": {
-					"summary": "Delivered development and maintenance support for former clients across front-end and back-end systems.",
-					"achievements": []
-				},
-				"fullContent": {
-					"summary": "Provided development and maintenance support for internal projects at companies I had previously worked with, delivering reliable solutions across front-end and back-end systems.",
-					"achievements": []
-				}
-			},
-			{
 				"id": "44e115fc-43ff-4774-be69-79ec7a6445ac",
 				"name": "Arlene",
 				"role": "Software Engineer",
-				"startDate": "Feb 2023",
+				"startDate": "Jan 2023",
 				"endDate": "Dec 2023",
 				"location": "",
 				"skills": [
@@ -139,14 +116,14 @@
 				"id": "7754c3a3-a0d1-4529-8132-5c2a6c364dca",
 				"name": "Freelance",
 				"role": "Software Engineer",
-				"startDate": "Jan 2022",
-				"endDate": "Jan 2023",
+				"startDate": "Apr 2021",
+				"endDate": "Dec 2022",
 				"location": "",
 				"skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
 					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4"
 				},
 				"mode": "Remote",
 				"shortContent": {
@@ -204,43 +181,11 @@
 				}
 			},
 			{
-				"id": "cd430f7c-9e4f-4a93-a548-f8f95f7ac15c",
-				"name": "Freelance",
-				"role": "Software Engineer",
-				"startDate": "Apr 2017",
-				"endDate": "May 2018",
-				"location": "",
-				"skills": [
-					"React",
-					"React Native",
-					"Redux",
-					"Node.js",
-					"Sails.js",
-					"Styled Components",
-					"AWS",
-					"ElasticSearch"
-				],
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
-				},
-				"mode": "Remote",
-				"shortContent": {
-					"summary": "Maintained web applications and gained hands-on experience with React, React Native, Redux, and AWS deployments.",
-					"achievements": []
-				},
-				"fullContent": {
-					"summary": "Worked on multiple projects maintaining web applications. During this period, I gained professional experience with React, React Native, and Redux, while also managing the deployment process using Amazon Web Services.",
-					"achievements": []
-				}
-			},
-			{
 				"id": "f7699231-8e57-42a2-ad1b-cae2fd211e77",
 				"name": "Festa Music App",
 				"role": "Junior Software Engineer",
 				"startDate": "Apr 2015",
-				"endDate": "Dec 2016",
+				"endDate": "Dec 2017",
 				"location": "Armenia, Quindío, Colombia",
 				"skills": [
 					"Angular.js",
@@ -355,7 +300,7 @@
 					"url": "https://www.github.com/diegofrayo"
 				}
 			],
-			"label": "Desarrollador de Software | TypeScript, React y Node.js"
+			"label": "Desarrollador de Software | JavaScript, TypeScript, React y Node.js"
 		},
 		"summary": {
 			"short": "Soy Diego, Ingeniero de Sistemas y Computación de la Universidad del Quindío de Colombia, con 8 años de experiencia desarrollando aplicaciones web. Me especializo en desarrollo front-end con JavaScript/TypeScript y React/Next.js; también tengo experiencia trabajando con Node.js, ORMs y bases de datos SQL/NoSQL. He trabajado con startups, agencias digitales y como freelancer. Tengo un nivel de inglés B1. Me interesan roles de Desarrollador Front-end remotos, con el fin de seguir fortaleciendo mi experiencia en esta área además de seguir adoptando la IA en mi flujo de trabajo para mejorar mi productividad manteniendo una alta calidad de trabajo.",
@@ -366,7 +311,7 @@
 				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
 				"name": "Plataforma de trading de criptomonedas",
 				"role": "Software Engineer",
-				"startDate": "ago 2024",
+				"startDate": "jul 2024",
 				"endDate": "",
 				"location": "",
 				"skills": [
@@ -402,33 +347,10 @@
 				}
 			},
 			{
-				"id": "9df79600-0924-42ef-8bdf-74264f755c09",
-				"name": "Freelance",
-				"role": "Software Engineer",
-				"startDate": "ene 2024",
-				"endDate": "jun 2024",
-				"location": "",
-				"skills": ["React", "TypeScript", "Firebase", "Node.js"],
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelanceweb/"
-				},
-				"mode": "Remoto",
-				"shortContent": {
-					"summary": "Brindé soporte de desarrollo y mantenimiento a clientes anteriores, tanto en front-end como en back-end.",
-					"achievements": []
-				},
-				"fullContent": {
-					"summary": "Brindé soporte de desarrollo y mantenimiento en proyectos internos de empresas con las que había trabajado anteriormente, entregando soluciones confiables tanto en front-end como en back-end.",
-					"achievements": []
-				}
-			},
-			{
 				"id": "44e115fc-43ff-4774-be69-79ec7a6445ac",
 				"name": "Arlene",
 				"role": "Software Engineer",
-				"startDate": "feb 2023",
+				"startDate": "ene 2023",
 				"endDate": "dic 2023",
 				"location": "",
 				"skills": [
@@ -469,14 +391,14 @@
 				"id": "7754c3a3-a0d1-4529-8132-5c2a6c364dca",
 				"name": "Freelance",
 				"role": "Software Engineer",
-				"startDate": "ene 2022",
-				"endDate": "ene 2023",
+				"startDate": "abr 2021",
+				"endDate": "dic 2022",
 				"location": "",
 				"skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
 					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4"
 				},
 				"mode": "Remoto",
 				"shortContent": {
@@ -534,43 +456,11 @@
 				}
 			},
 			{
-				"id": "cd430f7c-9e4f-4a93-a548-f8f95f7ac15c",
-				"name": "Freelance",
-				"role": "Software Engineer",
-				"startDate": "abr 2017",
-				"endDate": "may 2018",
-				"location": "",
-				"skills": [
-					"React",
-					"React Native",
-					"Redux",
-					"Node.js",
-					"Sails.js",
-					"Styled Components",
-					"AWS",
-					"ElasticSearch"
-				],
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"website": "",
-					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
-				},
-				"mode": "Remoto",
-				"shortContent": {
-					"summary": "Mantuve aplicaciones web y adquirí experiencia profesional con React, React Native, Redux y despliegues en AWS.",
-					"achievements": []
-				},
-				"fullContent": {
-					"summary": "Trabajé en múltiples proyectos manteniendo aplicaciones web. Durante este período, adquirí experiencia profesional con React, React Native y Redux, además de gestionar el proceso de despliegue en Amazon Web Services.",
-					"achievements": []
-				}
-			},
-			{
 				"id": "f7699231-8e57-42a2-ad1b-cae2fd211e77",
 				"name": "Festa Music App",
 				"role": "Junior Software Engineer",
 				"startDate": "abr 2015",
-				"endDate": "dic 2016",
+				"endDate": "dic 2017",
 				"location": "Armenia, Quindío, Colombia",
 				"skills": [
 					"Angular.js",

@@ -74,7 +74,7 @@ export function ExperienceTimeline({ experience, contentMode }: ExperienceTimeli
 												name
 											)}
 										</Title>
-										<Paragraph className="text-xs leading-none lowercase sm:text-sm print:text-xs">
+										<Paragraph className="text-xs leading-none capitalize sm:text-sm print:text-xs">
 											<InlineText>{startDate}</InlineText> /{" "}
 											<InlineText>{endDate || texts.PRESENT}</InlineText>
 										</Paragraph>

@@ -60,11 +60,11 @@ export const SIDE_PROJECTS: Array<Project> = [
 
 export const PROFESSIONAL_PROJECTS: Array<Project> = [
 	{
-		id: "print",
-		title: "Print",
-		date: "2025",
+		id: "crypto-trading-platform",
+		title: "Crypto Trading Platform",
+		date: "2024-2026",
 		description:
-			"Print is a crypto trading platform. I led the front-end development from scratch using React and TypeScript, while actively contributing to back-end development.",
+			"I led the front-end development from scratch using React and TypeScript, while actively contributing to back-end development.",
 		techStack: [
 			"React",
 			"TypeScript",
@@ -101,7 +101,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 		id: "career-circle",
 		title: "CareerCircle",
 		url: "https://www.careercircle.com",
-		date: "2019",
+		date: "2018-2021",
 		description:
 			"A job search web application. Led the front-end development integrating it with back-end services provided by the client's team.",
 		techStack: [
@@ -121,7 +121,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 	{
 		id: "festa",
 		title: "Festa",
-		date: "2016",
+		date: "2015-2017",
 		description:
 			"Festa was a platform to play music from YouTube and create collaborative playlists among multiple users.",
 		techStack: [

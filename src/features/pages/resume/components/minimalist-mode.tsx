@@ -153,7 +153,7 @@ function ExperienceList({
 								<Paragraph>{name}</Paragraph>
 							)}
 						</Title>
-						<Paragraph className="shrink-0 text-right text-xs leading-none lowercase">
+						<Paragraph className="shrink-0 text-right text-xs leading-none capitalize">
 							{startDate} - {endDate || texts.PRESENT}
 						</Paragraph>
 					</Box>

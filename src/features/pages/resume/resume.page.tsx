@@ -61,7 +61,7 @@ function ResumePage({ data }: ResumePageProps) {
 			config={{
 				isSEOEnabled: metadata.is_seo_enabled === true,
 				title: metadata.title,
-				description: metadata.description,
+				description: data.en.summary.short,
 				pathname: metadata.pathname,
 			}}
 		>
@@ -146,8 +146,7 @@ const STYLISH_MODE_STYLES = `
 
 const metadata = {
 	title: "Resume",
-	description:
-		"I'm Diego, a Systems and Computing Engineer from Universidad del Quindío, Colombia, with 8 years of experience developing web applications. I specialize in front-end development with JavaScript/TypeScript and React/Next.js, and also have experience working with Node.js, ORMs, and SQL/NoSQL databases. I've worked with startups, digital agencies, and as a freelancer. I have a B2 level of English. I'm interested in remote Front-end Developer roles to continue strengthening my experience in this area while further adopting AI in my workflow to improve productivity and maintain a high standard of work.",
+	description: "",
 	is_seo_enabled: true,
 	pathname: "/resume",
 };
