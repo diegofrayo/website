@@ -6,6 +6,7 @@ export type Project = {
 	id: string;
 	title: string;
 	url?: string;
+	github?: boolean;
 	description: string;
 	date: string;
 	techStack: string[];
@@ -25,6 +26,26 @@ export const SIDE_PROJECTS: Array<Project> = [
 		description:
 			"A mobile-first web app to learn English through flashcard decks, grammar lessons, and reading comprehension texts.",
 		techStack: ["Tan Stack Start", "React", "TypeScript", "Tailwind CSS", "Zod", "Zustand"],
+		github: true,
+		type: "SIDE_PROJECT",
+	},
+	{
+		id: "lab",
+		title: "Lab",
+		url: "https://lab.diegofrayo.dev",
+		date: "2026",
+		description:
+			"A collection of subprojects for experimenting and testing features and concepts about programming.",
+		techStack: [
+			"Next.js",
+			"React",
+			"TypeScript",
+			"Tailwind CSS",
+			"Zod",
+			"React Hook Form",
+			"GraphQL",
+		],
+		github: true,
 		type: "SIDE_PROJECT",
 	},
 	{
@@ -48,12 +69,14 @@ export const SIDE_PROJECTS: Array<Project> = [
 		type: "SIDE_PROJECT",
 	},
 	{
-		id: "blog",
-		title: "Blog",
+		id: "website",
+		title: "Website",
 		url: Routes.BLOG,
 		date: "2020",
-		description: "A static blog.",
+		description:
+			"A personal website built to showcase my resume, portfolio, social media links, and a static blog.",
 		techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase", "MDX"],
+		github: true,
 		type: "SIDE_PROJECT",
 	},
 ];

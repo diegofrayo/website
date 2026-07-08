@@ -221,9 +221,8 @@ function ProjectRow({ item }: { item: Project }) {
 }
 
 function ProjectTitle({ item }: { item: Project }) {
-	// --- COMPUTED STATES ---
-	const titleContent = (
-		<>
+	return (
+		<Box className="flex items-center justify-between gap-2">
 			<Title
 				as="h2"
 				size={Title.size.SM}
@@ -232,29 +231,42 @@ function ProjectTitle({ item }: { item: Project }) {
 			>
 				{item.title}
 			</Title>
-			{item.url && (
-				<Icon
-					icon={IconCatalog.EXTERNAL_LINK}
-					size={14}
-					color="text-zinc-700"
-				/>
-			)}
-		</>
-	);
-
-	if (!item.url) {
-		return <Box className="flex items-center gap-1.5">{titleContent}</Box>;
-	}
-
-	return (
-		<Link
-			href={item.url}
-			variant={Link.variant.SMOOTH}
-			isExternalLink={isPWA() === false || !item.url.startsWith("/")}
-			className="flex w-fit items-center gap-1.5"
-			onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT", { project: item.title })}
-		>
-			{titleContent}
-		</Link>
+			<Box className="flex items-center gap-2">
+				{item.url && (
+					<Link
+						href={item.url}
+						variant={Link.variant.SMOOTH}
+						isExternalLink={isPWA() === false || !item.url.startsWith("/")}
+						className="flex w-fit items-center gap-1.5"
+						onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_URL", {
+							project: item.id,
+						})}
+					>
+						<Icon
+							icon={IconCatalog.EXTERNAL_LINK}
+							size={18}
+							color="text-zinc-700"
+						/>
+					</Link>
+				)}
+				{item.github && (
+					<Link
+						href={`https://github.com/diegofrayo/${item.id}`}
+						variant={Link.variant.SMOOTH}
+						className="flex w-fit items-center gap-1.5"
+						onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_GITHUB", {
+							project: item.id,
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.GITHUB_MONO}
+							size={18}
+							color="text-zinc-700"
+						/>
+					</Link>
+				)}
+			</Box>
+		</Box>
 	);
 }
