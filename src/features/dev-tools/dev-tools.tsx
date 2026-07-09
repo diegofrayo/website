@@ -1,15 +1,13 @@
-import { useState } from "react";
-
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
 import { withConditionalRender, withRenderInBrowser } from "@diegofrayo-pkg/hocs";
-import { useDidMount, useWindowSize } from "@diegofrayo-pkg/hooks";
+import { useWindowSize } from "@diegofrayo-pkg/hooks";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 
-import { AuthService } from "../auth";
+import { AuthService, useAuth } from "../auth";
 import ToolsMenu from "./components/tools-menu";
 
 const DevTools = withConditionalRender(function DevTools({
@@ -73,27 +71,22 @@ export default DevTools;
 // --- COMPONENTS ---
 
 function StatusIndicators() {
-	// --- STATE & REFS ---
-	const [isAuthFlagVisible, setIsAuthFlagVisible] = useState(false);
+	// --- HOOKS ---
+	const { isUserLoggedIn } = useAuth();
 
 	// --- STYLES ---
 	const classes = {
-		indicator: [
+		indicator: cn([
 			"flex items-center justify-center",
-			"border bg-zinc-200 border-zinc-400 size-6 text-white",
+			"size-6 border border-green-600 bg-green-700 text-white",
 			"relative rounded-full",
-		],
+		]),
 	};
-
-	// --- EFFECTS ---
-	useDidMount(() => {
-		setIsAuthFlagVisible(AuthService.isUserLoggedIn());
-	});
 
 	return (
 		<Box className="flex gap-1">
-			{isAuthFlagVisible && (
-				<Box className={cn(classes.indicator, "bg-green-700")}>
+			{isUserLoggedIn && (
+				<Box className={classes.indicator}>
 					<Icon
 						icon={IconCatalog.CIRCLE_USER}
 						size={14}

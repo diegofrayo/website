@@ -6,11 +6,15 @@ import { AuthService } from "./service";
 
 export function useAuth() {
 	const [isSessionLoaded, setIsSessionLoaded] = useState(false);
+	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
 	useDidMount(() => {
-		AuthService.onLoadSession(() => setIsSessionLoaded(true));
+		AuthService.onLoadSession((isUserLoggedIn) => {
+			setIsSessionLoaded(true);
+			setIsUserLoggedIn(isUserLoggedIn);
+		});
 		AuthService.loadSession();
 	});
 
-	return { isSessionLoaded };
+	return { isSessionLoaded, isUserLoggedIn };
 }

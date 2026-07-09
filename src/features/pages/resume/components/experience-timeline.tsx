@@ -56,7 +56,7 @@ export function ExperienceTimeline({ experience, contentMode }: ExperienceTimeli
 									<Box className="mb-0.5 flex items-end justify-between gap-4">
 										<Title
 											as="h3"
-											className="text-xl leading-none text-black"
+											className="text-xl leading-tight text-black"
 										>
 											{isNotEmptyString(company.website) ? (
 												<Link
@@ -74,7 +74,7 @@ export function ExperienceTimeline({ experience, contentMode }: ExperienceTimeli
 												name
 											)}
 										</Title>
-										<Paragraph className="text-xs leading-none capitalize sm:text-sm print:text-xs">
+										<Paragraph className="shrink-0 text-xs leading-tight capitalize sm:text-sm print:text-xs">
 											<InlineText>{startDate}</InlineText> /{" "}
 											<InlineText>{endDate || texts.PRESENT}</InlineText>
 										</Paragraph>

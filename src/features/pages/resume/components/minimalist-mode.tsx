@@ -137,7 +137,7 @@ function ExperienceList({
 						<Title
 							as="h3"
 							variant={Title.variant.UNSTYLED}
-							className="truncate leading-none text-black"
+							className="truncate leading-tight text-black"
 						>
 							{company.website ? (
 								<Link
@@ -153,7 +153,7 @@ function ExperienceList({
 								<Paragraph>{name}</Paragraph>
 							)}
 						</Title>
-						<Paragraph className="shrink-0 text-right text-xs leading-none capitalize">
+						<Paragraph className="relative shrink-0 text-right text-xs leading-tight capitalize">
 							{startDate} - {endDate || texts.PRESENT}
 						</Paragraph>
 					</Box>

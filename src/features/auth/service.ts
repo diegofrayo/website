@@ -54,8 +54,8 @@ class AuthServiceClass {
 		}
 	}
 
-	onLoadSession(callback: () => void) {
-		window.addEventListener("SESSION_LOADED", callback, false);
+	onLoadSession(callback: (isUserLoggedIn: boolean) => void) {
+		window.addEventListener("SESSION_LOADED", () => callback(this.#isUserLoggedIn), false);
 	}
 
 	createSession() {

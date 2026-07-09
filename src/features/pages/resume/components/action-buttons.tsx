@@ -6,6 +6,7 @@ import cn from "@diegofrayo-pkg/cn";
 import { Box, Icon } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
+import { useAuth, WithAuth } from "~/features/auth";
 
 import type { ContentMode, Design, Lang } from "../resume.types";
 
@@ -26,8 +27,15 @@ export function ActionButtons({
 	onDesignChange,
 	onLangChange,
 }: ActionButtonsProps) {
+	// --- HOOKS ---
+	const { isUserLoggedIn } = useAuth();
+
 	// --- STYLES ---
 	const classes = {
+		mainContainer: cn(
+			"grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),300px))] justify-center gap-3 sm:grid-cols-3",
+			{ "sm:grid-cols-2": !isUserLoggedIn },
+		),
 		container:
 			"flex items-center justify-start rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm w-full",
 		icon: "px-2 text-slate-400",
@@ -62,36 +70,67 @@ export function ActionButtons({
 	}
 
 	return (
-		<Box className="@container w-full">
-			<Box className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),300px))] justify-center gap-3 sm:grid-cols-3">
-				<Box className={classes.container}>
-					<Icon
-						icon={IconCatalog.PEN_TOOL}
-						size={16}
-						wrapperClassName={classes.icon}
-					/>
-					<ToggleGroup
-						value={[design]}
-						onValueChange={handleDesignChange}
-						className={classes.toggleGroup}
+		<Box className={classes.mainContainer}>
+			<Box className={classes.container}>
+				<Icon
+					icon={IconCatalog.PEN_TOOL}
+					size={16}
+					wrapperClassName={classes.icon}
+				/>
+				<ToggleGroup
+					value={[design]}
+					onValueChange={handleDesignChange}
+					className={classes.toggleGroup}
+				>
+					<Toggle
+						value="MINIMALIST"
+						aria-label="Minimalist design"
+						className={classes.toggle}
 					>
-						<Toggle
-							value="MINIMALIST"
-							aria-label="Minimalist design"
-							className={classes.toggle}
-						>
-							Minimalist
-						</Toggle>
-						<Toggle
-							value="STYLISH"
-							aria-label="Stylish design"
-							className={classes.toggle}
-						>
-							Stylish
-						</Toggle>
-					</ToggleGroup>
-				</Box>
+						Minimalist
+					</Toggle>
+					<Toggle
+						value="STYLISH"
+						aria-label="Stylish design"
+						className={classes.toggle}
+					>
+						Stylish
+					</Toggle>
+				</ToggleGroup>
+			</Box>
 
+			<Box className={classes.container}>
+				<Icon
+					icon={IconCatalog.LANGUAGES}
+					size={16}
+					wrapperClassName={classes.icon}
+				/>
+				<ToggleGroup
+					value={[lang]}
+					onValueChange={handleLangChange}
+					className={classes.toggleGroup}
+				>
+					<Toggle
+						value="EN"
+						aria-label="English"
+						className={classes.toggle}
+					>
+						EN
+					</Toggle>
+					<Toggle
+						value="ES"
+						aria-label="Spanish"
+						className={classes.toggle}
+					>
+						ES
+					</Toggle>
+				</ToggleGroup>
+			</Box>
+
+			<WithAuth
+				roles={["ADMIN"]}
+				asChild
+			>
 				<Box className={classes.container}>
 					<Icon
 						icon={IconCatalog.FILE_TEXT}
@@ -119,35 +158,7 @@ export function ActionButtons({
 						</Toggle>
 					</ToggleGroup>
 				</Box>
-
-				<Box className={classes.container}>
-					<Icon
-						icon={IconCatalog.LANGUAGES}
-						size={16}
-						wrapperClassName={classes.icon}
-					/>
-					<ToggleGroup
-						value={[lang]}
-						onValueChange={handleLangChange}
-						className={classes.toggleGroup}
-					>
-						<Toggle
-							value="EN"
-							aria-label="English"
-							className={classes.toggle}
-						>
-							EN
-						</Toggle>
-						<Toggle
-							value="ES"
-							aria-label="Spanish"
-							className={classes.toggle}
-						>
-							ES
-						</Toggle>
-					</ToggleGroup>
-				</Box>
-			</Box>
+			</WithAuth>
 		</Box>
 	);
 }
