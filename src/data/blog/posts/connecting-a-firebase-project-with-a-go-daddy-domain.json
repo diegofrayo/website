@@ -13,9 +13,9 @@
 		"assets": {
 			"$data": {
 				"images": {
-					"1": "https://dfrz-public.t3.tigrisfiles.io/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/1.png",
-					"2": "https://dfrz-public.t3.tigrisfiles.io/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/2.png",
-					"3": "https://dfrz-public.t3.tigrisfiles.io/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/3.png"
+					"1": "https://ihzaehklbqrkvxrawczr.supabase.co/storage/v1/object/public/dfrz-public/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/1.png",
+					"2": "https://ihzaehklbqrkvxrawczr.supabase.co/storage/v1/object/public/dfrz-public/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/2.png",
+					"3": "https://ihzaehklbqrkvxrawczr.supabase.co/storage/v1/object/public/dfrz-public/blog/images/connecting-a-firebase-project-with-a-go-daddy-domain/3.png"
 				}
 			},
 			"$sourceCodeFiles": {}

@@ -87,7 +87,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 		title: "Crypto Trading Platform",
 		date: "2024-2026",
 		description:
-			"I led the front-end development from scratch using React and TypeScript, while actively contributing to back-end development.",
+			"A platform to trade alt coins. I led the front-end development from scratch using React and TypeScript, while actively contributing to back-end development.",
 		techStack: [
 			"React",
 			"TypeScript",
