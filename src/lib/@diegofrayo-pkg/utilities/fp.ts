@@ -1,6 +1,75 @@
 // --- USUAL FP FUNCTIONS ---
 
-export { pipe } from "remeda";
+type Step<Input, Output> = (input: Input) => Output;
+
+export function pipe<Input, A>(input: Input, functions: [Step<Input, A>]): A;
+export function pipe<Input, A, B>(input: Input, functions: [Step<Input, A>, Step<A, B>]): B;
+export function pipe<Input, A, B, C>(
+	input: Input,
+	functions: [Step<Input, A>, Step<A, B>, Step<B, C>],
+): C;
+export function pipe<Input, A, B, C, D>(
+	input: Input,
+	functions: [Step<Input, A>, Step<A, B>, Step<B, C>, Step<C, D>],
+): D;
+export function pipe<Input, A, B, C, D, E>(
+	input: Input,
+	functions: [Step<Input, A>, Step<A, B>, Step<B, C>, Step<C, D>, Step<D, E>],
+): E;
+export function pipe<Input, A, B, C, D, E, F>(
+	input: Input,
+	functions: [Step<Input, A>, Step<A, B>, Step<B, C>, Step<C, D>, Step<D, E>, Step<E, F>],
+): F;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function pipe(input: any, functions: Step<any, any>[]): any {
+	return functions.reduce((currentResult, nextFunction) => {
+		return nextFunction(currentResult);
+	}, input);
+}
+
+type AsyncStep<Input, Output> = (input: Input) => Promise<Output> | Output;
+
+export function pipeAsync<Input, A>(input: Input, functions: [AsyncStep<Input, A>]): Promise<A>;
+export function pipeAsync<Input, A, B>(
+	input: Input,
+	functions: [AsyncStep<Input, A>, AsyncStep<A, B>],
+): Promise<B>;
+export function pipeAsync<Input, A, B, C>(
+	input: Input,
+	functions: [AsyncStep<Input, A>, AsyncStep<A, B>, AsyncStep<B, C>],
+): Promise<C>;
+export function pipeAsync<Input, A, B, C, D>(
+	input: Input,
+	functions: [AsyncStep<Input, A>, AsyncStep<A, B>, AsyncStep<B, C>, AsyncStep<C, D>],
+): Promise<D>;
+export function pipeAsync<Input, A, B, C, D, E>(
+	input: Input,
+	functions: [
+		AsyncStep<Input, A>,
+		AsyncStep<A, B>,
+		AsyncStep<B, C>,
+		AsyncStep<C, D>,
+		AsyncStep<D, E>,
+	],
+): Promise<E>;
+export function pipeAsync<Input, A, B, C, D, E, F>(
+	input: Input,
+	functions: [
+		AsyncStep<Input, A>,
+		AsyncStep<A, B>,
+		AsyncStep<B, C>,
+		AsyncStep<C, D>,
+		AsyncStep<D, E>,
+		AsyncStep<E, F>,
+	],
+): Promise<F>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function pipeAsync(input: any, functions: AsyncStep<any, any>[]): Promise<any> {
+	return functions.reduce(async (currentPromise, nextFunction) => {
+		const resolvedValue = await currentPromise;
+		return nextFunction(resolvedValue);
+	}, Promise.resolve(input));
+}
 
 // --- UTILS ---
 

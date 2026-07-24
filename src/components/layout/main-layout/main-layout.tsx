@@ -118,7 +118,7 @@ function getParentURL(pathname: string) {
 		return `/${pathnameParts.join("/")}/`;
 	};
 
-	const output = pipe(pathname, ...[splitBySlashes, removeLastItem, joinPathname]);
+	const output = pipe(pathname, [splitBySlashes, removeLastItem, joinPathname]);
 
 	return output;
 }

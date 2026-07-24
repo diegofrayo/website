@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+	reactStrictMode: false,
 	images: {
 		disableStaticImages: true,
 		remotePatterns: [new URL("https://ihzaehklbqrkvxrawczr.supabase.co/**")],
