@@ -1,7 +1,7 @@
 import path from "path";
 import type { GetStaticPaths, GetStaticProps } from "next";
 
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
+import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import { compile } from "~/features/mdx/server";
 import type { BlogPosts, BlogPostWithContent } from "~/features/pages/blog";

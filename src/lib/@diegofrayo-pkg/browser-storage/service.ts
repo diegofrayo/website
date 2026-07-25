@@ -97,7 +97,7 @@ function getItem<ValueType>({
 		}
 
 		if (type === "object") {
-			return JSON.parse(value);
+			return JSON.parse(value) as Record<string, unknown>;
 		}
 
 		return value;

@@ -11,7 +11,7 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
 - Install `react` and `react-dom` v19+. (Skip if it is already installed)
 - Install runtime dependencies:
   ```sh
-  pnpm i @base-ui/react class-variance-authority cnfast lucide-react remeda
+  pnpm i @base-ui/react class-variance-authority cnfast lucide-react
   ```
 - Install dev dependencies:
   ```sh

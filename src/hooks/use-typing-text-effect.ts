@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import type UtilsTypes from "../types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
 
 function useTypingTextEffect(text: string): string {
 	// --- STATE & REFS ---

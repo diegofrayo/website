@@ -81,11 +81,8 @@ body {
 	print-color-adjust: exact !important;
 }
 
-body.scroll-disabled {
-	overflow: hidden;
-}
-
-body:has(dialog[open]) {
+body:has(dialog[open]),
+body:has(div[data-mobile-menu-open="true"]) {
 	overflow: hidden;
 }
 

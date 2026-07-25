@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { NavigationMenu as BaseUINavigationMenu } from "@base-ui/react/navigation-menu";
 
 import cn from "@diegofrayo-pkg/cn";
-import { useBoolean, useLockScroll } from "@diegofrayo-pkg/hooks";
+import { useBoolean } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, InlineText, Link, List, Title } from "~/components/primitive";
@@ -83,9 +83,6 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 		closeMenu();
 	}
 
-	// --- EFFECTS ---
-	useLockScroll(isMenuVisible);
-
 	return (
 		<Box className={cn(className)}>
 			<Button onClick={handleOpenMenuClick}>
@@ -96,7 +93,10 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 			</Button>
 
 			{isMenuVisible && (
-				<Box className="fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-black/85 backdrop-blur-sm">
+				<Box
+					className="fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-black/85 backdrop-blur-sm"
+					data-mobile-menu-open="true"
+				>
 					<Button
 						className="absolute top-44 block w-full"
 						onClick={handleCloseMenuClick}

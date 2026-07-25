@@ -2,7 +2,7 @@ import * as fs from "fs";
 import path from "path";
 import { isArrayBufferView } from "util/types";
 
-import { isArray, isBoolean } from "../../validator";
+import { isArray, isBoolean } from "../validator";
 
 export function writeFile(filePath: string, content: unknown): void {
 	createOutputFolder(filePath);

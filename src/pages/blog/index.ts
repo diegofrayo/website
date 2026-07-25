@@ -1,7 +1,7 @@
 import path from "path";
 import type { GetStaticProps } from "next";
 
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
+import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import type { BlogPageProps } from "~/features/pages/blog";
 
