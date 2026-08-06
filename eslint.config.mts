@@ -15,10 +15,11 @@ const JAVASCRIPT_CONFIG = {
 	languageOptions: { globals: globals.browser },
 };
 
-const TYPESCRIPT_CONFIG = {
-	files: ["**/*.{mts,ts,tsx}"],
-	extends: [tseslint.configs.recommended],
-};
+const TYPESCRIPT_CONFIG = tseslint.config(
+	{ ignores: ["node_modules"] },
+	...tseslint.configs.recommended,
+	{ files: ["**/*.{mts,ts,tsx}"] },
+);
 
 const REACT_CONFIG = {
 	files: ["**/*.{ts,tsx}"],
