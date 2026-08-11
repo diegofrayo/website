@@ -1,1 +1,1 @@
-export { cn as default } from "cnfast";
+export { default } from "cnfast";

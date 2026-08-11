@@ -1,1 +1,3 @@
-export { default } from "./cn";
+import cn from "./cn";
+
+export default cn;

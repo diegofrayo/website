@@ -78,7 +78,7 @@ const EnvironmentMenuItem = withRenderInBrowser(function EnvironmentMenuItem({
 }: Pick<ToolsMenuProps, "productionURL">) {
 	const url = isDevelopmentEnvironment()
 		? `${productionURL}${window.location.pathname}`
-		: `http://localhost:3000${window.location.pathname}`;
+		: `https://website.local${window.location.pathname}`;
 
 	return (
 		<ToolsMenuItem
