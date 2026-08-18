@@ -2,7 +2,7 @@ import { pipe } from "@diegofrayo-pkg/utilities/fp";
 import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
 
 import TypingTextEffect from "~/components/common/typing-text-effect";
-import { Page } from "~/components/layout";
+import { Page, type PageMetadata } from "~/components/layout";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import { WEBSITE_METADATA } from "~/constants";
@@ -13,14 +13,7 @@ import { Routes } from "~/features/routing";
 
 function HomePage() {
 	return (
-		<Page
-			config={{
-				isSEOEnabled: metadata.is_seo_enabled === true,
-				title: metadata.title,
-				description: metadata.description,
-				pathname: metadata.pathname,
-			}}
-		>
+		<Page config={metadata}>
 			<Box
 				as="main"
 				className="flex h-full flex-col"
@@ -36,6 +29,16 @@ function HomePage() {
 }
 
 export default HomePage;
+
+// --- CONSTANTS ---
+
+const metadata: PageMetadata = {
+	description:
+		"I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
+	isSEOEnabled: true,
+	pathname: "/",
+	title: "",
+};
 
 // --- COMPONENTS ---
 
@@ -155,13 +158,3 @@ function Footer() {
 		</Box>
 	);
 }
-
-// --- CONSTANTS ---
-
-const metadata = {
-	description:
-		"I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
-	is_seo_enabled: true,
-	pathname: "/",
-	title: "",
-};

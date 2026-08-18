@@ -7,8 +7,8 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
+import { useAuth } from "~/features/auth";
 
-import { useAuth } from "../auth";
 import ToolsMenu from "./components/tools-menu";
 
 type DevToolsProps = {

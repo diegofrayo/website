@@ -4,8 +4,6 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
-import styles from "./list.styles.module.css";
-
 // --- PROPS & TYPES ---
 
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
@@ -16,22 +14,22 @@ type ListProps = ReactTypes.DOM.HTMLElementAttributes["ul"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function List({ children, variant = VARIANTS.UNSTYLED, className = "" }: ListProps) {
+function List({ children, variant = VARIANTS.UNSTYLED, className }: ListProps) {
 	// --- COMPUTED STATES ---
-	const isDefaultVariant = variant === VARIANTS.SIMPLE;
+	const isSimpleVariant = variant === VARIANTS.SIMPLE;
 
 	return (
 		<ul
 			className={cn(
 				`dr-list dr-list--${variant.toLowerCase()}`,
 				"block w-full",
-				isDefaultVariant && styles["dr-list--default"],
+				{ "list-outside list-[square] pl-4": isSimpleVariant },
 				className,
 			)}
 		>
 			{Children.map(children, (child) => {
 				if (isValidElement<ListItemChildProps>(child)) {
-					return cloneElement(child, { ...child.props, isDefaultVariant });
+					return cloneElement(child, { ...child.props, isSimpleVariant });
 				}
 
 				return child;
@@ -48,15 +46,15 @@ export default List;
 
 List.Item = function ListItem({
 	children,
-	isDefaultVariant = false,
-	className = "",
+	isSimpleVariant,
+	className,
 	...rest
-}: ReactTypes.DOM.HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }) {
+}: ReactTypes.DOM.HTMLElementAttributes["li"] & { isSimpleVariant?: boolean }) {
 	return (
 		<li
 			className={cn(
-				`dr-list-item dr-list-item--${isDefaultVariant ? "default" : "unstyled"}`,
-				isDefaultVariant && styles["dr-list-item--default"],
+				`dr-list-item dr-list-item--${isSimpleVariant ? "default" : "unstyled"}`,
+				{ "mb-1 last:mb-0": isSimpleVariant },
 				className,
 			)}
 			{...rest}
@@ -69,5 +67,5 @@ List.Item = function ListItem({
 // --- TYPES ---
 
 type ListItemChildProps = ReactTypes.DOM.HTMLElementAttributes["li"] & {
-	isDefaultVariant: boolean;
+	isSimpleVariant: boolean;
 };

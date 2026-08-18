@@ -1,4 +1,4 @@
-import { MainLayout, Page } from "~/components/layout";
+import { MainLayout, Page, type PageMetadata } from "~/components/layout";
 import { Box, Icon, Image, InlineText, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import { BLOG_IMAGES_PATH } from "~/constants/assets";
@@ -13,14 +13,7 @@ export type BlogPageProps = {
 
 function BlogPage({ data: posts }: BlogPageProps) {
 	return (
-		<Page
-			config={{
-				isSEOEnabled: metadata.is_seo_enabled === true,
-				title: metadata.title,
-				description: metadata.description,
-				pathname: metadata.pathname,
-			}}
-		>
+		<Page config={metadata}>
 			<MainLayout title={metadata.title}>
 				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{Object.values(posts).map((post) => {
@@ -86,10 +79,10 @@ export default BlogPage;
 
 // --- CONSTANTS ---
 
-const metadata = {
+const metadata: PageMetadata = {
 	title: "Blog",
 	description:
 		"In this blog, You will find out content about programming, mainly about frontend stuff, React, Next.js, MDX, Tailwind CSS, and other tools I used to build this website",
-	is_seo_enabled: true,
+	isSEOEnabled: true,
 	pathname: "/blog",
 };

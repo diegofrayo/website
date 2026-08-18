@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
-import { MainLayout, Page } from "~/components/layout";
+import { MainLayout, Page, type PageMetadata } from "~/components/layout";
 import { Box } from "~/components/primitive";
 import { WithAuth } from "~/features/auth";
 
@@ -41,14 +41,7 @@ function ResumePage({ data }: ResumePageProps) {
 	);
 
 	return (
-		<Page
-			config={{
-				isSEOEnabled: metadata.is_seo_enabled === true,
-				title: metadata.title,
-				description: data.en.summary.short,
-				pathname: metadata.pathname,
-			}}
-		>
+		<Page config={metadata}>
 			<MainLayout
 				title={metadata.title}
 				contentClassName="win:hidden print:p-0"
@@ -99,6 +92,15 @@ function ResumePage({ data }: ResumePageProps) {
 
 export default ResumePage;
 
+// --- CONSTANTS ---
+
+const metadata: PageMetadata = {
+	title: "Resume",
+	description: "",
+	isSEOEnabled: true,
+	pathname: "/resume",
+};
+
 // --- STYLES ---
 
 const MINIMALIST_MODE_STYLES = `
@@ -122,12 +124,3 @@ const STYLISH_MODE_STYLES = `
     }
   }
 `;
-
-// --- CONSTANTS ---
-
-const metadata = {
-	title: "Resume",
-	description: "",
-	is_seo_enabled: true,
-	pathname: "/resume",
-};

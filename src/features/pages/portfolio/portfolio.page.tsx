@@ -8,7 +8,7 @@ import { isPWA } from "@diegofrayo-pkg/utilities/browser";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
 
-import { MainLayout, Page } from "~/components/layout";
+import { MainLayout, Page, type PageMetadata } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -57,14 +57,7 @@ function PortfolioPage() {
 	}
 
 	return (
-		<Page
-			config={{
-				title: "Portfolio",
-				description: "A showcase of my work and experience.",
-				pathname: "/portfolio",
-				isSEOEnabled: true,
-			}}
-		>
+		<Page config={metadata}>
 			<MainLayout title="Portfolio">
 				<Box className={classes.toggleGroupContainer}>
 					<ToggleGroup
@@ -105,6 +98,15 @@ function PortfolioPage() {
 }
 
 export default PortfolioPage;
+
+// --- CONSTANTS ---
+
+const metadata: PageMetadata = {
+	title: "Portfolio",
+	description: "A showcase of my work and experience.",
+	pathname: "/portfolio",
+	isSEOEnabled: true,
+};
 
 // --- COMPONENTS ---
 

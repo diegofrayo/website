@@ -46,9 +46,9 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 	return (
 		<Page
 			config={{
-				isSEOEnabled: blogPostDetails.is_published === true,
 				title: blogPostDetails.title,
 				description: blogPostDetails.description,
+				isSEOEnabled: blogPostDetails.is_published === true,
 				pathname: `${Routes.BLOG}/${blogPostDetails.slug}`,
 			}}
 		>

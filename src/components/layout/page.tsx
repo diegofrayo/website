@@ -15,22 +15,7 @@ import { Routes } from "~/features/routing";
 
 type PageProps = {
 	children: ReactTypes.Children;
-	config: {
-		isSEOEnabled?: boolean;
-		shouldAppendWebsiteNameInTitle?: boolean;
-		title?: string;
-		description?: string;
-		pathname?: string;
-		image?: string;
-		scripts?: {
-			element: "link";
-			props: {
-				href: string;
-				rel: string;
-				as: string;
-			};
-		}[];
-	};
+	config: PageMetadata;
 };
 
 function Page({ children, config }: PageProps) {
@@ -181,6 +166,25 @@ function Page({ children, config }: PageProps) {
 }
 
 export default Page;
+
+// --- TYPES ---
+
+export type PageMetadata = {
+	isSEOEnabled?: boolean;
+	shouldAppendWebsiteNameInTitle?: boolean;
+	title: string;
+	description?: string;
+	pathname?: string;
+	image?: string;
+	scripts?: {
+		element: "link";
+		props: {
+			href: string;
+			rel: string;
+			as: string;
+		};
+	}[];
+};
 
 // --- UTILS ---
 
