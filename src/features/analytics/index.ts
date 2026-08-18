@@ -1,3 +1,1 @@
-import AnalyticsService from "./service";
-
-export default AnalyticsService;
+export { default } from "./service";

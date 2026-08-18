@@ -80,9 +80,12 @@ function NavigationLinks() {
 						className="flex-1 shrink-0 text-center"
 					>
 						<Link
+							variant={Link.variant.SMOOTH}
 							href={item.url}
 							className="inline-flex items-center justify-center gap-0.5 font-mono text-sm font-bold text-zinc-600"
-							variant={Link.variant.SMOOTH}
+							onClick={AnalyticsService.trackClickEvent("HOME_PAGE|MAIN_LINKS", {
+								item: item.label,
+							})}
 						>
 							<Icon
 								icon={item.icon}
@@ -134,10 +137,10 @@ function Footer() {
 						<Link
 							key={key}
 							href={item.url}
+							className="inline-flex items-center justify-center rounded-lg p-1 text-black transition-all duration-500 hover:bg-zinc-900 hover:text-white"
 							onClick={AnalyticsService.trackClickEvent("HOME_PAGE|SOCIAL_NETWORKS", {
 								item: item.name,
 							})}
-							className="inline-flex items-center justify-center rounded-lg p-1 text-black transition-all duration-500 hover:bg-zinc-900 hover:text-white"
 							isExternalLink
 						>
 							<Icon

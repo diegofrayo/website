@@ -4,7 +4,7 @@ import { useDidMount } from "@diegofrayo-pkg/hooks";
 
 import AuthService from "./service";
 
-export function useAuth() {
+function useAuth() {
 	const [isSessionLoaded, setIsSessionLoaded] = useState(false);
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
@@ -17,3 +17,5 @@ export function useAuth() {
 
 	return { isSessionLoaded, isUserLoggedIn };
 }
+
+export default useAuth;

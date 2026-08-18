@@ -8,7 +8,6 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
 import { isEmptyString } from "@diegofrayo-pkg/validator";
 
-import api from "~/api/client";
 import { Toast } from "~/components/common";
 import CopyToClipboardPopover, {
 	type CopyToClipboardPopoverProps,
@@ -16,7 +15,8 @@ import CopyToClipboardPopover, {
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import { Routes } from "~/constants";
-import withAuth from "~/features/auth/hoc";
+import apiClient from "~/features/api-client";
+import AuthService, { withAuth } from "~/features/auth";
 import { logAndReportError } from "~/features/logger";
 
 type ToolsMenuProps = {
@@ -110,7 +110,7 @@ const ISRMenuItem = withAuth(function ISRMenuItem() {
 
 			if (isEmptyString(pin)) return;
 
-			await api.website.actions.isr({ path: window.location.pathname, secret: pin });
+			await apiClient.website.actions.isr({ path: window.location.pathname, secret: pin });
 			await deletePWACache();
 			await waitFor(2, "seconds");
 
@@ -134,7 +134,7 @@ const ISRMenuItem = withAuth(function ISRMenuItem() {
 const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 	// --- HANDLERS ---
 	async function handleClick() {
-		await api.website.actions.signOut();
+		await AuthService.signOut();
 		window.localStorage.clear();
 		window.location.href = Routes.INDEX;
 	}

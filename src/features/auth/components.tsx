@@ -1,6 +1,6 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { useAuth } from "./hook";
+import useAuth from "./hook";
 
 type WithAuthProps = {
 	children: ReactTypes.Children;

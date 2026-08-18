@@ -6,8 +6,7 @@ import cn from "@diegofrayo-pkg/cn";
 import { Box, Icon } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
-import { WithAuth } from "~/features/auth/components";
-import { useAuth } from "~/features/auth/hook";
+import { useAuth, WithAuth } from "~/features/auth";
 
 import type { ContentMode, Design, Lang } from "../resume.types";
 

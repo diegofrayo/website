@@ -1,6 +1,8 @@
 import autoBind from "auto-bind";
 
-import api from "~/api/client";
+import apiClient from "~/features/api-client";
+
+import { logger } from "../logger";
 
 class AuthServiceClass {
 	#isUserLoggedIn: boolean = false;
@@ -17,11 +19,12 @@ class AuthServiceClass {
 		if (this.#isSessionLoaded) return;
 
 		try {
-			const hasUserSession = await api.website.actions.checkSession();
+			const hasUserSession = await apiClient.website.auth.checkSession();
 			this.#isUserLoggedIn = hasUserSession;
 		} catch (error) {
 			this.#isUserLoggedIn = false;
 		} finally {
+			logger("LOG", "🟢 Session loaded");
 			this.#isSessionLoaded = true;
 			this.#onSessionLoadCallbacks.forEach((callback) => {
 				callback(this.#isUserLoggedIn);
@@ -39,6 +42,14 @@ class AuthServiceClass {
 
 	isUserLoggedIn(): boolean {
 		return this.#isUserLoggedIn;
+	}
+
+	signIn(authToken: string) {
+		return apiClient.website.auth.signIn({ authToken });
+	}
+
+	signOut() {
+		return apiClient.website.auth.signOut();
 	}
 }
 

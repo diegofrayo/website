@@ -15,7 +15,7 @@ import { useDidMount } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser";
 
-import AuthService from "~/features/auth/service";
+import AuthService from "~/features/auth";
 import { addGlobalErrorListener, logger } from "~/features/logger";
 import ErrorPage from "~/features/pages/error.page";
 

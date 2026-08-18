@@ -3,11 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { EnvVars } from "~/constants";
 
-export const AUTH_COOKIE_NAME = "auth_token";
-
-type AuthTokenPayload = {
-	authToken: string;
-};
+const AUTH_COOKIE_NAME = "auth_token";
 
 export async function signAuthToken(authToken: string): Promise<string> {
 	return new SignJWT({ authToken })
@@ -51,6 +47,14 @@ export function clearAuthCookie(res: NextApiResponse): void {
 	res.setHeader("Set-Cookie", cookieAttributes.join("; "));
 }
 
+// --- UTILS ---
+
 function getJWTSecret(): Uint8Array {
 	return new TextEncoder().encode(EnvVars.JWT_SECRET);
 }
+
+// --- TYPES ---
+
+type AuthTokenPayload = {
+	authToken: string;
+};

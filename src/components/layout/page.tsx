@@ -9,6 +9,7 @@ import { isBoolean, isEmptyString } from "@diegofrayo-pkg/validator";
 
 import { ASSETS_ROOT_PATH, EnvVars, FAVICON_PATH, Routes, WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
+import AuthService from "~/features/auth";
 import DevTools from "~/features/dev-tools";
 
 type PageProps = {
@@ -54,7 +55,9 @@ function Page({ children, config }: PageProps) {
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		AnalyticsService.trackPageLoaded();
+		AuthService.onSessionLoad(() => {
+			AnalyticsService.trackPageLoaded();
+		});
 	});
 
 	useDocumentTitle(metadata.title);

@@ -73,7 +73,7 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 				<Space size={4} />
 				<BlogPostSources sources={blogPostDetails.sources} />
 				<Space size={2} />
-				<BlogPostActions />
+				<BlogPostActions blogPostTitle={blogPostDetails.title} />
 			</MainLayout>
 		</Page>
 	);
@@ -210,7 +210,11 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 	);
 }
 
-const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
+const BlogPostActions = withRenderInBrowser(function BlogPostActions({
+	blogPostTitle,
+}: {
+	blogPostTitle: string;
+}) {
 	const ACTIONS = [
 		{
 			type: "LINK",
@@ -230,6 +234,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 					return result;
 				})(),
 				isExternalLink: true,
+				onClick: AnalyticsService.trackClickEvent("BLOG|SEND_EMAIL", { post: blogPostTitle }),
 			},
 		},
 		{
@@ -238,7 +243,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 			label: "Copy URL",
 			popoverConfig: { textToCopy: window.location.href },
 			props: {
-				onClick: AnalyticsService.trackClickEvent("BLOG|COPY_URL", { url: window.location.href }),
+				onClick: AnalyticsService.trackClickEvent("BLOG|COPY_URL", { post: blogPostTitle }),
 			},
 		},
 	] as const;
@@ -254,6 +259,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 						<Button
 							className="inline-flex items-center justify-start text-left text-sm"
 							render={action.type === "LINK" ? <Link {...action.props} /> : undefined}
+							onClick={action.type === "BUTTON" ? action.props.onClick : undefined}
 						>
 							<Icon
 								className="mr-1"

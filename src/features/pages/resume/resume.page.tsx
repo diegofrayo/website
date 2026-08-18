@@ -4,7 +4,7 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
-import { WithAuth } from "~/features/auth/components";
+import { WithAuth } from "~/features/auth";
 
 import { ActionButtons, DownloadActions, MinimalistMode, StylishMode } from "./components";
 import { IntlContext, IntlProviderValue } from "./resume.context";

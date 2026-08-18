@@ -4,11 +4,10 @@ import cn from "@diegofrayo-pkg/cn";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
 
-import api from "~/api/client";
 import { Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
 import { Routes } from "~/constants";
-import AuthService from "~/features/auth/service";
+import AuthService from "~/features/auth";
 
 function SignInPage() {
 	// --- STATES & REFS ---
@@ -29,7 +28,7 @@ function SignInPage() {
 
 			if (!authToken) throw new Error("Invalid auth token!");
 
-			await api.website.actions.signIn({ authToken });
+			await AuthService.signIn(authToken);
 			setIsAuthTokenValid(true);
 			await waitFor(1, "seconds");
 

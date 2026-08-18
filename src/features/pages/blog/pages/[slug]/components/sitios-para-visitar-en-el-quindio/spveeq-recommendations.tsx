@@ -48,6 +48,10 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									href={recommendation.website}
 									variant={Link.variant.SMOOTH}
 									className="mr-2 inline-block"
+									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+										place: recommendation.name,
+										link: "website",
+									})}
 									isExternalLink
 								>
 									<Icon
@@ -61,6 +65,10 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									href={recommendation.instagram}
 									variant={Link.variant.SMOOTH}
 									className="mr-2 inline-block"
+									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+										place: recommendation.name,
+										link: "instagram",
+									})}
 									isExternalLink
 								>
 									<Icon
@@ -74,6 +82,10 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									href={recommendation.airbnb}
 									variant={Link.variant.SMOOTH}
 									className="mr-2 inline-block"
+									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+										place: recommendation.name,
+										link: "airbnb",
+									})}
 									isExternalLink
 								>
 									<Icon
@@ -87,6 +99,10 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									href={`https://api.whatsapp.com/send?phone=${recommendation.whatsapp}`}
 									variant={Link.variant.SMOOTH}
 									className="mr-2 inline-block"
+									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+										place: recommendation.name,
+										link: "whatsapp",
+									})}
 									isExternalLink
 								>
 									<Icon
