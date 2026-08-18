@@ -12,6 +12,14 @@ export default function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[
 	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
 }
 
+export function logForRemoteDebugging(input: unknown, source?: string) {
+	logger("LOG", input);
+
+	if (isServer()) return;
+
+	persistLog(source, input);
+}
+
 export function logAndReportError(error: unknown, source?: string) {
 	logger("ERROR", error);
 
@@ -24,14 +32,6 @@ export function logAndReportError(error: unknown, source?: string) {
 				? error
 				: "Unknown error";
 	persistLog(source, parsedError);
-}
-
-export function logForRemoteDebugging(input: unknown, source?: string) {
-	logger("LOG", input);
-
-	if (isServer()) return;
-
-	persistLog(source, input);
 }
 
 export function addGlobalErrorListener() {

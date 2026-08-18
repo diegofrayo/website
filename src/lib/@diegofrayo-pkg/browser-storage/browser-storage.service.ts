@@ -1,5 +1,9 @@
 import { isArray, isBrowser, isPlainObject, isServer } from "../validator";
-import type { BrowserStorage, BrowserStorageState, BrowserStorageStateConfig } from "./types";
+import type {
+	BrowserStorage,
+	BrowserStorageState,
+	BrowserStorageStateConfig,
+} from "./browser-storage.types";
 
 const BrowserStorageManager = {
 	createItem: function createItem<ValueType>({

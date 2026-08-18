@@ -1,2 +1,2 @@
-export { default as BrowserStorageManager } from "./service";
-export { default as useBrowserStorage } from "./hook";
+export { default as BrowserStorageManager } from "./browser-storage.service";
+export { default as useBrowserStorage } from "./browser-storage.hook";

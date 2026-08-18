@@ -1,10 +1,4 @@
 export { ActionButtons } from "./action-buttons";
-export { ContactInfo } from "./contact-info";
 export { DownloadActions } from "./download-actions";
-export { ExperienceTimeline } from "./experience-timeline";
-export { Location } from "./location";
 export { MinimalistMode } from "./minimalist-mode";
-export { OtherSection } from "./other-section";
-export { ResumeBox } from "./resume-box";
-export { Skill } from "./skill";
 export { StylishMode } from "./stylish-mode";

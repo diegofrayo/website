@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { isFunction } from "@diegofrayo-pkg/validator";
 
-import BrowserStorageManager from "./service";
-import type { BrowserStorageState, BrowserStorageStateConfig } from "./types";
+import BrowserStorageManager from "./browser-storage.service";
+import type { BrowserStorageState, BrowserStorageStateConfig } from "./browser-storage.types";
 
 function useBrowserStorage<ValueType>(
 	config: BrowserStorageStateConfig<ValueType>,

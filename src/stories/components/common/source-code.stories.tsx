@@ -17,7 +17,8 @@ const meta: Meta<typeof SourceCode> = {
 	},
 	args: {
 		code: "const hello = 'world';\nconsole.log(hello);",
-		sourceURL: "https://github.com/example/repo",
+		sourceURL:
+			"https://github.com/diegofrayo/website/blob/master/src/stories/components/common/source-code.stories.tsx",
 		className: "w-96",
 		title: "Example Source Code",
 		language: "js",

@@ -48,8 +48,10 @@ export function MDXContent({ code, components = {}, globals = {} }: MDXContentPr
 
 export { getMDXExport };
 
+// --- CONSTANTS ---
+
 // DOCS: https://mdxjs.com/table-of-components
-export const MDXComponents = {
+const MDXComponents = {
 	// --- PRIMITIVE COMPONENTS ---
 	a: function CustomA({ children, href }: ReactTypes.DOM.HTMLElementAttributes["a"]) {
 		return (

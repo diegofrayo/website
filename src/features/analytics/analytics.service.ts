@@ -71,4 +71,4 @@ export default AnalyticsService;
 
 // --- TYPES ---
 
-export type AnalyticsStatus = "ENABLED" | "DISABLED";
+type AnalyticsStatus = "ENABLED" | "DISABLED";
