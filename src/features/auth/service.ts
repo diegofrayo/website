@@ -1,115 +1,47 @@
-import { BrowserStorageManager } from "@diegofrayo-pkg/browser-storage";
-import { isRemoteLocalhostEnvironment } from "@diegofrayo-pkg/utilities/environment";
+import autoBind from "auto-bind";
 
-import { logger } from "../logger";
-import type { AuthUserRole } from "./types";
+import api from "~/api/client";
 
 class AuthServiceClass {
-	#isUserLoggedIn = false;
+	#isUserLoggedIn: boolean = false;
 
-	#role: AuthUserRole = "ANONYMOUS";
+	#isSessionLoaded: boolean = false;
 
-	#AXIOS_VA = "1.6.2"; // NOTE: Used when the user is "ADMIN"
+	#onSessionLoadCallbacks: Array<(isUserLoggedIn: boolean) => void> = [];
 
-	#AXIOS_VG = "1.6.3"; // NOTE: Used when the user is "GUEST"
+	constructor() {
+		autoBind(this);
+	}
 
-	#LBC = "1724814162596"; // NOTE: Update this when you are a breaking change
+	async loadSession(): Promise<void> {
+		if (this.#isSessionLoaded) return;
 
-	#AUTH_CONFIG = BrowserStorageManager.createItem({
-		key: "axios_client_development",
-		value: ["", ""], // NOTE: [ROLE, TIMESTAMP]
-		saveDuringCreation: false,
-		readInitialValueFromStorage: true,
-	});
-
-	loadSession() {
 		try {
-			const [role, sessionTimestamp] = this.#AUTH_CONFIG.get();
-
-			if (role === this.#AXIOS_VA) {
-				this.#role = "ADMIN";
-				this.#isUserLoggedIn = true;
-			} else if (role === this.#AXIOS_VG) {
-				this.#role = "GUEST";
-				this.#isUserLoggedIn = true;
-			} else if (isRemoteLocalhostEnvironment()) {
-				this.#role = "ADMIN";
-				this.#isUserLoggedIn = true;
-			} else {
-				this.#role = "ANONYMOUS";
-				this.#isUserLoggedIn = false;
-			}
-
-			const isOutdatedSession =
-				this.#isUserLoggedIn && sessionTimestamp && sessionTimestamp < this.#LBC;
-
-			if (isOutdatedSession) {
-				this.signOut();
-			} else {
-				window.dispatchEvent(new CustomEvent("SESSION_LOADED"));
-			}
+			const hasUserSession = await api.website.actions.checkSession();
+			this.#isUserLoggedIn = hasUserSession;
 		} catch (error) {
-			logger("ERROR", error);
-			this.signOut();
+			this.#isUserLoggedIn = false;
+		} finally {
+			this.#isSessionLoaded = true;
+			this.#onSessionLoadCallbacks.forEach((callback) => {
+				callback(this.#isUserLoggedIn);
+			});
 		}
 	}
 
-	onLoadSession(callback: (isUserLoggedIn: boolean) => void) {
-		window.addEventListener("SESSION_LOADED", () => callback(this.#isUserLoggedIn), false);
+	onSessionLoad(callback: (isUserLoggedIn: boolean) => void): void {
+		if (this.#isSessionLoaded) {
+			callback(this.#isUserLoggedIn);
+		} else {
+			this.#onSessionLoadCallbacks.push(callback);
+		}
 	}
 
-	createSession() {
-		this.#role = "ADMIN";
-		this.#isUserLoggedIn = true;
-		this.#AUTH_CONFIG.set([this.#AXIOS_VA, `${Date.now()}`]);
-	}
-
-	destroySession() {
-		this.#role = "ANONYMOUS";
-		this.#isUserLoggedIn = false;
-		this.#AUTH_CONFIG.remove();
-	}
-
-	isUserLoggedIn() {
+	isUserLoggedIn(): boolean {
 		return this.#isUserLoggedIn;
-	}
-
-	getRole() {
-		return this.#role;
-	}
-
-	isAnonymousUser() {
-		return this.#isUserLoggedIn === false && this.#role === "ANONYMOUS";
-	}
-
-	isGuestUser() {
-		return this.#isUserLoggedIn === true && this.#role === "GUEST";
-	}
-
-	isAdminUser() {
-		return this.#isUserLoggedIn === true && this.#role === "ADMIN";
-	}
-
-	switchToAdminUser() {
-		this.createSession();
-	}
-
-	switchToGuestUser() {
-		this.#role = "GUEST";
-		this.#isUserLoggedIn = true;
-		this.#AUTH_CONFIG.set([this.#AXIOS_VG, `${Date.now()}`]);
-	}
-
-	switchToAnonymousUser() {
-		this.destroySession();
-	}
-
-	signOut(redirectPath?: string) {
-		this.destroySession();
-		window.location.href = redirectPath || "/";
 	}
 }
 
 const AuthService = new AuthServiceClass();
 
-export { AuthService };
+export default AuthService;

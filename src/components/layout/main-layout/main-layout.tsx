@@ -24,7 +24,7 @@ function MainLayout({ children, className, contentClassName, title }: MainLayout
 	// --- STYLES ---
 	const classes = {
 		container: cn("min-h-dv-screen relative flex flex-col", className),
-		content: cn("md:layout-with-max-width w-full flex-1 p-4", contentClassName),
+		content: cn("md:u-body-max-width w-full flex-1 p-4", contentClassName),
 	};
 
 	return (
@@ -75,7 +75,7 @@ function TitleSection({ title, style }: TitleSectionProps) {
 			className={classes.root}
 			style={style}
 		>
-			<Box className="layout-with-max-width w-full gap-2 px-4 py-12 text-center">
+			<Box className="u-body-max-width w-full gap-2 px-4 py-12 text-center">
 				{showParentURL && (
 					<Box className="sm:hidden">
 						<Link

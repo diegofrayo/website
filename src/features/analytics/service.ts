@@ -4,7 +4,7 @@ import { BrowserStorageManager } from "@diegofrayo-pkg/browser-storage";
 import type UtilsTypes from "@diegofrayo-pkg/types";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
-import { AuthService } from "../auth";
+import AuthService from "../auth/service";
 import { logger } from "../logger";
 
 class AnalyticsServiceClass {

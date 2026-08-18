@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Radio } from "@base-ui/react/radio";
 import { RadioGroup } from "@base-ui/react/radio-group";
 import { flushSync } from "react-dom";
 
-import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
@@ -28,12 +28,7 @@ export function DownloadActions({
 	onContentModeChange,
 }: DownloadActionsProps) {
 	// --- STATE ---
-	const [downloadMode, setDownloadMode] = useBrowserStorage<DownloadMode>({
-		key: "DR_RESUME_DOWNLOAD_MODE",
-		value: "CURRENT",
-		readInitialValueFromStorage: true,
-		saveDuringCreation: true,
-	});
+	const [downloadMode, setDownloadMode] = useState<DownloadMode>("CURRENT");
 
 	// --- STYLES ---
 	const classes = {

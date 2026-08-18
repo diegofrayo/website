@@ -2,22 +2,29 @@ import { Menu } from "@base-ui/react/menu";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { copyToClipboard, showAlert } from "@diegofrayo-pkg/utilities/browser";
+import { waitFor } from "@diegofrayo-pkg/utilities/async";
+import { copyToClipboard, deletePWACache } from "@diegofrayo-pkg/utilities/browser";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
+import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
+import { isEmptyString } from "@diegofrayo-pkg/validator";
 
+import api from "~/api/client";
+import { Toast } from "~/components/common";
 import CopyToClipboardPopover, {
 	type CopyToClipboardPopoverProps,
 } from "~/components/common/copy-to-clipboard-popover";
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
-
-import { AuthService, withAuth, type AuthUserRole } from "../../auth";
+import { Routes } from "~/constants";
+import withAuth from "~/features/auth/hoc";
+import { logAndReportError } from "~/features/logger";
 
 type ToolsMenuProps = {
+	devURL: string;
 	productionURL: string;
 };
 
-function ToolsMenu({ productionURL }: ToolsMenuProps) {
+function ToolsMenu({ devURL, productionURL }: ToolsMenuProps) {
 	return (
 		<Menu.Root>
 			<Menu.Trigger className="group leading-none">
@@ -39,8 +46,11 @@ function ToolsMenu({ productionURL }: ToolsMenuProps) {
 					<Menu.Popup>
 						<List className="block overflow-hidden border border-zinc-300">
 							<CopyURLMenuItem />
-							<EnvironmentMenuItem productionURL={productionURL} />
-							<SwitchUserModeMenuItem />
+							<EnvironmentMenuItem
+								productionURL={productionURL}
+								devURL={devURL}
+							/>
+							<ISRMenuItem />
 							<SignOutMenuItem />
 						</List>
 
@@ -75,10 +85,11 @@ function CopyURLMenuItem() {
 
 const EnvironmentMenuItem = withRenderInBrowser(function EnvironmentMenuItem({
 	productionURL,
-}: Pick<ToolsMenuProps, "productionURL">) {
+	devURL,
+}: Pick<ToolsMenuProps, "productionURL" | "devURL">) {
 	const url = isDevelopmentEnvironment()
 		? `${productionURL}${window.location.pathname}`
-		: `https://website.local${window.location.pathname}`;
+		: `${devURL}${window.location.pathname}`;
 
 	return (
 		<ToolsMenuItem
@@ -91,96 +102,41 @@ const EnvironmentMenuItem = withRenderInBrowser(function EnvironmentMenuItem({
 	);
 });
 
-function SwitchUserModeMenuItem() {
-	// --- COMPUTED STATES ---
-	const userRole = AuthService.getRole();
-
+const ISRMenuItem = withAuth(function ISRMenuItem() {
 	// --- HANDLERS ---
-	function handleClick(newUserRole: AuthUserRole) {
-		return () => {
-			if (newUserRole === "ANONYMOUS") {
-				AuthService.switchToAnonymousUser();
-				window.location.reload();
-			} else if (newUserRole === "GUEST") {
-				AuthService.switchToGuestUser();
-				window.location.reload();
-			} else if (newUserRole === "ADMIN") {
-				const password = window.prompt("Type password")?.trim() || "";
-				const isRightPassword = password === "ASKL";
+	async function handleISROnDemandClick() {
+		try {
+			const pin = window.prompt("Type the security pin")?.trim() || "";
 
-				if (!password) return;
+			if (isEmptyString(pin)) return;
 
-				if (isRightPassword) {
-					AuthService.switchToAdminUser();
-					window.location.reload();
-				} else {
-					showAlert("Wrong password");
-				}
-			}
-		};
-	}
+			await api.website.actions.isr({ path: window.location.pathname, secret: pin });
+			await deletePWACache();
+			await waitFor(2, "seconds");
 
-	if (userRole === "ANONYMOUS") {
-		return (
-			<>
-				<ToolsMenuItem
-					as="button"
-					icon={IconCatalog.CIRCLE_USER}
-					title={'Switch to "guest" mode'}
-					onClick={handleClick("GUEST")}
-				/>
-				<ToolsMenuItem
-					as="button"
-					icon={IconCatalog.CIRCLE_USER}
-					title={'Switch to "admin" mode'}
-					onClick={handleClick("ADMIN")}
-				/>
-			</>
-		);
-	}
-
-	if (userRole === "GUEST") {
-		return (
-			<>
-				<ToolsMenuItem
-					as="button"
-					icon={IconCatalog.CIRCLE_USER}
-					title={'Switch to "anonymous" mode'}
-					onClick={handleClick("ANONYMOUS")}
-				/>
-				<ToolsMenuItem
-					as="button"
-					icon={IconCatalog.CIRCLE_USER}
-					title={'Switch to "admin" mode'}
-					onClick={handleClick("ADMIN")}
-				/>
-			</>
-		);
+			window.location.reload();
+		} catch (error) {
+			logAndReportError(error);
+			Toast.error(getErrorMessage(error));
+		}
 	}
 
 	return (
-		<>
-			<ToolsMenuItem
-				as="button"
-				icon={IconCatalog.CIRCLE_USER}
-				title={'Switch to "anonymous" mode'}
-				onClick={handleClick("ANONYMOUS")}
-			/>
-			<ToolsMenuItem
-				as="button"
-				icon={IconCatalog.CIRCLE_USER}
-				title={'Switch to "guest" mode'}
-				onClick={handleClick("GUEST")}
-			/>
-		</>
+		<ToolsMenuItem
+			as="button"
+			icon={IconCatalog.SERVER}
+			title="ISR on-demand"
+			onClick={handleISROnDemandClick}
+		/>
 	);
-}
+});
 
 const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 	// --- HANDLERS ---
-	function handleClick() {
-		AuthService.destroySession();
+	async function handleClick() {
+		await api.website.actions.signOut();
 		window.localStorage.clear();
+		window.location.href = Routes.INDEX;
 	}
 
 	return (

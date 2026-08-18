@@ -58,7 +58,7 @@ export default InlineIcons;
 
 // --- INLINE ICONS ---
 
-export function GithubMonoIcon({ className, height, width }: IconProps) {
+function GithubMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -73,7 +73,7 @@ export function GithubMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function GmailMonoIcon({ className, height, width }: IconProps) {
+function GmailMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export function GmailMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function InstagramMonoIcon({ className, height, width }: IconProps) {
+function InstagramMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ export function InstagramMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function LinkedinMonoIcon({ className, height, width, ...rest }: IconProps) {
+function LinkedinMonoIcon({ className, height, width, ...rest }: IconProps) {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -169,7 +169,7 @@ export function LinkedinMonoIcon({ className, height, width, ...rest }: IconProp
 	);
 }
 
-export function SpotifyMonoIcon({ className, height, width }: IconProps) {
+function SpotifyMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@ export function SpotifyMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function TwitterMonoIcon({ className, height, width }: IconProps) {
+function TwitterMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +221,7 @@ export function TwitterMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function WhatsAppMonoIcon({ className, height, width }: IconProps) {
+function WhatsAppMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

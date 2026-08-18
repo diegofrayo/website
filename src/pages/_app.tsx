@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Component, useEffect, type ErrorInfo } from "react";
+import { Component, type ErrorInfo } from "react";
 import { Tooltip } from "@base-ui/react/tooltip";
 import type { AppProps } from "next/app";
 import {
@@ -13,9 +13,9 @@ import { Toaster } from "sonner";
 
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { isMobileDevice, isWindowsDevice } from "@diegofrayo-pkg/utilities/browser";
+import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser";
 
-import { useAuth } from "~/features/auth";
+import AuthService from "~/features/auth/service";
 import { addGlobalErrorListener, logger } from "~/features/logger";
 import ErrorPage from "~/features/pages/error.page";
 
@@ -26,33 +26,16 @@ type CustomAppProps = AppProps;
 // --- COMPONENT DEFINITION ---
 
 function CustomApp({ Component, pageProps }: CustomAppProps) {
-	// --- HOOKS ---
-	const { isSessionLoaded } = useAuth();
-
 	// --- EFFECTS ---
 	useDidMount(() => {
 		addGlobalErrorListener();
-
-		if (isWindowsDevice()) {
-			document.body.classList.add("windows-os");
-		}
 
 		if (isMobileDevice()) {
 			document.body.classList.add("mobile");
 		}
 
-		// NOTE: it is performed because of Base UI
-		document.getElementById("__next")?.classList.add("root");
-
-		return () => undefined;
+		AuthService.loadSession();
 	});
-
-	useEffect(
-		function checkUserSession() {
-			if (isSessionLoaded) document.body.classList.add("visible");
-		},
-		[isSessionLoaded],
-	);
 
 	// --- UTILS ---
 	function onError(error: unknown, info: ErrorInfo) {
@@ -79,7 +62,7 @@ function CustomApp({ Component, pageProps }: CustomAppProps) {
 
 			<Tooltip.Provider>
 				<CustomErrorBoundary>
-					{isSessionLoaded ? <Component {...pageProps} /> : null}
+					<Component {...pageProps} />
 					<Toaster
 						position="bottom-center"
 						toastOptions={{

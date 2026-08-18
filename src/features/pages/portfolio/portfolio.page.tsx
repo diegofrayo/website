@@ -3,6 +3,7 @@ import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import { isPWA } from "@diegofrayo-pkg/utilities/browser";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
@@ -232,23 +233,7 @@ function ProjectTitle({ item }: { item: Project }) {
 				{item.title}
 			</Title>
 			<Box className="flex items-center gap-2">
-				{item.url && (
-					<Link
-						href={item.url}
-						variant={Link.variant.SMOOTH}
-						isExternalLink={isPWA() === false || !item.url.startsWith("/")}
-						className="flex w-fit items-center gap-1.5"
-						onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_URL", {
-							project: item.id,
-						})}
-					>
-						<Icon
-							icon={IconCatalog.EXTERNAL_LINK}
-							size={18}
-							color="text-zinc-700"
-						/>
-					</Link>
-				)}
+				{item.url && <ProjectUrlLink item={item} />}
 				{item.github && (
 					<Link
 						href={`https://github.com/diegofrayo/${item.id}`}
@@ -270,3 +255,23 @@ function ProjectTitle({ item }: { item: Project }) {
 		</Box>
 	);
 }
+
+const ProjectUrlLink = withRenderInBrowser(function ProjectUrlLink({ item }: { item: Project }) {
+	return (
+		<Link
+			href={item.url as string}
+			variant={Link.variant.SMOOTH}
+			isExternalLink={isPWA() === false || !(item.url as string).startsWith("/")}
+			className="flex w-fit items-center gap-1.5"
+			onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_URL", {
+				project: item.id,
+			})}
+		>
+			<Icon
+				icon={IconCatalog.EXTERNAL_LINK}
+				size={18}
+				color="text-zinc-700"
+			/>
+		</Link>
+	);
+});

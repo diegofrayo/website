@@ -26,7 +26,6 @@ import {
 } from "~/components/primitive";
 import { type ImageProps } from "~/components/primitive/image";
 import { type TitleProps } from "~/components/primitive/title";
-import { WithAuth } from "~/features/auth";
 
 import styles from "./styles.module.css";
 
@@ -110,7 +109,6 @@ export const MDXComponents = {
 	},
 	SourceCode,
 	Space,
-	WithAuth,
 };
 
 // --- UTILS ---

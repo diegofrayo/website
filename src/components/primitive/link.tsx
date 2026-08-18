@@ -74,8 +74,8 @@ const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.SMOOTH]: "with-transition-opacity",
-			[VARIANTS.STYLED]: "with-transition-opacity font-bold text-blue-700 underline",
+			[VARIANTS.SMOOTH]: "u-transition-opacity",
+			[VARIANTS.STYLED]: "u-transition-opacity font-bold text-blue-700 underline",
 		},
 	},
 });

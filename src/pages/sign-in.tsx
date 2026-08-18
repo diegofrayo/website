@@ -4,10 +4,11 @@ import cn from "@diegofrayo-pkg/cn";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
 
+import api from "~/api/client";
 import { Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
-import { EnvVars, Routes } from "~/constants";
-import { AuthService } from "~/features/auth";
+import { Routes } from "~/constants";
+import AuthService from "~/features/auth/service";
 
 function SignInPage() {
 	// --- STATES & REFS ---
@@ -22,22 +23,18 @@ function SignInPage() {
 	};
 
 	// --- UTILS ---
-	async function checkAuthToken() {
-		if (AuthService.isUserLoggedIn()) {
-			window.location.href = Routes.INDEX;
-			return;
-		}
+	async function signIn() {
+		try {
+			const authToken = new URL(window.location.href).searchParams.get("auth_token");
 
-		const authToken = new URL(window.location.href).searchParams.get("auth_token");
-		await waitFor(1, "seconds");
+			if (!authToken) throw new Error("Invalid auth token!");
 
-		// NOTE: I know, this is very dumb and unsafe, it's ok for me
-		if (authToken === EnvVars.NEXT_PUBLIC_AUTH_TOKEN) {
+			await api.website.actions.signIn({ authToken });
 			setIsAuthTokenValid(true);
 			await waitFor(1, "seconds");
-			AuthService.createSession();
+
 			window.location.href = Routes.INDEX;
-		} else {
+		} catch (error) {
 			setIsAuthTokenValid(false);
 		}
 	}
@@ -56,7 +53,14 @@ function SignInPage() {
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		checkAuthToken();
+		AuthService.onSessionLoad((isUserLoggedIn: boolean) => {
+			if (isUserLoggedIn) {
+				window.location.href = Routes.INDEX;
+				return;
+			}
+
+			signIn();
+		});
 	});
 
 	return (

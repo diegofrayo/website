@@ -1,20 +1,17 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { withAuth } from "./hocs";
-import type { AuthUserRole } from "./types";
+import { useAuth } from "./hook";
 
 type WithAuthProps = {
 	children: ReactTypes.Children;
-	roles: AuthUserRole[];
-	asChild?: boolean;
-	className?: string;
 };
 
-export function WithAuth({ roles, children, ...rest }: WithAuthProps) {
-	/* eslint react-hooks/static-components: 0 */
-	const WithAuthHOC = withAuth(function WithAuthHOC(props: Omit<WithAuthProps, "roles">) {
-		return props.asChild ? children : <div className={props.className}>{props.children}</div>;
-	}, roles);
+export function WithAuth({ children }: WithAuthProps) {
+	const { isUserLoggedIn } = useAuth();
 
-	return <WithAuthHOC {...rest}>{children}</WithAuthHOC>;
+	if (isUserLoggedIn) {
+		return children;
+	}
+
+	return null;
 }

@@ -6,7 +6,8 @@ import cn from "@diegofrayo-pkg/cn";
 import { Box, Icon } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
-import { useAuth, WithAuth } from "~/features/auth";
+import { WithAuth } from "~/features/auth/components";
+import { useAuth } from "~/features/auth/hook";
 
 import type { ContentMode, Design, Lang } from "../resume.types";
 
@@ -127,10 +128,7 @@ export function ActionButtons({
 				</ToggleGroup>
 			</Box>
 
-			<WithAuth
-				roles={["ADMIN"]}
-				asChild
-			>
+			<WithAuth>
 				<Box className={classes.container}>
 					<Icon
 						icon={IconCatalog.FILE_TEXT}

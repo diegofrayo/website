@@ -73,7 +73,7 @@ const stylesVariants = cva("", {
 		},
 		variant: {
 			[Variant.UNSTYLED]: "",
-			[Variant.SMOOTH]: "with-transition-opacity",
+			[Variant.SMOOTH]: "u-transition-opacity",
 			[Variant.STYLED]: cn([
 				"transition-all",
 				"bg-white",

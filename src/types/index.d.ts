@@ -1,8 +1,8 @@
+declare module "*.css" {}
+
 declare module "sugar-high" {
 	export function highlight(code: unknown): string;
 }
-
-declare module "*.css" {}
 
 interface Window {
 	rybbit: {

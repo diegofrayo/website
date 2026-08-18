@@ -31,7 +31,7 @@ function Header({ height }: HeaderProps) {
 			className={classes.container}
 			style={{ height }}
 		>
-			<Box className="layout-with-max-width mx-auto flex w-full items-center justify-between gap-4">
+			<Box className="u-body-max-width mx-auto flex w-full items-center justify-between gap-4">
 				<Title
 					as="h1"
 					variant={Title.variant.SIMPLE}

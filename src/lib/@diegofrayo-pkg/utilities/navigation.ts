@@ -1,11 +1,11 @@
-export function encodeRequestParams(body: Record<string, string | number>): URLSearchParams {
-	const params = new URLSearchParams();
+export function encodeRequestParams(body: Record<string, string | number>): string {
+	const queryParams = Object.entries(body)
+		.reduce((result: string[], [key, value]) => {
+			return [...result, `${key}=${encodeURIComponent(String(value))}`];
+		}, [])
+		.join("&");
 
-	Object.entries(body).forEach(([key, value]) => {
-		params.append(key, String(value));
-	});
-
-	return params;
+	return queryParams;
 }
 
 export function goBack(): void {

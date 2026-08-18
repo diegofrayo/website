@@ -1,11 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
-import { WithAuth } from "~/features/auth";
+import { WithAuth } from "~/features/auth/components";
 
 import { ActionButtons, DownloadActions, MinimalistMode, StylishMode } from "./components";
 import { IntlContext, IntlProviderValue } from "./resume.context";
@@ -22,24 +21,9 @@ export type ResumePageProps = {
 
 function ResumePage({ data }: ResumePageProps) {
 	// --- STATE ---
-	const [design, setDesign] = useBrowserStorage<Design>({
-		key: "DR_RESUME_DESIGN",
-		value: "MINIMALIST",
-		readInitialValueFromStorage: true,
-		saveDuringCreation: true,
-	});
-	const [lang, setLang] = useBrowserStorage<Lang>({
-		key: "DR_RESUME_LANG",
-		value: "EN",
-		readInitialValueFromStorage: true,
-		saveDuringCreation: true,
-	});
-	const [contentMode, setContentMode] = useBrowserStorage<ContentMode>({
-		key: "DR_RESUME_CONTENT_MODE",
-		value: "SHORT",
-		readInitialValueFromStorage: true,
-		saveDuringCreation: true,
-	});
+	const [design, setDesign] = useState<Design>("MINIMALIST");
+	const [lang, setLang] = useState<Lang>("EN");
+	const [contentMode, setContentMode] = useState<ContentMode>("SHORT");
 
 	// --- COMPUTED STATES ---
 	const currentData: Resume = data[lang.toLowerCase() as Lowercase<typeof lang>];
@@ -67,7 +51,7 @@ function ResumePage({ data }: ResumePageProps) {
 		>
 			<MainLayout
 				title={metadata.title}
-				contentClassName="print:p-0"
+				contentClassName="win:hidden print:p-0"
 			>
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
@@ -81,10 +65,7 @@ function ResumePage({ data }: ResumePageProps) {
 								onDesignChange={setDesign}
 								onLangChange={setLang}
 							/>
-							<WithAuth
-								roles={["ADMIN"]}
-								asChild
-							>
+							<WithAuth>
 								<DownloadActions
 									contentMode={contentMode}
 									design={design}

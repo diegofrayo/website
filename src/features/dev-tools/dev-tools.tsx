@@ -1,4 +1,5 @@
-import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
+import { useState } from "react";
+
 import cn from "@diegofrayo-pkg/cn";
 import { withConditionalRender, withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import { useWindowSize } from "@diegofrayo-pkg/hooks";
@@ -7,21 +8,18 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 
-import { AuthService, useAuth } from "../auth";
+import { useAuth } from "../auth/hook";
+import AuthService from "../auth/service";
 import ToolsMenu from "./components/tools-menu";
 
-const DevTools = withConditionalRender(function DevTools({
-	productionURL,
-}: {
+type DevToolsProps = {
+	devURL: string;
 	productionURL: string;
-}) {
+};
+
+const DevTools = withConditionalRender(function DevTools({ devURL, productionURL }: DevToolsProps) {
 	// --- STATE & REFS ---
-	const [isContentExpanded, setIsContentExpanded] = useBrowserStorage({
-		key: "DR_DEV_TOOLS",
-		readInitialValueFromStorage: true,
-		value: false,
-		saveDuringCreation: true,
-	});
+	const [isContentExpanded, setIsContentExpanded] = useState(false);
 
 	// --- HANDLERS ---
 	function handleExpandContentClick() {
@@ -37,7 +35,10 @@ const DevTools = withConditionalRender(function DevTools({
 			{isContentExpanded ? (
 				<>
 					<Box className="flex items-center gap-2 px-3">
-						<ToolsMenu productionURL={productionURL} />
+						<ToolsMenu
+							productionURL={productionURL}
+							devURL={devURL}
+						/>
 						<StatusIndicators />
 						<WindowSize />
 					</Box>
