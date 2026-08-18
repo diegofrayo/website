@@ -98,7 +98,7 @@ function Playground({
 					)}
 					onClick={handleTabClick(0)}
 				>
-					<Icon icon={IconCatalog.APP_WINDOW} /> <InlineText>Preview</InlineText>
+					<Icon name={IconCatalog.APP_WINDOW} /> <InlineText>Preview</InlineText>
 				</Button>
 				<Button
 					variant={Button.variant.SMOOTH}
@@ -108,7 +108,7 @@ function Playground({
 					)}
 					onClick={handleTabClick(1)}
 				>
-					<Icon icon={IconCatalog.CODE_XML} /> <InlineText>Source code</InlineText>
+					<Icon name={IconCatalog.CODE_XML} /> <InlineText>Source code</InlineText>
 				</Button>
 			</Box>
 		</Box>

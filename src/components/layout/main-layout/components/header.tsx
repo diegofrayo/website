@@ -87,7 +87,7 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 		<Box className={cn(className)}>
 			<Button onClick={handleOpenMenuClick}>
 				<Icon
-					icon={IconCatalog.MENU}
+					name={IconCatalog.MENU}
 					size={24}
 				/>
 			</Button>
@@ -102,8 +102,8 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 						onClick={handleCloseMenuClick}
 					>
 						<Icon
-							color="text-white"
-							icon={IconCatalog.X}
+							className="text-white"
+							name={IconCatalog.X}
 							size={32}
 						/>
 					</Button>
@@ -175,8 +175,8 @@ const NavigationMenuItem = forwardRef<HTMLAnchorElement, NavigationMenuItemProps
 				>
 					<Box className={classes.item}>
 						<Icon
-							icon={icon}
-							wrapperClassName="mr-2 sm:mr-1 sm:hidden"
+							name={icon}
+							className="mr-2 sm:mr-1 sm:hidden"
 							size={24}
 						/>
 						<InlineText>{children}</InlineText>

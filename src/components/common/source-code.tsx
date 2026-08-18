@@ -83,7 +83,7 @@ function SourceCode({
 				className="flex shrink-0 justify-between border-b border-zinc-700 bg-zinc-900"
 			>
 				<Paragraph className="flex gap-2 bg-zinc-700 p-2 pr-8 text-sm text-zinc-100">
-					<Icon icon={IconCatalog.CODE_XML} />
+					<Icon name={IconCatalog.CODE_XML} />
 					<InlineText>{`${title}.${language}`}</InlineText>
 				</Paragraph>
 
@@ -95,12 +95,12 @@ function SourceCode({
 							href={sourceURL}
 							isExternalLink
 						>
-							<Icon icon={IconCatalog.EXTERNAL_LINK} />
+							<Icon name={IconCatalog.EXTERNAL_LINK} />
 						</Link>
 					)}
 					<CopyToClipboardPopover textToCopy={extractChildren(code)}>
 						<Button variant={Button.variant.SMOOTH}>
-							<Icon icon={IconCatalog.COPY} />
+							<Icon name={IconCatalog.COPY} />
 						</Button>
 					</CopyToClipboardPopover>
 				</Box>

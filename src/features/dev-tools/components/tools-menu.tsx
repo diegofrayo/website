@@ -30,10 +30,8 @@ function ToolsMenu({ devURL, productionURL }: ToolsMenuProps) {
 		<Menu.Root>
 			<Menu.Trigger className="group leading-none">
 				<Icon
-					icon={IconCatalog.SETTINGS}
-					wrapperClassName="transition-transform duration-300 ease-[ease] group-data-popup-open:rotate-180"
-					size="size-6"
-					color="text-white"
+					name={IconCatalog.SETTINGS}
+					className="size-6 text-white transition-transform duration-300 ease-[ease] group-data-popup-open:rotate-180"
 				/>
 			</Menu.Trigger>
 
@@ -189,7 +187,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps) {
 						isExternalLink={props.isExternalLink || false}
 					>
 						<InlineText>{props.title}</InlineText>
-						<Icon icon={props.icon} />
+						<Icon name={props.icon} />
 					</Link>
 				) : (
 					<Button
@@ -198,7 +196,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps) {
 						onClick={props.onClick}
 					>
 						<InlineText>{props.title}</InlineText>
-						<Icon icon={props.icon} />
+						<Icon name={props.icon} />
 					</Button>
 				)}
 			</ToolsMenuItemWrapper>

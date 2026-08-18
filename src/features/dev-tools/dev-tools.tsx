@@ -50,8 +50,8 @@ function DevTools({ devURL, productionURL }: DevToolsProps) {
 							onClick={handleHideContentClick}
 						>
 							<Icon
-								color="text-white"
-								icon={IconCatalog.CHEVRON_LEFT}
+								className="text-white"
+								name={IconCatalog.CHEVRON_LEFT}
 							/>
 						</Button>
 					</>
@@ -61,8 +61,8 @@ function DevTools({ devURL, productionURL }: DevToolsProps) {
 						onClick={handleExpandContentClick}
 					>
 						<Icon
-							color="text-white"
-							icon={IconCatalog.CHEVRON_RIGHT}
+							className="text-white"
+							name={IconCatalog.CHEVRON_RIGHT}
 						/>
 					</Button>
 				)}
@@ -95,7 +95,7 @@ function StatusIndicators() {
 			{isUserLoggedIn && (
 				<Box className={classes.indicator}>
 					<Icon
-						icon={IconCatalog.CIRCLE_USER}
+						name={IconCatalog.CIRCLE_USER}
 						size={14}
 					/>
 				</Box>

@@ -63,7 +63,7 @@ function GoToTopButton() {
 			className="fixed right-3 bottom-3 z-50 flex h-12 w-12 items-center justify-center rounded-md border border-zinc-800 bg-black text-2xl text-white sm:right-4 sm:bottom-4"
 			onClick={handleGoToTheTopClick}
 		>
-			<Icon icon={IconCatalog.ARROW_UP} />
+			<Icon name={IconCatalog.ARROW_UP} />
 		</Button>
 	);
 }

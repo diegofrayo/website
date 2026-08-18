@@ -47,7 +47,7 @@ function BlogPage({ data: posts }: BlogPageProps) {
 
 									<Box className="mt-auto flex items-center gap-1 pt-2">
 										<Icon
-											icon={IconCatalog.CALENDAR}
+											name={IconCatalog.CALENDAR}
 											size={12}
 										/>
 										<InlineText className="text-xs text-zinc-500">

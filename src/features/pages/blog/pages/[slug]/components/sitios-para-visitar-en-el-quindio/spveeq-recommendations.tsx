@@ -55,7 +55,7 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									isExternalLink
 								>
 									<Icon
-										icon={IconCatalog.GLOBE}
+										name={IconCatalog.GLOBE}
 										size={24}
 									/>
 								</Link>
@@ -72,7 +72,7 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									isExternalLink
 								>
 									<Icon
-										icon={IconCatalog.INSTAGRAM}
+										name={IconCatalog.INSTAGRAM}
 										size={24}
 									/>
 								</Link>
@@ -89,7 +89,7 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									isExternalLink
 								>
 									<Icon
-										icon={IconCatalog.AIRBNB}
+										name={IconCatalog.AIRBNB}
 										size={24}
 									/>
 								</Link>
@@ -106,7 +106,7 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 									isExternalLink
 								>
 									<Icon
-										icon={IconCatalog.WHATSAPP}
+										name={IconCatalog.WHATSAPP}
 										size={24}
 									/>
 								</Link>

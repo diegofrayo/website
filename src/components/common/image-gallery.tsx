@@ -283,9 +283,8 @@ function NavigationArrow({
 			onClick={onClick}
 		>
 			<Icon
-				icon={isRightDirection ? IconCatalog.CHEVRON_RIGHT : IconCatalog.CHEVRON_LEFT}
-				color="text-black"
-				wrapperClassName="relative"
+				name={isRightDirection ? IconCatalog.CHEVRON_RIGHT : IconCatalog.CHEVRON_LEFT}
+				className="text-black"
 				size={20}
 			/>
 		</Button>

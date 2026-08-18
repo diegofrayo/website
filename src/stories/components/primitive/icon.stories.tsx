@@ -10,12 +10,12 @@ const meta: Meta<typeof Icon> = {
 	component: Icon,
 	tags: ["autodocs"],
 	argTypes: {
-		icon: { control: "select", options: Object.keys(IconCatalog) },
-		color: ArgTypes.tailwindColors,
+		name: { control: "select", options: Object.keys(IconCatalog) },
+		className: ArgTypes.tailwindColors,
 		size: { control: "number" },
 	},
 	args: {
-		icon: IconCatalog.CHECK,
+		name: IconCatalog.CHECK,
 	},
 };
 
@@ -25,12 +25,12 @@ export default meta;
 
 export const Default: StoryObj<typeof Icon> = {
 	args: {
-		icon: IconCatalog.CHECK,
+		name: IconCatalog.CHECK,
 	},
 };
 
 export const Large: StoryObj<typeof Icon> = {
 	args: {
-		icon: IconCatalog.CIRCLE_USER,
+		name: IconCatalog.CIRCLE_USER,
 	},
 };

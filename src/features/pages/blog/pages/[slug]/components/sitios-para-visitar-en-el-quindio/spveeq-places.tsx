@@ -120,8 +120,8 @@ function InfoBox({ icon, title, children }: InfoBoxProps) {
 		<Box className="mb-4 last:mb-0">
 			<Box className="flex items-center">
 				<Icon
-					icon={icon.name}
-					color={icon.color || ""}
+					name={icon.name}
+					className={icon.color}
 					size={16}
 				/>
 				<InlineText
@@ -198,8 +198,8 @@ function PlaceLinksInfo({
 						isExternalLink
 					>
 						<Icon
-							icon={IconCatalog.INSTAGRAM}
-							iconClassName="p-[3px]"
+							name={IconCatalog.INSTAGRAM}
+							className="p-0.75"
 							size={32}
 						/>
 					</Link>
@@ -217,8 +217,8 @@ function PlaceLinksInfo({
 						isExternalLink
 					>
 						<Icon
-							icon={IconCatalog.MAPS}
-							iconClassName="rounded-full p-[3px]"
+							name={IconCatalog.MAPS}
+							className="rounded-full p-0.75"
 							size={32}
 						/>
 					</Link>
@@ -236,7 +236,7 @@ function PlaceLinksInfo({
 						isExternalLink
 					>
 						<Icon
-							icon={IconCatalog.GLOBE}
+							name={IconCatalog.GLOBE}
 							size={32}
 						/>
 					</Link>
@@ -258,7 +258,7 @@ function PlaceLinksInfo({
 									isExternalLink
 								>
 									<Icon
-										icon={IconCatalog.INFO}
+										name={IconCatalog.INFO}
 										size={28}
 									/>
 									<InlineText className="ml-1 flex-1 truncate align-middle">

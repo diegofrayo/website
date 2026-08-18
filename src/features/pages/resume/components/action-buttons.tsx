@@ -38,7 +38,7 @@ export function ActionButtons({
 		),
 		container:
 			"flex items-center justify-start rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm w-full",
-		icon: "px-2 text-slate-400",
+		icon: "mx-2 text-slate-400",
 		toggleGroup: cn("grid min-w-0 flex-1 grid-cols-2 flex-nowrap"),
 		toggle:
 			"cursor-pointer rounded-full px-3 py-1 text-slate-600 transition-colors data-pressed:bg-slate-900 data-pressed:text-white truncate",
@@ -73,9 +73,8 @@ export function ActionButtons({
 		<Box className={classes.mainContainer}>
 			<Box className={classes.container}>
 				<Icon
-					icon={IconCatalog.PEN_TOOL}
-					size={16}
-					wrapperClassName={classes.icon}
+					name={IconCatalog.PEN_TOOL}
+					className={classes.icon}
 				/>
 				<ToggleGroup
 					value={[design]}
@@ -101,9 +100,9 @@ export function ActionButtons({
 
 			<Box className={classes.container}>
 				<Icon
-					icon={IconCatalog.LANGUAGES}
+					name={IconCatalog.LANGUAGES}
 					size={16}
-					wrapperClassName={classes.icon}
+					className={classes.icon}
 				/>
 				<ToggleGroup
 					value={[lang]}
@@ -130,9 +129,9 @@ export function ActionButtons({
 			<WithAuth>
 				<Box className={classes.container}>
 					<Icon
-						icon={IconCatalog.FILE_TEXT}
+						name={IconCatalog.FILE_TEXT}
 						size={16}
-						wrapperClassName={classes.icon}
+						className={classes.icon}
 					/>
 					<ToggleGroup
 						value={[contentMode]}

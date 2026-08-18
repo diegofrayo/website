@@ -1,2 +1,2 @@
 export { default } from "./icon";
-export * from "./icon";
+export { type IconName, IconCatalog } from "./icon-catalog";

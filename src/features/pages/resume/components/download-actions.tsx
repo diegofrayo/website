@@ -110,9 +110,9 @@ export function DownloadActions({
 		<Box className="flex justify-center">
 			<Box className="flex items-center gap-3 rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm">
 				<Icon
-					icon={IconCatalog.DOWNLOAD}
+					name={IconCatalog.DOWNLOAD}
 					size={16}
-					wrapperClassName="px-2 text-slate-400"
+					className="mx-2 text-slate-400"
 				/>
 
 				<RadioGroup

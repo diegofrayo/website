@@ -34,12 +34,12 @@ function Callout({ children, variant = Variant.ERROR }: CalloutProps) {
 			<Box className="mr-4 shrink-0">
 				{isWarningVariant ? (
 					<Icon
-						icon={IconCatalog.TRIANGLE_ALERT}
+						name={IconCatalog.TRIANGLE_ALERT}
 						size={24}
 					/>
 				) : (
 					<Icon
-						icon={IconCatalog.X}
+						name={IconCatalog.X}
 						size={24}
 					/>
 				)}

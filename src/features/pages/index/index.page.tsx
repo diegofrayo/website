@@ -92,7 +92,7 @@ function NavigationLinks() {
 							})}
 						>
 							<Icon
-								icon={item.icon}
+								name={item.icon}
 								size={14}
 							/>
 							<InlineText className="ml-0.5 leading-none lowercase">{item.label}</InlineText>
@@ -148,7 +148,7 @@ function Footer() {
 							isExternalLink
 						>
 							<Icon
-								icon={item.icon}
+								name={item.icon}
 								size={24}
 							/>
 						</Link>

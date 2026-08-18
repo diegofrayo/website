@@ -29,12 +29,12 @@ export function ContactInfo({
 			>
 				{isShortVariant ? (
 					<Icon
-						icon={IconCatalog.MAILS}
+						name={IconCatalog.MAILS}
 						size={16}
 					/>
 				) : (
 					<Icon
-						icon={IconCatalog.GMAIL}
+						name={IconCatalog.GMAIL}
 						size={22}
 					/>
 				)}
@@ -48,12 +48,12 @@ export function ContactInfo({
 			>
 				{isShortVariant ? (
 					<Icon
-						icon={IconCatalog.GLOBE}
+						name={IconCatalog.GLOBE}
 						size={16}
 					/>
 				) : (
 					<Icon
-						icon={IconCatalog.WEBSITE}
+						name={IconCatalog.WEBSITE}
 						size={16}
 					/>
 				)}
@@ -69,14 +69,14 @@ export function ContactInfo({
 			>
 				{isShortVariant ? (
 					<Icon
-						icon={IconCatalog.LINKEDIN_MONO}
+						name={IconCatalog.LINKEDIN_MONO}
 						className="size-4"
-						strokeWidth={2}
+						svgProps={{ strokeWidth: 2 }}
 					/>
 				) : (
 					<Icon
-						icon={IconCatalog.LINKEDIN}
-						wrapperClassName="size-4"
+						name={IconCatalog.LINKEDIN}
+						className="size-4"
 					/>
 				)}
 				<InlineText className="text-sm font-semibold">
@@ -91,13 +91,13 @@ export function ContactInfo({
 			>
 				{isShortVariant ? (
 					<Icon
-						icon={IconCatalog.GITHUB_MONO}
+						name={IconCatalog.GITHUB_MONO}
 						className="size-4"
 					/>
 				) : (
 					<Icon
-						icon={IconCatalog.GITHUB}
-						wrapperClassName="size-4"
+						name={IconCatalog.GITHUB}
+						className="size-4"
 					/>
 				)}
 				<InlineText className="text-sm font-semibold">

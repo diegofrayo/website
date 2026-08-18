@@ -156,10 +156,9 @@ function ProjectRow({ item }: { item: Project }) {
 					/>
 					<Box className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover:bg-black/40">
 						<Icon
-							icon={IconCatalog.ZOOM_IN}
+							name={IconCatalog.ZOOM_IN}
 							size={28}
-							color="text-white"
-							wrapperClassName="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+							className="text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100"
 						/>
 					</Box>
 				</Button>
@@ -206,9 +205,9 @@ function ProjectRow({ item }: { item: Project }) {
 						onClick={handleModalClose}
 					>
 						<Icon
-							icon={IconCatalog.X}
+							name={IconCatalog.X}
 							size={10}
-							color="text-white"
+							className="text-white"
 						/>
 					</Button>
 				</Box>
@@ -247,9 +246,9 @@ function ProjectTitle({ item }: { item: Project }) {
 						isExternalLink
 					>
 						<Icon
-							icon={IconCatalog.GITHUB_MONO}
+							name={IconCatalog.GITHUB_MONO}
 							size={18}
-							color="text-zinc-700"
+							className="text-zinc-700"
 						/>
 					</Link>
 				)}
@@ -270,9 +269,9 @@ const ProjectUrlLink = withRenderInBrowser(function ProjectUrlLink({ item }: { i
 			})}
 		>
 			<Icon
-				icon={IconCatalog.EXTERNAL_LINK}
+				name={IconCatalog.EXTERNAL_LINK}
 				size={18}
-				color="text-zinc-700"
+				className="text-zinc-700"
 			/>
 		</Link>
 	);

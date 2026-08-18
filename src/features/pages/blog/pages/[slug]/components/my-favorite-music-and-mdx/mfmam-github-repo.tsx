@@ -20,10 +20,9 @@ function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps) {
 				isExternalLink
 			>
 				<Icon
-					icon={IconCatalog.GITHUB_MONO}
-					wrapperClassName="mr-3"
+					name={IconCatalog.GITHUB_MONO}
+					className="mr-3 text-black"
 					size={24}
-					color="text-black"
 				/>
 				<Box className="flex-1 text-left">
 					<Title
@@ -37,9 +36,8 @@ function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps) {
 				</Box>
 
 				<Icon
-					icon={IconCatalog.LINK}
-					wrapperClassName="absolute top-2 right-2"
-					color="text-black"
+					name={IconCatalog.LINK}
+					className="absolute top-2 right-2 text-black"
 				/>
 			</Link>
 		</Box>

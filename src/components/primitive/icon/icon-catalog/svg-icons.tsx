@@ -2,69 +2,27 @@ import cn from "@diegofrayo-pkg/cn";
 
 import type { IconProps } from "../icon";
 
-const InlineIcons = {
-	GITHUB_MONO: {
-		icon: GithubMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	GMAIL_MONO: {
-		icon: GmailMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	INSTAGRAM_MONO: {
-		icon: InstagramMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	LINKEDIN_MONO: {
-		icon: LinkedinMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	SPOTIFY_MONO: {
-		icon: SpotifyMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	TWITTER: {
-		icon: TwitterMonoIcon,
-		defaultProps: {
-			alt: "Twitter",
-			className: "",
-		},
-	},
-	WHATSAPP_MONO: {
-		icon: WhatsAppMonoIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
+const SVGIcons = {
+	GITHUB_MONO: GithubMonoIcon,
+	GMAIL_MONO: GmailMonoIcon,
+	INSTAGRAM_MONO: InstagramMonoIcon,
+	LINKEDIN_MONO: LinkedinMonoIcon,
+	SPOTIFY_MONO: SpotifyMonoIcon,
+	TWITTER: TwitterMonoIcon,
+	WHATSAPP_MONO: WhatsAppMonoIcon,
 };
 
-export default InlineIcons;
+export default SVGIcons;
 
-// --- INLINE ICONS ---
+// --- ICONS ---
 
-function GithubMonoIcon({ className, height, width }: IconProps) {
+function GithubMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			viewBox="0 0 24 24"
 			fill="currentColor"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			className={cn(className)}
 			xmlns="http://www.w3.org/2000/svg"
 		>
@@ -73,14 +31,14 @@ function GithubMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-function GmailMonoIcon({ className, height, width }: IconProps) {
+function GmailMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
 			viewBox="0 0 24 24"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			strokeWidth="1.2"
 			stroke="currentColor"
 			fill="none"
@@ -100,14 +58,14 @@ function GmailMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-function InstagramMonoIcon({ className, height, width }: IconProps) {
+function InstagramMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn(className)}
 			viewBox="0 0 24 24"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			strokeWidth="1.2"
 			stroke="currentColor"
 			fill="none"
@@ -126,15 +84,15 @@ function InstagramMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-function LinkedinMonoIcon({ className, height, width, ...rest }: IconProps) {
+function LinkedinMonoIcon({ className, size, ...rest }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"
 			strokeWidth={1}
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			className={cn(className)}
@@ -169,14 +127,14 @@ function LinkedinMonoIcon({ className, height, width, ...rest }: IconProps) {
 	);
 }
 
-function SpotifyMonoIcon({ className, height, width }: IconProps) {
+function SpotifyMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn(className)}
 			viewBox="0 0 24 24"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			strokeWidth="1.2"
 			stroke="currentColor"
 			fill="none"
@@ -196,14 +154,14 @@ function SpotifyMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-function TwitterMonoIcon({ className, height, width }: IconProps) {
+function TwitterMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn(className)}
 			viewBox="0 0 24 24"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			strokeWidth="1.2"
 			stroke="currentColor"
 			fill="none"
@@ -221,14 +179,14 @@ function TwitterMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-function WhatsAppMonoIcon({ className, height, width }: IconProps) {
+function WhatsAppMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			className={cn(className)}
 			viewBox="0 0 24 24"
-			width={width}
-			height={height}
+			width={size}
+			height={size}
 			stroke="none"
 		>
 			<path

@@ -160,8 +160,8 @@ function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["deta
 		<Box className="border border-zinc-200 bg-zinc-50 py-4 text-center text-sm">
 			<Paragraph>
 				<Icon
-					icon={IconCatalog.CALENDAR}
-					wrapperClassName="relative -top-px"
+					name={IconCatalog.CALENDAR}
+					className="relative -top-px"
 				/>{" "}
 				<InlineText>Published at</InlineText>{" "}
 				<InlineText as="strong">{details.published_at}</InlineText>
@@ -264,7 +264,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions({
 						>
 							<Icon
 								className="mr-1"
-								icon={action.icon}
+								name={action.icon}
 							/>
 							<InlineText>{action.label}</InlineText>
 						</Button>

@@ -7,8 +7,8 @@ export function Location({ location }: { location: Resume["contactInfo"]["locati
 	return (
 		<Paragraph className="text-xs">
 			<Icon
-				icon={IconCatalog.MAP_PIN}
-				wrapperClassName="mr-0.5"
+				name={IconCatalog.MAP_PIN}
+				className="mr-0.5"
 			/>
 			<InlineText className="align-middle">{`${location.city}, ${location.country} (${location.timezone})`}</InlineText>
 		</Paragraph>
