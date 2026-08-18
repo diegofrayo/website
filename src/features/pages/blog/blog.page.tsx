@@ -1,8 +1,8 @@
 import { MainLayout, Page } from "~/components/layout";
 import { Box, Icon, Image, InlineText, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { Routes } from "~/constants";
 import { BLOG_IMAGES_PATH } from "~/constants/assets";
+import { Routes } from "~/features/routing";
 
 import { BlogPostCategory } from "./components/blog-post-category";
 import type { BlogPosts } from "./types";

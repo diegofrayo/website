@@ -3,8 +3,8 @@ import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/
 
 import { Box, Button, Icon, InlineText, Link, Paragraph } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { Routes } from "~/constants";
 import AnalyticsService from "~/features/analytics";
+import { Routes } from "~/features/routing";
 
 function Footer() {
 	return (

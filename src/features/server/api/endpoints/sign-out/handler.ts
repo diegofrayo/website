@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { clearAuthCookie } from "~/features/auth/server";
+import { clearAuthCookie } from "~/features/auth/auth.server";
 
 import { sendServerError } from "../../utils";
 

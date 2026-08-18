@@ -5,8 +5,9 @@ import TypingTextEffect from "~/components/common/typing-text-effect";
 import { Page } from "~/components/layout";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { Routes, WEBSITE_METADATA } from "~/constants";
+import { WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
+import { Routes } from "~/features/routing";
 
 // --- COMPONENT DEFINITION ---
 

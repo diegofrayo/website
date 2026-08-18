@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { EnvVars } from "~/constants";
-import { setAuthCookie, signAuthToken } from "~/features/auth/server";
+import { setAuthCookie, signAuthToken } from "~/features/auth/auth.server";
 
 import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";

@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import { withConditionalRender, withRenderInBrowser } from "@diegofrayo-pkg/hocs";
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import { useWindowSize } from "@diegofrayo-pkg/hooks";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 
-import AuthService, { useAuth } from "../auth";
+import { useAuth } from "../auth";
 import ToolsMenu from "./components/tools-menu";
 
 type DevToolsProps = {
@@ -16,7 +16,10 @@ type DevToolsProps = {
 	productionURL: string;
 };
 
-const DevTools = withConditionalRender(function DevTools({ devURL, productionURL }: DevToolsProps) {
+function DevTools({ devURL, productionURL }: DevToolsProps) {
+	// --- HOOKS ---
+	const { isUserLoggedIn } = useAuth();
+
 	// --- STATE & REFS ---
 	const [isContentExpanded, setIsContentExpanded] = useState(false);
 
@@ -29,42 +32,46 @@ const DevTools = withConditionalRender(function DevTools({ devURL, productionURL
 		setIsContentExpanded(false);
 	}
 
-	return (
-		<Box className="fixed bottom-0 left-0 z-50 flex h-12 items-center overflow-x-auto rounded-tr-md bg-zinc-700 print:hidden">
-			{isContentExpanded ? (
-				<>
-					<Box className="flex items-center gap-2 px-3">
-						<ToolsMenu
-							productionURL={productionURL}
-							devURL={devURL}
-						/>
-						<StatusIndicators />
-						<WindowSize />
-					</Box>
+	if (isDevelopmentEnvironment() || isUserLoggedIn) {
+		return (
+			<Box className="fixed bottom-0 left-0 z-50 flex h-12 items-center overflow-x-auto rounded-tr-md bg-zinc-700 print:hidden">
+				{isContentExpanded ? (
+					<>
+						<Box className="flex items-center gap-2 px-3">
+							<ToolsMenu
+								productionURL={productionURL}
+								devURL={devURL}
+							/>
+							<StatusIndicators />
+							<WindowSize />
+						</Box>
+						<Button
+							className="h-full bg-zinc-600 px-3 leading-none"
+							onClick={handleHideContentClick}
+						>
+							<Icon
+								color="text-white"
+								icon={IconCatalog.CHEVRON_LEFT}
+							/>
+						</Button>
+					</>
+				) : (
 					<Button
 						className="h-full bg-zinc-600 px-3 leading-none"
-						onClick={handleHideContentClick}
+						onClick={handleExpandContentClick}
 					>
 						<Icon
 							color="text-white"
-							icon={IconCatalog.CHEVRON_LEFT}
+							icon={IconCatalog.CHEVRON_RIGHT}
 						/>
 					</Button>
-				</>
-			) : (
-				<Button
-					className="h-full bg-zinc-600 px-3 leading-none"
-					onClick={handleExpandContentClick}
-				>
-					<Icon
-						color="text-white"
-						icon={IconCatalog.CHEVRON_RIGHT}
-					/>
-				</Button>
-			)}
-		</Box>
-	);
-})(() => isDevelopmentEnvironment() || AuthService.isUserLoggedIn());
+				)}
+			</Box>
+		);
+	}
+
+	return null;
+}
 
 export default DevTools;
 

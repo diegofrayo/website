@@ -2,7 +2,7 @@ import autoBind from "auto-bind";
 
 import apiClient from "~/features/api-client";
 
-import { logger } from "../logger";
+import logger from "../logger";
 
 class AuthServiceClass {
 	#isUserLoggedIn: boolean = false;

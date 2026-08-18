@@ -7,9 +7,9 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, InlineText, Link, List, Title } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
-import { Routes, WEBSITE_METADATA } from "~/constants";
+import { WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
-import { useRouting } from "~/features/routing";
+import { Routes, useRouting } from "~/features/routing";
 
 type HeaderProps = {
 	height: number;

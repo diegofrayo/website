@@ -27,10 +27,11 @@ import {
 	Space,
 } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { BLOG_IMAGES_PATH, Routes } from "~/constants";
+import { BLOG_IMAGES_PATH } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/features/analytics";
 import { getMDXExport, MDXContent } from "~/features/mdx/client";
+import { Routes } from "~/features/routing";
 
 import { BlogPostCategory } from "../../components/blog-post-category";
 import type { BlogPostWithContent } from "../../types";

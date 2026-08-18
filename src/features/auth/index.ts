@@ -1,4 +1,4 @@
-export * from "./components";
-export { default as useAuth } from "./hook";
-export { default as withAuth } from "./hoc";
-export { default } from "./service";
+export * from "./auth.components";
+export { default as useAuth } from "./auth.hook";
+export { default as withAuth } from "./auth.hoc";
+export { default } from "./auth.service";

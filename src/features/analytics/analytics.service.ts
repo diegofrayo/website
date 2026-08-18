@@ -5,7 +5,7 @@ import type UtilsTypes from "@diegofrayo-pkg/types";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
 import AuthService from "../auth";
-import { logger } from "../logger";
+import logger from "../logger";
 
 class AnalyticsServiceClass {
 	private DISABLE_ANALYTICS_FLAG = "analytics=false";

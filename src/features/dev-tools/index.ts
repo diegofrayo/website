@@ -1,3 +1,1 @@
-import DevTools from "./dev-tools";
-
-export default DevTools;
+export { default } from "./dev-tools";

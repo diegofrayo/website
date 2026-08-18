@@ -7,10 +7,11 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import { is } from "@diegofrayo-pkg/utilities/fp";
 import { isBoolean, isEmptyString } from "@diegofrayo-pkg/validator";
 
-import { ASSETS_ROOT_PATH, EnvVars, FAVICON_PATH, Routes, WEBSITE_METADATA } from "~/constants";
+import { ASSETS_ROOT_PATH, EnvVars, FAVICON_PATH, WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
 import AuthService from "~/features/auth";
 import DevTools from "~/features/dev-tools";
+import { Routes } from "~/features/routing";
 
 type PageProps = {
 	children: ReactTypes.Children;

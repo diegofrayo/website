@@ -6,8 +6,8 @@ import { waitFor } from "@diegofrayo-pkg/utilities/async";
 
 import { Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
-import { Routes } from "~/constants";
 import AuthService from "~/features/auth";
+import { Routes } from "~/features/routing";
 
 function SignInPage() {
 	// --- STATES & REFS ---

@@ -1,5 +1,6 @@
 import { Menu } from "@base-ui/react/menu";
 
+import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
@@ -14,10 +15,10 @@ import CopyToClipboardPopover, {
 } from "~/components/common/copy-to-clipboard-popover";
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
-import { Routes } from "~/constants";
 import apiClient from "~/features/api-client";
 import AuthService, { withAuth } from "~/features/auth";
 import { logAndReportError } from "~/features/logger";
+import { Routes } from "~/features/routing";
 
 type ToolsMenuProps = {
 	devURL: string;
@@ -169,7 +170,13 @@ interface ToolsMenuItemButtonProps {
 type ToolsMenuItemProps = ToolsMenuItemLinkProps | ToolsMenuItemButtonProps;
 
 function ToolsMenuItem(props: ToolsMenuItemProps) {
+	// --- COMPUTED STATES ---
 	const isLinkElement = props.as === "link";
+
+	// --- STYLES ---
+	const classes = {
+		element: cn("flex h-8 w-full items-center justify-between gap-4 px-2"),
+	};
 
 	return (
 		<List.Item className="border-b border-zinc-300 bg-zinc-100 text-sm last:border-0">
@@ -178,7 +185,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps) {
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={props.url}
-						className="flex h-8 w-full items-center justify-between gap-4 px-2"
+						className={classes.element}
 						isExternalLink={props.isExternalLink || false}
 					>
 						<InlineText>{props.title}</InlineText>
@@ -187,7 +194,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps) {
 				) : (
 					<Button
 						variant={Button.variant.SMOOTH}
-						className="flex h-8 w-full items-center justify-between gap-4 px-2"
+						className={classes.element}
 						onClick={props.onClick}
 					>
 						<InlineText>{props.title}</InlineText>
