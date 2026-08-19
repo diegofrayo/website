@@ -20,7 +20,11 @@ My personal website.
 1. Create a `.env` file
    ```
     NEXT_PUBLIC_WEBSITE_URL=https://website.local
+    NEXT_PUBLIC_WEBSITE_URL_DEV=https://website.local
     NEXT_PUBLIC_WEBSITE_URL_PROD=https://diegofrayo.dev
+    AUTH_TOKEN=XXX
+    ISR_PIN=XXX
+    JWT_SECRET=XXX
    ```
 1. Install deps: `npm install`
 1. Install git hooks: `npm run husky:install`
@@ -32,13 +36,13 @@ My personal website.
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     5          268          197           21           50
+ CSS                     2          200          140           20           40
  JSON                    7         1712         1712            0            0
  Markdown                1           60            0           48           12
- TSX                    97         8031         6783          249          999
- TypeScript             84         3265         2573          151          541
+ TSX                    93         7491         6296          238          957
+ TypeScript            102         3621         2855          155          611
 ===============================================================================
- Total                 194        13336        11265          469         1602
+ Total                 205        13084        11003          461         1620
 ===============================================================================
 ```
 

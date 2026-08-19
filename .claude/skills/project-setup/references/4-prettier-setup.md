@@ -9,6 +9,7 @@ Installs Prettier with import-sorting and Tailwind plugins, and creates `.pretti
   pnpm i -D prettier @ianvs/prettier-plugin-sort-imports prettier-plugin-tailwindcss
   ```
 - Create `.prettierrc.js` at the project root:
+
   ```js
   export default {
     // global

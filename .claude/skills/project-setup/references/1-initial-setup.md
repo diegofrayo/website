@@ -29,9 +29,14 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
   "start": "next start",
   "===== FORMATTING =====": "",
   "lint": "eslint",
-  "format": "prettier --write \"./src/**/*.{ts,tsx,json,css,mjs,js}\""
+  "format": "prettier --write \"./src/**/*.{ts,tsx,json,css,mjs,js}\"",
+  "===== UTILS =====": "",
+  "script:code-stats": "tokei ./src",
+  "script:detect-dead-code": "knip",
+  "script:build-analyze": "next experimental-analyze"
   ```
 - Create a `.gitignore` file. (Skip if it is already exists)
+
   ```
   # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 

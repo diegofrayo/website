@@ -82,7 +82,7 @@ Tailwind CSS v4 with PostCSS. Use `cn()` utility for class merging. CVA (`class-
 
 ### Authentication
 
-Simple token-based auth: `?auth_token=<token>` on `/sign-in` validates against `NEXT_PUBLIC_AUTH_TOKEN`, stores session in browser storage. `_app.tsx` blocks rendering until session is checked. This is intentionally minimal.
+Token-based auth backed by a Next.js API route (`src/pages/api/server.ts`), dispatched via a `$_ACTION` field (`POST/sign-in`, `POST/check-session`, `POST/sign-out`) to handlers in `src/features/server/api/endpoints/`. Sign-in validates the submitted token against `EnvVars.AUTH_TOKEN` and, on success, signs a session token and sets it as an HTTP-only cookie (`src/features/auth/auth.server.ts`). The client (`src/features/auth/auth.service.ts`, called through `apiClient.website.auth`) checks/signs-in/signs-out via that API. `_app.tsx` blocks rendering until `AuthService.loadSession()` resolves.
 
 ### Resume Bilingual Context
 
@@ -90,7 +90,7 @@ The resume page uses a React Context (`resume.context.ts`) to switch between ES/
 
 ### External Images
 
-Remote images are served from Tigris CDN (`https://dfrz-public.t3.storage.dev/**`), configured as an allowed remote pattern in `next.config.ts`.
+Remote images are served from Supabase Storage (`https://ihzaehklbqrkvxrawczr.supabase.co/**`), configured as an allowed remote pattern in `next.config.ts`. Static image imports are disabled (`images.disableStaticImages: true`).
 
 ### TypeScript
 

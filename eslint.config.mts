@@ -1,4 +1,7 @@
 import js from "@eslint/js";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import checkFile from "eslint-plugin-check-file";
 import pluginReact from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import storybook from "eslint-plugin-storybook";
@@ -15,15 +18,36 @@ const JAVASCRIPT_CONFIG = {
 	languageOptions: { globals: globals.browser },
 };
 
-const TYPESCRIPT_CONFIG = tseslint.config(
-	{ ignores: ["node_modules"] },
-	...tseslint.configs.recommended,
-	{ files: ["**/*.{mts,ts,tsx}"] },
-);
+const FILENAME_CONVENTIONS = {
+	ignores: [
+		"src/features/pages/blog/pages/\\[slug\\]/\\[slug\\].page.tsx",
+		"src/pages/404.tsx",
+		"src/pages/500.tsx",
+		"src/pages/_app.tsx",
+		"src/pages/_document.tsx",
+		"src/pages/blog/\\[slug\\].ts",
+	],
+	plugins: {
+		"check-file": checkFile,
+	},
+	rules: {
+		"check-file/filename-naming-convention": [
+			"error",
+			{ "src/**/*": "KEBAB_CASE" },
+			{
+				// ignore the middle extensions of the filename to support filename like bable.config.js or smoke.spec.ts
+				ignoreMiddleExtensions: true,
+			},
+		],
+	},
+};
+
+const TYPESCRIPT_CONFIG = tseslint.config(...tseslint.configs.recommended, {
+	files: ["**/*.{mts,ts,tsx}"],
+});
 
 const REACT_CONFIG = {
 	files: ["**/*.{ts,tsx}"],
-	ignores: ["@diegofrayo-features/**/*"],
 	extends: [pluginReact.configs.flat["recommended"], reactHooks.configs.flat.recommended],
 	settings: { react: { version: "19" } },
 	rules: {
@@ -59,10 +83,23 @@ const CSS_CONFIG = {
 };
 
 export default defineConfig([
+	{ settings: { react: { version: "19" } } },
+	globalIgnores([
+		".next/**",
+		"out/**",
+		"build/**",
+		"next-env.d.ts",
+		"node_modules",
+		"public/assets/pages/demo/bets",
+	]),
+
+	...nextVitals,
+	...nextTs,
+
 	JAVASCRIPT_CONFIG,
+	FILENAME_CONVENTIONS,
 	TYPESCRIPT_CONFIG,
 	CSS_CONFIG,
 	REACT_CONFIG,
 	STORYBOOK_CONFIG,
-	globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
