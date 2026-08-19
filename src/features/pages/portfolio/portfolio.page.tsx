@@ -152,7 +152,8 @@ function ProjectRow({ item }: { item: Project }) {
 						src={imageUrl}
 						alt={item.title}
 						className="size-full object-contain object-center"
-						useNativeElement
+						width={78}
+						height={78}
 					/>
 					<Box className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover:bg-black/40">
 						<Icon

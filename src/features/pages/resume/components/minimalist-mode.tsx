@@ -89,7 +89,7 @@ function EducationList({ education }: { education: Resume["education"] }) {
 	return education.map((item) => {
 		return (
 			<Box
-				key={generateSlug(`short-education-${item.institution}`)}
+				key={generateSlug(`education-${item.institution}`)}
 				className="mb-3 last:mb-0"
 			>
 				<Paragraph className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Paragraph>
@@ -130,7 +130,7 @@ function ExperienceList({
 
 			return (
 				<Box
-					key={generateSlug(`short-experience-${id}`)}
+					key={generateSlug(`experience-${id}`)}
 					className="mb-8 break-inside-avoid last:mb-0"
 				>
 					<Box className="flex items-end justify-between gap-4">
@@ -175,7 +175,7 @@ function ExperienceList({
 								className="mx-1"
 							>
 								{content.achievements.map((achievement, index) => (
-									<List.Item key={generateSlug(`short-${id}-achievement-${index}`)}>
+									<List.Item key={generateSlug(`${id}-achievement-${index}`)}>
 										{achievement}
 									</List.Item>
 								))}

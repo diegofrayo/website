@@ -68,15 +68,15 @@ export function StylishMode({ data, contentMode }: StylishModeProps) {
 					{data.education.map((item) => {
 						return (
 							<Box
-								key={generateSlug(`short-education-${item.institution}`)}
+								key={generateSlug(`education-${item.institution}`)}
 								className="mb-4 flex items-start last:mb-0"
 							>
 								<Image
 									src={item.institutionLogo}
 									alt={`${item.institution} logo`}
-									className="relative top-1 mr-2 shrink-0"
+									className="relative top-1 mr-2 h-auto w-12 shrink-0"
 									width={48}
-									height={48}
+									height={60}
 								/>
 								<Box>
 									<Title
