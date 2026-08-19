@@ -6,10 +6,12 @@ import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isString } from "@diegofrayo-pkg/validator";
 
-import BoxWithTitle from "~/components/common/box-with-title";
-import CopyToClipboardPopover from "~/components/common/copy-to-clipboard-popover";
-import ImageWithLink from "~/components/common/image-with-link";
-import SourceCode from "~/components/common/source-code";
+import {
+	BoxWithTitle,
+	CopyToClipboardPopover,
+	ImageWithLink,
+	SourceCode,
+} from "~/components/common";
 import {
 	Blockquote,
 	Box,

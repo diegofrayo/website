@@ -1,6 +1,6 @@
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import BoxWithTitle from "~/components/common/box-with-title";
+import { BoxWithTitle } from "~/components/common";
 import { Blockquote, Box, Collapsible, Icon, Link, Pre } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";

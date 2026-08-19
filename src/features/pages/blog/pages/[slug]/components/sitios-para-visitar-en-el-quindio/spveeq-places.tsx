@@ -3,8 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray, isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import BoxWithTitle from "~/components/common/box-with-title";
-import ImageGallery from "~/components/common/image-gallery";
+import { BoxWithTitle, ImageGallery } from "~/components/common";
 import { Box, Collapsible, Icon, InlineText, Link, Space, Title } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";

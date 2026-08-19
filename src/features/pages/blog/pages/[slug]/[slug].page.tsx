@@ -7,13 +7,15 @@ import { encodeRequestParams } from "@diegofrayo-pkg/utilities/navigation";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray } from "@diegofrayo-pkg/validator";
 
-import BoxWithTitle from "~/components/common/box-with-title";
-import Callout from "~/components/common/callout";
-import CopyToClipboardPopover from "~/components/common/copy-to-clipboard-popover";
+import {
+	BoxWithTitle,
+	Callout,
+	CopyToClipboardPopover,
+	ImageWithLink,
+	Toast,
+	Tooltip,
+} from "~/components/common";
 import type { CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
-import ImageWithLink from "~/components/common/image-with-link";
-import Toast from "~/components/common/toast";
-import Tooltip from "~/components/common/tooltip";
 import { MainLayout, Page } from "~/components/layout";
 import {
 	Box,
@@ -34,7 +36,7 @@ import { getMDXExport, MDXContent } from "~/features/mdx/client";
 import { Routes } from "~/features/routing";
 
 import { BlogPostCategory } from "../../components/blog-post-category";
-import type { BlogPostWithContent } from "../../types";
+import type { BlogPost, BlogPostWithContent } from "../../types";
 
 export type BlogPostPageProps = {
 	data: BlogPostWithContent;
@@ -85,14 +87,14 @@ export default BlogPostPage;
 // --- UTILS ---
 
 function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) {
-	const COMPONENTS_PATHS_MAP = {
-		Playground: "../../../../common/components/common/playground",
-		MFMAMGitHubRepo: "./components/my-favorite-music-and-mdx/MFMAMGitHubRepo",
-		MFMAMHelloWorldMDX: "./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX",
-		MFMAMSpotifyPlaylist: "./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist",
-		SPVEEQPlaces: "./components/sitios-para-visitar-en-el-quindio/SPVEEQPlaces",
-		SPVEEQRecommendations: "./components/sitios-para-visitar-en-el-quindio/SPVEEQRecommendations",
-	} as UtilsTypes.Object<string>;
+	const DYNAMIC_COMPONENTS = [
+		"Playground",
+		"MFMAMGitHubRepo",
+		"MFMAMHelloWorldMDX",
+		"MFMAMSpotifyPlaylist",
+		"SPVEEQPlaces",
+		"SPVEEQRecommendations",
+	];
 
 	const components = {
 		Callout,
@@ -103,49 +105,58 @@ function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) 
 	} as UtilsTypes.Object;
 
 	Object.keys(componentsMap["Components"] || {}).forEach((componentName) => {
-		if (COMPONENTS_PATHS_MAP[componentName]) {
-			if (componentName === "Playground") {
-				components[componentName] = dynamic(
-					() => import("../../../../../components/common/playground"),
-					{
-						ssr: true,
-					},
-				);
-			} else if (componentName === "MFMAMGitHubRepo") {
-				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/mfmam-github-repo"),
-					{
-						ssr: true,
-					},
-				);
-			} else if (componentName === "MFMAMHelloWorldMDX") {
-				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/mfmam-hello-world-mdx"),
-					{
-						ssr: true,
-					},
-				);
-			} else if (componentName === "MFMAMSpotifyPlaylist") {
-				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/mfmam-spotify-playlist"),
-					{
-						ssr: true,
-					},
-				);
-			} else if (componentName === "SPVEEQPlaces") {
-				components[componentName] = dynamic(
-					() => import("./components/sitios-para-visitar-en-el-quindio/spveeq-places"),
-					{
-						ssr: true,
-					},
-				);
-			} else if (componentName === "SPVEEQRecommendations") {
-				components[componentName] = dynamic(
-					() => import("./components/sitios-para-visitar-en-el-quindio/spveeq-recommendations"),
-					{
-						ssr: true,
-					},
-				);
+		if (DYNAMIC_COMPONENTS.includes(componentName)) {
+			switch (componentName) {
+				case "Playground": {
+					components[componentName] = dynamic(
+						() => import("../../../../../components/common/playground"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				case "MFMAMGitHubRepo": {
+					components[componentName] = dynamic(
+						() => import("./components/my-favorite-music-and-mdx/mfmam-github-repo"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				case "MFMAMHelloWorldMDX": {
+					components[componentName] = dynamic(
+						() => import("./components/my-favorite-music-and-mdx/mfmam-hello-world-mdx"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				case "MFMAMSpotifyPlaylist": {
+					components[componentName] = dynamic(
+						() => import("./components/my-favorite-music-and-mdx/mfmam-spotify-playlist"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				case "SPVEEQPlaces": {
+					components[componentName] = dynamic(
+						() => import("./components/sitios-para-visitar-en-el-quindio/spveeq-places"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				case "SPVEEQRecommendations": {
+					components[componentName] = dynamic(
+						() => import("./components/sitios-para-visitar-en-el-quindio/spveeq-recommendations"),
+						{ ssr: true },
+					);
+					break;
+				}
+
+				default:
+					break;
 			}
 		}
 	});
@@ -181,7 +192,7 @@ function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["deta
 	);
 }
 
-function BlogPostSources({ sources }: { sources: { title: string; url: string }[] }) {
+function BlogPostSources({ sources }: Pick<BlogPost, "sources">) {
 	if (isEmptyArray(sources)) return null;
 
 	return (

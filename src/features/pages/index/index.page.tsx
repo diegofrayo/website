@@ -1,7 +1,7 @@
 import { pipe } from "@diegofrayo-pkg/utilities/fp";
 import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
 
-import TypingTextEffect from "~/components/common/typing-text-effect";
+import { TypingTextEffect } from "~/components/common";
 import { Page, type PageMetadata } from "~/components/layout";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";

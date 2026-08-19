@@ -8,7 +8,6 @@
 		"===== DEV =====": "",
 		"dev": "portless --lan website next dev",
 		"build:ts": "tsc --noEmit",
-		"perf:analyze": "next experimental-analyze",
 		"===== PROD =====": "",
 		"build": "next build",
 		"start": "next start",
@@ -20,7 +19,8 @@
 		"storybook:build": "storybook build",
 		"===== UTILS =====": "",
 		"script:code-stats": "tokei ./src",
-		"script:detect-dead-code": "knip"
+		"script:detect-dead-code": "knip",
+		"script:build-analyze": "next experimental-analyze"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.5.0",

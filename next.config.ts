@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
 			skipDefaultConversion: false,
 			preventFullImport: true,
 		},
+		"~/components/common": {
+			transform: "~/components/common/{{kebabCase member}}",
+			skipDefaultConversion: false,
+			preventFullImport: true,
+		},
 		"@diegofrayo-pkg/hooks": {
 			transform: "@diegofrayo-pkg/hooks/{{kebabCase member}}",
 			skipDefaultConversion: false,

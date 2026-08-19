@@ -9,10 +9,8 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
 import { isEmptyString } from "@diegofrayo-pkg/validator";
 
-import { Toast } from "~/components/common";
-import CopyToClipboardPopover, {
-	type CopyToClipboardPopoverProps,
-} from "~/components/common/copy-to-clipboard-popover";
+import { CopyToClipboardPopover, Toast } from "~/components/common";
+import { type CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import apiClient from "~/features/api-client";

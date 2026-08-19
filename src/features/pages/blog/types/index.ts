@@ -1,6 +1,6 @@
 import type UtilsTypes from "@diegofrayo-pkg/types";
 
-type BlogPost = {
+export type BlogPost = {
 	slug: string;
 	title: string;
 	description: string;
