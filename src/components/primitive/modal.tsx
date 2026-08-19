@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser";
+import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
 // --- PROPS & TYPES ---
 

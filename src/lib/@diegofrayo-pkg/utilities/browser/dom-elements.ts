@@ -1,5 +1,3 @@
-import { isNull } from "../../validator";
-
 export function focusElement(element: HTMLElement): void {
 	element.focus();
 	element.click();
@@ -22,7 +20,7 @@ export function isElementInViewport(element: Element): boolean {
 }
 
 export function getTargetElement<HTMLElement>(event: Event): HTMLElement {
-	if (isNull(event.target)) {
+	if (!event.target) {
 		throw new Error("Target element is null unexpectedly");
 	}
 

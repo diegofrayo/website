@@ -1,12 +1,10 @@
-import { isEmptyString, isUndefined } from "../../validator";
-
 export async function copyToClipboard(text: string): Promise<void> {
 	try {
-		if (isUndefined(navigator.clipboard)) {
+		if (navigator.clipboard === undefined) {
 			throw new Error("Clipboard not supported");
 		}
 
-		if (isEmptyString(text)) {
+		if (text === "") {
 			throw new Error("Any text was selected to copy");
 		}
 

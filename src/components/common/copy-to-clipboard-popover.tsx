@@ -2,7 +2,7 @@ import { Children, cloneElement, isValidElement, useState } from "react";
 import type { PopoverPositionerProps } from "@base-ui/react/popover";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { copyToClipboard } from "@diegofrayo-pkg/utilities/browser";
+import { copyToClipboard } from "@diegofrayo-pkg/utilities/browser/clipboard";
 import { isFunction, isString } from "@diegofrayo-pkg/validator";
 
 import { Box } from "~/components/primitive";

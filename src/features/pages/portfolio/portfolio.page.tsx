@@ -4,7 +4,7 @@ import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
-import { isPWA } from "@diegofrayo-pkg/utilities/browser";
+import { isPWA } from "@diegofrayo-pkg/utilities/browser/device";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
 

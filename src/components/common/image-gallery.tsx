@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
-import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser";
+import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser/device";
 import { safeCastNumber } from "@diegofrayo-pkg/utilities/numbers";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNumber, isString } from "@diegofrayo-pkg/validator";

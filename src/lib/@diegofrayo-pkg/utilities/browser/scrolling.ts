@@ -1,4 +1,3 @@
-import { isString } from "../../validator";
 import { isElementInViewport } from "./dom-elements";
 
 export function getScrollPosition(): number {
@@ -13,7 +12,7 @@ export function goToElement(
 	element_: string | Element,
 	options?: { onlyIfElementIsOutsideViewport?: boolean },
 ): void {
-	const element = isString(element_) ? document.getElementById(element_) : element_;
+	const element = typeof element_ === "string" ? document.getElementById(element_) : element_;
 
 	if (!element) return;
 

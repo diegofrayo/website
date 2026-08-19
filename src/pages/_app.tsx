@@ -13,7 +13,7 @@ import { Toaster } from "sonner";
 
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser";
+import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser/device";
 
 import AuthService from "~/features/auth";
 import logger, { addGlobalErrorListener } from "~/features/logger";

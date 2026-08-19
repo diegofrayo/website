@@ -1,5 +1,5 @@
 import { useBoolean, useOnScroll } from "@diegofrayo-pkg/hooks";
-import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser";
+import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
 import { Box, Button, Icon, InlineText, Link, Paragraph } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";

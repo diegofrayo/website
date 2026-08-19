@@ -1,5 +1,3 @@
-import { isServer } from "../../validator";
-
 export function isSmallScreen(): boolean {
 	return getScreenSize() === "XS";
 }
@@ -64,11 +62,11 @@ export function isAndroid(): boolean {
 }
 
 export function isWindowsDevice(): boolean {
-	if (isServer()) {
-		return process.platform === "win32";
+	if (typeof window !== "undefined") {
+		return navigator.platform.indexOf("Win") > -1;
 	}
 
-	return navigator.platform.indexOf("Win") > -1;
+	return process.platform === "win32";
 }
 
 export async function deletePWACache(): Promise<boolean[]> {
