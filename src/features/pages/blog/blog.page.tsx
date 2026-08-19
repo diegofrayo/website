@@ -30,7 +30,9 @@ function BlogPage({ data: posts }: BlogPageProps) {
 									src={`${BLOG_IMAGES_PATH}/thumbnails/${post.slug}.png`}
 									alt={post.title}
 									className="h-auto w-full border-b border-zinc-200 bg-slate-50 object-cover sm:object-contain"
-									useNativeElement
+									width={359}
+									height={203}
+									loading="eager"
 								/>
 
 								<Box className="flex flex-1 flex-col gap-2 p-3">

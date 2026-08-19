@@ -28,7 +28,7 @@ function generateIconComponent(iconPath: string) {
 		return (
 			<Image
 				src={iconPath}
-				alt="Custom icon"
+				alt="Custom image icon"
 				className={cn(className)}
 				width={size}
 				height={size}

@@ -46,9 +46,9 @@ export function ExperienceTimeline({ experience, contentMode }: ExperienceTimeli
 								<Image
 									src={company.logo}
 									alt="Company logo"
-									className="size-9"
-									width={36}
-									height={36}
+									className="size-full"
+									width={32}
+									height={32}
 								/>
 							</Box>
 
