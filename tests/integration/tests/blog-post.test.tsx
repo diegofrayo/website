@@ -36,6 +36,31 @@ describe("BlogPostPage", () => {
 
 		expect(trackEventSpy).toHaveBeenCalledWith("BLOG|SEND_EMAIL", { post: post.details.title });
 	});
+
+	it("copies the current URL to the clipboard, tracks a click and shows a 'copied!' popover", async () => {
+		window.history.pushState({}, "", `/blog/${SLUG}`);
+
+		const trackEventSpy = vi.spyOn(AnalyticsService, "trackEvent");
+		const writeTextSpy = vi.fn().mockResolvedValue(undefined);
+		Object.defineProperty(navigator, "clipboard", {
+			value: { writeText: writeTextSpy },
+			configurable: true,
+		});
+
+		renderWithRouter(<BlogPostPage data={getBlogPostData(SLUG)} />, {
+			pathname: `${Routes.BLOG}/${SLUG}`,
+		});
+
+		const button = screen
+			.getAllByRole("button", { name: "Copy URL" })
+			.find((element) => element.tagName === "BUTTON") as HTMLElement;
+
+		await userEvent.click(button);
+
+		expect(writeTextSpy).toHaveBeenCalledWith(window.location.href);
+		expect(trackEventSpy).toHaveBeenCalledWith("BLOG|COPY_URL", { post: post.details.title });
+		expect(await screen.findByText("copied!")).toBeInTheDocument();
+	});
 });
 
 // --- UTILS ---
