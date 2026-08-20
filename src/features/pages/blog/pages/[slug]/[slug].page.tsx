@@ -59,7 +59,7 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 					<Image
 						src={`${BLOG_IMAGES_PATH}/thumbnails/${blogPostDetails.slug}.png`}
 						alt={blogPostDetails.title}
-						className="mx-auto h-84 w-auto max-w-full"
+						className="mx-auto h-auto w-full max-w-full"
 						width={600}
 						height={338}
 						loading="eager"

@@ -4,8 +4,8 @@ import {
 	expectNoRenderErrors,
 	expectPageIsNotEmpty,
 	expectSuccessfulStatus,
-} from "./support/asserts";
-import { trackRenderErrors } from "./support/render-errors";
+} from "../utils/asserts";
+import { trackRenderErrors } from "../utils/render-errors";
 
 test("renders the portfolio page without errors", async ({ page }) => {
 	const errors = trackRenderErrors(page);

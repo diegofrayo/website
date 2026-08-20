@@ -4,12 +4,12 @@ import {
 	expectNoRenderErrors,
 	expectPageIsNotEmpty,
 	expectSuccessfulStatus,
-} from "./support/asserts";
-import { trackRenderErrors } from "./support/render-errors";
+} from "../utils/asserts";
+import { trackRenderErrors } from "../utils/render-errors";
 
-test("renders the resume page without errors", async ({ page }) => {
+test("renders the home page without errors", async ({ page }) => {
 	const errors = trackRenderErrors(page);
-	const response = await page.goto("/resume");
+	const response = await page.goto("/");
 
 	await expectPageIsNotEmpty(page);
 	await expectSuccessfulStatus(response);

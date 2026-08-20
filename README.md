@@ -13,6 +13,8 @@ My personal website.
 - MDX with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
 - ESLint & Prettier & Husky
 - Storybook
+- React Testing Library for integration tests
+- Playwright for e2e tests
 
 ## ⚡ Setup
 

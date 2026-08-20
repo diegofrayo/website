@@ -4,8 +4,8 @@ import {
 	expectNoRenderErrors,
 	expectSuccessfulStatus,
 	expectTextIsVisible,
-} from "./support/asserts";
-import { trackRenderErrors } from "./support/render-errors";
+} from "../utils/asserts";
+import { trackRenderErrors } from "../utils/render-errors";
 
 const AUTH_TOKEN = process.env["AUTH_TOKEN"];
 

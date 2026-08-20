@@ -96,6 +96,18 @@ Remote images are served from Supabase Storage (`https://ihzaehklbqrkvxrawczr.su
 
 Strict mode with `exactOptionalPropertyTypes` and `noUncheckedSideEffectImports`. ESLint enforces no `console` usage and strict unused variable rules.
 
+## Testing
+
+```bash
+npm run test:e2e            # Playwright — runs against a real `next dev` server on :4300
+npm run test:e2e:ui         # Playwright UI mode
+npm run test:integration        # Vitest (jsdom) — renders React components in isolation
+npm run test:integration:watch  # Vitest integration, watch mode
+```
+
+- **E2E** (`e2e/`): Playwright specs in `e2e/specs/*.spec.ts`, one per page (home, blog, blog-post, resume, portfolio, sign-in). Config in `playwright.config.ts` boots `next dev` on port 4300 automatically. Shared helpers live in `e2e/utils/` (`asserts.ts`, `render-errors.ts`). Assertion strategy favors listening for `pageerror`/console errors/failed responses over DOM or screenshot snapshots — see `docs/e2e-testing.md` for the rationale.
+- **Integration** (`integration/`): Vitest + `@testing-library/react` in jsdom, config in `vitest.integration.config.ts`. Tests live in `integration/tests/*.test.tsx`; shared render helpers in `integration/support/` (e.g. `render-with-router.tsx`); fixture data in `integration/.fixtures/`; global setup/per-test setup in `integration/global-setup.ts` / `integration/setup.ts`. Use this layer for component behavior that needs real DOM interaction but not a full browser.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
