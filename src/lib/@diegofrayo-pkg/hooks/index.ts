@@ -3,6 +3,7 @@ export { default as useBoolean } from "./use-boolean";
 export { default as useDebouncedCallback } from "./use-debounce-callback";
 export { default as useDidMount } from "./use-did-mount";
 export { default as useDocumentTitle } from "./use-document-title";
+export { default as useIsMounted } from "./use-is-mounted";
 export { default as useNumber } from "./use-number";
 export { default as useOnScroll } from "./use-on-scroll";
 export { default as useTriggerRender } from "./use-trigger-render";

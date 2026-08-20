@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 import cn from "@diegofrayo-pkg/cn";
+import { useIsMounted } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
@@ -17,7 +19,10 @@ type ModalProps = {
 // --- COMPONENT DEFINITION ---
 
 function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: ModalProps) {
-	// --- REFS ---
+	// --- HOOKS ---
+	const isMounted = useIsMounted();
+
+	// --- STATE & REFS ---
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const scrollPosition = useRef(0);
 
@@ -62,7 +67,9 @@ function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: 
 		}
 	}
 
-	return (
+	if (!isMounted) return null;
+
+	return createPortal(
 		<dialog
 			ref={dialogRef}
 			className={cn(
@@ -77,7 +84,8 @@ function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: 
 			onClick={handleBackdropClick}
 		>
 			{children}
-		</dialog>
+		</dialog>,
+		document.body,
 	);
 }
 
