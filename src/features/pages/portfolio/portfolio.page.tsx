@@ -195,10 +195,10 @@ function ProjectRow({ item }: { item: Project }) {
 
 			<Modal
 				visible={isModalOpen}
-				className="hide-scrollbar relative max-h-[90vh] min-h-80 max-w-[90vw] min-w-80 flex-col overflow-hidden rounded-md bg-white open:justify-start"
+				className="hide-scrollbar relative max-h-[90vh] min-h-40 max-w-[90vw] min-w-80 flex-col overflow-hidden rounded-md bg-white open:justify-start sm:min-h-80"
 				onCloseHandler={handleModalClose}
 			>
-				<Box className="relative flex h-[5vh] w-full items-center justify-center gap-2 bg-zinc-100">
+				<Box className="relative flex w-full items-center justify-center gap-2 bg-zinc-100 py-2">
 					<Paragraph className="px-2 text-sm font-bold">{item.title}</Paragraph>
 					<Button
 						variant={Button.variant.UNSTYLED}

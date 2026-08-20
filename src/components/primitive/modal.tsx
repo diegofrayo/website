@@ -74,16 +74,15 @@ function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: 
 			ref={dialogRef}
 			className={cn(
 				"dr-modal",
-				"fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+				"fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none",
 				"backdrop:bg-black/50",
 				"bg-transparent p-0",
 				"open:flex open:items-center open:justify-center",
-				className,
 			)}
 			onClose={onCloseHandler}
 			onClick={handleBackdropClick}
 		>
-			{children}
+			<div className={className}>{children}</div>
 		</dialog>,
 		document.body,
 	);
