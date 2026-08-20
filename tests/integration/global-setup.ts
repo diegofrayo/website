@@ -3,7 +3,7 @@ import * as path from "node:path";
 
 import { readFile, writeFile } from "@diegofrayo-pkg/utilities/files";
 
-import { compile } from "../src/features/mdx/server";
+import { compile } from "~/features/mdx/server";
 
 /**
  * NOTE: mdx-bundler relies on esbuild, which breaks when run inside the
@@ -22,7 +22,7 @@ export default async function setup(): Promise<void> {
 	await Promise.all(
 		POST_SLUGS.map(async (slug) => {
 			const post = readFile(
-				path.join(__dirname, `../src/data/blog/posts/${slug}.json`),
+				path.join(__dirname, `../../src/data/blog/posts/${slug}.json`),
 				"json",
 			) as { content: string };
 			const mdxCompiled = await compile({ content: post.content });

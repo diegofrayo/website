@@ -10,7 +10,7 @@
 /test-results
 /playwright-report
 /playwright/.cache
-/integration/.fixtures
+/tests/integration/.fixtures
 
 # next.js
 /.next/

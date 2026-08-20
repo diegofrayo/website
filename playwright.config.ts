@@ -11,7 +11,7 @@ const baseURL = `http://localhost:${PORT}`;
 const isCIEnvironment = !!process.env["CI"];
 
 export default defineConfig({
-	testDir: "./e2e",
+	testDir: "./tests/e2e",
 	fullyParallel: true,
 	forbidOnly: isCIEnvironment,
 	retries: isCIEnvironment ? 2 : 0,

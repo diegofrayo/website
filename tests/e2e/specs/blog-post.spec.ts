@@ -1,6 +1,7 @@
 import { test } from "@playwright/test";
 
-import posts from "../../src/data/blog/posts.json";
+import posts from "~/data/blog/posts.json";
+
 import {
 	expectNoRenderErrors,
 	expectPageIsNotEmpty,

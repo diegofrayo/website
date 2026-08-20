@@ -5,12 +5,12 @@ import { describe, expect, it, vi } from "vitest";
 
 import { readFile } from "@diegofrayo-pkg/utilities/files";
 
+import post from "~/data/blog/posts/sitios-para-visitar-en-el-quindio.json";
 import AnalyticsService from "~/features/analytics";
 import BlogPostPage from "~/features/pages/blog/pages/[slug]/[slug].page";
 import type { BlogPost, BlogPostWithContent } from "~/features/pages/blog/types";
 import { Routes } from "~/features/routing";
 
-import post from "../../src/data/blog/posts/sitios-para-visitar-en-el-quindio.json";
 import { renderWithRouter } from "../support/render-with-router";
 
 describe("BlogPostPage", () => {

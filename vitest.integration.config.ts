@@ -23,8 +23,8 @@ export default defineConfig({
 			},
 		},
 		globals: false,
-		globalSetup: ["./integration/global-setup.ts"],
-		setupFiles: ["./integration/setup.ts"],
-		include: ["integration/tests/**/*.test.tsx"],
+		globalSetup: ["./tests/integration/global-setup.ts"],
+		setupFiles: ["./tests/integration/setup.ts"],
+		include: ["./tests/integration/tests/**/*.test.tsx"],
 	},
 });

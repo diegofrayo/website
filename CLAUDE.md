@@ -105,8 +105,8 @@ npm run test:integration        # Vitest (jsdom) — renders React components in
 npm run test:integration:watch  # Vitest integration, watch mode
 ```
 
-- **E2E** (`e2e/`): Playwright specs in `e2e/specs/*.spec.ts`, one per page (home, blog, blog-post, resume, portfolio, sign-in). Config in `playwright.config.ts` boots `next dev` on port 4300 automatically. Shared helpers live in `e2e/utils/` (`asserts.ts`, `render-errors.ts`). Assertion strategy favors listening for `pageerror`/console errors/failed responses over DOM or screenshot snapshots — see `docs/e2e-testing.md` for the rationale.
-- **Integration** (`integration/`): Vitest + `@testing-library/react` in jsdom, config in `vitest.integration.config.ts`. Tests live in `integration/tests/*.test.tsx`; shared render helpers in `integration/support/` (e.g. `render-with-router.tsx`); fixture data in `integration/.fixtures/`; global setup/per-test setup in `integration/global-setup.ts` / `integration/setup.ts`. Use this layer for component behavior that needs real DOM interaction but not a full browser.
+- **E2E** (`tests/e2e/`): Playwright specs in `tests/e2e/specs/*.spec.ts`, one per page (home, blog, blog-post, resume, portfolio, sign-in). Config in `playwright.config.ts` boots `next dev` on port 4300 automatically. Shared helpers live in `tests/e2e/utils/` (`asserts.ts`, `render-errors.ts`). Assertion strategy favors listening for `pageerror`/console errors/failed responses over DOM or screenshot snapshots — see `docs/e2e-testing.md` for the rationale.
+- **Integration** (`tests/integration/`): Vitest + `@testing-library/react` in jsdom, config in `vitest.integration.config.ts`. Tests live in `tests/integration/tests/*.test.tsx`; shared render helpers in `tests/integration/support/` (e.g. `render-with-router.tsx`); fixture data in `integration/.fixtures/`; global setup/per-test setup in `tests/integration/global-setup.ts` / `tests/integration/setup.ts`. Use this layer for component behavior that needs real DOM interaction but not a full browser.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

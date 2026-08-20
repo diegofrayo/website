@@ -4,9 +4,9 @@ Rendering the feature component directly (`[slug].page.tsx`) with RTL is the rig
 
 ## What I built (first test case)
 
-- `integration/tests/blog-post.test.tsx` — renders `BlogPostPage` with real data read from `sitios-para-visitar-en-el-quindio.json`, mocks a Pages-Router `NextRouter` context, and asserts the "Send a comment via e-mail" link's exact `mailto:` href.
-- `integration/global-setup.ts` — pre-compiles the post's MDX content once, in plain Node (before jsdom is installed). This was required because `mdx-bundler`'s `esbuild` dependency crashes if invoked from inside the jsdom-patched environment (its `TextEncoder`/`Uint8Array` realm differs from Node's) — I hit and fixed that.
-- `integration/support/render-with-router.tsx` — a `renderWithRouter` helper providing a mock `NextRouter` via `RouterContext.Provider`, needed because `Header` calls `useRouter()`.
+- `tests/integration/tests/blog-post.test.tsx` — renders `BlogPostPage` with real data read from `sitios-para-visitar-en-el-quindio.json`, mocks a Pages-Router `NextRouter` context, and asserts the "Send a comment via e-mail" link's exact `mailto:` href.
+- `tests/integration/global-setup.ts` — pre-compiles the post's MDX content once, in plain Node (before jsdom is installed). This was required because `mdx-bundler`'s `esbuild` dependency crashes if invoked from inside the jsdom-patched environment (its `TextEncoder`/`Uint8Array` realm differs from Node's) — I hit and fixed that.
+- `tests/integration/support/render-with-router.tsx` — a `renderWithRouter` helper providing a mock `NextRouter` via `RouterContext.Provider`, needed because `Header` calls `useRouter()`.
 - `vitest.integration.config.ts` — loads `.env` (env vars like `NEXT_PUBLIC_WEBSITE_URL` are required at import time by `src/constants/env.ts`) and pins jsdom's origin to `https://website.local` so the computed `mailto:` body matches your expected value exactly.
 
 ## Mocking AnalyticsService
@@ -15,7 +15,7 @@ Approach: `AnalyticsService` is a singleton instance, and `trackClickEvent(name,
 
 Changes:
 
-- `integration/tests/blog-post.test.tsx` — extended the same test: spies on `AnalyticsService.trackEvent`, clicks the link with `userEvent.click`, then asserts it was called with `("BLOG|SEND_EMAIL", { post: post.details.title })`.
-- `integration/setup.ts` — added `vi.restoreAllMocks()` to the shared `afterEach`, so spies from any test don't leak into the next one.
+- `tests/integration/tests/blog-post.test.tsx` — extended the same test: spies on `AnalyticsService.trackEvent`, clicks the link with `userEvent.click`, then asserts it was called with `("BLOG|SEND_EMAIL", { post: post.details.title })`.
+- `tests/integration/setup.ts` — added `vi.restoreAllMocks()` to the shared `afterEach`, so spies from any test don't leak into the next one.
 
 Didn't need to mock the implementation — `trackEvent` internally checks `!window.rybbit` first and short-circuits before touching anything jsdom can't provide, so the spy can just record the call and let it run through.
