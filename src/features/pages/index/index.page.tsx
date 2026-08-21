@@ -1,8 +1,9 @@
+"use client";
+
 import { pipe } from "@diegofrayo-pkg/utilities/fp";
 import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
 
 import { TypingTextEffect } from "~/components/common";
-import { Page, type PageMetadata } from "~/components/layout";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import { WEBSITE_METADATA } from "~/constants";
@@ -13,32 +14,20 @@ import { Routes } from "~/features/routing";
 
 function HomePage() {
 	return (
-		<Page config={metadata}>
-			<Box
-				as="main"
-				className="flex h-full flex-col"
-			>
-				<Box className="m-auto flex w-full max-w-sm flex-col gap-20 px-4">
-					<Header />
-					<NavigationLinks />
-					<Footer />
-				</Box>
+		<Box
+			as="main"
+			className="flex h-full flex-col"
+		>
+			<Box className="m-auto flex w-full max-w-sm flex-col gap-20 px-4">
+				<Header />
+				<NavigationLinks />
+				<Footer />
 			</Box>
-		</Page>
+		</Box>
 	);
 }
 
 export default HomePage;
-
-// --- CONSTANTS ---
-
-const metadata: PageMetadata = {
-	description:
-		"I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
-	isSEOEnabled: true,
-	pathname: "/",
-	title: "",
-};
 
 // --- COMPONENTS ---
 

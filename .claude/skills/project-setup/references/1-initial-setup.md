@@ -15,7 +15,7 @@ Sets up the base project using TanStack Start with pnpm, Tailwind CSS, and core 
   ```
 - Install dev dependencies:
   ```sh
-  pnpm i -D @types/node @types/react @types/react-dom tsx
+  pnpm i -D @types/node @types/react @types/react-dom tsx knip
   ```
 - Add these npm scripts to `package.json` (preserve the section separator keys):
   ```json

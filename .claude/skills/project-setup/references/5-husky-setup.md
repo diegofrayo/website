@@ -13,14 +13,14 @@ Installs Husky + lint-staged and configures a pre-commit hook that runs type-che
   "===== SETUP =====": "",
   "husky:install": "husky"
   ```
-- Add the lint-staged config to `package.json` at the top level (not inside `scripts`):
-  ```json
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "prettier --write",
-      "eslint"
-    ]
-  }
+- Add the lint-staged config creating `lint-staged.config.js` file:
+  ```js
+  const baseConfig = ["prettier --write", "eslint"];
+
+  export default {
+    "src/**/*.{ts,tsx}": baseConfig,
+    "tests/**/*.{ts,tsx}": baseConfig,
+  };
   ```
 - Run:
   ```sh

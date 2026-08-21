@@ -1,7 +1,7 @@
 import { expect, type Page, type Response } from "@playwright/test";
 
 export function expectPageIsNotEmpty(page: Page) {
-	return expect(page.locator("#__next")).not.toBeEmpty();
+	return expect(page.locator("body")).not.toBeEmpty();
 }
 
 export function expectSuccessfulStatus(response: Response | null) {

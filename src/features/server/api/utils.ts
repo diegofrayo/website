@@ -1,14 +1,14 @@
-import type { NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import { ValiError } from "valibot";
 
 import { CustomError } from "./errors";
 
-export function sendServerError(res: NextApiResponse, error: unknown) {
+export function sendServerError(error: unknown): NextResponse {
 	const response = createServerErrorMessage(error);
 	console.error(error);
 	console.error(response);
 
-	res.status(getStatusCode(error)).json(response);
+	return NextResponse.json(response, { status: getStatusCode(error) });
 }
 
 function getStatusCode(error: unknown) {

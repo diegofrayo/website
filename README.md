@@ -25,7 +25,6 @@ My personal website.
     NEXT_PUBLIC_WEBSITE_URL_DEV=https://website.local
     NEXT_PUBLIC_WEBSITE_URL_PROD=https://diegofrayo.dev
     AUTH_TOKEN=XXX
-    ISR_PIN=XXX
     JWT_SECRET=XXX
    ```
 1. Install deps: `npm install`

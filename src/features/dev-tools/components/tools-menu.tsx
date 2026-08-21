@@ -3,20 +3,14 @@ import { Menu } from "@base-ui/react/menu";
 import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { waitFor } from "@diegofrayo-pkg/utilities/async";
 import { copyToClipboard } from "@diegofrayo-pkg/utilities/browser/clipboard";
-import { deletePWACache } from "@diegofrayo-pkg/utilities/browser/device";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
-import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
-import { isEmptyString } from "@diegofrayo-pkg/validator";
 
-import { CopyToClipboardPopover, Toast } from "~/components/common";
+import { CopyToClipboardPopover } from "~/components/common";
 import { type CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
-import apiClient from "~/features/api-client";
 import AuthService, { withAuth } from "~/features/auth";
-import { logAndReportError } from "~/features/logger";
 import { Routes } from "~/features/routing";
 
 type ToolsMenuProps = {
@@ -48,7 +42,6 @@ function ToolsMenu({ devURL, productionURL }: ToolsMenuProps) {
 								productionURL={productionURL}
 								devURL={devURL}
 							/>
-							<ISRMenuItem />
 							<SignOutMenuItem />
 						</List>
 
@@ -96,35 +89,6 @@ const EnvironmentMenuItem = withRenderInBrowser(function EnvironmentMenuItem({
 			title={`Open this page in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}
 			url={url}
 			isExternalLink
-		/>
-	);
-});
-
-const ISRMenuItem = withAuth(function ISRMenuItem() {
-	// --- HANDLERS ---
-	async function handleISROnDemandClick() {
-		try {
-			const pin = window.prompt("Type the security pin")?.trim() || "";
-
-			if (isEmptyString(pin)) return;
-
-			await apiClient.website.actions.isr({ path: window.location.pathname, secret: pin });
-			await deletePWACache();
-			await waitFor(2, "seconds");
-
-			window.location.reload();
-		} catch (error) {
-			logAndReportError(error);
-			Toast.error(getErrorMessage(error));
-		}
-	}
-
-	return (
-		<ToolsMenuItem
-			as="button"
-			icon={IconCatalog.SERVER}
-			title="ISR on-demand"
-			onClick={handleISROnDemandClick}
 		/>
 	);
 });

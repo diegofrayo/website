@@ -1,10 +1,11 @@
+"use client";
+
 import { useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
 
-import { Page } from "~/components/layout";
 import { Box } from "~/components/primitive";
 import AuthService from "~/features/auth";
 import { Routes } from "~/features/routing";
@@ -62,11 +63,7 @@ function SignInPage() {
 		});
 	});
 
-	return (
-		<Page config={{ title: "Sign in" }}>
-			<Box className={classes.container}>{getStatusMessage()}</Box>
-		</Page>
-	);
+	return <Box className={classes.container}>{getStatusMessage()}</Box>;
 }
 
 export default SignInPage;

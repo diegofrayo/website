@@ -1,9 +1,8 @@
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 import { Routes } from "./routing.constants";
 
 type UseRoutingReturn = {
-	asPath: string;
 	pathname: string;
 	isCurrentPathActive: (pathname: string) => boolean;
 };
@@ -12,18 +11,17 @@ type UseRoutingReturn = {
  * Current href: http://localhost:3000/blog/sitios-para-visitar-en-el-quindio
  *
  * @returns {
- *   pathname: "/blog/[slug]",
- *   asPath:  "/blog/sitios-para-visitar-en-el-quindio",
+ *   pathname: "/blog/sitios-para-visitar-en-el-quindio",
  *   isCurrentPathActive: (pathname: string ('/blog')) => true
  * }
  */
 export function useRouting(): UseRoutingReturn {
 	// --- HOOKS ---
-	const { pathname, asPath } = useRouter();
+	const pathname = usePathname() ?? "";
 
 	// --- API ---
 	function isCurrentPathActive(pathnameParam: string) {
-		if (pathname === pathnameParam || asPath === pathnameParam) {
+		if (pathname === pathnameParam) {
 			return true;
 		}
 
@@ -34,5 +32,5 @@ export function useRouting(): UseRoutingReturn {
 		return false;
 	}
 
-	return { pathname, asPath, isCurrentPathActive };
+	return { pathname, isCurrentPathActive };
 }

@@ -1,4 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 import { EnvVars } from "~/constants";
 import { getAuthCookie, verifyAuthToken } from "~/features/auth/auth.server";
@@ -6,12 +7,12 @@ import { getAuthCookie, verifyAuthToken } from "~/features/auth/auth.server";
 import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
 
-export default async function checkSessionHandler(req: NextApiRequest, res: NextApiResponse) {
+export default async function checkSessionHandler(req: NextRequest) {
 	try {
 		const cookie = getAuthCookie(req);
 
 		if (!cookie) {
-			return res.json({ signedIn: false });
+			return NextResponse.json({ signedIn: false });
 		}
 
 		const { authToken } = await verifyAuthToken(cookie).catch(() => {
@@ -30,8 +31,8 @@ export default async function checkSessionHandler(req: NextApiRequest, res: Next
 			});
 		}
 
-		res.json({ signedIn: true });
+		return NextResponse.json({ signedIn: true });
 	} catch (error) {
-		sendServerError(res, error);
+		return sendServerError(error);
 	}
 }

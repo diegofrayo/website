@@ -58,6 +58,8 @@
 		"plugins": [{ "name": "next" }]
 	},
 	"include": [
+		".next/dev/types/**/*.ts",
+		".next/types/**/*.ts",
 		"next-env.d.ts",
 		"playwright.config.ts",
 		"src/**/*.ts",

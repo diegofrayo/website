@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
@@ -79,9 +80,7 @@ function Playground({
 									);
 								})}
 							</Box>
-							<Paragraph className="flex-1 truncate rounded-full bg-zinc-700 px-4 py-1.5 text-xs font-bold text-white">
-								{window.location.href}
-							</Paragraph>
+							<CurrentUrl />
 						</Box>
 						<Box className="hide-scrollbar flex-1 overflow-auto p-2">
 							<Preview />
@@ -114,5 +113,13 @@ function Playground({
 		</Box>
 	);
 }
+
+const CurrentUrl = withRenderInBrowser(function CurrentUrl() {
+	return (
+		<Paragraph className="flex-1 truncate rounded-full bg-zinc-700 px-4 py-1.5 text-xs font-bold text-white">
+			{window.location.href}
+		</Paragraph>
+	);
+});
 
 export default Playground;

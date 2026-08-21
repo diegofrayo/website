@@ -3,6 +3,7 @@ export { default as Callout } from "./callout";
 export { default as CopyToClipboardPopover } from "./copy-to-clipboard-popover";
 export { default as ImageGallery } from "./image-gallery";
 export { default as ImageWithLink } from "./image-with-link";
+export { default as PersonScript } from "./person-script";
 export { default as Playground } from "./playground";
 export { default as Popover } from "./popover";
 export { default as SourceCode } from "./source-code";

@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
@@ -16,7 +18,7 @@ import {
 	Tooltip,
 } from "~/components/common";
 import type { CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
-import { MainLayout, Page } from "~/components/layout";
+import { MainLayout } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -33,7 +35,6 @@ import { BLOG_IMAGES_PATH } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/features/analytics";
 import { getMDXExport, MDXContent } from "~/features/mdx/client";
-import { Routes } from "~/features/routing";
 
 import { BlogPostCategory } from "../../components/blog-post-category";
 import type { BlogPost, BlogPostWithContent } from "../../types";
@@ -46,41 +47,32 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 	const { details: blogPostDetails, content: blogPostContent } = data;
 
 	return (
-		<Page
-			config={{
-				title: blogPostDetails.title,
-				description: blogPostDetails.description,
-				isSEOEnabled: blogPostDetails.is_published === true,
-				pathname: `${Routes.BLOG}/${blogPostDetails.slug}`,
-			}}
-		>
-			<MainLayout title={blogPostDetails.title}>
-				<Box className="border-t border-zinc-100 bg-slate-50 shadow-sm shadow-zinc-300">
-					<Image
-						src={`${BLOG_IMAGES_PATH}/thumbnails/${blogPostDetails.slug}.png`}
-						alt={blogPostDetails.title}
-						className="mx-auto h-auto w-full max-w-full"
-						width={600}
-						height={338}
-						loading="eager"
-					/>
-				</Box>
-				<Space size={1.5} />
-				<BlogPostDetails details={blogPostDetails} />
-				<Space size={1.5} />
-				<MDXContent
-					code={blogPostContent}
-					components={getBlogPostDynamicComponents(getMDXExport(blogPostContent))}
-					globals={{
-						DATA: { post: blogPostDetails },
-					}}
+		<MainLayout title={blogPostDetails.title}>
+			<Box className="border-t border-zinc-100 bg-slate-50 shadow-sm shadow-zinc-300">
+				<Image
+					src={`${BLOG_IMAGES_PATH}/thumbnails/${blogPostDetails.slug}.png`}
+					alt={blogPostDetails.title}
+					className="mx-auto h-auto w-full max-w-full"
+					width={600}
+					height={338}
+					loading="eager"
 				/>
-				<Space size={4} />
-				<BlogPostSources sources={blogPostDetails.sources} />
-				<Space size={2} />
-				<BlogPostActions blogPostTitle={blogPostDetails.title} />
-			</MainLayout>
-		</Page>
+			</Box>
+			<Space size={1.5} />
+			<BlogPostDetails details={blogPostDetails} />
+			<Space size={1.5} />
+			<MDXContent
+				code={blogPostContent}
+				components={getBlogPostDynamicComponents(getMDXExport(blogPostContent))}
+				globals={{
+					DATA: { post: blogPostDetails },
+				}}
+			/>
+			<Space size={4} />
+			<BlogPostSources sources={blogPostDetails.sources} />
+			<Space size={2} />
+			<BlogPostActions blogPostTitle={blogPostDetails.title} />
+		</MainLayout>
 	);
 }
 

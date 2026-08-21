@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import AuthService from "~/features/auth";
-import SignInPage from "~/pages/sign-in";
+import SignInPage from "~/features/pages/sign-in";
 
 import { renderWithRouter } from "../support/render-with-router";
 

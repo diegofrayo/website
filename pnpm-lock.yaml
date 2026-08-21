@@ -109,8 +109,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(eslint@10.8.0(jiti@2.6.1))
       eslint-plugin-storybook:
-        specifier: ^10.5.9
-        version: 10.5.9(eslint@10.8.0(jiti@2.6.1))(storybook@10.5.9(@types/react@19.2.14)(prettier@3.8.1)(react@19.2.3))(typescript@6.0.3)
+        specifier: ^10.5.10
+        version: 10.5.10(eslint@10.8.0(jiti@2.6.1))(typescript@6.0.3)
       globals:
         specifier: ^17.0.0
         version: 17.4.0
@@ -2652,11 +2652,10 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
-  eslint-plugin-storybook@10.5.9:
-    resolution: {integrity: sha512-4Hrqccy/zttV0S/32TSUbqtizzj4sbkgYvv7UzHveH58v96PhrO+fSpOFAqYvzNDzdOU6smKwObFtzX+RZqj4w==}
+  eslint-plugin-storybook@10.5.10:
+    resolution: {integrity: sha512-NeOu3axmhNZfRuHRciFH0a/OVgvtAJLRHAwiJjcGkPAcElNmwEPp+pqoiwxytx7kHInz7mVVoBfPwVc8kPmOLw==}
     peerDependencies:
       eslint: '>=8'
-      storybook: ^10.5.9
 
   eslint-scope@9.1.2:
     resolution: {integrity: sha512-xS90H51cKw0jltxmvmHy2Iai1LIqrfbw57b79w/J7MfvDfkIkFZ+kj6zC3BjtUwh150HsSSdxXZcsuv72miDFQ==}
@@ -5449,7 +5448,8 @@ snapshots:
   '@oxc-project/types@0.122.0':
     optional: true
 
-  '@oxc-project/types@0.127.0': {}
+  '@oxc-project/types@0.127.0':
+    optional: true
 
   '@oxc-project/types@0.143.0': {}
 
@@ -5643,7 +5643,8 @@ snapshots:
       vite: 8.0.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.9.0)
     optional: true
 
-  '@storybook/global@5.0.0': {}
+  '@storybook/global@5.0.0':
+    optional: true
 
   '@storybook/icons@2.0.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
@@ -5654,6 +5655,7 @@ snapshots:
   '@storybook/icons@2.1.0(react@19.2.3)':
     dependencies:
       react: 19.2.3
+    optional: true
 
   '@storybook/nextjs-vite@10.3.4(@babel/core@7.29.0)(esbuild@0.27.7)(next@16.3.0(@babel/core@7.29.0)(@playwright/test@1.59.1)(@types/node@20.19.39)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.5.9(@types/react@19.2.14)(prettier@3.8.1)(react@19.2.3))(typescript@6.0.3)(vite@8.0.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.9.0))':
     dependencies:
@@ -5815,6 +5817,7 @@ snapshots:
       dom-accessibility-api: 0.6.3
       picocolors: 1.1.1
       redent: 3.0.0
+    optional: true
 
   '@testing-library/jest-dom@7.0.1(@testing-library/dom@10.4.1)(vitest@4.1.2)':
     dependencies:
@@ -5883,12 +5886,14 @@ snapshots:
     dependencies:
       '@types/deep-eql': 4.0.2
       assertion-error: 2.0.1
+    optional: true
 
   '@types/debug@4.1.13':
     dependencies:
       '@types/ms': 2.1.0
 
-  '@types/deep-eql@4.0.2': {}
+  '@types/deep-eql@4.0.2':
+    optional: true
 
   '@types/doctrine@0.0.9':
     optional: true
@@ -6225,6 +6230,7 @@ snapshots:
       '@vitest/utils': 3.2.4
       chai: 5.3.3
       tinyrainbow: 2.0.0
+    optional: true
 
   '@vitest/expect@4.1.2':
     dependencies:
@@ -6248,6 +6254,7 @@ snapshots:
   '@vitest/pretty-format@3.2.4':
     dependencies:
       tinyrainbow: 2.0.0
+    optional: true
 
   '@vitest/pretty-format@4.1.2':
     dependencies:
@@ -6271,6 +6278,7 @@ snapshots:
   '@vitest/spy@3.2.4':
     dependencies:
       tinyspy: 4.0.4
+    optional: true
 
   '@vitest/spy@4.1.2':
     optional: true
@@ -6280,6 +6288,7 @@ snapshots:
       '@vitest/pretty-format': 3.2.4
       loupe: 3.2.1
       tinyrainbow: 2.0.0
+    optional: true
 
   '@vitest/utils@4.1.2':
     dependencies:
@@ -6288,7 +6297,8 @@ snapshots:
       tinyrainbow: 3.1.0
     optional: true
 
-  '@webcontainer/env@1.1.1': {}
+  '@webcontainer/env@1.1.1':
+    optional: true
 
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
@@ -6398,13 +6408,15 @@ snapshots:
       get-intrinsic: 1.3.0
       is-array-buffer: 3.0.5
 
-  assertion-error@2.0.1: {}
+  assertion-error@2.0.1:
+    optional: true
 
   ast-types-flow@0.0.8: {}
 
   ast-types@0.16.1:
     dependencies:
       tslib: 2.8.1
+    optional: true
 
   ast-v8-to-istanbul@1.0.0:
     dependencies:
@@ -6475,6 +6487,7 @@ snapshots:
   bundle-name@4.1.0:
     dependencies:
       run-applescript: 7.1.0
+    optional: true
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
@@ -6504,6 +6517,7 @@ snapshots:
       deep-eql: 5.0.2
       loupe: 3.2.1
       pathval: 2.0.1
+    optional: true
 
   chai@6.2.2:
     optional: true
@@ -6516,7 +6530,8 @@ snapshots:
 
   character-reference-invalid@2.0.1: {}
 
-  check-error@2.1.3: {}
+  check-error@2.1.3:
+    optional: true
 
   class-variance-authority@0.7.1:
     dependencies:
@@ -6609,16 +6624,19 @@ snapshots:
     dependencies:
       character-entities: 2.0.2
 
-  deep-eql@5.0.2: {}
+  deep-eql@5.0.2:
+    optional: true
 
   deep-is@0.1.4: {}
 
-  default-browser-id@5.0.1: {}
+  default-browser-id@5.0.1:
+    optional: true
 
   default-browser@5.5.0:
     dependencies:
       bundle-name: 4.1.0
       default-browser-id: 5.0.1
+    optional: true
 
   define-data-property@1.1.4:
     dependencies:
@@ -6626,7 +6644,8 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  define-lazy-prop@3.0.0: {}
+  define-lazy-prop@3.0.0:
+    optional: true
 
   define-properties@1.2.1:
     dependencies:
@@ -6976,12 +6995,11 @@ snapshots:
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-storybook@10.5.9(eslint@10.8.0(jiti@2.6.1))(storybook@10.5.9(@types/react@19.2.14)(prettier@3.8.1)(react@19.2.3))(typescript@6.0.3):
+  eslint-plugin-storybook@10.5.10(eslint@10.8.0(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/types': 8.66.0
       '@typescript-eslint/utils': 8.66.0(eslint@10.8.0(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.8.0(jiti@2.6.1)
-      storybook: 10.5.9(@types/react@19.2.14)(prettier@3.8.1)(react@19.2.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7443,7 +7461,8 @@ snapshots:
 
   is-decimal@2.0.1: {}
 
-  is-docker@3.0.0: {}
+  is-docker@3.0.0:
+    optional: true
 
   is-extendable@0.1.1: {}
 
@@ -7474,6 +7493,7 @@ snapshots:
   is-inside-container@1.0.0:
     dependencies:
       is-docker: 3.0.0
+    optional: true
 
   is-map@2.0.3: {}
 
@@ -7532,6 +7552,7 @@ snapshots:
   is-wsl@3.1.1:
     dependencies:
       is-inside-container: 1.0.0
+    optional: true
 
   isarray@2.0.5: {}
 
@@ -7618,7 +7639,8 @@ snapshots:
 
   json5@2.2.3: {}
 
-  jsonc-parser@3.3.1: {}
+  jsonc-parser@3.3.1:
+    optional: true
 
   jsx-ast-utils@3.3.5:
     dependencies:
@@ -7745,7 +7767,8 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  loupe@3.2.1: {}
+  loupe@3.2.1:
+    optional: true
 
   lru-cache@11.2.7:
     optional: true
@@ -8260,6 +8283,7 @@ snapshots:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       wsl-utils: 0.1.0
+    optional: true
 
   optionator@0.9.4:
     dependencies:
@@ -8300,6 +8324,7 @@ snapshots:
       '@oxc-parser/binding-win32-arm64-msvc': 0.127.0
       '@oxc-parser/binding-win32-ia32-msvc': 0.127.0
       '@oxc-parser/binding-win32-x64-msvc': 0.127.0
+    optional: true
 
   oxc-parser@0.143.0:
     dependencies:
@@ -8384,7 +8409,8 @@ snapshots:
   pathe@2.0.3:
     optional: true
 
-  pathval@2.0.1: {}
+  pathval@2.0.1:
+    optional: true
 
   picocolors@1.1.1: {}
 
@@ -8492,6 +8518,7 @@ snapshots:
       source-map: 0.6.1
       tiny-invariant: 1.3.3
       tslib: 2.8.1
+    optional: true
 
   recma-build-jsx@1.0.0:
     dependencies:
@@ -8652,7 +8679,8 @@ snapshots:
       - '@emnapi/runtime'
     optional: true
 
-  run-applescript@7.1.0: {}
+  run-applescript@7.1.0:
+    optional: true
 
   run-parallel@1.2.0:
     dependencies:
@@ -8815,7 +8843,8 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  source-map@0.6.1: {}
+  source-map@0.6.1:
+    optional: true
 
   source-map@0.7.6: {}
 
@@ -8862,6 +8891,7 @@ snapshots:
       - bufferutil
       - react
       - utf-8-validate
+    optional: true
 
   string-argv@0.3.2: {}
 
@@ -8980,7 +9010,8 @@ snapshots:
 
   tapable@2.3.2: {}
 
-  tiny-invariant@1.3.3: {}
+  tiny-invariant@1.3.3:
+    optional: true
 
   tinybench@2.9.0:
     optional: true
@@ -8997,12 +9028,14 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.5)
       picomatch: 4.0.5
 
-  tinyrainbow@2.0.0: {}
+  tinyrainbow@2.0.0:
+    optional: true
 
   tinyrainbow@3.1.0:
     optional: true
 
-  tinyspy@4.0.4: {}
+  tinyspy@4.0.4:
+    optional: true
 
   tldts-core@7.4.10: {}
 
@@ -9422,11 +9455,13 @@ snapshots:
   ws@8.20.0:
     optional: true
 
-  ws@8.21.3: {}
+  ws@8.21.3:
+    optional: true
 
   wsl-utils@0.1.0:
     dependencies:
       is-wsl: 3.1.1
+    optional: true
 
   xml-name-validator@5.0.0: {}
 

@@ -1,8 +1,10 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
-import { MainLayout, Page, type PageMetadata } from "~/components/layout";
+import { MainLayout } from "~/components/layout";
 import { Box } from "~/components/primitive";
 import { WithAuth } from "~/features/auth";
 
@@ -41,16 +43,24 @@ function ResumePage({ data }: ResumePageProps) {
 	);
 
 	return (
-		<Page config={metadata}>
-			<MainLayout
-				title={metadata.title}
-				contentClassName="win:hidden print:p-0"
-			>
-				<IntlContext.Provider value={IntlProviderValue[lang]}>
-					<style id="print-styles" />
-					<Box className="mx-auto flex max-w-3xl flex-col gap-6 print:max-w-none">
-						<Box className="flex w-full flex-col justify-center gap-3 sm:flex-row sm:flex-wrap print:hidden">
-							<ActionButtons
+		<MainLayout
+			title="Resume"
+			contentClassName="win:hidden print:p-0"
+		>
+			<IntlContext.Provider value={IntlProviderValue[lang]}>
+				<style id="print-styles" />
+				<Box className="mx-auto flex max-w-3xl flex-col gap-6 print:max-w-none">
+					<Box className="flex w-full flex-col justify-center gap-3 sm:flex-row sm:flex-wrap print:hidden">
+						<ActionButtons
+							contentMode={contentMode}
+							design={design}
+							lang={lang}
+							onContentModeChange={setContentMode}
+							onDesignChange={setDesign}
+							onLangChange={setLang}
+						/>
+						<WithAuth>
+							<DownloadActions
 								contentMode={contentMode}
 								design={design}
 								lang={lang}
@@ -58,48 +68,29 @@ function ResumePage({ data }: ResumePageProps) {
 								onDesignChange={setDesign}
 								onLangChange={setLang}
 							/>
-							<WithAuth>
-								<DownloadActions
-									contentMode={contentMode}
-									design={design}
-									lang={lang}
-									onContentModeChange={setContentMode}
-									onDesignChange={setDesign}
-									onLangChange={setLang}
-								/>
-							</WithAuth>
-						</Box>
-
-						<Box className="text-base">
-							{design === "MINIMALIST" ? (
-								<MinimalistMode
-									contentMode={contentMode}
-									data={currentData}
-								/>
-							) : (
-								<StylishMode
-									contentMode={contentMode}
-									data={currentData}
-								/>
-							)}
-						</Box>
+						</WithAuth>
 					</Box>
-				</IntlContext.Provider>
-			</MainLayout>
-		</Page>
+
+					<Box className="text-base">
+						{design === "MINIMALIST" ? (
+							<MinimalistMode
+								contentMode={contentMode}
+								data={currentData}
+							/>
+						) : (
+							<StylishMode
+								contentMode={contentMode}
+								data={currentData}
+							/>
+						)}
+					</Box>
+				</Box>
+			</IntlContext.Provider>
+		</MainLayout>
 	);
 }
 
 export default ResumePage;
-
-// --- CONSTANTS ---
-
-const metadata: PageMetadata = {
-	title: "Resume",
-	description: "",
-	isSEOEnabled: true,
-	pathname: "/resume",
-};
 
 // --- STYLES ---
 
