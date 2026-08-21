@@ -91,15 +91,6 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
   };
 
   export default defineConfig([
-    { settings: { react: { version: "19" } } },
-    globalIgnores([
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      "node_modules",
-    ]),
-
     ...nextVitals,
     ...nextTs,
 
@@ -108,5 +99,14 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
     TYPESCRIPT_CONFIG,
     CSS_CONFIG,
     REACT_CONFIG,
+
+    { settings: { react: { version: "19" } } },
+    globalIgnores([
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "node_modules",
+    ]),
   ]);
   ```

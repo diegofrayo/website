@@ -24,7 +24,6 @@ function Home() {
 	return (
 		<>
 			<PersonScript />
-
 			<HomePage />
 		</>
 	);

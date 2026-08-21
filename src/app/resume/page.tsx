@@ -31,7 +31,6 @@ function Resume() {
 	return (
 		<>
 			<PersonScript />
-
 			<ResumePage data={{ es: data.es, en: data.en }} />
 		</>
 	);

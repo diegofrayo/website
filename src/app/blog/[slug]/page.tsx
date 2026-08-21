@@ -44,14 +44,7 @@ async function BlogPost({ params }: { params: Promise<PageParams> }) {
 	const post = getBlogPost(slug);
 	const mdxCompiled = await compile({ content: post.content });
 
-	return (
-		<BlogPostPage
-			data={{
-				details: post.details,
-				content: mdxCompiled.code,
-			}}
-		/>
-	);
+	return <BlogPostPage data={{ details: post.details, content: mdxCompiled.code }} />;
 }
 
 export default BlogPost;
