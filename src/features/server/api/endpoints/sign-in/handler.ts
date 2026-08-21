@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
 import { EnvVars } from "~/constants";
 import { setAuthCookie, signAuthToken } from "~/features/auth/auth.server";
@@ -7,9 +7,9 @@ import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
 import { parseRequestBody } from "./schemas";
 
-export default async function signInHandler(req: NextApiRequest, res: NextApiResponse) {
+export default async function signInHandler(body: unknown) {
 	try {
-		const { authToken } = parseRequestBody(req.body);
+		const { authToken } = parseRequestBody(body);
 
 		if (authToken !== EnvVars.AUTH_TOKEN) {
 			throw new HttpError({
@@ -20,10 +20,11 @@ export default async function signInHandler(req: NextApiRequest, res: NextApiRes
 		}
 
 		const token = await signAuthToken(authToken);
-		setAuthCookie(res, token);
+		const response = NextResponse.json({ signedIn: true, date: new Date() });
+		setAuthCookie(response, token);
 
-		res.json({ signedIn: true, date: new Date() });
+		return response;
 	} catch (error) {
-		sendServerError(res, error);
+		return sendServerError(error);
 	}
 }

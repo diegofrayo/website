@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
@@ -8,7 +10,7 @@ import { isPWA } from "@diegofrayo-pkg/utilities/browser/device";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
 
-import { MainLayout, Page, type PageMetadata } from "~/components/layout";
+import { MainLayout } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -57,56 +59,45 @@ function PortfolioPage() {
 	}
 
 	return (
-		<Page config={metadata}>
-			<MainLayout title="Portfolio">
-				<Box className={classes.toggleGroupContainer}>
-					<ToggleGroup
-						value={[projectsFilter]}
-						onValueChange={handleProjectsFilterChange}
-						className="grid grid-cols-2"
+		<MainLayout title="Portfolio">
+			<Box className={classes.toggleGroupContainer}>
+				<ToggleGroup
+					value={[projectsFilter]}
+					onValueChange={handleProjectsFilterChange}
+					className="grid grid-cols-2"
+				>
+					<Toggle
+						value="PROFESSIONAL_PROJECT"
+						aria-label="Professional projects"
+						className={classes.toggle}
 					>
-						<Toggle
-							value="PROFESSIONAL_PROJECT"
-							aria-label="Professional projects"
-							className={classes.toggle}
-						>
-							Professional Projects
-						</Toggle>
-						<Toggle
-							value="SIDE_PROJECT"
-							aria-label="Side projects"
-							className={classes.toggle}
-						>
-							Side Projects
-						</Toggle>
-					</ToggleGroup>
-				</Box>
+						Professional Projects
+					</Toggle>
+					<Toggle
+						value="SIDE_PROJECT"
+						aria-label="Side projects"
+						className={classes.toggle}
+					>
+						Side Projects
+					</Toggle>
+				</ToggleGroup>
+			</Box>
 
-				<Box className="flex flex-col gap-6 pt-8">
-					{projects.map((item, index) => {
-						return (
-							<ProjectRow
-								key={generateSlug(`PortfolioPage-item-ProjectRow-${index}`)}
-								item={item}
-							/>
-						);
-					})}
-				</Box>
-			</MainLayout>
-		</Page>
+			<Box className="flex flex-col gap-6 pt-8">
+				{projects.map((item, index) => {
+					return (
+						<ProjectRow
+							key={generateSlug(`PortfolioPage-item-ProjectRow-${index}`)}
+							item={item}
+						/>
+					);
+				})}
+			</Box>
+		</MainLayout>
 	);
 }
 
 export default PortfolioPage;
-
-// --- CONSTANTS ---
-
-const metadata: PageMetadata = {
-	title: "Portfolio",
-	description: "A showcase of my work and experience.",
-	pathname: "/portfolio",
-	isSEOEnabled: true,
-};
 
 // --- COMPONENTS ---
 

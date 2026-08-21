@@ -83,16 +83,6 @@ const CSS_CONFIG = {
 };
 
 export default defineConfig([
-	{ settings: { react: { version: "19" } } },
-	globalIgnores([
-		".next/**",
-		"out/**",
-		"build/**",
-		"next-env.d.ts",
-		"node_modules",
-		"public/assets/pages/demo/bets",
-	]),
-
 	...nextVitals,
 	...nextTs,
 
@@ -102,4 +92,14 @@ export default defineConfig([
 	CSS_CONFIG,
 	REACT_CONFIG,
 	STORYBOOK_CONFIG,
+
+	{ settings: { react: { version: "19" } } },
+	globalIgnores([
+		".next/**",
+		"out/**",
+		"build/**",
+		"next-env.d.ts",
+		"node_modules",
+		"public/assets/pages/demo/bets",
+	]),
 ]);

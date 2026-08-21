@@ -1,15 +1,16 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
 import { clearAuthCookie } from "~/features/auth/auth.server";
 
 import { sendServerError } from "../../utils";
 
-export default async function signOutHandler(_req: NextApiRequest, res: NextApiResponse) {
+export default async function signOutHandler() {
 	try {
-		clearAuthCookie(res);
+		const response = NextResponse.json({ signedOut: true });
+		clearAuthCookie(response);
 
-		res.json({ signedOut: true });
+		return response;
 	} catch (error) {
-		sendServerError(res, error);
+		return sendServerError(error);
 	}
 }

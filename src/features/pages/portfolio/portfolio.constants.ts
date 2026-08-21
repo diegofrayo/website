@@ -85,7 +85,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 	{
 		id: "crypto-trading-platform",
 		title: "Crypto Trading Platform",
-		date: "2024-2026",
+		date: "2024",
 		description:
 			"A platform to trade alt coins. I led the front-end development from scratch using React and TypeScript, while actively contributing to back-end development.",
 		techStack: [
@@ -124,7 +124,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 		id: "career-circle",
 		title: "CareerCircle",
 		url: "https://www.careercircle.com",
-		date: "2018-2021",
+		date: "2018",
 		description:
 			"A job search web application. Led the front-end development integrating it with back-end services provided by the client's team.",
 		techStack: [
@@ -144,7 +144,7 @@ export const PROFESSIONAL_PROJECTS: Array<Project> = [
 	{
 		id: "festa",
 		title: "Festa",
-		date: "2015-2017",
+		date: "2015",
 		description:
 			"Festa was a platform to play music from YouTube and create collaborative playlists among multiple users.",
 		techStack: [

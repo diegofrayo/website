@@ -1,4 +1,6 @@
-import { MainLayout, Page, type PageMetadata } from "~/components/layout";
+"use client";
+
+import { MainLayout } from "~/components/layout";
 import { Box, Icon, Image, InlineText, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import { BLOG_IMAGES_PATH } from "~/constants/assets";
@@ -13,78 +15,66 @@ export type BlogPageProps = {
 
 function BlogPage({ data: posts }: BlogPageProps) {
 	return (
-		<Page config={metadata}>
-			<MainLayout title={metadata.title}>
-				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-					{Object.values(posts).map((post) => {
-						if (post.is_published === false) return null;
+		<MainLayout title="Blog">
+			<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+				{Object.values(posts).map((post) => {
+					if (post.is_published === false) return null;
 
-						return (
-							<Link
-								key={post.slug}
-								href={Routes.BLOG_POST(post.slug)}
-								variant={Link.variant.SMOOTH}
-								className="mx-auto flex w-full max-w-lg flex-col overflow-hidden rounded-md border border-zinc-200 shadow-md"
-							>
-								<Image
-									src={`${BLOG_IMAGES_PATH}/thumbnails/${post.slug}.png`}
-									alt={post.title}
-									className="h-auto w-full border-b border-zinc-200 bg-slate-50 object-cover sm:object-contain"
-									width={359}
-									height={203}
-									loading="eager"
-								/>
+					return (
+						<Link
+							key={post.slug}
+							href={Routes.BLOG_POST(post.slug)}
+							variant={Link.variant.SMOOTH}
+							className="mx-auto flex w-full max-w-lg flex-col overflow-hidden rounded-md border border-zinc-200 shadow-md"
+						>
+							<Image
+								src={`${BLOG_IMAGES_PATH}/thumbnails/${post.slug}.png`}
+								alt={post.title}
+								className="h-auto w-full border-b border-zinc-200 bg-slate-50 object-cover sm:object-contain"
+								width={359}
+								height={203}
+								loading="eager"
+							/>
 
-								<Box className="flex flex-1 flex-col gap-2 p-3">
-									<Title
-										variant={Title.variant.SIMPLE}
-										as="h2"
-										size={Title.size.SM}
-										className="leading-tight text-black"
-									>
-										{post.title}
-									</Title>
+							<Box className="flex flex-1 flex-col gap-2 p-3">
+								<Title
+									variant={Title.variant.SIMPLE}
+									as="h2"
+									size={Title.size.SM}
+									className="leading-tight text-black"
+								>
+									{post.title}
+								</Title>
 
-									<Paragraph className="text-sm text-zinc-600">{post.description}</Paragraph>
+								<Paragraph className="text-sm text-zinc-600">{post.description}</Paragraph>
 
-									<Box className="mt-auto flex items-center gap-1 pt-2">
-										<Icon
-											name={IconCatalog.CALENDAR}
-											size={12}
-										/>
-										<InlineText className="text-xs text-zinc-500">
-											{post.published_at.substring(0, 4)}
-										</InlineText>
-									</Box>
-
-									<Box className="flex flex-wrap gap-1">
-										{post.categories.map((category) => {
-											return (
-												<BlogPostCategory
-													key={category}
-													text={category}
-												/>
-											);
-										})}
-									</Box>
+								<Box className="mt-auto flex items-center gap-1 pt-2">
+									<Icon
+										name={IconCatalog.CALENDAR}
+										size={12}
+									/>
+									<InlineText className="text-xs text-zinc-500">
+										{post.published_at.substring(0, 4)}
+									</InlineText>
 								</Box>
-							</Link>
-						);
-					})}
-				</Box>
-			</MainLayout>
-		</Page>
+
+								<Box className="flex flex-wrap gap-1">
+									{post.categories.map((category) => {
+										return (
+											<BlogPostCategory
+												key={category}
+												text={category}
+											/>
+										);
+									})}
+								</Box>
+							</Box>
+						</Link>
+					);
+				})}
+			</Box>
+		</MainLayout>
 	);
 }
 
 export default BlogPage;
-
-// --- CONSTANTS ---
-
-const metadata: PageMetadata = {
-	title: "Blog",
-	description:
-		"In this blog, You will find out content about programming, mainly about frontend stuff, React, Next.js, MDX, Tailwind CSS, and other tools I used to build this website",
-	isSEOEnabled: true,
-	pathname: "/blog",
-};
