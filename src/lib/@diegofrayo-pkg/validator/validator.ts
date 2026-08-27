@@ -107,7 +107,7 @@ export function isNil(input: unknown): input is null | undefined {
 	return input === null || input === undefined;
 }
 
-export function isNotNil(input: unknown): boolean {
+export function isNotNil<InputType>(input: InputType): input is NonNullable<InputType> {
 	return input !== null && input !== undefined;
 }
 

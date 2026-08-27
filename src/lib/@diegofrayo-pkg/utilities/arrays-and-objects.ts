@@ -48,6 +48,22 @@ export function removeDuplicates<ItemType>(array: ItemType[]): ItemType[] {
 	return array.filter((item, index) => array.indexOf(item) === index);
 }
 
+export function removeDuplicatesByParam<ItemType, ItemTypeProperty extends keyof ItemType>(
+	array: ItemType[],
+	param: ItemTypeProperty,
+): ItemType[] {
+	const seenItems = new Set<ItemType[ItemTypeProperty]>();
+
+	return array.filter((item) => {
+		if (seenItems.has(item[param])) {
+			return false;
+		}
+
+		seenItems.add(item[param]);
+		return true;
+	});
+}
+
 export function sortObjectKeys<Object extends object, ObjectKeys extends keyof Object>(
 	object: Object,
 ): Object {

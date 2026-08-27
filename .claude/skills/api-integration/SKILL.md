@@ -1,18 +1,18 @@
 ---
 name: api-integration
-description: Enforces the API layer architecture for diegofrayo's TypeScript/Next.js projects. Use this skill whenever creating, editing, or reviewing files inside the `src/api/` folder, adding a new API endpoint function, creating a route module, or wiring up a new data source call. Triggers on requests like "add an API call for X", "create a new endpoint for X", "fetch data from X", "add a new route to the api folder", "create the api module for X", or any task that involves defining how the frontend communicates with a backend or external data source. Apply these guidelines proactively — don't wait to be asked.
+description: Enforces the API layer architecture for diegofrayo's TypeScript/Next.js projects. Use this skill whenever creating, editing, or reviewing files inside the `src/features/api-client/` folder, adding a new API endpoint function, creating a route module, or wiring up a new data source call. Triggers on requests like "add an API call for X", "create a new endpoint for X", "fetch data from X", "add a new route to the api folder", "create the api module for X", or any task that involves defining how the frontend communicates with a backend or external data source. Apply these guidelines proactively — don't wait to be asked.
 ---
 
 # API Layer Guidelines
 
-The `src/api/` folder is the single source of truth for all remote data access. Every call to a backend, external service, or data source must go through here — never fetch data directly from components, pages, or hooks without going through this layer.
+The `src/features/api-client/` folder is the single source of truth for all remote data access. Every call to a backend, external service, or data source must go through here — never fetch data directly from components, pages, or hooks without going through this layer.
 
 The goals are: one place to find every endpoint, consistent type safety from raw response to UI, and zero duplication of fetch logic or data transforms.
 
 ## Folder Structure
 
 ```
-src/api/
+src/features/api-client/
   routes/
     {entity}/               ← one folder per domain entity (users, products, auth, etc.)
       endpoints/
@@ -32,7 +32,7 @@ Action names describe what the call does, also in kebab-case: `get-user-info`, `
 Each endpoint file owns exactly one API call. It defines the function, its raw and transformed types, and the transform logic — all in one place so the full data contract is readable at a glance.
 
 ```ts
-// src/api/routes/users/endpoints/get-user-info.ts
+// src/features/api-client/routes/users/endpoints/get-user-info.ts
 
 async function getUserInfo(userId: string): Promise<GetUserInfoResponse> {
 	const rawResponse = await fetchData<RawGetUserInfoResponse>(`/users/${userId}`);
@@ -82,7 +82,7 @@ function transformResponse(raw: RawGetUserInfoResponse): GetUserInfoResponse {
 The entity index groups all endpoint functions under a named router object and re-exports every type so consumers can import from one place.
 
 ```ts
-// src/api/routes/users/index.ts
+// src/features/api-client/routes/users/index.ts
 
 import getUserInfo from "./endpoints/get-user-info";
 import updateUserProfile from "./endpoints/update-user-profile";
@@ -107,17 +107,17 @@ The router object is named `{entity}Router` (camelCase). Every endpoint added to
 Composes all entity routers into a single `api` object. This is the only export consumers should import directly.
 
 ```ts
-// src/api/index.ts
+// src/features/api-client/index.ts
 
 import productsRouter from "./routes/products";
 import usersRouter from "./routes/users";
 
-const api = {
+const apiClient = {
 	users: usersRouter,
 	products: productsRouter,
 };
 
-export default api;
+export default apiClient;
 
 // --- RE-EXPORTS ---
 
@@ -129,8 +129,8 @@ Consumers use `api.users.getUserInfo(...)` — the nested structure makes it cle
 
 ## Shared Types (`types.ts`)
 
-- `src/api/types.ts` — types used by more than one entity module (e.g., `PaginatedResponse<T>`, `ApiError`, common enums).
-- `src/api/routes/{entity}/types.ts` — types used by more than one endpoint within that entity, but not needed outside it.
+- `src/features/api-client/types.ts` — types used by more than one entity module (e.g., `PaginatedResponse<T>`, `ApiError`, common enums).
+- `src/features/api-client/routes/{entity}/types.ts` — types used by more than one endpoint within that entity, but not needed outside it.
 
 Don't put types that belong to a single endpoint file in either of these — keep them in the endpoint file itself.
 
@@ -139,7 +139,7 @@ Don't put types that belong to a single endpoint file in either of these — kee
 Defines the shared HTTP client. Typically an axios instance with base URL, default headers, auth token injection, and error interceptors. All endpoint files import from here instead of calling `fetch` or `axios` directly.
 
 ```ts
-// src/api/config.ts
+// src/features/api-client/config.ts
 
 import axios from "axios";
 
@@ -155,8 +155,8 @@ export default httpClient;
 
 ## How to Add a New Endpoint
 
-1. Create `src/api/routes/{entity}/endpoints/{action-name}.ts` following the endpoint file template.
-2. Add the function to the entity router in `src/api/routes/{entity}/index.ts` and re-export its types.
-3. If the entity is new, create its folder and `index.ts`, then import the entity router in `src/api/index.ts`.
+1. Create `src/features/api-client/routes/{entity}/endpoints/{action-name}.ts` following the endpoint file template.
+2. Add the function to the entity router in `src/features/api-client/routes/{entity}/index.ts` and re-export its types.
+3. If the entity is new, create its folder and `index.ts`, then import the entity router in `src/features/api-client/index.ts`.
 
 That's it — the endpoint is now available everywhere as `api.{entity}.{actionName}(...)`.
