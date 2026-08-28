@@ -58,6 +58,10 @@ export function join(items: string[], separator?: string): string {
 	return items.join(separator || "");
 }
 
+export function pluralize(count: number, singular: string, plural?: string): string {
+	return count === 1 ? singular : plural || `${singular}s`;
+}
+
 // --- UTILS ---
 
 function escapeRegExp(text: string): string {

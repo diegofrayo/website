@@ -6,7 +6,7 @@
 		"===== SETUP =====": "",
 		"husky:install": "husky",
 		"===== DEV =====": "",
-		"dev": "portless --lan website next dev",
+		"dev": "portless website next dev",
 		"build:ts": "tsc --noEmit",
 		"===== PROD =====": "",
 		"build": "next build",
