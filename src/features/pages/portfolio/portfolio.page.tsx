@@ -106,7 +106,8 @@ function ProjectRow({ item }: { item: Project }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// --- COMPUTED STATES ---
-	const imageUrl = `${PORTFOLIO_IMAGES_PATH}/${item.type === "PROFESSIONAL_PROJECT" ? "professional" : "side"}-projects/${item.id}.png`;
+	const isProfessionalProject = item.type === "PROFESSIONAL_PROJECT";
+	const imageUrl = `${PORTFOLIO_IMAGES_PATH}/${isProfessionalProject ? "professional" : "side"}-projects/${item.id}.png`;
 
 	// --- STYLES ---
 	const classes = {
@@ -158,7 +159,9 @@ function ProjectRow({ item }: { item: Project }) {
 				<Box className="flex min-w-0 flex-1 flex-col gap-1.5">
 					<ProjectTitle item={item} />
 
-					<InlineText className="text-xs text-zinc-400">{item.date}</InlineText>
+					{isProfessionalProject && (
+						<InlineText className="text-xs text-zinc-400">{item.date}</InlineText>
+					)}
 
 					<Pre
 						variant={Pre.variant.BREAK_WITH_BLANK_LINES}

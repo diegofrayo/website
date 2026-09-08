@@ -11,7 +11,7 @@ Installs Husky + lint-staged and configures a pre-commit hook that runs type-che
 - Add to `package.json` scripts (if not already present from step 1):
   ```json
   "===== SETUP =====": "",
-  "husky:install": "husky"
+  "husky:install": "husky",
   ```
 - Add the lint-staged config creating `lint-staged.config.js` file:
   ```js
