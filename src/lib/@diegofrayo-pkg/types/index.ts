@@ -26,7 +26,9 @@ declare namespace UtilsTypes {
 
 		export type DateString<Config = "DATE"> = Config extends "FULL"
 			? `${YYYY}-${MM}-${DD}T:00:00:00`
-			: `${YYYY}-${MM}-${DD}`;
+			: Config extends "MONTH"
+				? `${YYYY}-${MM}`
+				: `${YYYY}-${MM}-${DD}`;
 	}
 }
 

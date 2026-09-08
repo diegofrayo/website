@@ -66,9 +66,10 @@ export function removeDuplicatesByParam<ItemType, ItemTypeProperty extends keyof
 
 export function sortObjectKeys<Object extends object, ObjectKeys extends keyof Object>(
 	object: Object,
+	order: "ASC" | "DESC",
 ): Object {
 	return Object.keys(object)
-		.sort()
+		.sort(order === "ASC" ? undefined : (a, b) => b.localeCompare(a))
 		.reduce((result, key) => {
 			return {
 				...result,
