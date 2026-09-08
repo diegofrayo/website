@@ -11,6 +11,7 @@ import { renderWithRouter } from "../support/render-with-router";
 
 describe("ResumePage", () => {
 	it("shows the experience timeline in Stylish design and hides it in Minimalist design", async () => {
+		mockUserLoggedIn();
 		renderResumePage();
 
 		// step 1: switch to the Stylish design

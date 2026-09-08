@@ -34,7 +34,7 @@ export function ActionButtons({
 	const classes = {
 		mainContainer: cn(
 			"grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),300px))] justify-center gap-3 sm:grid-cols-3",
-			{ "sm:grid-cols-2": !isUserLoggedIn },
+			{ "sm:grid-cols-1": !isUserLoggedIn },
 		),
 		container:
 			"flex items-center justify-start rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm w-full",
@@ -73,33 +73,6 @@ export function ActionButtons({
 		<Box className={classes.mainContainer}>
 			<Box className={classes.container}>
 				<Icon
-					name={IconCatalog.PEN_TOOL}
-					className={classes.icon}
-				/>
-				<ToggleGroup
-					value={[design]}
-					onValueChange={handleDesignChange}
-					className={classes.toggleGroup}
-				>
-					<Toggle
-						value="MINIMALIST"
-						aria-label="Minimalist design"
-						className={classes.toggle}
-					>
-						Minimalist
-					</Toggle>
-					<Toggle
-						value="STYLISH"
-						aria-label="Stylish design"
-						className={classes.toggle}
-					>
-						Stylish
-					</Toggle>
-				</ToggleGroup>
-			</Box>
-
-			<Box className={classes.container}>
-				<Icon
 					name={IconCatalog.LANGUAGES}
 					size={16}
 					className={classes.icon}
@@ -127,6 +100,32 @@ export function ActionButtons({
 			</Box>
 
 			<WithAuth>
+				<Box className={classes.container}>
+					<Icon
+						name={IconCatalog.PEN_TOOL}
+						className={classes.icon}
+					/>
+					<ToggleGroup
+						value={[design]}
+						onValueChange={handleDesignChange}
+						className={classes.toggleGroup}
+					>
+						<Toggle
+							value="MINIMALIST"
+							aria-label="Minimalist design"
+							className={classes.toggle}
+						>
+							Minimalist
+						</Toggle>
+						<Toggle
+							value="STYLISH"
+							aria-label="Stylish design"
+							className={classes.toggle}
+						>
+							Stylish
+						</Toggle>
+					</ToggleGroup>
+				</Box>
 				<Box className={classes.container}>
 					<Icon
 						name={IconCatalog.FILE_TEXT}

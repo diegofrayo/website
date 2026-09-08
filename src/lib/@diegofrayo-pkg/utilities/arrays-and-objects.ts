@@ -69,7 +69,7 @@ export function sortObjectKeys<Object extends object, ObjectKeys extends keyof O
 	order: "ASC" | "DESC",
 ): Object {
 	return Object.keys(object)
-		.sort(order === "ASC" ? undefined : (a, b) => b.localeCompare(a))
+		.sort(order === "ASC" ? undefined : (a, b): number => b.localeCompare(a))
 		.reduce((result, key) => {
 			return {
 				...result,
