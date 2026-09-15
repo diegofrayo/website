@@ -20,9 +20,11 @@ export function getErrorMessage(error: unknown, defaultMessage?: string): string
 	return defaultMessage || "Unknown error";
 }
 
-// --- UTILS ---
+// --- TYPES ---
 
 type HttpError = { response: { data: { message: string } } };
+
+// --- UTILS ---
 
 function isHttpError(error: unknown): error is HttpError {
 	return isString((error as HttpError)?.response?.data?.message);

@@ -28,7 +28,8 @@ Installs Husky + lint-staged and configures a pre-commit hook that runs type-che
   ```
 - Create or overwrite `.husky/pre-commit`:
   ```sh
-  #!/bin/sh
+  #!/usr/bin/env sh
+  . "$(dirname -- "$0")/_/husky.sh"
 
   npm run build:ts
   npx lint-staged

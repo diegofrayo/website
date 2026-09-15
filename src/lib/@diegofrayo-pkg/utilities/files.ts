@@ -5,7 +5,10 @@ import { isArrayBufferView } from "util/types";
 import { isArray, isBoolean } from "../validator";
 
 export function writeFile(filePath: string, content: unknown): void {
-	createOutputFolder(filePath);
+	const folderPath = getParentFolderPath(filePath);
+
+	createOutputFolder(folderPath);
+
 	fs.writeFileSync(
 		filePath,
 		typeof content === "string" || isArrayBufferView(content) ? content : JSON.stringify(content),
@@ -48,7 +51,7 @@ export function copyFile(
 	sourcePath: string,
 	opts: { outputFolderPath: string; outputFileName?: string },
 ): void {
-	createOutputFolder(opts.outputFolderPath, { isDirectory: true });
+	createOutputFolder(opts.outputFolderPath);
 
 	fs.copyFileSync(
 		sourcePath,
@@ -69,7 +72,8 @@ export function renameFile(
 	opts: { newFilePath?: string; newFileName: string },
 ): void {
 	if (opts.newFilePath) {
-		createOutputFolder(opts.newFilePath, { isDirectory: true });
+		const folderPath = getParentFolderPath(opts.newFilePath);
+		createOutputFolder(folderPath);
 		fs.renameSync(currentFilePath, path.resolve(opts.newFilePath, opts.newFileName));
 	} else {
 		fs.renameSync(
@@ -102,9 +106,7 @@ export function normaliceSlashes(winPath: string): string {
 	return winPath.replace(/\\/g, "/");
 }
 
-export function createOutputFolder(outputPath: string, opts?: { isDirectory?: boolean }): void {
-	const folderPath = opts?.isDirectory ? outputPath : getParentFolderPath(outputPath);
-
+export function createOutputFolder(folderPath: string): void {
 	if (!fileExists(folderPath)) {
 		createFolder(folderPath);
 	}
