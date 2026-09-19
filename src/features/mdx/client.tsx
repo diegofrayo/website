@@ -23,10 +23,11 @@ import {
 	Link,
 	List,
 	Paragraph,
-	Space,
+	Separator,
 	Title,
 } from "~/components/primitive";
 import { type ImageProps } from "~/components/primitive/image";
+import { SeparatorVariant } from "~/components/primitive/separator";
 import { type TitleProps } from "~/components/primitive/title";
 
 import styles from "./styles.module.css";
@@ -37,7 +38,11 @@ type MDXContentProps = {
 	globals?: UtilsTypes.Object;
 };
 
-export function MDXContent({ code, components = {}, globals = {} }: MDXContentProps) {
+export function MDXContent({
+	code,
+	components = {},
+	globals = {},
+}: MDXContentProps): ReactTypes.JSXElement {
 	const Component = useMemo(() => getMDXComponent(code, globals), [code, globals]);
 
 	return (
@@ -55,7 +60,10 @@ export { getMDXExport };
 // DOCS: https://mdxjs.com/table-of-components
 const MDXComponents = {
 	// --- PRIMITIVE COMPONENTS ---
-	a: function CustomA({ children, href }: ReactTypes.DOM.HTMLElementAttributes["a"]) {
+	a: function CustomA({
+		children,
+		href,
+	}: ReactTypes.DOM.HTMLElementAttributes["a"]): ReactTypes.JSXElement {
 		return (
 			<Link
 				href={href || ""}
@@ -67,7 +75,9 @@ const MDXComponents = {
 		);
 	},
 	blockquote: Blockquote,
-	code: function CustomCode({ children }: ReactTypes.DOM.HTMLElementAttributes["code"]) {
+	code: function CustomCode({
+		children,
+	}: ReactTypes.DOM.HTMLElementAttributes["code"]): ReactTypes.JSXElement {
 		if (isString(children)) {
 			return (
 				<CopyToClipboardPopover textToCopy={children}>
@@ -84,15 +94,19 @@ const MDXComponents = {
 	h2: createTitleComponent("h2", { className: "text-2xl md:text-4xl" }),
 	h3: createTitleComponent("h3", { className: "text-xl md:text-3xl" }),
 	h4: createTitleComponent("h4", { className: "text-lg md:text-2xl" }),
-	hr: function CustomHr() {
-		return <Space variant={Space.variant.DASHED} />;
+	hr: function CustomHr(): ReactTypes.JSXElement {
+		return <Separator variant={SeparatorVariant.DASHED} />;
 	},
 	li: List.Item,
 	p: Paragraph,
-	pre: function CustomPre({ children }: ReactTypes.DOM.HTMLElementAttributes["pre"]) {
+	pre: function CustomPre({
+		children,
+	}: ReactTypes.DOM.HTMLElementAttributes["pre"]): ReactTypes.JSXElement {
 		return <SourceCode code={children} />;
 	},
-	ul: function CustomUl({ children }: ReactTypes.DOM.HTMLElementAttributes["ul"]) {
+	ul: function CustomUl({
+		children,
+	}: ReactTypes.DOM.HTMLElementAttributes["ul"]): ReactTypes.JSXElement {
 		return <List variant={List.variant.SIMPLE}>{children}</List>;
 	},
 
@@ -103,7 +117,7 @@ const MDXComponents = {
 	Icon,
 	InlineText,
 	Link,
-	MDXImage: (props: ImageProps) => {
+	MDXImage: (props: ImageProps): ReactTypes.JSXElement => {
 		return (
 			<ImageWithLink
 				className="shadow-md shadow-zinc-900"
@@ -112,13 +126,15 @@ const MDXComponents = {
 		);
 	},
 	SourceCode,
-	Space,
+	Separator,
 };
 
 // --- UTILS ---
 
 function createTitleComponent(Tag: "h1" | "h2" | "h3" | "h4", props: Omit<TitleProps, "as">) {
-	return function CustomTitle({ children }: ReactTypes.DOM.HTMLElementAttributes["h1"]) {
+	return function CustomTitle({
+		children,
+	}: ReactTypes.DOM.HTMLElementAttributes["h1"]): ReactTypes.JSXElement {
 		return (
 			<Title
 				{...props}

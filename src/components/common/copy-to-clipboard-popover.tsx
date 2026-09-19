@@ -21,12 +21,12 @@ function CopyToClipboardPopover({
 	popoverText = "copied!",
 	popoverInnerWrapperClassName,
 	...rest
-}: CopyToClipboardPopoverProps) {
+}: CopyToClipboardPopoverProps): ReactTypes.JSXElement {
 	// --- STATE & REFS ---
 	const [showPopover, setShowPopover] = useState(false);
 
 	// --- HANDLERS ---
-	function handleClick() {
+	function handleClick(): void {
 		copyToClipboard(isString(textToCopy) ? textToCopy : textToCopy());
 		setShowPopover((currentValue) => {
 			if (currentValue) {

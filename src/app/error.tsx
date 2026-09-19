@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import logger from "~/features/logger";
 import ErrorPage from "~/features/pages/error.page";
 
@@ -10,7 +12,7 @@ type ErrorProps = {
 	retry: () => void;
 };
 
-function Error({ error, retry }: ErrorProps) {
+function Error({ error, retry }: ErrorProps): ReactTypes.JSXElement {
 	// --- EFFECTS ---
 	useEffect(() => {
 		logger("ERROR", error);

@@ -1,5 +1,7 @@
 "use client";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { MainLayout } from "~/components/layout";
 import { Box, Icon, Image, InlineText, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
@@ -13,7 +15,7 @@ export type BlogPageProps = {
 	data: BlogPosts;
 };
 
-function BlogPage({ data: posts }: BlogPageProps) {
+function BlogPage({ data: posts }: BlogPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout title="Blog">
 			<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">

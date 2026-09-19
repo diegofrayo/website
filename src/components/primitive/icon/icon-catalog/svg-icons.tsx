@@ -1,4 +1,5 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { IconProps } from "../icon";
 
@@ -16,7 +17,10 @@ export default SVGIcons;
 
 // --- ICONS ---
 
-function GithubMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function GithubMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -31,7 +35,10 @@ function GithubMonoIcon({ className, size }: Pick<IconProps, "className" | "size
 	);
 }
 
-function GmailMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function GmailMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +65,10 @@ function GmailMonoIcon({ className, size }: Pick<IconProps, "className" | "size"
 	);
 }
 
-function InstagramMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function InstagramMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +94,11 @@ function InstagramMonoIcon({ className, size }: Pick<IconProps, "className" | "s
 	);
 }
 
-function LinkedinMonoIcon({ className, size, ...rest }: Pick<IconProps, "className" | "size">) {
+function LinkedinMonoIcon({
+	className,
+	size,
+	...rest
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -127,7 +141,10 @@ function LinkedinMonoIcon({ className, size, ...rest }: Pick<IconProps, "classNa
 	);
 }
 
-function SpotifyMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function SpotifyMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +171,10 @@ function SpotifyMonoIcon({ className, size }: Pick<IconProps, "className" | "siz
 	);
 }
 
-function TwitterMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function TwitterMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +199,10 @@ function TwitterMonoIcon({ className, size }: Pick<IconProps, "className" | "siz
 	);
 }
 
-function WhatsAppMonoIcon({ className, size }: Pick<IconProps, "className" | "size">) {
+function WhatsAppMonoIcon({
+	className,
+	size,
+}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

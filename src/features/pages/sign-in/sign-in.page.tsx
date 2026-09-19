@@ -4,13 +4,14 @@ import { useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
 
 import { Box } from "~/components/primitive";
 import AuthService from "~/features/auth";
 import { Routes } from "~/features/routing";
 
-function SignInPage() {
+function SignInPage(): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [isAuthTokenValid, setIsAuthTokenValid] = useState<boolean | undefined>();
 
@@ -23,7 +24,7 @@ function SignInPage() {
 	};
 
 	// --- UTILS ---
-	async function signIn() {
+	async function signIn(): Promise<void> {
 		try {
 			const authToken = new URL(window.location.href).searchParams.get("auth_token");
 
@@ -39,7 +40,7 @@ function SignInPage() {
 		}
 	}
 
-	function getStatusMessage() {
+	function getStatusMessage(): string {
 		if (isAuthTokenValid) {
 			return "Sign in successfully, redirecting...";
 		}

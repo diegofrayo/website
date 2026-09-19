@@ -21,7 +21,7 @@ export type ImageProps = NativeImage | NextImage;
 
 // --- COMPONENT DEFINITION ---
 
-function Image({ ...props }: ImageProps) {
+function Image({ ...props }: ImageProps): ReactTypes.JSXElement {
 	if ("useNativeElement" in props && props.useNativeElement === true) {
 		return (
 			<img

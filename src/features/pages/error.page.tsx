@@ -2,15 +2,17 @@
 
 import { useRouter } from "next/navigation";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { MainLayout } from "~/components/layout";
-import { Box, Button, Paragraph, Space, Title } from "~/components/primitive";
+import { Box, Button, Paragraph, Separator, Title } from "~/components/primitive";
 
 type ErrorPageProps = {
 	variant: "404" | "500";
 	onRetry?: () => void;
 };
 
-function ErrorPage({ variant, onRetry }: ErrorPageProps) {
+function ErrorPage({ variant, onRetry }: ErrorPageProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const router = useRouter();
 
@@ -18,7 +20,7 @@ function ErrorPage({ variant, onRetry }: ErrorPageProps) {
 	const is404Error = variant === "404";
 
 	// -- HANDLERS ---
-	function handleGoToHomeClick() {
+	function handleGoToHomeClick(): void {
 		router.push("/");
 	}
 
@@ -35,7 +37,7 @@ function ErrorPage({ variant, onRetry }: ErrorPageProps) {
 				<Paragraph>
 					{is404Error ? "Sorry, this page does not exist" : "Sorry, something went wrong"}
 				</Paragraph>
-				<Space size={6} />
+				<Separator size={6} />
 
 				<Box className="flex flex-col gap-2">
 					{onRetry && (

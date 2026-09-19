@@ -32,9 +32,9 @@ function Collapsible({
 	titleClassName = "",
 	title = "",
 	showIcon = true,
-	onShowContentHandler = () => undefined,
-	onHideContentHandler = () => undefined,
-}: CollapsibleProps) {
+	onShowContentHandler = (): undefined => undefined,
+	onHideContentHandler = (): undefined => undefined,
+}: CollapsibleProps): ReactTypes.JSXElement {
 	// --- STATE & REFS ---
 	const [isOpen, setIsOpen] = useState(openedByDefault);
 	const touchedRef = useRef(false);
@@ -66,7 +66,7 @@ function Collapsible({
 	);
 
 	// --- HANDLERS ---
-	function handleToggleClick() {
+	function handleToggleClick(): void {
 		touchedRef.current = true;
 		setIsOpen((currentValue) => !currentValue);
 	}

@@ -1,5 +1,6 @@
 "use client";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe } from "@diegofrayo-pkg/utilities/fp";
 import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
 
@@ -12,7 +13,7 @@ import { Routes } from "~/features/routing";
 
 // --- COMPONENT DEFINITION ---
 
-function HomePage() {
+function HomePage(): ReactTypes.JSXElement {
 	return (
 		<Box
 			as="main"
@@ -31,7 +32,7 @@ export default HomePage;
 
 // --- COMPONENTS ---
 
-function Header() {
+function Header(): ReactTypes.JSXElement {
 	const mainTitle = join(["@", WEBSITE_METADATA.username]);
 	const jobTitle = WEBSITE_METADATA.jobTitle.toLowerCase();
 
@@ -55,7 +56,7 @@ function Header() {
 	);
 }
 
-function NavigationLinks() {
+function NavigationLinks(): ReactTypes.JSXElement {
 	const LINKS = [
 		{ icon: IconCatalog.RSS, label: "Blog", url: Routes.BLOG },
 		{ icon: IconCatalog.ID_CARD, label: "Resume", url: Routes.RESUME },
@@ -93,7 +94,7 @@ function NavigationLinks() {
 	);
 }
 
-function Footer() {
+function Footer(): ReactTypes.JSXElement {
 	const SOCIAL_ICONS = [
 		{
 			icon: IconCatalog.GITHUB_MONO,

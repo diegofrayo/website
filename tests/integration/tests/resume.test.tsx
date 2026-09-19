@@ -91,23 +91,23 @@ describe("ResumePage", () => {
 
 // --- UTILS ---
 
-function renderResumePage() {
+function renderResumePage(): void {
 	renderWithRouter(<ResumePage data={resumeData as unknown as ResumePageProps["data"]} />, {
 		pathname: Routes.RESUME,
 	});
 }
 
-function normalizeWhitespace(text: string) {
+function normalizeWhitespace(text: string): string {
 	return text.replace(/\s+/g, " ").trim();
 }
 
-function mockUserLoggedIn() {
+function mockUserLoggedIn(): void {
 	vi.spyOn(AuthService, "onSessionLoad").mockImplementation((callback) => {
 		callback(true);
 	});
 }
 
-function mockUserLoggedOut() {
+function mockUserLoggedOut(): void {
 	vi.spyOn(AuthService, "onSessionLoad").mockImplementation((callback) => {
 		callback(false);
 	});
@@ -115,60 +115,60 @@ function mockUserLoggedOut() {
 
 // --- TEST 1 HELPERS ---
 
-function getDesignToggleButton(name: "Minimalist design" | "Stylish design") {
+function getDesignToggleButton(name: "Minimalist design" | "Stylish design"): HTMLElement {
 	return screen.getByRole("button", { name });
 }
 
-function assertExperienceTimelineIsVisible() {
+function assertExperienceTimelineIsVisible(): void {
 	expect(screen.getAllByRole("img", { name: "Company logo" }).length).toBeGreaterThan(0);
 }
 
-function assertExperienceTimelineIsHidden() {
+function assertExperienceTimelineIsHidden(): void {
 	expect(screen.queryByRole("img", { name: "Company logo" })).not.toBeInTheDocument();
 }
 
 // --- TEST 2 HELPERS ---
 
-function getLangToggleButton(name: "English" | "Spanish") {
+function getLangToggleButton(name: "English" | "Spanish"): HTMLElement {
 	return screen.getByRole("button", { name });
 }
 
-function assertResumeBoxTitleIsVisible(title: string) {
+function assertResumeBoxTitleIsVisible(title: string): void {
 	expect(screen.getByRole("heading", { level: 2, name: title })).toBeInTheDocument();
 }
 
-function assertContactInfoLabelIsVisible(label: string) {
+function assertContactInfoLabelIsVisible(label: string): void {
 	expect(screen.getByText(label)).toBeInTheDocument();
 }
 
 // --- TEST 3 HELPERS ---
 
-function getContentModeToggleButton(name: "Short content" | "Long content") {
+function getContentModeToggleButton(name: "Short content" | "Long content"): HTMLElement {
 	return screen.getByRole("button", { name });
 }
 
-function assertSummaryIsVisible(summary: string) {
+function assertSummaryIsVisible(summary: string): void {
 	expect(screen.getByText(normalizeWhitespace(summary))).toBeInTheDocument();
 }
 
 // --- TEST 4 HELPERS ---
 
-function assertContentModeToggleIsVisible() {
+function assertContentModeToggleIsVisible(): void {
 	expect(getContentModeToggleButton("Short content")).toBeInTheDocument();
 	expect(getContentModeToggleButton("Long content")).toBeInTheDocument();
 }
 
-function assertDownloadButtonIsVisible() {
+function assertDownloadButtonIsVisible(): void {
 	expect(screen.getByRole("button", { name: "Download" })).toBeInTheDocument();
 }
 
 // --- TEST 5 HELPERS ---
 
-function assertContentModeToggleIsHidden() {
+function assertContentModeToggleIsHidden(): void {
 	expect(screen.queryByRole("button", { name: "Short content" })).not.toBeInTheDocument();
 	expect(screen.queryByRole("button", { name: "Long content" })).not.toBeInTheDocument();
 }
 
-function assertDownloadButtonIsHidden() {
+function assertDownloadButtonIsHidden(): void {
 	expect(screen.queryByRole("button", { name: "Download" })).not.toBeInTheDocument();
 }

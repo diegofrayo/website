@@ -43,11 +43,11 @@ class AuthServiceClass {
 		return this.#isUserLoggedIn;
 	}
 
-	signIn(authToken: string) {
+	signIn(authToken: string): Promise<true> {
 		return apiClient.website.auth.signIn({ authToken });
 	}
 
-	signOut() {
+	signOut(): Promise<true> {
 		return apiClient.website.auth.signOut();
 	}
 }

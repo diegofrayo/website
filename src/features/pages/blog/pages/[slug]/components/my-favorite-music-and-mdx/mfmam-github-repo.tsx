@@ -1,3 +1,5 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { Box, Icon, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 
@@ -7,7 +9,7 @@ type MFMAMGitHubRepoProps = {
 	description: string;
 };
 
-function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps) {
+function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps): ReactTypes.JSXElement {
 	return (
 		<Box
 			className="text-center sm:text-left"

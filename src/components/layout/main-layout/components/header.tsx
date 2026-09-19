@@ -15,7 +15,7 @@ type HeaderProps = {
 	height: number;
 };
 
-function Header({ height }: HeaderProps) {
+function Header({ height }: HeaderProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		container: cn(
@@ -57,7 +57,7 @@ export default Header;
 
 // --- COMPONENTS ---
 
-function NavigationMenu() {
+function NavigationMenu(): ReactTypes.JSXElement {
 	return (
 		<>
 			<NavigationMenuDesktop className="hidden sm:flex" />
@@ -66,20 +66,20 @@ function NavigationMenu() {
 	);
 }
 
-function NavigationMenuDesktop({ className }: { className?: string }) {
+function NavigationMenuDesktop({ className }: { className?: string }): ReactTypes.JSXElement {
 	return <NavigationMenuList className={cn("flex justify-end gap-2", className)} />;
 }
 
-function NavigationMenuMobile({ className }: { className?: string }) {
+function NavigationMenuMobile({ className }: { className?: string }): ReactTypes.JSXElement {
 	// --- STATE ---
 	const { state: isMenuVisible, setTrue: showMenu, setFalse: closeMenu } = useBoolean(false);
 
 	// --- HANDLERS ---
-	function handleOpenMenuClick() {
+	function handleOpenMenuClick(): void {
 		showMenu();
 	}
 
-	function handleCloseMenuClick() {
+	function handleCloseMenuClick(): void {
 		closeMenu();
 	}
 
@@ -114,7 +114,7 @@ function NavigationMenuMobile({ className }: { className?: string }) {
 	);
 }
 
-function NavigationMenuList({ className }: { className?: string }) {
+function NavigationMenuList({ className }: { className?: string }): ReactTypes.JSXElement {
 	return (
 		<BaseUINavigationMenu.Root
 			className={cn("w-full", className)}

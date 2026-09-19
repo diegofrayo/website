@@ -1,11 +1,11 @@
-import type { NextRequest } from "next/server";
+import type { NextRequest, NextResponse } from "next/server";
 
 import checkSessionHandler from "~/features/server/api/endpoints/check-session/handler";
 import signInHandler from "~/features/server/api/endpoints/sign-in/handler";
 import signOutHandler from "~/features/server/api/endpoints/sign-out/handler";
 import { sendServerError } from "~/features/server/api/utils";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse<unknown>> {
 	const { $_ACTION, ...body } = await req.json().catch(() => ({ $_ACTION: undefined }));
 
 	switch ($_ACTION) {

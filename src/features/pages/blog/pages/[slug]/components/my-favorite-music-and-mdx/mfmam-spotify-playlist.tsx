@@ -1,4 +1,6 @@
-function MFMAMSpotifyPlaylist() {
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
+function MFMAMSpotifyPlaylist(): ReactTypes.JSXElement {
 	return (
 		<iframe
 			src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"

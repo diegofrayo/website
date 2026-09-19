@@ -4,7 +4,7 @@ import { useDidMount } from "@diegofrayo-pkg/hooks";
 
 import AuthService from "./auth.service";
 
-function useAuth() {
+function useAuth(): { isSessionLoaded: boolean; isUserLoggedIn: boolean } {
 	const [isSessionLoaded, setIsSessionLoaded] = useState(false);
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 

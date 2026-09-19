@@ -4,7 +4,7 @@ import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray, isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import { BoxWithTitle, ImageGallery } from "~/components/common";
-import { Box, Collapsible, Icon, InlineText, Link, Space, Title } from "~/components/primitive";
+import { Box, Collapsible, Icon, InlineText, Link, Separator, Title } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
 
@@ -30,7 +30,7 @@ type SPVEEQPlacesProps = {
 
 type Place = SPVEEQPlacesProps["data"][string][number];
 
-function SPVEEQPlaces({ data }: SPVEEQPlacesProps) {
+function SPVEEQPlaces({ data }: SPVEEQPlacesProps): ReactTypes.JSXElement {
 	return (
 		<Box className="flex flex-col gap-5">
 			{Object.entries(data).map(([categoryName, places]) => {
@@ -87,7 +87,7 @@ function SPVEEQPlaces({ data }: SPVEEQPlacesProps) {
 
 											<PlaceDetailsInfo description={place.description} />
 										</BoxWithTitle>
-										<Space size={2} />
+										<Separator size={2} />
 
 										<ImageGallery
 											id={place.id}
@@ -114,7 +114,7 @@ type InfoBoxProps = {
 	children: ReactTypes.Children;
 };
 
-function InfoBox({ icon, title, children }: InfoBoxProps) {
+function InfoBox({ icon, title, children }: InfoBoxProps): ReactTypes.JSXElement {
 	return (
 		<Box className="mb-4 last:mb-0">
 			<Box className="flex items-center">
@@ -135,7 +135,10 @@ function InfoBox({ icon, title, children }: InfoBoxProps) {
 	);
 }
 
-function PlaceCategoryInfo({ name, category }: Pick<Place, "name" | "category">) {
+function PlaceCategoryInfo({
+	name,
+	category,
+}: Pick<Place, "name" | "category">): ReactTypes.JSXElementNullable {
 	if (isEmptyArray(category)) return null;
 
 	return (
@@ -159,7 +162,7 @@ function PlaceCategoryInfo({ name, category }: Pick<Place, "name" | "category">)
 	);
 }
 
-function PlacePriceInfo({ price }: Pick<Place, "price">) {
+function PlacePriceInfo({ price }: Pick<Place, "price">): ReactTypes.JSXElementNullable {
 	if (!price) return null;
 
 	return (
@@ -178,7 +181,7 @@ function PlaceLinksInfo({
 	maps,
 	website,
 	links,
-}: Pick<Place, "id" | "instagram" | "maps" | "website" | "links">) {
+}: Pick<Place, "id" | "instagram" | "maps" | "website" | "links">): ReactTypes.JSXElement {
 	return (
 		<InfoBox
 			title="Links"
@@ -273,7 +276,9 @@ function PlaceLinksInfo({
 	);
 }
 
-function PlaceDetailsInfo({ description }: Pick<Place, "description">) {
+function PlaceDetailsInfo({
+	description,
+}: Pick<Place, "description">): ReactTypes.JSXElementNullable {
 	if (!description) return null;
 
 	return (

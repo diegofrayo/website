@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import SignInPage from "~/features/pages/sign-in";
 
 // --- METADATA ---
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function SignIn() {
+function SignIn(): ReactTypes.JSXElement {
 	return <SignInPage />;
 }
 

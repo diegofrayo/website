@@ -6,7 +6,7 @@ type WithAuthProps = {
 	children: ReactTypes.Children;
 };
 
-export function WithAuth({ children }: WithAuthProps) {
+export function WithAuth({ children }: WithAuthProps): ReactTypes.Node {
 	const { isUserLoggedIn } = useAuth();
 
 	if (isUserLoggedIn) {

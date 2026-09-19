@@ -11,7 +11,7 @@ export function sendServerError(error: unknown): NextResponse {
 	return NextResponse.json(response, { status: getStatusCode(error) });
 }
 
-function getStatusCode(error: unknown) {
+function getStatusCode(error: unknown): number {
 	if (error instanceof CustomError) {
 		return error.statusCode;
 	}
@@ -23,7 +23,16 @@ function getStatusCode(error: unknown) {
 	return 500;
 }
 
-function createServerErrorMessage(error: unknown) {
+function createServerErrorMessage(error: unknown):
+	| {
+			message: string;
+			id: string;
+			statusCode: number;
+			name: string;
+			stack?: string;
+			cause?: unknown;
+	  }
+	| { message: string; cause: string } {
 	if (error instanceof CustomError) {
 		return { ...error, message: error.message };
 	}

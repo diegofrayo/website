@@ -4,6 +4,7 @@ import { RadioGroup } from "@base-ui/react/radio-group";
 import { flushSync } from "react-dom";
 
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
@@ -26,7 +27,7 @@ export function DownloadActions({
 	onDesignChange,
 	onLangChange,
 	onContentModeChange,
-}: DownloadActionsProps) {
+}: DownloadActionsProps): ReactTypes.JSXElement {
 	// --- STATE ---
 	const [downloadMode, setDownloadMode] = useState<DownloadMode>("CURRENT");
 
@@ -46,7 +47,7 @@ export function DownloadActions({
 	};
 
 	// --- HANDLERS ---
-	function handleDownloadClick() {
+	function handleDownloadClick(): void {
 		if (downloadMode === "CURRENT") {
 			window.print();
 		} else {
@@ -55,7 +56,7 @@ export function DownloadActions({
 	}
 
 	// --- UTILS ---
-	function downloadAll() {
+	function downloadAll(): void {
 		const originalDesign = design;
 		const originalLang = lang;
 		const originalContentMode = contentMode;
@@ -73,7 +74,7 @@ export function DownloadActions({
 
 		let index = 0;
 
-		const triggerPrint = (lang: Lang, design: Design, contentMode: ContentMode) => {
+		const triggerPrint = (lang: Lang, design: Design, contentMode: ContentMode): void => {
 			const isDefaultResume = lang === "EN" && design === "MINIMALIST" && contentMode === "SHORT";
 			document.title = isDefaultResume
 				? "2026"
@@ -81,7 +82,7 @@ export function DownloadActions({
 			window.print();
 		};
 
-		const printNext = () => {
+		const printNext = (): void => {
 			if (index >= variants.length) {
 				document.title = originalTitle;
 				onDesignChange(originalDesign);

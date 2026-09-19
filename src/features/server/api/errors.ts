@@ -6,6 +6,7 @@ export abstract class CustomError extends Error {
 	id: string;
 	statusCode: number;
 
+	// eslint-disable-next-line max-params
 	constructor(id: string, message: string, statusCode: number, cause?: unknown) {
 		super(message);
 		this.id = id;

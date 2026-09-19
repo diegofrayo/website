@@ -35,7 +35,7 @@ export const Default: StoryObj<typeof toast> = {
 	render: () => {
 		const [args] = useArgs<Args>();
 
-		const handleClick = () => {
+		const handleClick = (): void => {
 			if (args["type"] === "default") {
 				toast(args["message"]);
 			} else {

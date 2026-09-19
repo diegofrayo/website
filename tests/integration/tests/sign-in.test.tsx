@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, type Mock } from "vitest";
 
 import AuthService from "~/features/auth";
 import SignInPage from "~/features/pages/sign-in";
@@ -55,25 +55,27 @@ describe("SignInPage", () => {
 
 // --- UTILS ---
 
-function renderSignInPage() {
+function renderSignInPage(): void {
 	renderWithRouter(<SignInPage />, { pathname: SIGN_IN_PATHNAME });
 }
 
-function setAuthTokenSearchParam(authToken: string | undefined) {
+function setAuthTokenSearchParam(authToken: string | undefined): void {
 	const search = authToken ? `?auth_token=${authToken}` : "";
 	window.history.pushState({}, "", `${SIGN_IN_PATHNAME}${search}`);
 }
 
-function mockUserLoggedOut() {
+function mockUserLoggedOut(): void {
 	vi.spyOn(AuthService, "onSessionLoad").mockImplementation((callback) => {
 		callback(false);
 	});
 }
 
-function mockSignIn(implementation: () => Promise<true>) {
+function mockSignIn(
+	implementation: () => Promise<true>,
+): Mock<(authToken: string) => Promise<true>> {
 	return vi.spyOn(AuthService, "signIn").mockImplementation(implementation);
 }
 
-async function assertStatusMessageIsVisible(message: string) {
+async function assertStatusMessageIsVisible(message: string): Promise<void> {
 	expect(await screen.findByText(message)).toBeInTheDocument();
 }

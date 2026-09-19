@@ -1,6 +1,8 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { WEBSITE_METADATA } from "~/constants";
 
-function PersonScript() {
+function PersonScript(): ReactTypes.JSXElement {
 	return (
 		<script
 			type="application/ld+json"

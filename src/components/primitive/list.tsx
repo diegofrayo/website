@@ -14,7 +14,11 @@ type ListProps = ReactTypes.DOM.HTMLElementAttributes["ul"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function List({ children, variant = VARIANTS.UNSTYLED, className }: ListProps) {
+function List({
+	children,
+	variant = VARIANTS.UNSTYLED,
+	className,
+}: ListProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isSimpleVariant = variant === VARIANTS.SIMPLE;
 
@@ -49,7 +53,9 @@ List.Item = function ListItem({
 	isSimpleVariant,
 	className,
 	...rest
-}: ReactTypes.DOM.HTMLElementAttributes["li"] & { isSimpleVariant?: boolean }) {
+}: ReactTypes.DOM.HTMLElementAttributes["li"] & {
+	isSimpleVariant?: boolean;
+}): ReactTypes.JSXElement {
 	return (
 		<li
 			className={cn(

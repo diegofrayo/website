@@ -1,6 +1,8 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { InlineText } from "~/components/primitive";
 
-export function BlogPostCategory({ text }: { text: string }) {
+export function BlogPostCategory({ text }: { text: string }): ReactTypes.JSXElement {
 	const composedText = `#${text}`;
 
 	return (

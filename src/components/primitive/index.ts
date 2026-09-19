@@ -11,5 +11,5 @@ export { default as List } from "./list";
 export { default as Modal } from "./modal";
 export { default as Paragraph } from "./paragraph";
 export { default as Pre } from "./pre";
-export { default as Space } from "./space";
+export { default as Separator } from "./separator";
 export { default as Title } from "./title";

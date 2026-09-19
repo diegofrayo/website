@@ -1,5 +1,7 @@
 import { createContext, useContext } from "react";
 
+import type { IntlMap } from "./resume.types";
+
 const IntlProviderValue = {
 	EN: {
 		SUMMARY: "Summary",
@@ -29,9 +31,9 @@ const IntlProviderValue = {
 	},
 };
 
-const IntlContext = createContext({} as (typeof IntlProviderValue)[keyof typeof IntlProviderValue]);
+const IntlContext = createContext({} as IntlMap);
 
-function useIntl() {
+function useIntl(): IntlMap {
 	return useContext(IntlContext);
 }
 

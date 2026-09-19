@@ -8,6 +8,6 @@ export const SignInRequestBody = {
 
 export type SignInRequestBody = InferOutput<typeof SignInRequestBody.schema>;
 
-export function parseRequestBody(input: unknown) {
+export function parseRequestBody(input: unknown): { authToken: string } {
 	return parse(SignInRequestBody.schema, input);
 }

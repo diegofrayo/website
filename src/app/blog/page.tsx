@@ -1,6 +1,7 @@
 import path from "path";
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import { ASSETS_ROOT_PATH, WEBSITE_METADATA } from "~/constants";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function Blog() {
+function Blog(): ReactTypes.JSXElement {
 	const posts = readFile<BlogPageProps["data"]>(
 		path.join(process.cwd(), "src/data/blog/posts.json"),
 		"json",

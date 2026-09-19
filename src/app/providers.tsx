@@ -17,7 +17,7 @@ type ProvidersProps = {
 	children: ReactTypes.Children;
 };
 
-function Providers({ children }: ProvidersProps) {
+function Providers({ children }: ProvidersProps): ReactTypes.JSXElement {
 	// --- EFFECTS ---
 	useDidMount(() => {
 		addGlobalErrorListener();

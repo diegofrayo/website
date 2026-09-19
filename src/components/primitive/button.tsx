@@ -3,6 +3,7 @@ import { useRender } from "@base-ui/react/use-render";
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
@@ -29,7 +30,7 @@ const Button = function Button({
 	variant = Variant.UNSTYLED,
 	render,
 	...otherProps
-}: ButtonProps) {
+}: ButtonProps): ReactTypes.JSXElement {
 	const classes = {
 		element: cn(
 			`dr-button dr-button--${variant.toLowerCase()}`,

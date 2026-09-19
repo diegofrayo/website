@@ -9,7 +9,12 @@ type ResumeBoxProps = {
 	style?: ReactTypes.Styles;
 };
 
-export function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
+export function ResumeBox({
+	title,
+	children,
+	variant,
+	style,
+}: ResumeBoxProps): ReactTypes.JSXElement {
 	if (variant === "SIMPLE") {
 		return (
 			<Box

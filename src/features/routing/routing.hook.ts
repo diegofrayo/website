@@ -20,7 +20,7 @@ export function useRouting(): UseRoutingReturn {
 	const pathname = usePathname() ?? "";
 
 	// --- API ---
-	function isCurrentPathActive(pathnameParam: string) {
+	function isCurrentPathActive(pathnameParam: string): boolean {
 		if (pathname === pathnameParam) {
 			return true;
 		}

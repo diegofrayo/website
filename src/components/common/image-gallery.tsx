@@ -21,7 +21,12 @@ type ImageGalleryProps = {
 	className?: string;
 };
 
-function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
+function ImageGallery({
+	id,
+	images,
+	noBounds,
+	className,
+}: ImageGalleryProps): ReactTypes.JSXElementNullable {
 	// --- STATE & REFS ---
 	const [activeIndex, setActiveIndex] = useState(0);
 	const { current: totalNumberOfImages } = useRef(images.length);
@@ -83,23 +88,23 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 			const { current: imagesContainer } = imagesContainerRef;
 
 			if (!imagesContainer) {
-				return () => undefined;
+				return (): undefined => undefined;
 			}
 
-			function onTouchStart(event: TouchEvent) {
+			function onTouchStart(event: TouchEvent): void {
 				touchEventRef.current.start = event.changedTouches[0].screenX;
 			}
 
-			function onTouchEnd(event: TouchEvent) {
+			function onTouchEnd(event: TouchEvent): void {
 				touchEventRef.current.end = event.changedTouches[0].screenX;
 				checkSwipeDirection(touchEventRef.current);
 			}
 
-			function onClickStart(event: MouseEvent) {
+			function onClickStart(event: MouseEvent): void {
 				touchEventRef.current.start = event.clientX;
 			}
 
-			function onClickEnd(event: MouseEvent) {
+			function onClickEnd(event: MouseEvent): void {
 				touchEventRef.current.end = event.clientX;
 				checkSwipeDirection(touchEventRef.current);
 			}
@@ -112,7 +117,7 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 				imagesContainer.addEventListener("mouseup", onClickEnd);
 			}
 
-			return function dettachTouchEvents() {
+			return function dettachTouchEvents(): void {
 				if (isMobileDevice()) {
 					imagesContainer.removeEventListener("touchstart", onTouchStart);
 					imagesContainer.removeEventListener("touchend", onTouchEnd);
@@ -126,7 +131,7 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 	);
 
 	// --- HANDLERS ---
-	function handleChangeImage(event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>) {
+	function handleChangeImage(event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>): void {
 		const dataIndex = safeCastNumber(event.currentTarget.getAttribute("data-index"), null);
 
 		changeActivePhoto({
@@ -198,14 +203,14 @@ function GalleryControls({
 	noBounds,
 	totalNumberOfImages,
 	onClick,
-}: GalleryControlsProps) {
+}: GalleryControlsProps): ReactTypes.JSXElementNullable {
 	// --- STYLES ---
 	const classes = {
 		container: cn("mt-2 flex w-full items-center justify-between gap-3"),
 		leftArrow: cn("flex w-8 items-center justify-start"),
 		dots: cn("inline-flex h-8 items-center justify-center rounded-md bg-zinc-800 px-1"),
 		rightArrow: cn("flex w-8 items-center justify-end"),
-		dot: (index: number) =>
+		dot: (index: number): string =>
 			cn(
 				"mx-1 inline-block size-3 rounded-full leading-0",
 				index === activeIndex ? "bg-zinc-200" : "bg-zinc-500",
@@ -268,7 +273,7 @@ function NavigationArrow({
 	totalNumberOfImages,
 	noBounds,
 	onClick,
-}: NavigationArrowProps) {
+}: NavigationArrowProps): ReactTypes.JSXElementNullable {
 	const isFirstIndex = activeIndex === 0;
 	const isLastIndex = activeIndex === totalNumberOfImages - 1;
 	const isRightDirection = direction === "right";

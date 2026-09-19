@@ -21,7 +21,7 @@ class AnalyticsServiceClass {
 		autoBind(this);
 	}
 
-	shouldSkipTracking() {
+	shouldSkipTracking(): boolean {
 		if (
 			!window.rybbit ||
 			isDevelopmentEnvironment() ||
@@ -35,7 +35,7 @@ class AnalyticsServiceClass {
 		return AuthService.isUserLoggedIn();
 	}
 
-	trackPageLoaded() {
+	trackPageLoaded(): void {
 		if (this.shouldSkipTracking()) {
 			logger(
 				"LOG",
@@ -48,7 +48,7 @@ class AnalyticsServiceClass {
 		logger("LOG", `🟢 Page "${window.location.pathname}" | "${document.title}" visit was tracked`);
 	}
 
-	trackEvent(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>) {
+	trackEvent(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>): void {
 		if (this.shouldSkipTracking()) {
 			logger("LOG", `🔘 Event "${name}" was not tracked`, data);
 			return;
@@ -59,7 +59,7 @@ class AnalyticsServiceClass {
 	}
 
 	trackClickEvent(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>) {
-		return () => {
+		return (): void => {
 			this.trackEvent(name, data);
 		};
 	}

@@ -57,39 +57,45 @@ describe("BlogPostPage", () => {
 
 // --- TEST 1 HELPERS ---
 
-function getSendCommentLink() {
+function getSendCommentLink(): HTMLElement {
 	return screen.getByRole("link", { name: "Send a comment via e-mail" });
 }
 
-function assertMailtoHref($link: Element) {
+function assertMailtoHref($link: Element): void {
 	const EXPECTED_HREF_VALUE =
 		"mailto:diegofrayo@gmail.com?subject=Blog%20post%20comment&body=Hi%2C%20I%20have%20a%20comment%20about%20this%20blog%20post%3A%20https%3A%2F%2Fwebsite.local%2Fblog%2Fsitios-para-visitar-en-el-quindio";
 
 	expect($link).toHaveAttribute("href", EXPECTED_HREF_VALUE);
 }
 
-async function clickLinkAndAssertAnalyticsEvent($link: Element, trackEventSpy: Mock) {
+async function clickLinkAndAssertAnalyticsEvent(
+	$link: Element,
+	trackEventSpy: Mock,
+): Promise<void> {
 	await userEvent.click($link);
 	expect(trackEventSpy).toHaveBeenCalledWith("BLOG|SEND_EMAIL", { post: post.details.title });
 }
 
 // --- TEST 2 HELPERS ---
 
-function getCopyUrlButton() {
+function getCopyUrlButton(): HTMLElement {
 	return screen
 		.getAllByRole("button", { name: "Copy URL" })
 		.find((element) => element.tagName === "BUTTON") as HTMLElement;
 }
 
-async function clickButtonAndAssertClipboardWrite($button: HTMLElement, writeTextSpy: Mock) {
+async function clickButtonAndAssertClipboardWrite(
+	$button: HTMLElement,
+	writeTextSpy: Mock,
+): Promise<void> {
 	await userEvent.click($button);
 	expect(writeTextSpy).toHaveBeenCalledWith(window.location.href);
 }
 
-function assertCopyUrlAnalyticsEvent(trackEventSpy: Mock) {
+function assertCopyUrlAnalyticsEvent(trackEventSpy: Mock): void {
 	expect(trackEventSpy).toHaveBeenCalledWith("BLOG|COPY_URL", { post: post.details.title });
 }
 
-async function assertCopiedPopoverIsShown() {
+async function assertCopiedPopoverIsShown(): Promise<void> {
 	expect(await screen.findByText("copied!")).toBeInTheDocument();
 }

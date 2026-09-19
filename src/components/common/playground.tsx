@@ -25,7 +25,7 @@ function Playground({
 	language = "",
 	title = "",
 	sourceCode,
-}: PlaygroundProps) {
+}: PlaygroundProps): ReactTypes.JSXElement {
 	// --- STATE ---
 	const [tab, setTab] = useState(0);
 	const contentRef = useRef<HTMLDivElement>(null);

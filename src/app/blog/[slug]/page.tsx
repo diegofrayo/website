@@ -2,6 +2,7 @@ import path from "path";
 import { cache } from "react";
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import { ASSETS_ROOT_PATH, WEBSITE_METADATA } from "~/constants";
@@ -39,7 +40,11 @@ export async function generateMetadata({
 
 // --- COMPONENT DEFINITION ---
 
-async function BlogPost({ params }: { params: Promise<PageParams> }) {
+async function BlogPost({
+	params,
+}: {
+	params: Promise<PageParams>;
+}): Promise<ReactTypes.JSXElement> {
 	const { slug } = await params;
 	const post = getBlogPost(slug);
 	const mdxCompiled = await compile({ content: post.content });

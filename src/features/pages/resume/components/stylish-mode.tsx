@@ -1,7 +1,17 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Image, InlineText, Link, Paragraph, Pre, Space, Title } from "~/components/primitive";
+import {
+	Box,
+	Image,
+	InlineText,
+	Link,
+	Paragraph,
+	Pre,
+	Separator,
+	Title,
+} from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -14,7 +24,7 @@ import { ResumeBox } from "./resume-box";
 
 type StylishModeProps = { data: Resume; contentMode: ContentMode };
 
-export function StylishMode({ data, contentMode }: StylishModeProps) {
+export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -34,13 +44,13 @@ export function StylishMode({ data, contentMode }: StylishModeProps) {
 				>
 					{data.contactInfo.name}
 				</Title>
-				<Space size={1} />
+				<Separator size={1} />
 
 				<Paragraph>{data.contactInfo.label}</Paragraph>
-				<Space size={1} />
+				<Separator size={1} />
 
 				<Location location={data.contactInfo.location} />
-				<Space size={2} />
+				<Separator size={2} />
 
 				<ContactInfo
 					contactInfo={data.contactInfo}

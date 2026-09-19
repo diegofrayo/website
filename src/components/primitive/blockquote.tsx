@@ -7,7 +7,7 @@ type BlockquoteProps = ReactTypes.DOM.HTMLElementAttributes["blockquote"];
 
 // --- COMPONENT DEFINITION ---
 
-function Blockquote({ children, className, ...rest }: BlockquoteProps) {
+function Blockquote({ children, className, ...rest }: BlockquoteProps): ReactTypes.JSXElement {
 	return (
 		<blockquote
 			className={cn("dr-blockquote", "border-l-4 border-black pl-3 text-black", className)}

@@ -31,7 +31,12 @@ type LinkProps = NativeLink | NextLink;
 
 // --- COMPONENT DEFINITION ---
 
-function Link({ variant = VARIANTS.UNSTYLED, href, className, ...props }: LinkProps) {
+function Link({
+	variant = VARIANTS.UNSTYLED,
+	href,
+	className,
+	...props
+}: LinkProps): ReactTypes.JSXElement {
 	// --- UTILS ---
 	function composeLinkAttributes(): { target?: "_blank"; rel?: "noreferrer" } {
 		if (href.startsWith("#")) return {};

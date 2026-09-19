@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
 import { MainLayout } from "~/components/layout";
@@ -21,7 +22,7 @@ export type ResumePageProps = {
 	};
 };
 
-function ResumePage({ data }: ResumePageProps) {
+function ResumePage({ data }: ResumePageProps): ReactTypes.JSXElement {
 	// --- STATE ---
 	const [design, setDesign] = useState<Design>("MINIMALIST");
 	const [lang, setLang] = useState<Lang>("EN");

@@ -7,7 +7,7 @@ import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
 import { parseRequestBody } from "./schemas";
 
-export default async function signInHandler(body: unknown) {
+export default async function signInHandler(body: unknown): Promise<NextResponse<unknown>> {
 	try {
 		const { authToken } = parseRequestBody(body);
 

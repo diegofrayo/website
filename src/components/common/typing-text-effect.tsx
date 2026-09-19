@@ -1,4 +1,5 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import { InlineText, Paragraph } from "~/components/primitive";
@@ -17,7 +18,11 @@ type TypingTextEffectProps = {
 
 // --- COMPONENT DEFINITION ---
 
-function TypingTextEffect({ align, className = "", text }: TypingTextEffectProps) {
+function TypingTextEffect({
+	align,
+	className = "",
+	text,
+}: TypingTextEffectProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const textForTyping = useTypingTextEffect(text);
 

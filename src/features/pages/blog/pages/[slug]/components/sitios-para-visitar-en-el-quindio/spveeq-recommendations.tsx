@@ -1,3 +1,4 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import { BoxWithTitle } from "~/components/common";
@@ -17,7 +18,9 @@ type SPVEEQRecommendationsProps = {
 	}[];
 };
 
-function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsProps) {
+function SPVEEQRecommendations({
+	data: recommendations,
+}: SPVEEQRecommendationsProps): ReactTypes.JSXElement {
 	return (
 		<Box>
 			{recommendations.map((recommendation) => {

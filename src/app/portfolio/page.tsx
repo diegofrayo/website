@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { ASSETS_ROOT_PATH, WEBSITE_METADATA } from "~/constants";
 import PortfolioPage from "~/features/pages/portfolio";
 
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function Portfolio() {
+function Portfolio(): ReactTypes.JSXElement {
 	return <PortfolioPage />;
 }
 

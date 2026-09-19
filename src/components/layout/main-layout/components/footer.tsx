@@ -1,4 +1,5 @@
 import { useBoolean, useOnScroll } from "@diegofrayo-pkg/hooks";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
 import { Box, Button, Icon, InlineText, Link, Paragraph } from "~/components/primitive";
@@ -6,7 +7,7 @@ import { IconCatalog } from "~/components/primitive/icon";
 import AnalyticsService from "~/features/analytics";
 import { Routes } from "~/features/routing";
 
-function Footer() {
+function Footer(): ReactTypes.JSXElement {
 	return (
 		<Box
 			as="footer"
@@ -32,7 +33,7 @@ export default Footer;
 
 // --- COMPONENTS ---
 
-function GoToTopButton() {
+function GoToTopButton(): ReactTypes.JSXElementNullable {
 	// --- STATE ---
 	const {
 		state: isButtonVisible,
@@ -50,7 +51,7 @@ function GoToTopButton() {
 	});
 
 	// --- HANDLERS ---
-	function handleGoToTheTopClick() {
+	function handleGoToTheTopClick(): void {
 		AnalyticsService.trackEvent("GENERAL|GO_TO_TOP");
 		setScrollPosition(0);
 	}

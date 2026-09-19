@@ -15,7 +15,7 @@ type CalloutProps = {
 	variant?: Variant;
 };
 
-function Callout({ children, variant = Variant.ERROR }: CalloutProps) {
+function Callout({ children, variant = Variant.ERROR }: CalloutProps): ReactTypes.JSXElement {
 	const isWarningVariant = variant === Variant.WARNING;
 
 	const classes = {

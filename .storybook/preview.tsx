@@ -4,7 +4,7 @@ import type { Decorator, Preview } from "@storybook/nextjs-vite";
 
 // --- GLOBAL CONFIG ---
 
-(function injectGlobalCSS() {
+(function injectGlobalCSS(): void {
 	if (typeof window === "undefined") return;
 	const style = document.createElement("style");
 	style.innerHTML = `body { visibility: visible !important; }`;

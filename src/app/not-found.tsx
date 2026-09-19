@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import ErrorPage from "~/features/pages/error.page";
 
 // --- METADATA ---
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function NotFound() {
+function NotFound(): ReactTypes.JSXElement {
 	return <ErrorPage variant="404" />;
 }
 

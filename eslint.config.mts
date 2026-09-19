@@ -57,11 +57,13 @@ const REACT_CONFIG = {
 		"no-else-return": "error",
 		"no-lonely-if": "error",
 
+		"@typescript-eslint/explicit-function-return-type": "error",
 		"max-lines": ["error", { max: 300, skipBlankLines: true }],
 		"max-lines-per-function": ["error", { max: 150, skipBlankLines: true, skipComments: true }],
+		"max-params": ["error", 3],
 
-		"no-console": ["warn"],
 		"react/react-in-jsx-scope": ["off"],
+		"no-console": ["warn"],
 		"@typescript-eslint/ban-ts-comment": ["warn"],
 		"@typescript-eslint/no-unused-vars": [
 			"error",
@@ -101,5 +103,6 @@ export default defineConfig([
 		"next-env.d.ts",
 		"node_modules",
 		"public/assets/pages/demo/bets",
+		"playwright-report",
 	]),
 ]);

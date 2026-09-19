@@ -1,6 +1,7 @@
 import path from "path";
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import { PersonScript } from "~/components/common";
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function Resume() {
+function Resume(): ReactTypes.JSXElement {
 	const data = readFile<ResumePageProps["data"]>(
 		path.join(process.cwd(), "src/data/resume.json"),
 		"json",

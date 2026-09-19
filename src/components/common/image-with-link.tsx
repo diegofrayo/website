@@ -1,9 +1,10 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import { Image, Link } from "~/components/primitive";
 import { type ImageProps } from "~/components/primitive/image";
 
-function ImageWithLink({ src, alt, ...rest }: ImageProps) {
+function ImageWithLink({ src, alt, ...rest }: ImageProps): ReactTypes.JSXElementNullable {
 	if (isNotEmptyString(src)) {
 		return (
 			<Link

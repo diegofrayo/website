@@ -1,13 +1,20 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, List, Paragraph, Space } from "~/components/primitive";
+import { Box, List, Paragraph, Separator } from "~/components/primitive";
 
 import { useIntl } from "../resume.context";
 import { ResumeBox } from "./resume-box";
 import { Skill } from "./skill";
 
-export function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE" | "STYLISH" }) {
+export function OtherSection({
+	data,
+	variant,
+}: {
+	data: Resume;
+	variant: "SIMPLE" | "STYLISH";
+}): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -37,7 +44,7 @@ export function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE
 				</List>
 			</ResumeBox>
 
-			<Space size={2} />
+			<Separator size={2} />
 
 			<ResumeBox
 				variant={variant}

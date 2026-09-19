@@ -9,11 +9,11 @@ import { afterEach, vi } from "vitest";
  * can be exercised in tests.
  */
 if (!window.HTMLDialogElement.prototype.showModal) {
-	window.HTMLDialogElement.prototype.showModal = function showModal(this: HTMLDialogElement) {
+	window.HTMLDialogElement.prototype.showModal = function showModal(this: HTMLDialogElement): void {
 		this.open = true;
 	};
 
-	window.HTMLDialogElement.prototype.close = function close(this: HTMLDialogElement) {
+	window.HTMLDialogElement.prototype.close = function close(this: HTMLDialogElement): void {
 		this.open = false;
 		this.dispatchEvent(new Event("close"));
 	};
@@ -24,7 +24,7 @@ if (!window.HTMLDialogElement.prototype.showModal) {
  * utilities (e.g. `isPWA`) rely on.
  */
 if (!window.matchMedia) {
-	window.matchMedia = (query: string) =>
+	window.matchMedia = (query: string): MediaQueryList =>
 		({
 			matches: false,
 			media: query,

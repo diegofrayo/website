@@ -28,7 +28,7 @@ function SourceCode({
 	className = "",
 	title = "",
 	language: languageProp = "code",
-}: SourceCodeProps) {
+}: SourceCodeProps): ReactTypes.JSXElement {
 	// --- STATE & REFS ---
 	const [highlightedCode, setHighlightedCode] = useState("");
 	const [containerHeight, setContainerHeight] = useState<number | "auto">("auto");

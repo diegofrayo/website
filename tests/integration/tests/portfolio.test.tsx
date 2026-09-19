@@ -60,23 +60,23 @@ describe("PortfolioPage", () => {
 
 // --- TEST 1 HELPERS ---
 
-function renderPortfolioPage() {
+function renderPortfolioPage(): void {
 	renderWithRouter(<PortfolioPage />, { pathname: Routes.PORTFOLIO });
 }
 
-function assertNoProjectModalIsOpen() {
+function assertNoProjectModalIsOpen(): void {
 	expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 }
 
-function getProjectThumbnailButton(title: string) {
+function getProjectThumbnailButton(title: string): HTMLElement {
 	return screen.getByRole("button", { name: title });
 }
 
-function getProjectModal() {
+function getProjectModal(): HTMLElement {
 	return screen.getByRole("dialog");
 }
 
-function assertProjectModalShowsProject(dialog: HTMLElement, project: Project) {
+function assertProjectModalShowsProject(dialog: HTMLElement, project: Project): void {
 	expect(dialog).toBeInTheDocument();
 	expect(within(dialog).getByText(project.title)).toBeInTheDocument();
 	expect(
@@ -84,20 +84,20 @@ function assertProjectModalShowsProject(dialog: HTMLElement, project: Project) {
 	).toBeInTheDocument();
 }
 
-function getProjectModalCloseButton(dialog: HTMLElement) {
+function getProjectModalCloseButton(dialog: HTMLElement): HTMLElement {
 	return within(dialog).getByRole("button", { name: "" });
 }
 
 // --- TEST 2 HELPERS ---
 
-function assertProjectThumbnailIsVisible(title: string) {
+function assertProjectThumbnailIsVisible(title: string): void {
 	expect(screen.getByRole("button", { name: title })).toBeInTheDocument();
 }
 
-function assertProjectThumbnailIsHidden(title: string) {
+function assertProjectThumbnailIsHidden(title: string): void {
 	expect(screen.queryByRole("button", { name: title })).not.toBeInTheDocument();
 }
 
-function getProjectsTabButton(name: "Professional projects" | "Side projects") {
+function getProjectsTabButton(name: "Professional projects" | "Side projects"): HTMLElement {
 	return screen.getByRole("button", { name });
 }

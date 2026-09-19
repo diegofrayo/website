@@ -9,7 +9,7 @@ type ParagraphProps = ReactTypes.DOM.HTMLElementAttributes["p"];
 
 // --- COMPONENT DEFINITION ---
 
-function Paragraph({ children, className = "", ...rest }: ParagraphProps) {
+function Paragraph({ children, className = "", ...rest }: ParagraphProps): ReactTypes.JSXElement {
 	return (
 		<p
 			className={cn("dr-paragraph", className)}

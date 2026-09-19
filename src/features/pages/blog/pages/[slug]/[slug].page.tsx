@@ -28,7 +28,7 @@ import {
 	Link,
 	List,
 	Paragraph,
-	Space,
+	Separator,
 } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 import { BLOG_IMAGES_PATH } from "~/constants";
@@ -43,7 +43,7 @@ export type BlogPostPageProps = {
 	data: BlogPostWithContent;
 };
 
-function BlogPostPage({ data }: BlogPostPageProps) {
+function BlogPostPage({ data }: BlogPostPageProps): ReactTypes.JSXElement {
 	const { details: blogPostDetails, content: blogPostContent } = data;
 
 	return (
@@ -58,9 +58,9 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 					loading="eager"
 				/>
 			</Box>
-			<Space size={1.5} />
+			<Separator size={1.5} />
 			<BlogPostDetails details={blogPostDetails} />
-			<Space size={1.5} />
+			<Separator size={1.5} />
 			<MDXContent
 				code={blogPostContent}
 				components={getBlogPostDynamicComponents(getMDXExport(blogPostContent))}
@@ -68,9 +68,9 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 					DATA: { post: blogPostDetails },
 				}}
 			/>
-			<Space size={4} />
+			<Separator size={4} />
 			<BlogPostSources sources={blogPostDetails.sources} />
-			<Space size={2} />
+			<Separator size={2} />
 			<BlogPostActions blogPostTitle={blogPostDetails.title} />
 		</MainLayout>
 	);
@@ -80,7 +80,9 @@ export default BlogPostPage;
 
 // --- UTILS ---
 
-function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) {
+function getBlogPostDynamicComponents(
+	componentsMap: UtilsTypes.Object<string>,
+): UtilsTypes.Object<unknown> {
 	const DYNAMIC_COMPONENTS = [
 		"Playground",
 		"MFMAMGitHubRepo",
@@ -160,7 +162,11 @@ function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) 
 
 // --- COMPONENTS ---
 
-function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["details"] }) {
+function BlogPostDetails({
+	details,
+}: {
+	details: BlogPostPageProps["data"]["details"];
+}): ReactTypes.JSXElement {
 	return (
 		<Box className="border border-zinc-200 bg-zinc-50 py-4 text-center text-sm">
 			<Paragraph>
@@ -171,7 +177,7 @@ function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["deta
 				<InlineText>Published at</InlineText>{" "}
 				<InlineText as="strong">{details.published_at}</InlineText>
 			</Paragraph>
-			<Space size={0.5} />
+			<Separator size={0.5} />
 			<Box className="flex flex-wrap items-center justify-center gap-x-2">
 				{details.categories.map((category) => {
 					return (
@@ -186,7 +192,7 @@ function BlogPostDetails({ details }: { details: BlogPostPageProps["data"]["deta
 	);
 }
 
-function BlogPostSources({ sources }: Pick<BlogPost, "sources">) {
+function BlogPostSources({ sources }: Pick<BlogPost, "sources">): ReactTypes.JSXElementNullable {
 	if (isEmptyArray(sources)) return null;
 
 	return (
@@ -228,7 +234,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions({
 			label: "Send a comment via e-mail",
 			popoverConfig: undefined,
 			props: {
-				href: (function composeMailToURL() {
+				href: (function composeMailToURL(): string {
 					const paramsValues = {
 						subject: "Blog post comment",
 						body: `Hi, I have a comment about this blog post: ${window.location.href}`,
@@ -288,7 +294,7 @@ type BlogPostActionsItemWrapperProps = {
 const BlogPostActionsItemWrapper = ({
 	children,
 	popoverConfig,
-}: BlogPostActionsItemWrapperProps) => {
+}: BlogPostActionsItemWrapperProps): ReactTypes.Node => {
 	if (popoverConfig) {
 		return (
 			<CopyToClipboardPopover

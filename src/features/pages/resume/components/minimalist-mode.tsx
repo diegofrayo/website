@@ -1,7 +1,8 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import { Box, Link, List, Paragraph, Pre, Space, Title } from "~/components/primitive";
+import { Box, Link, List, Paragraph, Pre, Separator, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -14,7 +15,7 @@ import { Skill } from "./skill";
 
 type MinimalistModeProps = { data: Resume; contentMode: ContentMode };
 
-export function MinimalistMode({ data, contentMode }: MinimalistModeProps) {
+export function MinimalistMode({ data, contentMode }: MinimalistModeProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -35,13 +36,13 @@ export function MinimalistMode({ data, contentMode }: MinimalistModeProps) {
 				</Title>
 
 				<Paragraph>{data.contactInfo.label}</Paragraph>
-				<Space size={1.5} />
+				<Separator size={1.5} />
 
 				<ContactInfo
 					contactInfo={data.contactInfo}
 					variant="SIMPLE"
 				/>
-				<Space size={1.5} />
+				<Separator size={1.5} />
 
 				<Location location={data.contactInfo.location} />
 			</Box>
@@ -85,7 +86,7 @@ export function MinimalistMode({ data, contentMode }: MinimalistModeProps) {
 	);
 }
 
-function EducationList({ education }: { education: Resume["education"] }) {
+function EducationList({ education }: { education: Resume["education"] }): ReactTypes.JSXElement[] {
 	return education.map((item) => {
 		return (
 			<Box
@@ -120,7 +121,7 @@ function ExperienceList({
 }: {
 	experience: Resume["experience"];
 	contentMode: ContentMode;
-}) {
+}): ReactTypes.JSXElement[] {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -157,14 +158,14 @@ function ExperienceList({
 							{startDate} - {endDate || texts.PRESENT}
 						</Paragraph>
 					</Box>
-					<Space size={0.5} />
+					<Separator size={0.5} />
 					<Box className="-mt-0.5 flex items-end justify-between gap-4 text-xs italic">
 						<Paragraph className="shrink-0 leading-none">{role}</Paragraph>
 						<Paragraph className="inline-block text-right leading-none capitalize">
 							{mode}
 						</Paragraph>
 					</Box>
-					<Space size={1} />
+					<Separator size={1} />
 
 					<Box className="flex flex-col gap-1">
 						<Paragraph>{content.summary}</Paragraph>

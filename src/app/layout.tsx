@@ -41,7 +41,7 @@ export const viewport: Viewport = {
 
 // --- COMPONENT DEFINITION ---
 
-function RootLayout({ children }: { children: ReactTypes.Children }) {
+function RootLayout({ children }: { children: ReactTypes.Children }): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const fontsConfig = `
     html {

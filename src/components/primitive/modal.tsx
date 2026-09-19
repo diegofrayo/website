@@ -1,10 +1,7 @@
-import { useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
+import { Dialog } from "@base-ui/react/dialog";
 
 import cn from "@diegofrayo-pkg/cn";
-import { useIsMounted } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
 // --- PROPS & TYPES ---
 
@@ -18,73 +15,48 @@ type ModalProps = {
 
 // --- COMPONENT DEFINITION ---
 
-function Modal({ children, visible, className, onCloseHandler, onOpenHandler }: ModalProps) {
-	// --- HOOKS ---
-	const isMounted = useIsMounted();
-
-	// --- STATE & REFS ---
-	const dialogRef = useRef<HTMLDialogElement>(null);
-	const scrollPosition = useRef(0);
-
-	// --- EFFECTS ---
-	useEffect(
-		function syncDialogVisibility() {
-			const dialog = dialogRef.current;
-
-			if (!dialog) return;
-
-			if (visible) {
-				scrollPosition.current = getScrollPosition();
-				dialog.showModal();
-				onOpenHandler?.();
-			} else {
-				dialog.close();
-			}
-		},
-		[visible, onOpenHandler],
-	);
-
-	useEffect(() => {
-		const dialog = dialogRef.current;
-		if (!dialog) return;
-
-		const callback = () => {
-			onCloseHandler();
-			setScrollPosition(scrollPosition.current, "auto");
-		};
-
-		dialog.addEventListener("close", callback);
-
-		return () => {
-			dialog.removeEventListener("close", callback);
-		};
-	}, [onCloseHandler]);
+function Modal({
+	children,
+	className,
+	visible,
+	onCloseHandler,
+	onOpenHandler,
+}: ModalProps): ReactTypes.JSXElement {
+	// --- STYLES ---
+	const classes = {
+		backdrop:
+			"fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-200 data-open:opacity-100 data-closed:opacity-0 data-starting-style:opacity-0",
+		viewport: "fixed inset-0 z-50 flex items-center justify-center",
+		popup: cn(
+			"transition-all duration-200",
+			"data-open:scale-100 data-open:opacity-100",
+			"data-closed:scale-95 data-closed:opacity-0",
+			"data-starting-style:scale-95 data-starting-style:opacity-0",
+			className,
+		),
+	};
 
 	// --- HANDLERS ---
-	function handleBackdropClick(event: ReactTypes.Events.OnClickEvent<HTMLDialogElement>) {
-		if (event.target === dialogRef.current) {
+	function handleOpenChange(open: boolean): void {
+		if (open) {
+			onOpenHandler?.();
+		} else {
 			onCloseHandler();
 		}
 	}
 
-	if (!isMounted) return null;
-
-	return createPortal(
-		<dialog
-			ref={dialogRef}
-			className={cn(
-				"dr-modal",
-				"fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none",
-				"backdrop:bg-black/50",
-				"bg-transparent p-0",
-				"open:flex open:items-center open:justify-center",
-			)}
-			onClose={onCloseHandler}
-			onClick={handleBackdropClick}
+	return (
+		<Dialog.Root
+			open={visible}
+			onOpenChange={handleOpenChange}
 		>
-			<div className={className}>{children}</div>
-		</dialog>,
-		document.body,
+			<Dialog.Portal>
+				<Dialog.Backdrop className={classes.backdrop} />
+				<Dialog.Viewport className={classes.viewport}>
+					<Dialog.Popup className={classes.popup}>{children}</Dialog.Popup>
+				</Dialog.Viewport>
+			</Dialog.Portal>
+		</Dialog.Root>
 	);
 }
 

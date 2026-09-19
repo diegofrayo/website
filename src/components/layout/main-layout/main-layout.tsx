@@ -3,7 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe, removeLastItem } from "@diegofrayo-pkg/utilities/fp";
 import { isEmptyString, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
-import { Box, Link, Space, Title } from "~/components/primitive";
+import { Box, Link, Separator, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 import { useRouting } from "~/features/routing";
 
@@ -17,7 +17,12 @@ type MainLayoutProps = {
 	title?: string;
 };
 
-function MainLayout({ children, className, contentClassName, title }: MainLayoutProps) {
+function MainLayout({
+	children,
+	className,
+	contentClassName,
+	title,
+}: MainLayoutProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const HEADER_HEIGHT = 64;
 
@@ -38,7 +43,7 @@ function MainLayout({ children, className, contentClassName, title }: MainLayout
 				/>
 
 				<Box className={classes.content}>{children}</Box>
-				<Space size={8} />
+				<Separator size={8} />
 				<Footer />
 			</Box>
 		</Box>
@@ -54,7 +59,7 @@ type TitleSectionProps = {
 	style?: ReactTypes.Styles;
 };
 
-function TitleSection({ title, style }: TitleSectionProps) {
+function TitleSection({ title, style }: TitleSectionProps): ReactTypes.JSXElementNullable {
 	// --- HOOKS ---
 	const { pathname } = useRouting();
 
@@ -109,11 +114,12 @@ function TitleSection({ title, style }: TitleSectionProps) {
  * @param pathname : "/" | "/blog" | "/blog/slug"
  * @returns string: pathname: "/" => output: "" | pathname: "/blog" => output: "/" | pathname: "/blog/slug" => output: "/blog/"
  */
-function getParentURL(pathname: string) {
+function getParentURL(pathname: string): string {
 	if (pathname === "/") return "";
 
-	const splitBySlashes = (pathname: string) => pathname.split("/").filter(isNotEmptyString);
-	const joinPathname = (pathnameParts: string[]) => {
+	const splitBySlashes = (pathname: string): string[] =>
+		pathname.split("/").filter(isNotEmptyString);
+	const joinPathname = (pathnameParts: string[]): string => {
 		if (pathnameParts.length === 0) return "/";
 		return `/${pathnameParts.join("/")}/`;
 	};

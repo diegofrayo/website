@@ -19,7 +19,12 @@ type PreProps = ReactTypes.DOM.HTMLElementAttributes["pre"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function Pre({ children, className, variant = VARIANTS.UNSTYLED, ...rest }: PreProps) {
+function Pre({
+	children,
+	className,
+	variant = VARIANTS.UNSTYLED,
+	...rest
+}: PreProps): ReactTypes.JSXElement {
 	return (
 		<pre
 			className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}

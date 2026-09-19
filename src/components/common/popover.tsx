@@ -13,7 +13,7 @@ type PopoverProps = Partial<PopoverPositionerProps> &
 		open?: boolean;
 	};
 
-function Popover({ children, text, open = false, ...rest }: PopoverProps) {
+function Popover({ children, text, open = false, ...rest }: PopoverProps): ReactTypes.JSXElement {
 	return (
 		<BaseUIPopover.Root open={open}>
 			<BaseUIPopover.Trigger
@@ -52,7 +52,11 @@ type ArrowSvgProps = {
 	className?: string;
 };
 
-const ArrowSvg = ({ size = "w-6 h-6", color = "text-black", className = "" }: ArrowSvgProps) => {
+const ArrowSvg = ({
+	size = "w-6 h-6",
+	color = "text-black",
+	className = "",
+}: ArrowSvgProps): ReactTypes.JSXElement => {
 	return (
 		<svg
 			viewBox="0 0 100 100"

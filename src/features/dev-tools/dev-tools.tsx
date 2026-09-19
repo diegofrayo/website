@@ -5,6 +5,7 @@ import { useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import { useWindowSize } from "@diegofrayo-pkg/hooks";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
@@ -18,7 +19,7 @@ type DevToolsProps = {
 	productionURL: string;
 };
 
-function DevTools({ devURL, productionURL }: DevToolsProps) {
+function DevTools({ devURL, productionURL }: DevToolsProps): ReactTypes.JSXElementNullable {
 	// --- HOOKS ---
 	const { isUserLoggedIn } = useAuth();
 
@@ -26,11 +27,11 @@ function DevTools({ devURL, productionURL }: DevToolsProps) {
 	const [isContentExpanded, setIsContentExpanded] = useState(false);
 
 	// --- HANDLERS ---
-	function handleExpandContentClick() {
+	function handleExpandContentClick(): void {
 		setIsContentExpanded(true);
 	}
 
-	function handleHideContentClick() {
+	function handleHideContentClick(): void {
 		setIsContentExpanded(false);
 	}
 
@@ -79,7 +80,7 @@ export default DevTools;
 
 // --- COMPONENTS ---
 
-function StatusIndicators() {
+function StatusIndicators(): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const { isUserLoggedIn } = useAuth();
 

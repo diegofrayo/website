@@ -6,6 +6,7 @@ import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isPWA } from "@diegofrayo-pkg/utilities/browser/device";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
@@ -34,7 +35,7 @@ import {
 	type ProjectType,
 } from "./portfolio.constants";
 
-function PortfolioPage() {
+function PortfolioPage(): ReactTypes.JSXElement {
 	// --- STATE & REFS ---
 	const [projectsFilter, setProjectsFilter] = useState<ProjectType>("PROFESSIONAL_PROJECT");
 
@@ -50,7 +51,7 @@ function PortfolioPage() {
 	};
 
 	// --- HANDLERS ---
-	function handleProjectsFilterChange(newValue: string[]) {
+	function handleProjectsFilterChange(newValue: string[]): void {
 		if (newValue.length === 0) return;
 
 		const newFilter = newValue[0] as ProjectType;
@@ -101,7 +102,7 @@ export default PortfolioPage;
 
 // --- COMPONENTS ---
 
-function ProjectRow({ item }: { item: Project }) {
+function ProjectRow({ item }: { item: Project }): ReactTypes.JSXElement {
 	// --- STATE & REFS ---
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -120,12 +121,12 @@ function ProjectRow({ item }: { item: Project }) {
 	};
 
 	// --- HANDLERS ---
-	function handleThumbnailClick() {
+	function handleThumbnailClick(): void {
 		AnalyticsService.trackEvent("PORTFOLIO|ZOOM_IN_PROJECT", { project: item.title });
 		setIsModalOpen(true);
 	}
 
-	function handleModalClose() {
+	function handleModalClose(): void {
 		setIsModalOpen(false);
 	}
 
@@ -217,7 +218,7 @@ function ProjectRow({ item }: { item: Project }) {
 	);
 }
 
-function ProjectTitle({ item }: { item: Project }) {
+function ProjectTitle({ item }: { item: Project }): ReactTypes.JSXElement {
 	return (
 		<Box className="flex items-center justify-between gap-2">
 			<Title

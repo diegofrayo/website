@@ -1,4 +1,5 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 
 import { Box, Icon, InlineText, Link } from "~/components/primitive";
@@ -10,7 +11,7 @@ export function ContactInfo({
 }: {
 	contactInfo: Resume["contactInfo"];
 	variant: "SIMPLE" | "STYLISH";
-}) {
+}): ReactTypes.JSXElement {
 	const classes = {
 		item: cn(
 			"inline-flex shrink-0 items-center justify-center gap-1",

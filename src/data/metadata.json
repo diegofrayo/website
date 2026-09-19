@@ -9,7 +9,7 @@
 	"url": "https://diegofrayo.dev",
 	"nationality": "Colombian",
 	"birthDate": "1993/08/31",
-	"age": 32,
+	"age": 33,
 	"address": {
 		"@type": "PostalAddress",
 		"addressLocality": "Armenia",

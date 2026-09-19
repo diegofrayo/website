@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { PersonScript } from "~/components/common";
 import { ASSETS_ROOT_PATH, WEBSITE_METADATA } from "~/constants";
 import HomePage from "~/features/pages/index";
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
 
 // --- COMPONENT DEFINITION ---
 
-function Home() {
+function Home(): ReactTypes.JSXElement {
 	return (
 		<>
 			<PersonScript />

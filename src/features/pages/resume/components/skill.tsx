@@ -1,8 +1,15 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { InlineText } from "~/components/primitive";
 
-export function Skill({ children, className }: { children: string; className?: string }) {
+export function Skill({
+	children,
+	className,
+}: {
+	children: string;
+	className?: string;
+}): ReactTypes.JSXElement {
 	return (
 		<InlineText
 			className={cn(

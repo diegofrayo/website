@@ -15,7 +15,11 @@ type CodeProps = ReactTypes.DOM.HTMLElementAttributes["code"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function Code({ children, className, variant = Variant.UNSTYLED }: CodeProps) {
+function Code({
+	children,
+	className,
+	variant = Variant.UNSTYLED,
+}: CodeProps): ReactTypes.JSXElement {
 	const classes = {
 		codeElement: cn(`dr-code dr-code--${variant.toLowerCase()}`, styles({ variant }), className),
 	};

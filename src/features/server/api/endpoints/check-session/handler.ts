@@ -7,7 +7,9 @@ import { getAuthCookie, verifyAuthToken } from "~/features/auth/auth.server";
 import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
 
-export default async function checkSessionHandler(req: NextRequest) {
+export default async function checkSessionHandler(
+	req: NextRequest,
+): Promise<NextResponse<unknown>> {
 	try {
 		const cookie = getAuthCookie(req);
 

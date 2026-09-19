@@ -18,7 +18,7 @@ type ToolsMenuProps = {
 	productionURL: string;
 };
 
-function ToolsMenu({ devURL, productionURL }: ToolsMenuProps) {
+function ToolsMenu({ devURL, productionURL }: ToolsMenuProps): ReactTypes.JSXElement {
 	return (
 		<Menu.Root>
 			<Menu.Trigger className="group leading-none">
@@ -57,9 +57,9 @@ export default ToolsMenu;
 
 // --- COMPONENTS ---
 
-function CopyURLMenuItem() {
+function CopyURLMenuItem(): ReactTypes.JSXElement {
 	// --- HANDLERS ---
-	function handleClick() {
+	function handleClick(): void {
 		copyToClipboard(window.location.href);
 	}
 
@@ -95,7 +95,7 @@ const EnvironmentMenuItem = withRenderInBrowser(function EnvironmentMenuItem({
 
 const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 	// --- HANDLERS ---
-	async function handleClick() {
+	async function handleClick(): Promise<void> {
 		await AuthService.signOut();
 		window.localStorage.clear();
 		window.location.href = Routes.INDEX;
@@ -130,7 +130,7 @@ interface ToolsMenuItemButtonProps {
 
 type ToolsMenuItemProps = ToolsMenuItemLinkProps | ToolsMenuItemButtonProps;
 
-function ToolsMenuItem(props: ToolsMenuItemProps) {
+function ToolsMenuItem(props: ToolsMenuItemProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isLinkElement = props.as === "link";
 
@@ -172,7 +172,10 @@ type ToolsMenuItemWrapperProps = {
 	popoverConfig: Omit<CopyToClipboardPopoverProps, "children"> | undefined;
 };
 
-const ToolsMenuItemWrapper = ({ children, popoverConfig }: ToolsMenuItemWrapperProps) => {
+const ToolsMenuItemWrapper = ({
+	children,
+	popoverConfig,
+}: ToolsMenuItemWrapperProps): ReactTypes.Node => {
 	if (popoverConfig) {
 		return <CopyToClipboardPopover {...popoverConfig}>{children}</CopyToClipboardPopover>;
 	}

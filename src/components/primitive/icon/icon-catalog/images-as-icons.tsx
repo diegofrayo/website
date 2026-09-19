@@ -1,4 +1,5 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { ICONS_PATH } from "~/constants";
 
@@ -23,8 +24,13 @@ export default ImagesAsIcons;
 
 //  --- UTILS ---
 
-function generateIconComponent(iconPath: string) {
-	const ImageIcon = ({ className, size }: Pick<IconProps, "className" | "size">) => {
+function generateIconComponent(
+	iconPath: string,
+): ({ className, size }: Pick<IconProps, "className" | "size">) => ReactTypes.JSXElement {
+	const ImageIcon = ({
+		className,
+		size,
+	}: Pick<IconProps, "className" | "size">): ReactTypes.JSXElement => {
 		return (
 			<Image
 				src={iconPath}

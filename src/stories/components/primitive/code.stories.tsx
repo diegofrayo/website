@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import Code from "~/components/primitive/code";
 
 // --- META ---
@@ -22,7 +24,7 @@ const meta: Meta<typeof Code> = {
 		className: "",
 	},
 	decorators: [
-		(Story) => (
+		(Story): ReactTypes.JSXElement => (
 			<div className="p-8">
 				<Story />
 			</div>

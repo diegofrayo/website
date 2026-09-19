@@ -1,3 +1,4 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
@@ -14,7 +15,10 @@ type ExperienceTimelineProps = {
 	contentMode: ContentMode;
 };
 
-export function ExperienceTimeline({ experience, contentMode }: ExperienceTimelineProps) {
+export function ExperienceTimeline({
+	experience,
+	contentMode,
+}: ExperienceTimelineProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const texts = useIntl();
 

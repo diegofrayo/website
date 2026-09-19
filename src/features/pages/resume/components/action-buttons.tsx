@@ -2,6 +2,7 @@ import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Icon } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
@@ -26,7 +27,7 @@ export function ActionButtons({
 	onContentModeChange,
 	onDesignChange,
 	onLangChange,
-}: ActionButtonsProps) {
+}: ActionButtonsProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const { isUserLoggedIn } = useAuth();
 
@@ -45,7 +46,7 @@ export function ActionButtons({
 	};
 
 	// --- HANDLERS ---
-	function handleDesignChange(newValue: string[]) {
+	function handleDesignChange(newValue: string[]): void {
 		if (newValue.length > 0) {
 			const newMode = newValue[0] as Design;
 			onDesignChange(newMode);
@@ -53,7 +54,7 @@ export function ActionButtons({
 		}
 	}
 
-	function handleLangChange(newValue: string[]) {
+	function handleLangChange(newValue: string[]): void {
 		if (newValue.length === 0) return;
 
 		const newLang = newValue[0] as Lang;
@@ -61,7 +62,7 @@ export function ActionButtons({
 		AnalyticsService.trackEvent("RESUME|SET_LANG", { lang: newLang });
 	}
 
-	function handleContentModeChange(newValue: string[]) {
+	function handleContentModeChange(newValue: string[]): void {
 		if (newValue.length === 0) return;
 
 		const newContentMode = newValue[0] as ContentMode;

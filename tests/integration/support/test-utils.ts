@@ -1,6 +1,7 @@
 import * as path from "node:path";
-import { vi } from "vitest";
+import { vi, type Mock } from "vitest";
 
+import type UtilsTypes from "@diegofrayo-pkg/types";
 import { readFile } from "@diegofrayo-pkg/utilities/files";
 
 import post from "~/data/blog/posts/sitios-para-visitar-en-el-quindio.json";
@@ -16,15 +17,17 @@ export function getBlogPostData(slug: string): BlogPostWithContent {
 	};
 }
 
-export function navigateTo(url: string) {
+export function navigateTo(url: string): void {
 	window.history.pushState({}, "", url);
 }
 
-export function spyAnalyticsService() {
+export function spyAnalyticsService(): Mock<
+	(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>) => void
+> {
 	return vi.spyOn(AnalyticsService, "trackEvent");
 }
 
-export function mockClipboardWriteText() {
+export function mockClipboardWriteText(): Mock {
 	const writeTextSpy = vi.fn().mockResolvedValue(undefined);
 	Object.defineProperty(navigator, "clipboard", {
 		value: { writeText: writeTextSpy },

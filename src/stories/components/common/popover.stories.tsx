@@ -29,7 +29,7 @@ export const Default: StoryObj<typeof Popover> = {
 	render: () => {
 		const popoverText = "This is a popover!";
 		const [showPopover, setShowPopover] = useState(false);
-		const handleClick = () => {
+		const handleClick = (): void => {
 			setShowPopover((currentValue) => {
 				if (currentValue) {
 					return true;
