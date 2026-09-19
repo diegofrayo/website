@@ -69,17 +69,16 @@ Installs ESLint and creates the flat config (`eslint.config.mts`) with JS, TS, R
       "no-else-return": "error",
       "no-lonely-if": "error",
 
+      "@typescript-eslint/ban-ts-comment": ["warn"],
+      "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "max-lines": ["error", { max: 300, skipBlankLines: true }],
       "max-lines-per-function": ["error", { max: 150, skipBlankLines: true, skipComments: true }],
-
-      "react/react-in-jsx-scope": ["off"],
+      "max-params": ["error", 3],
       "no-console": ["warn"],
-      "@typescript-eslint/ban-ts-comment": ["warn"],
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { caughtErrors: "none", caughtErrorsIgnorePattern: "^_" },
-      ],
+
+      "react/react-in-jsx-scope": ["off"]
     },
   };
 

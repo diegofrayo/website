@@ -17,10 +17,12 @@ Installs Husky + lint-staged and configures a pre-commit hook that runs type-che
   ```js
   const baseConfig = ["prettier --write", "eslint"];
 
-  export default {
+  const defaultConfig = {
     "src/**/*.{ts,tsx}": baseConfig,
     "tests/**/*.{ts,tsx}": baseConfig,
   };
+
+  export default defaultConfig;
   ```
 - Run:
   ```sh
@@ -28,9 +30,6 @@ Installs Husky + lint-staged and configures a pre-commit hook that runs type-che
   ```
 - Create or overwrite `.husky/pre-commit`:
   ```sh
-  #!/usr/bin/env sh
-  . "$(dirname -- "$0")/_/husky.sh"
-
   npm run build:ts
   npx lint-staged
   npm run build
