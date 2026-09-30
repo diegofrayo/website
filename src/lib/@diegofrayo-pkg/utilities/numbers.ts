@@ -14,7 +14,7 @@ export function safeCastNumber<DefaultValue>(
 		}
 
 		return number;
-	} catch (_) {
+	} catch (e) {
 		return defaultValue;
 	}
 }

@@ -22,7 +22,9 @@ export function pipe<Input, A, B, C, D, E, F>(
 ): F;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function pipe(input: any, functions: Step<any, any>[]): any {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	return functions.reduce((currentResult, nextFunction) => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		return nextFunction(currentResult);
 	}, input);
 }
@@ -66,8 +68,9 @@ export function pipeAsync<Input, A, B, C, D, E, F>(
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function pipeAsync(input: any, functions: AsyncStep<any, any>[]): Promise<any> {
 	return functions.reduce(async (currentPromise, nextFunction) => {
-		const resolvedValue = await currentPromise;
-		return nextFunction(resolvedValue);
+		const resolvedValue = await currentPromise; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+
+		return nextFunction(resolvedValue); // eslint-disable-line @typescript-eslint/no-unsafe-return
 	}, Promise.resolve(input));
 }
 

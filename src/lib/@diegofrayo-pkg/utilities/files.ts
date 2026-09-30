@@ -20,7 +20,7 @@ export function readFile(filePath: string, type: "blob"): Buffer;
 export function readFile<JSON>(filePath: string, type: "json"): JSON;
 export function readFile(filePath: string, type?: unknown): string | Buffer | JSON {
 	if (type === "blob") {
-		return fs.readFileSync(filePath) as Buffer;
+		return fs.readFileSync(filePath);
 	}
 
 	if (type === "json") {
@@ -33,18 +33,7 @@ export function readFile(filePath: string, type?: unknown): string | Buffer | JS
 export function copyFolder(sourcePath: string, targetPath: string): void {
 	if (!isDirectory(sourcePath)) return;
 
-	const targetFolderPath = path.resolve(targetPath, getBasename(sourcePath));
-	createOutputFolder(targetFolderPath);
-
-	fs.readdirSync(sourcePath).forEach((fileName) => {
-		const filePath = path.resolve(sourcePath, fileName);
-
-		if (isDirectory(filePath)) {
-			copyFolder(filePath, targetPath);
-		} else {
-			copyFile(filePath, { outputFolderPath: targetFolderPath });
-		}
-	});
+	fs.cpSync(sourcePath, targetPath, { recursive: true });
 }
 
 export function copyFile(
