@@ -46,13 +46,7 @@ export function pipeAsync<Input, A, B, C, D>(
 ): Promise<D>;
 export function pipeAsync<Input, A, B, C, D, E>(
 	input: Input,
-	functions: [
-		AsyncStep<Input, A>,
-		AsyncStep<A, B>,
-		AsyncStep<B, C>,
-		AsyncStep<C, D>,
-		AsyncStep<D, E>,
-	],
+	functions: [AsyncStep<Input, A>, AsyncStep<A, B>, AsyncStep<B, C>, AsyncStep<C, D>, AsyncStep<D, E>],
 ): Promise<E>;
 export function pipeAsync<Input, A, B, C, D, E, F>(
 	input: Input,

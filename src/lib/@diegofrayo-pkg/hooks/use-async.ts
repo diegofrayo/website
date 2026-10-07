@@ -116,7 +116,9 @@ type State<Data> = {
 };
 
 type Action<Data> =
-	{ type: "LOADING" } | { type: "SUCCESS"; payload: Data } | { type: "ERROR"; payload: Error };
+	| { type: "LOADING" }
+	| { type: "SUCCESS"; payload: Data }
+	| { type: "ERROR"; payload: Error };
 
 const initialState = {
 	isLoading: false,

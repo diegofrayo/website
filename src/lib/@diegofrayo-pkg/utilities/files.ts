@@ -65,10 +65,7 @@ export function renameFile(
 		createOutputFolder(folderPath);
 		fs.renameSync(currentFilePath, path.resolve(opts.newFilePath, opts.newFileName));
 	} else {
-		fs.renameSync(
-			currentFilePath,
-			path.resolve(getParentFolderPath(currentFilePath), opts.newFileName),
-		);
+		fs.renameSync(currentFilePath, path.resolve(getParentFolderPath(currentFilePath), opts.newFileName));
 	}
 }
 
@@ -222,10 +219,7 @@ type ReadFolderFilesOpts =
 	| IncludeMediaFilesConfig
 	| IncludeImagesFilesConfig;
 
-export function readFolderFiles(
-	sourceFolderPath: string,
-	opts?: ReadFolderFilesOpts,
-): CustomFile[] {
+export function readFolderFiles(sourceFolderPath: string, opts?: ReadFolderFilesOpts): CustomFile[] {
 	return fs.readdirSync(sourceFolderPath).reduce((result: CustomFile[], fileName: string) => {
 		const file = new CustomFile(sourceFolderPath, fileName);
 

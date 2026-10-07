@@ -25,9 +25,7 @@ declare namespace ReactTypes {
 		ComponentProps,
 		HTMLElement,
 		StaticProperties extends object,
-	> = ReactLibrary.ForwardRefExoticComponent<
-		ComponentProps & ReactLibrary.RefAttributes<HTMLElement>
-	> &
+	> = ReactLibrary.ForwardRefExoticComponent<ComponentProps & ReactLibrary.RefAttributes<HTMLElement>> &
 		StaticProperties;
 
 	// REFS
@@ -46,8 +44,7 @@ declare namespace ReactTypes {
 		export type OnClickEventHandler<HTMLElement = HTMLButtonElement> =
 			ReactLibrary.MouseEventHandler<HTMLElement>;
 
-		export type OnChangeEvent<HTMLElement = HTMLInputElement> =
-			ReactLibrary.ChangeEvent<HTMLElement>;
+		export type OnChangeEvent<HTMLElement = HTMLInputElement> = ReactLibrary.ChangeEvent<HTMLElement>;
 
 		export type OnChangeEventHandler<HTMLElement> = ReactLibrary.ChangeEventHandler<HTMLElement>;
 

@@ -11,9 +11,7 @@ function useBrowserStorage<ValueType>(
 	config: BrowserStorageStateConfig<ValueType>,
 ): UseBrowserStorageReturn<ValueType> {
 	// --- STATES & REFS ---
-	const BS_StateRef = useRef<BrowserStorageState<ValueType>>(
-		BrowserStorageManager.createItem(config),
-	);
+	const BS_StateRef = useRef<BrowserStorageState<ValueType>>(BrowserStorageManager.createItem(config));
 	const [state, setState] = useState<ValueType>(() => BS_StateRef.current.get()); // eslint-disable-line react-hooks/refs -- TODO: [react] Fix me
 	const initialValue = useRef<ValueType>(config.value);
 

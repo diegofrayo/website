@@ -88,5 +88,5 @@ export function number(config?: Config): EnvVarConfigAPI {
 // --- UTILS ---
 
 function getErrorMessage(key: string, value: unknown): string {
-	return `Invalid env var => KEY: "${key}" | VALUE: "${value}"`;
+	return `Invalid env var => KEY: "${key}" | VALUE: "${value as string}"`;
 }

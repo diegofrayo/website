@@ -8,9 +8,7 @@ declare namespace UtilsTypes {
 
 	export type Object<PropertyValues = unknown> = GenericObject<PropertyValues>;
 
-	export type JSON = GenericObject<
-		string | number | boolean | null | JSON[] | { [key: string]: JSON }
-	>;
+	export type JSON = GenericObject<string | number | boolean | null | JSON[] | { [key: string]: JSON }>;
 
 	// --- JS ---
 	export type SetTimeout = NodeJS.Timeout;

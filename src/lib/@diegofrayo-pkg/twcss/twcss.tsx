@@ -91,9 +91,7 @@ function generateClassName({
 
 		return cn(
 			isString(componentStyles.$TWCSS_BASE_STYLES) && componentStyles.$TWCSS_BASE_STYLES,
-			typeof TWCSSVariantStyles === "function"
-				? TWCSSVariantStyles(componentProps)
-				: TWCSSVariantStyles,
+			typeof TWCSSVariantStyles === "function" ? TWCSSVariantStyles(componentProps) : TWCSSVariantStyles,
 			classNameProp,
 		);
 	}
