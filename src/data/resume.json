@@ -7,23 +7,14 @@
 			"image": "",
 			"website": "https://diegofrayo.dev",
 			"username": "diegofrayo",
-			"location": {
-				"countryCode": "CO",
-				"country": "Colombia",
-				"city": "Armenia",
-				"timezone": "GMT-5"
-			},
+			"location": { "countryCode": "CO", "country": "Colombia", "city": "Armenia", "timezone": "GMT-5" },
 			"profiles": [
 				{
 					"network": "LinkedIn",
 					"username": "diegofrayo",
 					"url": "https://www.linkedin.com/in/diegofrayo"
 				},
-				{
-					"network": "GitHub",
-					"username": "diegofrayo",
-					"url": "https://www.github.com/diegofrayo"
-				}
+				{ "network": "GitHub", "username": "diegofrayo", "url": "https://www.github.com/diegofrayo" }
 			],
 			"label": "Software Developer | JavaScript, TypeScript, React, and Node.js"
 		},
@@ -282,23 +273,14 @@
 			"image": "",
 			"website": "https://diegofrayo.dev",
 			"username": "diegofrayo",
-			"location": {
-				"countryCode": "CO",
-				"country": "Colombia",
-				"city": "Armenia",
-				"timezone": "GMT-5"
-			},
+			"location": { "countryCode": "CO", "country": "Colombia", "city": "Armenia", "timezone": "GMT-5" },
 			"profiles": [
 				{
 					"network": "LinkedIn",
 					"username": "diegofrayo",
 					"url": "https://www.linkedin.com/in/diegofrayo"
 				},
-				{
-					"network": "GitHub",
-					"username": "diegofrayo",
-					"url": "https://www.github.com/diegofrayo"
-				}
+				{ "network": "GitHub", "username": "diegofrayo", "url": "https://www.github.com/diegofrayo" }
 			],
 			"label": "Desarrollador de Software | JavaScript, TypeScript, React y Node.js"
 		},

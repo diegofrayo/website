@@ -2,11 +2,11 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const Variant = mirror(["UNSTYLED", "STYLED"]);
+const Variant = keyMirror(["UNSTYLED", "STYLED"]);
 type Variant = keyof typeof Variant;
 type CodeProps = ReactTypes.DOM.HTMLElementAttributes["code"] & {
 	children: string;
@@ -15,11 +15,7 @@ type CodeProps = ReactTypes.DOM.HTMLElementAttributes["code"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function Code({
-	children,
-	className,
-	variant = Variant.UNSTYLED,
-}: CodeProps): ReactTypes.JSXElement {
+function Code({ children, className, variant = Variant.UNSTYLED }: CodeProps): ReactTypes.JSXElement {
 	const classes = {
 		codeElement: cn(`dr-code dr-code--${variant.toLowerCase()}`, styles({ variant }), className),
 	};

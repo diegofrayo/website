@@ -1,5 +1,5 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isNonBlankString } from "@diegofrayo-pkg/validator";
 
 import { BoxWithTitle } from "~/components/common";
 import { Blockquote, Box, Collapsible, Icon, Link, Pre } from "~/components/primitive";
@@ -29,24 +29,18 @@ function SPVEEQRecommendations({
 						key={recommendation.id}
 						title={recommendation.name}
 						contentClassName="pt-1 pb-4"
-						onShowContentHandler={AnalyticsService.trackClickEvent(
-							"BLOG|SPVEEQ_RECOMMENDATION|OPEN",
-							{
-								recommendation: recommendation.id,
-							},
-						)}
-						onHideContentHandler={AnalyticsService.trackClickEvent(
-							"BLOG|SPVEEQ_RECOMMENDATION|CLOSE",
-							{
-								recommendation: recommendation.id,
-							},
-						)}
+						onShowContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ_RECOMMENDATION|OPEN", {
+							recommendation: recommendation.id,
+						})}
+						onHideContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ_RECOMMENDATION|CLOSE", {
+							recommendation: recommendation.id,
+						})}
 					>
 						<BoxWithTitle
 							title="Links de contacto"
 							className="my-2 p-2 pt-3"
 						>
-							{isNotEmptyString(recommendation.website) ? (
+							{isNonBlankString(recommendation.website) ? (
 								<Link
 									href={recommendation.website}
 									variant={Link.variant.SMOOTH}
@@ -63,7 +57,7 @@ function SPVEEQRecommendations({
 									/>
 								</Link>
 							) : null}
-							{isNotEmptyString(recommendation.instagram) ? (
+							{isNonBlankString(recommendation.instagram) ? (
 								<Link
 									href={recommendation.instagram}
 									variant={Link.variant.SMOOTH}
@@ -80,7 +74,7 @@ function SPVEEQRecommendations({
 									/>
 								</Link>
 							) : null}
-							{isNotEmptyString(recommendation.airbnb) ? (
+							{isNonBlankString(recommendation.airbnb) ? (
 								<Link
 									href={recommendation.airbnb}
 									variant={Link.variant.SMOOTH}
@@ -97,7 +91,7 @@ function SPVEEQRecommendations({
 									/>
 								</Link>
 							) : null}
-							{isNotEmptyString(recommendation.whatsapp) && (
+							{isNonBlankString(recommendation.whatsapp) && (
 								<Link
 									href={`https://api.whatsapp.com/send?phone=${recommendation.whatsapp}`}
 									variant={Link.variant.SMOOTH}

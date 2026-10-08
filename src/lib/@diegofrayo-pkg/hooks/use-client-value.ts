@@ -1,30 +1,26 @@
 import { useSyncExternalStore } from "react";
 
-type UseDidMountValueParams<Value> = {
+type UseClientValueParams<Value> = {
 	subscribe?: (onStoreChange: () => void) => () => void;
 	getSnapshot: () => Value;
-	getServerSnapshot?: () => Value | null;
+	getServerSnapshot: () => Value;
 };
 
-type UseDidMountValueReturn<Value> = Value | null;
+type UseClientValueReturn<Value> = Value;
 
-function useDidMountValue<Value>(params: UseDidMountValueParams<Value>): UseDidMountValueReturn<Value> {
-	return useSyncExternalStore<Value | null>(
+function useClientValue<Value>(params: UseClientValueParams<Value>): UseClientValueReturn<Value> {
+	return useSyncExternalStore<Value>(
 		params.subscribe || subscribe,
 		params.getSnapshot,
-		params.getServerSnapshot || getServerSnapshot,
+		params.getServerSnapshot,
 	);
 }
 
-export default useDidMountValue;
+export default useClientValue;
 
 // --- UTILS ---
 
 // NOTE: Declared outside the hook so their identity is stable, otherwise `useSyncExternalStore` resubscribes on every render
 function subscribe(): () => void {
 	return function unsubscribe(): void {};
-}
-
-function getServerSnapshot(): null {
-	return null;
 }

@@ -161,9 +161,7 @@ function ExperienceList({
 					<Separator size={0.5} />
 					<Box className="-mt-0.5 flex items-end justify-between gap-4 text-xs italic">
 						<Paragraph className="shrink-0 leading-none">{role}</Paragraph>
-						<Paragraph className="inline-block text-right leading-none capitalize">
-							{mode}
-						</Paragraph>
+						<Paragraph className="inline-block text-right leading-none capitalize">{mode}</Paragraph>
 					</Box>
 					<Separator size={1} />
 
@@ -176,9 +174,7 @@ function ExperienceList({
 								className="mx-1"
 							>
 								{content.achievements.map((achievement, index) => (
-									<List.Item key={generateSlug(`${id}-achievement-${index}`)}>
-										{achievement}
-									</List.Item>
+									<List.Item key={generateSlug(`${id}-achievement-${index}`)}>{achievement}</List.Item>
 								))}
 							</List>
 						) : null}

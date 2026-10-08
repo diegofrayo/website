@@ -1,4 +1,3 @@
-// TODO: Fix eslint warnings
 import { useLayoutEffect, useRef } from "react";
 
 import type UtilsTypes from "../types";
@@ -15,35 +14,35 @@ function useOnScroll({
 	timeout = 3000,
 }: UseOnScrollProps): void {
 	// --- STATES & REFS ---
-	const isMounted = useRef(false);
 	const isScrolling = useRef<UtilsTypes.SetTimeout | undefined>(undefined);
+	const onScrollCallbackRef = useRef(onScrollCallback);
+	const onScrollStopCallbackRef = useRef(onScrollStopCallback);
 
 	// --- EFFECTS ---
+	// NOTE: Keep the refs pointing to the latest callbacks without re-subscribing the scroll listener
 	useLayoutEffect(() => {
-		const onScrollStop = (): void => {
-			if (!isMounted.current) return;
+		onScrollCallbackRef.current = onScrollCallback;
+		onScrollStopCallbackRef.current = onScrollStopCallback;
+	}, [onScrollCallback, onScrollStopCallback]);
 
-			onScrollStopCallback();
-		};
-
+	useLayoutEffect(() => {
 		const onScroll = (): void => {
 			window.clearTimeout(isScrolling.current);
 
-			onScrollCallback();
+			onScrollCallbackRef.current();
 
 			isScrolling.current = setTimeout(() => {
-				onScrollStop();
+				onScrollStopCallbackRef.current();
 			}, timeout);
 		};
 
-		isMounted.current = true;
 		window.addEventListener("scroll", onScroll, false);
 
 		return (): void => {
-			isMounted.current = false;
+			window.clearTimeout(isScrolling.current);
 			window.removeEventListener("scroll", onScroll, false);
 		};
-	}, []);
+	}, [timeout]);
 }
 
 export default useOnScroll;

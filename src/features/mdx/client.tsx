@@ -1,17 +1,12 @@
 import { useMemo } from "react";
-import { getMDXComponent, getMDXExport } from "mdx-bundler/client";
+import { getMDXComponent, getMDXExport as getMDXExportBase } from "mdx-bundler/client";
 
 import cn from "@diegofrayo-pkg/cn";
 import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isString } from "@diegofrayo-pkg/validator";
 
-import {
-	BoxWithTitle,
-	CopyToClipboardPopover,
-	ImageWithLink,
-	SourceCode,
-} from "~/components/common";
+import { BoxWithTitle, CopyToClipboardPopover, ImageWithLink, SourceCode } from "~/components/common";
 import {
 	Blockquote,
 	Box,
@@ -53,7 +48,10 @@ export function MDXContent({
 	);
 }
 
-export { getMDXExport };
+// NOTE: mdx-bundler ships broken types for this function (`ExportedObject` is undeclared), so the return type is set here
+export function getMDXExport(code: string): UtilsTypes.Object<string> {
+	return getMDXExportBase(code) as UtilsTypes.Object<string>;
+}
 
 // --- CONSTANTS ---
 

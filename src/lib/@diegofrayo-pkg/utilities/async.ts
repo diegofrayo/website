@@ -1,6 +1,6 @@
-export function waitFor(time: number, unit: "miliseconds" | "seconds"): Promise<void> {
+export function sleep(milliseconds: number): Promise<void> {
 	return new Promise((resolve) => {
-		setTimeout(resolve, unit === "miliseconds" ? time : time * 1000);
+		setTimeout(resolve, milliseconds);
 	});
 }
 
@@ -26,20 +26,22 @@ export function attempt<Return>(callback: () => Return): [Return, undefined] | [
 	}
 }
 
-export async function resolvePromisesSequentially<ArrayElement>(
-	tasks: (() => ArrayElement | Promise<ArrayElement>)[],
-): Promise<Array<ArrayElement>> {
-	return tasks.reduce(
-		async (resultPromised, task) => {
-			const result = await resultPromised;
-			const taskResult = await task();
-			return result.concat([taskResult]);
-		},
-		Promise.resolve([] as ArrayElement[]),
-	);
+export async function mapSequentially<ArrayElement, ReturnElement>(
+	array: Array<ArrayElement>,
+	callback: (arg: ArrayElement, index: number) => ReturnElement | Promise<ReturnElement>,
+): Promise<Array<ReturnElement>> {
+	const result: ReturnElement[] = [];
+	let index = 0;
+
+	for (const item of array) {
+		result.push(await callback(item, index));
+		index += 1;
+	}
+
+	return result;
 }
 
-export async function asyncLoop<ArrayElement>(
+export async function forEachSequentially<ArrayElement>(
 	array: Array<ArrayElement>,
 	callback: (arg: ArrayElement, index: number) => Promise<unknown>,
 ): Promise<void> {

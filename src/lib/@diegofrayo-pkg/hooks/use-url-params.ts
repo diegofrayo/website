@@ -1,18 +1,31 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+
+import useClientValue from "./use-client-value";
 
 export default function useUrlParams(): URLSearchParams {
-	const [params, setParams] = useState(() => new URLSearchParams(window.location.search));
+	const search = useClientValue({ subscribe, getSnapshot, getServerSnapshot });
 
-	useEffect(() => {
-		const handlePopState = (): void => {
-			setParams(new URLSearchParams(window.location.search));
-		};
+	return useMemo(() => new URLSearchParams(search), [search]);
+}
 
-		// Listens to browser back/forward buttons
-		window.addEventListener("popstate", handlePopState);
+// --- UTILS ---
 
-		return (): void => window.removeEventListener("popstate", handlePopState);
-	}, []);
+// NOTE: `popstate` only fires on browser back/forward buttons, so the Navigation API is also used to catch
+// `history.pushState`/`history.replaceState` calls (e.g. client-side routers)
+function subscribe(onStoreChange: () => void): () => void {
+	window.addEventListener("popstate", onStoreChange);
+	window.navigation?.addEventListener("currententrychange", onStoreChange);
 
-	return params;
+	return function unsubscribe(): void {
+		window.removeEventListener("popstate", onStoreChange);
+		window.navigation?.removeEventListener("currententrychange", onStoreChange);
+	};
+}
+
+function getSnapshot(): string {
+	return window.location.search;
+}
+
+function getServerSnapshot(): string {
+	return "";
 }

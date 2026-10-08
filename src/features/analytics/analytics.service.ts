@@ -37,10 +37,7 @@ class AnalyticsServiceClass {
 
 	trackPageLoaded(): void {
 		if (this.shouldSkipTracking()) {
-			logger(
-				"LOG",
-				`🔘 Page "${window.location.pathname}" | "${document.title}" visit was not tracked`,
-			);
+			logger("LOG", `🔘 Page "${window.location.pathname}" | "${document.title}" visit was not tracked`);
 			return;
 		}
 

@@ -1,8 +1,8 @@
 const baseConfig = ["prettier --write", "eslint"];
 
-const lintStagedConfig = {
+const lintStaged = {
 	"src/**/*.{ts,tsx}": baseConfig,
 	"tests/**/*.{ts,tsx}": baseConfig,
 };
 
-export default lintStagedConfig;
+export default lintStaged;

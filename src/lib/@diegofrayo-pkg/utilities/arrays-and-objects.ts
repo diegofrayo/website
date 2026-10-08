@@ -4,7 +4,7 @@ export function createArray(length: number, start?: number): number[] {
 	return Array.from(Array(length).keys()).map((value) => value + (start === undefined ? 1 : start));
 }
 
-export function mirror<Keys extends string, Return extends Record<Keys, Keys>>(
+export function keyMirror<Keys extends string, Return extends Record<Keys, Keys>>(
 	elements: Keys[],
 ): Return {
 	return elements.reduce((result, element) => ({ ...result, [element]: element }), {} as Return);
@@ -48,18 +48,18 @@ export function removeDuplicates<ItemType>(array: ItemType[]): ItemType[] {
 	return array.filter((item, index) => array.indexOf(item) === index);
 }
 
-export function removeDuplicatesByParam<ItemType, ItemTypeProperty extends keyof ItemType>(
+export function removeDuplicatesByKey<ItemType, ItemTypeKey extends keyof ItemType>(
 	array: ItemType[],
-	param: ItemTypeProperty,
+	key: ItemTypeKey,
 ): ItemType[] {
-	const seenItems = new Set<ItemType[ItemTypeProperty]>();
+	const seenItems = new Set<ItemType[ItemTypeKey]>();
 
 	return array.filter((item) => {
-		if (seenItems.has(item[param])) {
+		if (seenItems.has(item[key])) {
 			return false;
 		}
 
-		seenItems.add(item[param]);
+		seenItems.add(item[key]);
 		return true;
 	});
 }
@@ -82,35 +82,19 @@ export function getOrFail<ObjectInput extends object, ObjectKeys extends keyof O
 	object: ObjectInput,
 	opts: { key: ObjectKeys; error: string },
 ): ObjectInput[ObjectKeys] {
-	return object[opts.key] || throwError(opts.error);
+	return object[opts.key] ?? throwError(opts.error);
 }
 
-export function batch<Element>(elements: Element[], batchSize: number): Array<Array<Element>> {
+export function chunk<Element>(elements: Element[], chunkSize: number): Array<Array<Element>> {
 	const result: Element[][] = [];
-	let currentBatch: Element[] = [];
 
-	if (elements.length <= batchSize) {
-		return [elements];
-	}
-
-	for (let i = 1; i <= elements.length; i += 1) {
-		const currentElement = elements[i - 1];
-
-		if (currentElement !== undefined) currentBatch.push(currentElement);
-
-		if (i % batchSize === 0) {
-			result.push(currentBatch);
-			currentBatch = [];
-		}
-	}
-
-	if (currentBatch.length >= 0) {
-		result.push(currentBatch);
+	for (let i = 0; i < elements.length; i += chunkSize) {
+		result.push(elements.slice(i, i + chunkSize));
 	}
 
 	return result;
 }
 
-export function merge<Target extends object>(target: Target, updates: Partial<Target>): Target {
+export function shallowMerge<Target extends object>(target: Target, updates: Partial<Target>): Target {
 	return { ...target, ...updates };
 }

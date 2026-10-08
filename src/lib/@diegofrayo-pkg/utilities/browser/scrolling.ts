@@ -8,17 +8,17 @@ export function setScrollPosition(val: number, behavior?: "auto" | "smooth"): vo
 	window.scroll({ top: val, behavior: behavior || "smooth" });
 }
 
-export function goToElement(
+export function scrollToElement(
 	element_: string | Element,
-	options?: { onlyIfElementIsOutsideViewport?: boolean },
+	options?: { onlyIfOutsideViewport?: boolean },
 ): void {
 	const element = typeof element_ === "string" ? document.getElementById(element_) : element_;
 
 	if (!element) return;
 
 	if (
-		(options?.onlyIfElementIsOutsideViewport && !isElementInViewport(element)) ||
-		!options?.onlyIfElementIsOutsideViewport
+		(options?.onlyIfOutsideViewport && !isElementInViewport(element)) ||
+		!options?.onlyIfOutsideViewport
 	) {
 		element.scrollIntoView({ behavior: "smooth" });
 	}

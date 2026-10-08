@@ -3,7 +3,7 @@
 import { Tooltip } from "@base-ui/react/tooltip";
 import { Toaster } from "sonner";
 
-import { useDidMount } from "@diegofrayo-pkg/hooks";
+import { useMountEffect } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser/device";
 
@@ -19,14 +19,14 @@ type ProvidersProps = {
 
 function Providers({ children }: ProvidersProps): ReactTypes.JSXElement {
 	// --- EFFECTS ---
-	useDidMount(() => {
+	useMountEffect(() => {
 		addGlobalErrorListener();
 
 		if (isMobileDevice()) {
 			document.body.classList.add("mobile");
 		}
 
-		AuthService.loadSession();
+		void AuthService.loadSession();
 		AuthService.onSessionLoad(() => {
 			AnalyticsService.trackPageLoaded();
 		});

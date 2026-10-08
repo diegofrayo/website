@@ -4,13 +4,13 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const Variant = mirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+const Variant = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
 type Variant = keyof typeof Variant;
-const Size = mirror(["SM", "BASE"]);
+const Size = keyMirror(["SM", "BASE"]);
 type Size = keyof typeof Size;
 type ButtonProps = useRender.ComponentProps<"button"> & {
 	size?: Size;
@@ -89,14 +89,12 @@ const stylesVariants = cva("", {
 		{
 			variant: Variant.STYLED,
 			size: Size.SM,
-			class:
-				"h-8 border-x-2 border-b-4 text-sm duration-150 active:translate-y-0.5 active:border-b-2",
+			class: "h-8 border-x-2 border-b-4 text-sm duration-150 active:translate-y-0.5 active:border-b-2",
 		},
 		{
 			variant: Variant.STYLED,
 			size: Size.BASE,
-			class:
-				"h-10 border-x-4 border-b-8 text-base duration-300 active:translate-y-1 active:border-b-4",
+			class: "h-10 border-x-4 border-b-8 text-base duration-300 active:translate-y-1 active:border-b-4",
 		},
 	],
 });

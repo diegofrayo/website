@@ -1,22 +1,23 @@
 {
 	"compilerOptions": {
 		// Type-checking
-		"alwaysStrict": true,
-		"strict": true,
-		"strictNullChecks": true,
-		"noImplicitAny": true,
-		"noImplicitThis": true,
-		"useUnknownInCatchVariables": true,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
+		"alwaysStrict": true,
+		"erasableSyntaxOnly": true,
 		"exactOptionalPropertyTypes": true,
 		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": false,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
 		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUncheckedSideEffectImports": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"erasableSyntaxOnly": true,
-		"noUncheckedSideEffectImports": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"useUnknownInCatchVariables": true,
 
 		// Modules
 		"paths": {
@@ -34,7 +35,7 @@
 
 		// Language and Environment
 		"jsx": "react-jsx",
-		"target": "ES2017",
+		"target": "es2022",
 		"lib": ["DOM", "DOM.ITERABLE", "ESNext"],
 		"moduleDetection": "force",
 

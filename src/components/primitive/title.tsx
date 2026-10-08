@@ -2,17 +2,17 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const Variant = mirror(["UNSTYLED", "SIMPLE", "STYLED"]);
+const Variant = keyMirror(["UNSTYLED", "SIMPLE", "STYLED"]);
 type Variant = keyof typeof Variant;
 
-const Size = mirror(["SM", "MD", "LG", "XL"]);
+const Size = keyMirror(["SM", "MD", "LG", "XL"]);
 type Size = keyof typeof Size;
 
-const As = mirror(["h1", "h2", "h3", "h4", "h5", "h6"]);
+const As = keyMirror(["h1", "h2", "h3", "h4", "h5", "h6"]);
 type As = keyof typeof As;
 
 export type TitleProps = ReactTypes.DOM.HTMLElementAttributes["h1"] & {

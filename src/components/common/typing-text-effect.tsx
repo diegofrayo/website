@@ -1,13 +1,13 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import { InlineText, Paragraph } from "~/components/primitive";
 import { useTypingTextEffect } from "~/hooks";
 
 // --- PROPS DEFINITIONS ---
 
-const Align = mirror(["CENTER", "LEFT"]);
+const Align = keyMirror(["CENTER", "LEFT"]);
 type Align = keyof typeof Align;
 
 type TypingTextEffectProps = {

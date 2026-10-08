@@ -1,5 +1,5 @@
 import { BrowserStorageManager } from "@diegofrayo-pkg/browser-storage";
-import { isServer } from "@diegofrayo-pkg/validator";
+import { isNonBrowser, isString } from "@diegofrayo-pkg/validator";
 
 const Logs = BrowserStorageManager.createItem<string[]>({
 	key: "DR_LOGS",
@@ -15,7 +15,7 @@ export default function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[
 export function logForRemoteDebugging(input: unknown, source?: string): void {
 	logger("LOG", input);
 
-	if (isServer()) return;
+	if (isNonBrowser()) return;
 
 	persistLog(source, input);
 }
@@ -23,7 +23,7 @@ export function logForRemoteDebugging(input: unknown, source?: string): void {
 export function logAndReportError(error: unknown, source?: string): void {
 	logger("ERROR", error);
 
-	if (isServer()) return;
+	if (isNonBrowser()) return;
 
 	const parsedError =
 		error instanceof Error
@@ -38,7 +38,7 @@ export function addGlobalErrorListener(): void {
 	// eslint-disable-next-line max-params
 	window.onerror = function onerror(msg, url, lineNo, columnNo, error): boolean {
 		logAndReportError(
-			` ${msg} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
+			` ${isString(msg) ? msg : msg.type} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
 			"window.onerror",
 		);
 
@@ -58,7 +58,7 @@ export function clearLogsHistory(): void {
 
 function persistLog(source: string | undefined, content: unknown): void {
 	Logs.set(
-		[`LOG: ${source || "No source"} | ${new Date()}: \n ${content}`].concat(
+		[`LOG: ${source || "No source"} | ${new Date().toISOString()}: \n ${String(content)}`].concat(
 			Logs.get().splice(0, 49),
 		),
 	);

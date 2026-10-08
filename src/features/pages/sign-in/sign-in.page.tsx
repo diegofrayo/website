@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import { useDidMount } from "@diegofrayo-pkg/hooks";
+import { useMountEffect } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { waitFor } from "@diegofrayo-pkg/utilities/async";
+import { sleep } from "@diegofrayo-pkg/utilities/async";
 
 import { Box } from "~/components/primitive";
 import AuthService from "~/features/auth";
@@ -32,7 +32,7 @@ function SignInPage(): ReactTypes.JSXElement {
 
 			await AuthService.signIn(authToken);
 			setIsAuthTokenValid(true);
-			await waitFor(1, "seconds");
+			await sleep(1000);
 
 			window.location.href = Routes.INDEX;
 		} catch (error) {
@@ -53,14 +53,14 @@ function SignInPage(): ReactTypes.JSXElement {
 	}
 
 	// --- EFFECTS ---
-	useDidMount(() => {
+	useMountEffect(() => {
 		AuthService.onSessionLoad((isUserLoggedIn: boolean) => {
 			if (isUserLoggedIn) {
 				window.location.href = Routes.INDEX;
 				return;
 			}
 
-			signIn();
+			void signIn();
 		});
 	});
 

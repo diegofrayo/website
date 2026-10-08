@@ -11,14 +11,14 @@ import tseslint from "typescript-eslint";
 
 import css from "@eslint/css";
 
-const JAVASCRIPT_CONFIG = {
-	files: ["**/*.{mts,ts,tsx}"],
+const javascriptConfig = {
+	files: ["src/**/*.{mts,ts,tsx}"],
 	extends: [js.configs.recommended],
 	plugins: { js },
 	languageOptions: { globals: globals.browser },
 };
 
-const FILENAME_CONVENTIONS = {
+const filenameConventions = {
 	ignores: [
 		"src/features/pages/blog/pages/\\[slug\\]/\\[slug\\].page.tsx",
 		"src/pages/404.tsx",
@@ -42,14 +42,14 @@ const FILENAME_CONVENTIONS = {
 	},
 };
 
-const TYPESCRIPT_CONFIG = tseslint.config(...tseslint.configs.recommended, {
-	files: ["**/*.{mts,ts,tsx}"],
-});
-
-const REACT_CONFIG = {
-	files: ["**/*.{ts,tsx}"],
-	extends: [pluginReact.configs.flat["recommended"], reactHooks.configs.flat.recommended],
-	settings: { react: { version: "19" } },
+const typescriptConfig = defineConfig({
+	files: ["src/**/*.{mts,ts,tsx}"],
+	extends: [tseslint.configs.recommended, tseslint.configs.recommendedTypeChecked],
+	languageOptions: {
+		parserOptions: {
+			projectService: true,
+		},
+	},
 	rules: {
 		// NOTE: Ifs statements rules
 		"no-extra-boolean-cast": "error",
@@ -57,41 +57,54 @@ const REACT_CONFIG = {
 		"no-else-return": "error",
 		"no-lonely-if": "error",
 
-		"@typescript-eslint/ban-ts-comment": ["warn"],
-		"@typescript-eslint/consistent-type-imports": "error",
-		"@typescript-eslint/explicit-function-return-type": "error",
-		"@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
 		"max-lines": ["error", { max: 300, skipBlankLines: true }],
 		"max-lines-per-function": ["error", { max: 150, skipBlankLines: true, skipComments: true }],
 		"max-params": ["error", 3],
 		"no-console": ["warn"],
 
+		"@typescript-eslint/ban-ts-comment": ["warn"],
+		"@typescript-eslint/consistent-type-imports": "error",
+		"@typescript-eslint/explicit-function-return-type": "error",
+		"@typescript-eslint/no-floating-promises": "error",
+		"@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", caughtErrors: "none" }],
+	},
+});
+
+const reactConfig = {
+	files: ["src/**/*.{ts,tsx}"],
+	extends: [
+		pluginReact.configs.flat["recommended"],
+		reactHooks.configs.flat.recommended,
+		tseslint.configs.recommendedTypeChecked,
+	],
+	settings: { react: { version: "19" } },
+	rules: {
 		"react/react-in-jsx-scope": ["off"],
 	},
 };
 
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-const STORYBOOK_CONFIG = {
+const storybookConfig = {
 	extends: [storybook.configs["flat/recommended"]],
 };
 
-const CSS_CONFIG = {
-	files: ["**/*.{css}"],
+const cssConfig = {
+	files: ["src/**/*.{css}"],
 	extends: ["css/recommended"],
 	plugins: { css },
 	language: "css/css",
 };
 
-export default defineConfig([
+const eslintConfig = defineConfig([
 	...nextVitals,
 	...nextTs,
 
-	JAVASCRIPT_CONFIG,
-	FILENAME_CONVENTIONS,
-	TYPESCRIPT_CONFIG,
-	CSS_CONFIG,
-	REACT_CONFIG,
-	STORYBOOK_CONFIG,
+	javascriptConfig,
+	filenameConventions,
+	typescriptConfig,
+	cssConfig,
+	reactConfig,
+	storybookConfig,
 
 	{ settings: { react: { version: "19" } } },
 	globalIgnores([
@@ -104,3 +117,5 @@ export default defineConfig([
 		"playwright-report",
 	]),
 ]);
+
+export default eslintConfig;

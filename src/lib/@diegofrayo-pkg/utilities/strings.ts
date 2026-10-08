@@ -17,7 +17,7 @@ export function removeAccents(input: string): string {
 	const TO = "aaaaeeeeiiiioooouuuunc------";
 	let result = input;
 
-	createArray(FROM.length).forEach((i) => {
+	createArray(FROM.length, 0).forEach((i) => {
 		result = replaceAll(result, FROM.charAt(i), TO.charAt(i));
 	});
 
@@ -46,16 +46,12 @@ export function generateRandomString(length: number): string {
 	return result.toUpperCase();
 }
 
-export function addLeftPadding(number: number): string {
+export function padTwoDigits(number: number): string {
 	return String(number).padStart(2, "0");
 }
 
 export function capitalize(input: string): string {
 	return (input[0] || "").toUpperCase() + input.slice(1);
-}
-
-export function join(items: string[], separator?: string): string {
-	return items.join(separator || "");
 }
 
 export function pluralize(count: number, singular: string, plural?: string): string {

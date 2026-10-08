@@ -60,7 +60,7 @@ export default ToolsMenu;
 function CopyURLMenuItem(): ReactTypes.JSXElement {
 	// --- HANDLERS ---
 	function handleClick(): void {
-		copyToClipboard(window.location.href);
+		void copyToClipboard(window.location.href);
 	}
 
 	return (
@@ -106,7 +106,9 @@ const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 			as="button"
 			icon={IconCatalog.LOG_OUT}
 			title="Sign out"
-			onClick={handleClick}
+			onClick={() => {
+				void handleClick();
+			}}
 		/>
 	);
 });

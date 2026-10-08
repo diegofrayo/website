@@ -1,6 +1,6 @@
 // NOTE: Inspiration: https://www.npmjs.com/package/envalid
 
-import { isArray, isBrowser, isNumber, isServer, isString } from "../validator";
+import { isArray, isBrowser, isNonBrowser, isNumber, isString } from "../validator";
 
 type EnvVarConfigAPI = {
 	validate: (input: unknown) => boolean;
@@ -22,7 +22,7 @@ function envalid<
 
 		if (
 			(envVarKey.startsWith("NEXT_PUBLIC") && isBrowser()) ||
-			(!envVarKey.startsWith("NEXT_PUBLIC") && isServer())
+			(!envVarKey.startsWith("NEXT_PUBLIC") && isNonBrowser())
 		) {
 			if (envVarConfig.validate(envVarValue)) {
 				return { ...result, [envVarKey]: envVarValue };

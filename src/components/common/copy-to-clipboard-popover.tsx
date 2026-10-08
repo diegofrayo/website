@@ -27,7 +27,7 @@ function CopyToClipboardPopover({
 
 	// --- HANDLERS ---
 	function handleClick(): void {
-		copyToClipboard(isString(textToCopy) ? textToCopy : textToCopy());
+		void copyToClipboard(isString(textToCopy) ? textToCopy : textToCopy());
 		setShowPopover((currentValue) => {
 			if (currentValue) {
 				return true;

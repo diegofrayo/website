@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { encodeRequestParams } from "@diegofrayo-pkg/utilities/navigation";
+import { toQueryString } from "@diegofrayo-pkg/utilities/navigation";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray } from "@diegofrayo-pkg/validator";
 
@@ -174,8 +174,7 @@ function BlogPostDetails({
 					name={IconCatalog.CALENDAR}
 					className="relative -top-px"
 				/>{" "}
-				<InlineText>Published at</InlineText>{" "}
-				<InlineText as="strong">{details.published_at}</InlineText>
+				<InlineText>Published at</InlineText> <InlineText as="strong">{details.published_at}</InlineText>
 			</Paragraph>
 			<Separator size={0.5} />
 			<Box className="flex flex-wrap items-center justify-center gap-x-2">
@@ -240,7 +239,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions({
 						body: `Hi, I have a comment about this blog post: ${window.location.href}`,
 					};
 
-					const queryParams = encodeRequestParams(paramsValues);
+					const queryParams = toQueryString(paramsValues);
 					const result = `mailto:${WEBSITE_METADATA.email}?${queryParams}`;
 
 					return result;

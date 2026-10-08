@@ -6,7 +6,10 @@ import signOutHandler from "~/features/server/api/endpoints/sign-out/handler";
 import { sendServerError } from "~/features/server/api/utils";
 
 export async function POST(req: NextRequest): Promise<NextResponse<unknown>> {
-	const { $_ACTION, ...body } = await req.json().catch(() => ({ $_ACTION: undefined }));
+	const { $_ACTION, ...body }: RequestBody = await req
+		.json()
+		.then((json: RequestBody) => json)
+		.catch((): RequestBody => ({ $_ACTION: undefined }));
 
 	switch ($_ACTION) {
 		case "POST/sign-in":
@@ -22,3 +25,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<unknown>> {
 			return sendServerError({ statusCode: 400, message: `Invalid action: "${$_ACTION}"` });
 	}
 }
+
+// --- TYPES ---
+
+type RequestBody = { $_ACTION?: string | undefined; [key: string]: unknown };

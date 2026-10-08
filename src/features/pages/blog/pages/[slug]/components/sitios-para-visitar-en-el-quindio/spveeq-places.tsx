@@ -1,7 +1,7 @@
 import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import { isEmptyArray, isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isEmptyArray, isNonBlankString, isNonEmptyArray } from "@diegofrayo-pkg/validator";
 
 import { BoxWithTitle, ImageGallery } from "~/components/common";
 import { Box, Collapsible, Icon, InlineText, Link, Separator, Title } from "~/components/primitive";
@@ -53,18 +53,12 @@ function SPVEEQPlaces({ data }: SPVEEQPlacesProps): ReactTypes.JSXElement {
 										key={place.id}
 										contentClassName="py-4"
 										title={`${place.name} ${place.featured ? " 🌟" : ""}`}
-										onShowContentHandler={AnalyticsService.trackClickEvent(
-											"BLOG|SPVEEQ_PLACE|OPEN",
-											{
-												place: place.id,
-											},
-										)}
-										onHideContentHandler={AnalyticsService.trackClickEvent(
-											"BLOG|SPVEEQ_PLACE|CLOSE",
-											{
-												place: place.id,
-											},
-										)}
+										onShowContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ_PLACE|OPEN", {
+											place: place.id,
+										})}
+										onHideContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ_PLACE|CLOSE", {
+											place: place.id,
+										})}
 									>
 										<BoxWithTitle
 											title="Información"
@@ -188,7 +182,7 @@ function PlaceLinksInfo({
 			icon={{ name: IconCatalog.LINK }}
 		>
 			<Box className="flex flex-wrap items-center gap-1">
-				{isNotEmptyString(instagram) ? (
+				{isNonBlankString(instagram) ? (
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={instagram}
@@ -207,7 +201,7 @@ function PlaceLinksInfo({
 					</Link>
 				) : null}
 
-				{isNotEmptyString(maps) ? (
+				{isNonBlankString(maps) ? (
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={maps}
@@ -226,7 +220,7 @@ function PlaceLinksInfo({
 					</Link>
 				) : null}
 
-				{isNotEmptyString(website) ? (
+				{isNonBlankString(website) ? (
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={website}
@@ -244,7 +238,7 @@ function PlaceLinksInfo({
 					</Link>
 				) : null}
 
-				{isNotEmptyArray(links) ? (
+				{isNonEmptyArray(links) ? (
 					<Box className="w-full px-0.5">
 						{links.map((link) => {
 							return (
@@ -276,9 +270,7 @@ function PlaceLinksInfo({
 	);
 }
 
-function PlaceDetailsInfo({
-	description,
-}: Pick<Place, "description">): ReactTypes.JSXElementNullable {
+function PlaceDetailsInfo({ description }: Pick<Place, "description">): ReactTypes.JSXElementNullable {
 	if (!description) return null;
 
 	return (

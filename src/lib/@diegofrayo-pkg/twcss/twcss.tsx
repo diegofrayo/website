@@ -1,4 +1,4 @@
-import { forwardRef, type ForwardedRef } from "react";
+import { forwardRef, type ElementType, type ForwardedRef } from "react";
 
 import cn from "../cn";
 import type UtilsTypes from "../types";
@@ -44,7 +44,7 @@ function TWCSSCreator(Tag: ElementToRender): TWCSSComponentDefinition {
 				componentStyles: styles,
 				classNameProp: className,
 				TWCSSVariant,
-				componentProps: rest as UtilsTypes.Object,
+				componentProps: rest,
 			});
 
 			return (
@@ -130,9 +130,7 @@ type StylesParam =
 
 type StylesParamFunction = string | ((props: UtilsTypes.Object) => string);
 
-// @ts-expect-error I don't know how to remove this any, styled-components also uses any to type this arg
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ElementToRender = HTMLTag | ReactFunctionComponent<any> | any;
+type ElementToRender = HTMLTag | ElementType;
 
 type ReactForwardedRef = ForwardedRef<unknown>;
 

@@ -2,7 +2,7 @@ import { cloneElement, isValidElement, useEffect, useRef, useState } from "react
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { isBoolean, isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isBoolean, isNonBlankString } from "@diegofrayo-pkg/validator";
 
 import Box from "./box";
 import InlineText from "./inline-text";
@@ -40,7 +40,7 @@ function Collapsible({
 	const touchedRef = useRef(false);
 
 	// --- COMPUTED STATES ---
-	const computedTitle = isNotEmptyString(title) ? title : isOpen ? "Hide" : "Show";
+	const computedTitle = isNonBlankString(title) ? title : isOpen ? "Hide" : "Show";
 
 	// --- EFFECTS ---
 	useEffect(

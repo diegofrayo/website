@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isNonBlankString, isNonEmptyArray } from "@diegofrayo-pkg/validator";
 
 import { Box, Image, InlineText, Link, List, Paragraph, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
@@ -25,18 +25,7 @@ export function ExperienceTimeline({
 	return (
 		<Box className="ml-2 border-l-2 border-black print:border-0">
 			{experience.map(
-				({
-					id,
-					name,
-					role,
-					company,
-					startDate,
-					endDate,
-					mode,
-					fullContent,
-					shortContent,
-					skills,
-				}) => {
+				({ id, name, role, company, startDate, endDate, mode, fullContent, shortContent, skills }) => {
 					const content = contentMode === "SHORT" ? shortContent : fullContent;
 
 					return (
@@ -63,7 +52,7 @@ export function ExperienceTimeline({
 											as="h3"
 											className="text-xl leading-tight text-black"
 										>
-											{isNotEmptyString(company.website) ? (
+											{isNonBlankString(company.website) ? (
 												<Link
 													variant={Link.variant.SMOOTH}
 													className="text-black underline"
@@ -94,7 +83,7 @@ export function ExperienceTimeline({
 
 								<Paragraph>{content.summary}</Paragraph>
 
-								{isNotEmptyArray(content.achievements) ? (
+								{isNonEmptyArray(content.achievements) ? (
 									<List
 										variant={List.variant.SIMPLE}
 										className="mx-1"

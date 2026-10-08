@@ -2,12 +2,12 @@ import { Separator as BaseUISeparator } from "@base-ui/react/separator";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { isNumber } from "@diegofrayo-pkg/validator";
 
 // --- PROPS & TYPES ---
 
-const SeparatorVariant = mirror(["UNSTYLED", "SIMPLE", "DASHED"]);
+const SeparatorVariant = keyMirror(["UNSTYLED", "SIMPLE", "DASHED"]);
 
 type SeparatorVariant = keyof typeof SeparatorVariant;
 

@@ -2,7 +2,7 @@
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe } from "@diegofrayo-pkg/utilities/fp";
-import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
+import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { TypingTextEffect } from "~/components/common";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
@@ -33,7 +33,7 @@ export default HomePage;
 // --- COMPONENTS ---
 
 function Header(): ReactTypes.JSXElement {
-	const mainTitle = join(["@", WEBSITE_METADATA.username]);
+	const mainTitle = `@${WEBSITE_METADATA.username}`;
 	const jobTitle = WEBSITE_METADATA.jobTitle.toLowerCase();
 
 	return (
@@ -66,7 +66,7 @@ function NavigationLinks(): ReactTypes.JSXElement {
 	return (
 		<Box className="flex items-center justify-center gap-1">
 			{LINKS.map((item) => {
-				const key = pipe(join([`NavigationLinks`, item.label], "-"), [generateSlug]);
+				const key = pipe(`NavigationLinks-${item.label}`, [generateSlug]);
 
 				return (
 					<Box
@@ -125,7 +125,7 @@ function Footer(): ReactTypes.JSXElement {
 		>
 			<Box className="inline-flex justify-center gap-2 rounded-2xl border border-zinc-200 bg-zinc-100 px-3 py-2">
 				{SOCIAL_ICONS.map((item) => {
-					const key = pipe(join([`Footer`, item.name], "-"), [generateSlug]);
+					const key = pipe(`Footer-${item.name}`, [generateSlug]);
 
 					return (
 						<Link

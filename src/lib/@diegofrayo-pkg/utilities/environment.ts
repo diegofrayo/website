@@ -1,14 +1,14 @@
 import { isBrowser } from "../validator";
 import { throwError } from "./errors";
 
-const WEBSITE_DOMAIN = getWebsiteDomain();
+const WEBSITE_URL = getWebsiteURL();
 
 export function isDevelopmentEnvironment(): boolean {
 	return (
-		WEBSITE_DOMAIN.includes(".local") ||
-		WEBSITE_DOMAIN.includes("//localhost") ||
-		WEBSITE_DOMAIN.includes("//127.0.0.1") ||
-		WEBSITE_DOMAIN.includes("//192.")
+		WEBSITE_URL.includes(".local") ||
+		WEBSITE_URL.includes("//localhost") ||
+		WEBSITE_URL.includes("//127.0.0.1") ||
+		WEBSITE_URL.includes("//192.")
 	);
 }
 
@@ -16,14 +16,14 @@ export function isProductionEnvironment(): boolean {
 	return isDevelopmentEnvironment() === false && process.env["NODE_ENV"] === "production";
 }
 
-export function isRemoteLocalhostEnvironment(): boolean {
+export function isLocalNetworkEnvironment(): boolean {
 	// TODO: [regex] Use a regex instead of a static string
-	return WEBSITE_DOMAIN.includes("//192.");
+	return WEBSITE_URL.includes("//192.");
 }
 
 // --- UTILS ---
 
-function getWebsiteDomain(): string {
+function getWebsiteURL(): string {
 	if (isBrowser()) {
 		return window.location.href;
 	}

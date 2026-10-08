@@ -9,7 +9,7 @@ import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isPWA } from "@diegofrayo-pkg/utilities/browser/device";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import { isNotEmptyArray } from "@diegofrayo-pkg/validator";
+import { isNonEmptyArray } from "@diegofrayo-pkg/validator";
 
 import { MainLayout } from "~/components/layout";
 import {
@@ -171,7 +171,7 @@ function ProjectRow({ item }: { item: Project }): ReactTypes.JSXElement {
 						{item.description}
 					</Pre>
 
-					{isNotEmptyArray(item.techStack) && (
+					{isNonEmptyArray(item.techStack) && (
 						<Box className="flex flex-wrap gap-1.5 pt-1">
 							{item.techStack.map((tech, index) => {
 								return (

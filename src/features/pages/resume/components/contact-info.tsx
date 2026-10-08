@@ -19,6 +19,7 @@ export function ContactInfo({
 		),
 	};
 	const isShortVariant = variant === "SIMPLE";
+	const [linkedInProfile, gitHubProfile] = contactInfo.profiles;
 
 	return (
 		<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
@@ -62,49 +63,53 @@ export function ContactInfo({
 					{contactInfo.website.replace("https://", "")}
 				</InlineText>
 			</Link>
-			<Link
-				variant={Link.variant.SMOOTH}
-				href={contactInfo.profiles[0].url}
-				className={classes.item}
-				isExternalLink
-			>
-				{isShortVariant ? (
-					<Icon
-						name={IconCatalog.LINKEDIN_MONO}
-						className="size-4"
-						svgProps={{ strokeWidth: 2 }}
-					/>
-				) : (
-					<Icon
-						name={IconCatalog.LINKEDIN}
-						className="size-4"
-					/>
-				)}
-				<InlineText className="text-sm font-semibold">
-					{contactInfo.profiles[0].url.replace("https://www.", "")}
-				</InlineText>
-			</Link>
-			<Link
-				variant={Link.variant.SMOOTH}
-				href={contactInfo.profiles[1].url}
-				className={classes.item}
-				isExternalLink
-			>
-				{isShortVariant ? (
-					<Icon
-						name={IconCatalog.GITHUB_MONO}
-						className="size-4"
-					/>
-				) : (
-					<Icon
-						name={IconCatalog.GITHUB}
-						className="size-4"
-					/>
-				)}
-				<InlineText className="text-sm font-semibold">
-					{contactInfo.profiles[1].url.replace("https://www.", "")}
-				</InlineText>
-			</Link>
+			{linkedInProfile ? (
+				<Link
+					variant={Link.variant.SMOOTH}
+					href={linkedInProfile.url}
+					className={classes.item}
+					isExternalLink
+				>
+					{isShortVariant ? (
+						<Icon
+							name={IconCatalog.LINKEDIN_MONO}
+							className="size-4"
+							svgProps={{ strokeWidth: 2 }}
+						/>
+					) : (
+						<Icon
+							name={IconCatalog.LINKEDIN}
+							className="size-4"
+						/>
+					)}
+					<InlineText className="text-sm font-semibold">
+						{linkedInProfile.url.replace("https://www.", "")}
+					</InlineText>
+				</Link>
+			) : null}
+			{gitHubProfile ? (
+				<Link
+					variant={Link.variant.SMOOTH}
+					href={gitHubProfile.url}
+					className={classes.item}
+					isExternalLink
+				>
+					{isShortVariant ? (
+						<Icon
+							name={IconCatalog.GITHUB_MONO}
+							className="size-4"
+						/>
+					) : (
+						<Icon
+							name={IconCatalog.GITHUB}
+							className="size-4"
+						/>
+					)}
+					<InlineText className="text-sm font-semibold">
+						{gitHubProfile.url.replace("https://www.", "")}
+					</InlineText>
+				</Link>
+			) : null}
 		</Box>
 	);
 }

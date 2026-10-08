@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-function useNumber(initialState: number): UseNumberResult {
+function useCounter(initialState: number): UseCounterResult {
 	// --- STATE & REFS ---
 	const initialStateRef = useRef<typeof initialState>(initialState);
 	const [state, setState] = useState<typeof initialState>(initialState);
@@ -23,11 +23,11 @@ function useNumber(initialState: number): UseNumberResult {
 	return { state: state, set: setState, increment, decrement, reset };
 }
 
-export default useNumber;
+export default useCounter;
 
 // --- TYPES ---
 
-type UseNumberResult = {
+type UseCounterResult = {
 	state: number;
 	set: ReactTypes.SetState<number>;
 	increment: () => void;

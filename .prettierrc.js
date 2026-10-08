@@ -1,6 +1,6 @@
-module.exports = {
+const prettierConfig = {
 	// global
-	printWidth: 100,
+	printWidth: 105,
 	tabWidth: 2,
 	useTabs: true,
 
@@ -42,3 +42,5 @@ module.exports = {
 	tailwindPreserveWhitespace: false,
 	tailwindPreserveDuplicates: false,
 };
+
+export default prettierConfig;

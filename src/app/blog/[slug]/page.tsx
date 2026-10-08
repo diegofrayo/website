@@ -16,11 +16,7 @@ type PageParams = {
 
 // --- METADATA ---
 
-export async function generateMetadata({
-	params,
-}: {
-	params: Promise<PageParams>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<PageParams> }): Promise<Metadata> {
 	const { slug } = await params;
 	const post = getBlogPost(slug);
 
@@ -40,11 +36,7 @@ export async function generateMetadata({
 
 // --- COMPONENT DEFINITION ---
 
-async function BlogPost({
-	params,
-}: {
-	params: Promise<PageParams>;
-}): Promise<ReactTypes.JSXElement> {
+async function BlogPost({ params }: { params: Promise<PageParams> }): Promise<ReactTypes.JSXElement> {
 	const { slug } = await params;
 	const post = getBlogPost(slug);
 	const mdxCompiled = await compile({ content: post.content });
@@ -56,7 +48,7 @@ export default BlogPost;
 
 // --- STATIC PARAMS ---
 
-export async function generateStaticParams(): Promise<PageParams[]> {
+export function generateStaticParams(): PageParams[] {
 	const posts = readFile<BlogPosts>(path.join(process.cwd(), "src/data/blog/posts.json"), "json");
 
 	return Object.values(posts).map((post) => ({ slug: post.slug }));

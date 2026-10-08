@@ -93,6 +93,10 @@ export function DownloadActions({
 
 			const variant = variants[index++];
 
+			if (variant === undefined) {
+				return;
+			}
+
 			flushSync(() => {
 				onDesignChange(variant.design);
 				onLangChange(variant.lang);
@@ -118,7 +122,7 @@ export function DownloadActions({
 
 				<RadioGroup
 					value={downloadMode}
-					onValueChange={(val) => setDownloadMode(val as DownloadMode)}
+					onValueChange={(val) => setDownloadMode(val)}
 					className={classes.radioGroup}
 				>
 					<label className={classes.radioItem}>

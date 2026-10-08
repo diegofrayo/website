@@ -8,7 +8,7 @@ ServerAPI.interceptors.request.use((config) => {
 	return {
 		...config,
 		data: {
-			...config.data,
+			...(config.data as Record<string, unknown>),
 			$_ACTION: `${(config.method || "post").toUpperCase()}${config.url}`,
 		},
 		url: "",

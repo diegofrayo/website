@@ -1,4 +1,4 @@
-export function inRange(min: number, max: number): number {
+export function getRandomInt(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -19,7 +19,7 @@ export function safeCastNumber<DefaultValue>(
 	}
 }
 
-export function formatDecimalNumber(decimalNumber: number, numberOfDecimals: number): number {
+export function roundToDecimals(decimalNumber: number, numberOfDecimals: number): number {
 	const output = Number(decimalNumber.toFixed(numberOfDecimals));
 
 	if (Number.isNaN(output)) {

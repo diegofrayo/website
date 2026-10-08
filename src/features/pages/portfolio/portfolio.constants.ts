@@ -36,15 +36,7 @@ export const SIDE_PROJECTS: Array<Project> = [
 		date: "2026",
 		description:
 			"A collection of subprojects for experimenting and testing features and concepts about programming.",
-		techStack: [
-			"Next.js",
-			"React",
-			"TypeScript",
-			"Tailwind CSS",
-			"Zod",
-			"React Hook Form",
-			"GraphQL",
-		],
+		techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zod", "React Hook Form", "GraphQL"],
 		github: true,
 		type: "SIDE_PROJECT",
 	},
@@ -63,8 +55,7 @@ export const SIDE_PROJECTS: Array<Project> = [
 		title: "Kordz",
 		url: "https://kordz.diegofrayo.dev",
 		date: "2022",
-		description:
-			"A web app to host and browse chords and lyrics for the songs I can play on guitar.",
+		description: "A web app to host and browse chords and lyrics for the songs I can play on guitar.",
 		techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase", "MDX"],
 		type: "SIDE_PROJECT",
 	},

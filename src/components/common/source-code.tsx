@@ -7,7 +7,7 @@ import { highlight } from "sugar-high";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { throwError } from "@diegofrayo-pkg/utilities/errors";
-import { isNotEmptyString, isString } from "@diegofrayo-pkg/validator";
+import { isNonBlankString, isString } from "@diegofrayo-pkg/validator";
 
 import { Box, Button, Icon, InlineText, Link, Paragraph, Pre } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
@@ -88,7 +88,7 @@ function SourceCode({
 				</Paragraph>
 
 				<Box className="flex items-center gap-2 px-2 text-white">
-					{isNotEmptyString(sourceURL) && (
+					{isNonBlankString(sourceURL) && (
 						<Link
 							className="leading-0"
 							variant={Link.variant.SMOOTH}

@@ -11,14 +11,7 @@
 
 /* Spacing: nested components */
 .dr-mdx-content
-	:is(
-		li > p,
-		li > :global(.dr-source-code),
-		li > blockquote,
-		li > img,
-		blockquote > p,
-		li > a > img
-	) {
+	:is(li > p, li > :global(.dr-source-code), li > blockquote, li > img, blockquote > p, li > a > img) {
 	@apply mb-3;
 }
 

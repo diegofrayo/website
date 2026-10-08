@@ -35,11 +35,7 @@ export default Footer;
 
 function GoToTopButton(): ReactTypes.JSXElementNullable {
 	// --- STATE ---
-	const {
-		state: isButtonVisible,
-		setFalse: hideButton,
-		set: setIsButtonVisible,
-	} = useBoolean(false);
+	const { state: isButtonVisible, setFalse: hideButton, set: setIsButtonVisible } = useBoolean(false);
 
 	// --- EFFECTS ---
 	useOnScroll({

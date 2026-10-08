@@ -2,16 +2,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
-import {
-	Box,
-	Image,
-	InlineText,
-	Link,
-	Paragraph,
-	Pre,
-	Separator,
-	Title,
-} from "~/components/primitive";
+import { Box, Image, InlineText, Link, Paragraph, Pre, Separator, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -108,8 +99,7 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 									</Link>
 									{item.startDate ? (
 										<Paragraph className="text-xs lowercase italic">
-											<InlineText>{item.startDate}</InlineText> /{" "}
-											<InlineText>{item.endDate}</InlineText>
+											<InlineText>{item.startDate}</InlineText> / <InlineText>{item.endDate}</InlineText>
 										</Paragraph>
 									) : null}
 								</Box>

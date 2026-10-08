@@ -61,7 +61,7 @@ function ImageGallery({
 					return newIndex < 0 ? 0 : newIndex === totalNumberOfImages ? currentIndex : newIndex;
 				});
 			} else {
-				throw new Error(`Invalid params: ${{ dataIndex, dataDirection }}`);
+				throw new Error(`Invalid params: ${JSON.stringify({ dataIndex, dataDirection })}`);
 			}
 		},
 		[setActiveIndex, totalNumberOfImages, noBounds],
@@ -92,11 +92,11 @@ function ImageGallery({
 			}
 
 			function onTouchStart(event: TouchEvent): void {
-				touchEventRef.current.start = event.changedTouches[0].screenX;
+				touchEventRef.current.start = event.changedTouches[0]?.screenX ?? 0;
 			}
 
 			function onTouchEnd(event: TouchEvent): void {
-				touchEventRef.current.end = event.changedTouches[0].screenX;
+				touchEventRef.current.end = event.changedTouches[0]?.screenX ?? 0;
 				checkSwipeDirection(touchEventRef.current);
 			}
 
@@ -153,10 +153,7 @@ function ImageGallery({
 		>
 			<Box className="relative flex h-90 w-full max-w-full items-center justify-center overflow-hidden bg-black md:h-142">
 				<Box
-					className={cn(
-						"absolute top-0 left-0 h-full w-full",
-						totalNumberOfImages > 1 && "cursor-grab",
-					)}
+					className={cn("absolute top-0 left-0 h-full w-full", totalNumberOfImages > 1 && "cursor-grab")}
 					ref={imagesContainerRef}
 				/>
 

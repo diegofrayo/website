@@ -2,11 +2,11 @@ import { Children, cloneElement, isValidElement } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
+const VARIANTS = keyMirror(["UNSTYLED", "SIMPLE"]);
 type Variant = keyof typeof VARIANTS;
 type ListProps = ReactTypes.DOM.HTMLElementAttributes["ul"] & {
 	variant?: Variant;
@@ -14,11 +14,7 @@ type ListProps = ReactTypes.DOM.HTMLElementAttributes["ul"] & {
 
 // --- COMPONENT DEFINITION ---
 
-function List({
-	children,
-	variant = VARIANTS.UNSTYLED,
-	className,
-}: ListProps): ReactTypes.JSXElement {
+function List({ children, variant = VARIANTS.UNSTYLED, className }: ListProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isSimpleVariant = variant === VARIANTS.SIMPLE;
 

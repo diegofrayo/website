@@ -2,11 +2,11 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror([
+const VARIANTS = keyMirror([
 	"UNSTYLED",
 	"BREAK_WITH_BLANK_LINES",
 	"BREAK_WITH_BLANK_SPACES",

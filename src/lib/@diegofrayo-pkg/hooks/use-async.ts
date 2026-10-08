@@ -1,8 +1,8 @@
-import { useCallback, useMemo, useReducer, useRef } from "react";
+import { useCallback, useLayoutEffect, useMemo, useReducer, useRef } from "react";
 
-import { attemptAsync, waitFor } from "../utilities/async";
+import { attemptAsync, sleep } from "../utilities/async";
 import { isBoolean, isNumber } from "../validator";
-import useDidMount from "./use-did-mount";
+import useMountEffect from "./use-mount-effect";
 
 type AsyncFn<AsyncFnArgs extends unknown[], AsyncFnReturn> = (
 	...args: AsyncFnArgs
@@ -29,19 +29,16 @@ type Return2<AsyncFnArgs extends unknown[], AsyncFnReturn> = UseAsyncReturnBase<
 };
 
 function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
-	key: string,
 	asyncFn: (...args: AsyncFnArgs) => Promise<AsyncFnReturn> | AsyncFnReturn,
 	optsParam?: Opts1,
 ): Return1<AsyncFnReturn>;
 
 function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
-	key: string,
 	asyncFn: (...args: AsyncFnArgs) => Promise<AsyncFnReturn> | AsyncFnReturn,
 	optsParam?: Opts2,
 ): Return2<AsyncFnArgs, AsyncFnReturn>;
 
 function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
-	key: string,
 	asyncFn: (...args: AsyncFnArgs) => Promise<AsyncFnReturn> | AsyncFnReturn,
 	optsParam?: Opts1 | Opts2,
 ): Return1<AsyncFnReturn> | Return2<AsyncFnArgs, AsyncFnReturn> {
@@ -74,10 +71,8 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 	const enhancedAsyncFn: AsyncFn<AsyncFnArgs, AsyncFnReturn> = useCallback(
 		async function enhancedAsyncFn(...args): Promise<AsyncFnReturn> {
 			try {
-				console.log("LOG", `Executing "${key}"...`);
-
 				dispatch({ type: "LOADING" });
-				await waitFor(opts.withDelay, "miliseconds");
+				await sleep(opts.withDelay);
 
 				const result = await savedHandler.current(...args);
 				dispatch({ type: "SUCCESS", payload: result });
@@ -88,11 +83,16 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 				throw err;
 			}
 		},
-		[key, opts],
+		[opts],
 	);
 
 	// --- EFFECTS ---
-	useDidMount(() => {
+	// NOTE: Keep the ref pointing to the latest `asyncFn` so it never runs a stale closure
+	useLayoutEffect(() => {
+		savedHandler.current = asyncFn;
+	}, [asyncFn]);
+
+	useMountEffect(() => {
 		if (opts.autoLaunch === true) {
 			void attemptAsync(() => enhancedAsyncFn(...([] as unknown[] as AsyncFnArgs)));
 		}

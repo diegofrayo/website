@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useDidMount } from "@diegofrayo-pkg/hooks";
+import { useMountEffect } from "@diegofrayo-pkg/hooks";
 
 import AuthService from "./auth.service";
 
@@ -8,7 +8,7 @@ function useAuth(): { isSessionLoaded: boolean; isUserLoggedIn: boolean } {
 	const [isSessionLoaded, setIsSessionLoaded] = useState(false);
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-	useDidMount(() => {
+	useMountEffect(() => {
 		AuthService.onSessionLoad((isUserLoggedIn) => {
 			setIsSessionLoaded(true);
 			setIsUserLoggedIn(isUserLoggedIn);

@@ -1,4 +1,4 @@
-import { useDidMountValue } from "@diegofrayo-pkg/hooks";
+import { useIsClient } from "@diegofrayo-pkg/hooks";
 
 import type ReactTypes from "../types/react";
 
@@ -6,9 +6,9 @@ function withRenderInBrowser<ComponentProps extends object>(
 	Component: ReactTypes.FunctionComponent<ComponentProps>,
 ): ReactTypes.FunctionComponent<ComponentProps> {
 	function RenderInBrowserComponent(props: ComponentProps): ReactTypes.JSXElementNullable {
-		const isMounted = useDidMountValue({ getSnapshot });
+		const isClient = useIsClient();
 
-		if (!isMounted) return null;
+		if (!isClient) return null;
 
 		return <Component {...props} />;
 	}
@@ -21,7 +21,3 @@ function withRenderInBrowser<ComponentProps extends object>(
 }
 
 export default withRenderInBrowser;
-
-// --- UTILS ---
-
-const getSnapshot = (): boolean => true;

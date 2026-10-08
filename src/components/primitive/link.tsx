@@ -3,11 +3,11 @@ import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+const VARIANTS = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
 type Variant = keyof typeof VARIANTS;
 
 type AnchorHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["a"];

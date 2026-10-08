@@ -1,4 +1,4 @@
-import { isArray, isBrowser, isPlainObject, isServer } from "../validator";
+import { isArray, isBrowser, isNonBrowser, isPlainObject } from "../validator";
 import type {
 	BrowserStorage,
 	BrowserStorageState,
@@ -26,7 +26,7 @@ const BrowserStorageManager = {
 
 		const api: BrowserStorageState<ValueType> = {
 			get: (fallback) => {
-				if (isServer()) return value;
+				if (isNonBrowser()) return value;
 
 				// TODO: Try to not use 'as'
 				const valueFromStorage = getItem({ key, type: typeof value, storage }) as ValueType;
@@ -34,19 +34,19 @@ const BrowserStorageManager = {
 			},
 
 			set: (newValue) => {
-				if (isServer()) return;
+				if (isNonBrowser()) return;
 
 				setItem(key, newValue, storage);
 			},
 
 			remove: () => {
-				if (isServer()) return;
+				if (isNonBrowser()) return;
 
 				window[storage].removeItem(key);
 			},
 
 			exists: () => {
-				if (isServer()) return false;
+				if (isNonBrowser()) return false;
 
 				return window[storage].getItem(key) !== null;
 			},

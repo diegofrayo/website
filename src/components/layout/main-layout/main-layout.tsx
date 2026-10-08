@@ -1,7 +1,7 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe, removeLastItem } from "@diegofrayo-pkg/utilities/fp";
-import { isEmptyString, isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isEmptyString, isNonBlankString } from "@diegofrayo-pkg/validator";
 
 import { Box, Link, Separator, Title } from "~/components/primitive";
 import AnalyticsService from "~/features/analytics";
@@ -65,7 +65,7 @@ function TitleSection({ title, style }: TitleSectionProps): ReactTypes.JSXElemen
 
 	// --- COMPUTED STATES ---
 	const parentURL = getParentURL(pathname);
-	const showParentURL = isNotEmptyString(parentURL);
+	const showParentURL = isNonBlankString(parentURL);
 
 	// --- STYLES ---
 	const classes = {
@@ -117,8 +117,7 @@ function TitleSection({ title, style }: TitleSectionProps): ReactTypes.JSXElemen
 function getParentURL(pathname: string): string {
 	if (pathname === "/") return "";
 
-	const splitBySlashes = (pathname: string): string[] =>
-		pathname.split("/").filter(isNotEmptyString);
+	const splitBySlashes = (pathname: string): string[] => pathname.split("/").filter(isNonBlankString);
 	const joinPathname = (pathnameParts: string[]): string => {
 		if (pathnameParts.length === 0) return "/";
 		return `/${pathnameParts.join("/")}/`;
