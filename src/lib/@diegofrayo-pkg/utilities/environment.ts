@@ -8,7 +8,7 @@ export function isDevelopmentEnvironment(): boolean {
 		WEBSITE_URL.includes(".local") ||
 		WEBSITE_URL.includes("//localhost") ||
 		WEBSITE_URL.includes("//127.0.0.1") ||
-		WEBSITE_URL.includes("//192.")
+		isLocalNetworkEnvironment()
 	);
 }
 
@@ -17,8 +17,8 @@ export function isProductionEnvironment(): boolean {
 }
 
 export function isLocalNetworkEnvironment(): boolean {
-	// TODO: [regex] Use a regex instead of a static string
-	return WEBSITE_URL.includes("//192.");
+	const LOCAL_NETWORK_URL_REGEX = /\/\/192\.168\.\d{1,3}\.\d{1,3}(?=[:/?#]|$)/;
+	return LOCAL_NETWORK_URL_REGEX.test(WEBSITE_URL);
 }
 
 // --- UTILS ---

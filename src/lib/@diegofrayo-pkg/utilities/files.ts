@@ -215,9 +215,7 @@ interface IncludeImagesFilesConfig {
 }
 
 type ReadFolderFilesOpts =
-	| IncludeTheseExtensionsConfig
-	| IncludeMediaFilesConfig
-	| IncludeImagesFilesConfig;
+	IncludeTheseExtensionsConfig | IncludeMediaFilesConfig | IncludeImagesFilesConfig;
 
 export function readFolderFiles(sourceFolderPath: string, opts?: ReadFolderFilesOpts): CustomFile[] {
 	return fs.readdirSync(sourceFolderPath).reduce((result: CustomFile[], fileName: string) => {

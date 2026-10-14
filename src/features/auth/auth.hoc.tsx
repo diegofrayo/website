@@ -2,11 +2,13 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { WithAuth } from "./auth.components";
 
-function withAuth(Component: ReactTypes.FunctionComponent): () => ReactTypes.JSXElement {
-	const WithAuthHOC = (): ReactTypes.JSXElement => {
+function withAuth<ComponentProps extends object>(
+	Component: ReactTypes.FunctionComponent<ComponentProps>,
+): ReactTypes.FunctionComponent<ComponentProps> {
+	const WithAuthHOC = (props: ComponentProps): ReactTypes.JSXElement => {
 		return (
 			<WithAuth>
-				<Component />
+				<Component {...props} />
 			</WithAuth>
 		);
 	};

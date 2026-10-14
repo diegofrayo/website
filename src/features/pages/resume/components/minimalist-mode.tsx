@@ -3,6 +3,8 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, Link, List, Paragraph, Pre, Separator, Title } from "~/components/primitive";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleSize, TitleVariant } from "~/components/primitive/title";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -30,7 +32,7 @@ export function MinimalistMode({ data, contentMode }: MinimalistModeProps): Reac
 			>
 				<Title
 					as="h1"
-					size={Title.size.LG}
+					size={TitleSize.LG}
 				>
 					{data.contactInfo.name}
 				</Title>
@@ -95,7 +97,7 @@ function EducationList({ education }: { education: Resume["education"] }): React
 			>
 				<Paragraph className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Paragraph>
 				<Link
-					variant={Link.variant.SMOOTH}
+					variant={LinkVariant.SMOOTH}
 					href={item.institutionWebsite}
 					className="text-sm underline"
 					onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
@@ -137,12 +139,12 @@ function ExperienceList({
 					<Box className="flex items-end justify-between gap-4">
 						<Title
 							as="h3"
-							variant={Title.variant.UNSTYLED}
+							variant={TitleVariant.UNSTYLED}
 							className="truncate leading-tight text-black"
 						>
 							{company.website ? (
 								<Link
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									href={company.website}
 									className="underline"
 									onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", { item: name })}

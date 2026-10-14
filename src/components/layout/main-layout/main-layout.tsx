@@ -4,6 +4,8 @@ import { pipe, removeLastItem } from "@diegofrayo-pkg/utilities/fp";
 import { isEmptyString, isNonBlankString } from "@diegofrayo-pkg/validator";
 
 import { Box, Link, Separator, Title } from "~/components/primitive";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleVariant } from "~/components/primitive/title";
 import AnalyticsService from "~/features/analytics";
 import { useRouting } from "~/features/routing";
 
@@ -84,7 +86,7 @@ function TitleSection({ title, style }: TitleSectionProps): ReactTypes.JSXElemen
 				{showParentURL && (
 					<Box className="sm:hidden">
 						<Link
-							variant={Link.variant.SMOOTH}
+							variant={LinkVariant.SMOOTH}
 							href={parentURL}
 							className="spac inline-block font-mono text-sm font-bold tracking-wide underline"
 							onClick={AnalyticsService.trackClickEvent("GENERAL|BREADCUMB_LINK", {
@@ -98,7 +100,7 @@ function TitleSection({ title, style }: TitleSectionProps): ReactTypes.JSXElemen
 
 				<Title
 					as="h1"
-					variant={Title.variant.SIMPLE}
+					variant={TitleVariant.SIMPLE}
 					className={classes.title}
 				>
 					{title}

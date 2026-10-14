@@ -1,6 +1,3 @@
-// TODO: [react] Fix me
-/* eslint-disable react-hooks/refs */
-
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
@@ -29,9 +26,11 @@ function ImageGallery({
 }: ImageGalleryProps): ReactTypes.JSXElementNullable {
 	// --- STATE & REFS ---
 	const [activeIndex, setActiveIndex] = useState(0);
-	const { current: totalNumberOfImages } = useRef(images.length);
 	const touchEventRef = useRef({ start: 0, end: 0 });
 	const imagesContainerRef = useRef<HTMLDivElement>(null);
+
+	// --- COMPUTED STATES ---
+	const totalNumberOfImages = images.length;
 
 	// --- UTILS ---
 	const changeActivePhoto = useCallback(
@@ -92,11 +91,17 @@ function ImageGallery({
 			}
 
 			function onTouchStart(event: TouchEvent): void {
-				touchEventRef.current.start = event.changedTouches[0]?.screenX ?? 0;
+				const [touch] = event.changedTouches;
+				if (!touch) return;
+
+				touchEventRef.current.start = touch.screenX;
 			}
 
 			function onTouchEnd(event: TouchEvent): void {
-				touchEventRef.current.end = event.changedTouches[0]?.screenX ?? 0;
+				const [touch] = event.changedTouches;
+				if (!touch) return;
+
+				touchEventRef.current.end = touch.screenX;
 				checkSwipeDirection(touchEventRef.current);
 			}
 

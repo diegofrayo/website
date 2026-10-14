@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { isFunction } from "@diegofrayo-pkg/validator";
 
@@ -11,28 +11,25 @@ function useBrowserStorage<ValueType>(
 	config: BrowserStorageStateConfig<ValueType>,
 ): UseBrowserStorageReturn<ValueType> {
 	// --- STATES & REFS ---
-	const BS_StateRef = useRef<BrowserStorageState<ValueType>>(BrowserStorageManager.createItem(config));
-	const [state, setState] = useState<ValueType>(() => BS_StateRef.current.get()); // eslint-disable-line react-hooks/refs -- TODO: [react] Fix me
+	const [BS_State] = useState<BrowserStorageState<ValueType>>(() =>
+		BrowserStorageManager.createItem(config),
+	);
+	const [state, setState] = useState<ValueType>(() => BS_State.get());
 	const initialValue = useRef<ValueType>(config.value);
-
-	// --- EFFECTS ---
-	useEffect(function onLoad() {
-		setState(BS_StateRef.current.get());
-	}, []);
 
 	// --- API ---
 	const setEnhancedState: SetEnhancedState<ValueType> = useCallback(
 		(newValue) => {
-			BS_StateRef.current.set(isFunction(newValue) ? newValue(state) : newValue);
+			BS_State.set(isFunction(newValue) ? newValue(state) : newValue);
 			setState(newValue);
 		},
-		[state],
+		[BS_State, state],
 	);
 
 	const clearState = useCallback((): void => {
-		BS_StateRef.current.remove();
+		BS_State.remove();
 		setState(initialValue.current);
-	}, []);
+	}, [BS_State]);
 
 	return [state, setEnhancedState, clearState];
 }

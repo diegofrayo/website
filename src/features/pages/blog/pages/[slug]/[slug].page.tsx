@@ -31,6 +31,7 @@ import {
 	Separator,
 } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
 import { BLOG_IMAGES_PATH } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/features/analytics";
@@ -206,7 +207,7 @@ function BlogPostSources({ sources }: Pick<BlogPost, "sources">): ReactTypes.JSX
 					return (
 						<List.Item key={generateSlug(source.title)}>
 							<Link
-								variant={Link.variant.STYLED}
+								variant={LinkVariant.STYLED}
 								href={source.url}
 								isExternalLink
 							>

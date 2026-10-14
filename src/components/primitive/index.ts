@@ -12,4 +12,4 @@ export { default as Modal } from "./modal";
 export { default as Paragraph } from "./paragraph";
 export { default as Pre } from "./pre";
 export { default as Separator } from "./separator";
-export { default as Title } from "./title";
+export { default as Title, type TitleProps } from "./title";

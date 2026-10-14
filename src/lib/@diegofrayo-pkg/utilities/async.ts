@@ -1,6 +1,6 @@
-export function sleep(milliseconds: number): Promise<void> {
+export function sleep(time: number, unit?: "miliseconds" | "seconds"): Promise<void> {
 	return new Promise((resolve) => {
-		setTimeout(resolve, milliseconds);
+		setTimeout(resolve, unit === "seconds" ? time * 1000 : time);
 	});
 }
 

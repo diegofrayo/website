@@ -28,7 +28,6 @@ const BrowserStorageManager = {
 			get: (fallback) => {
 				if (isNonBrowser()) return value;
 
-				// TODO: Try to not use 'as'
 				const valueFromStorage = getItem({ key, type: typeof value, storage }) as ValueType;
 				return valueFromStorage === null ? (fallback ?? value) : valueFromStorage;
 			},

@@ -21,9 +21,12 @@ import {
 	Separator,
 	Title,
 } from "~/components/primitive";
+import { ButtonVariant } from "~/components/primitive/button";
+import { CodeVariant } from "~/components/primitive/code";
 import { type ImageProps } from "~/components/primitive/image";
+import { LinkVariant } from "~/components/primitive/link";
 import { SeparatorVariant } from "~/components/primitive/separator";
-import { type TitleProps } from "~/components/primitive/title";
+import { TitleVariant, type TitleProps } from "~/components/primitive/title";
 
 import styles from "./styles.module.css";
 
@@ -65,7 +68,7 @@ const MDXComponents = {
 		return (
 			<Link
 				href={href || ""}
-				variant={Link.variant.STYLED}
+				variant={LinkVariant.STYLED}
 				isExternalLink
 			>
 				{children}
@@ -79,8 +82,8 @@ const MDXComponents = {
 		if (isString(children)) {
 			return (
 				<CopyToClipboardPopover textToCopy={children}>
-					<Button variant={Button.variant.SMOOTH}>
-						<Code variant={Code.variant.STYLED}>{children}</Code>
+					<Button variant={ButtonVariant.SMOOTH}>
+						<Code variant={CodeVariant.STYLED}>{children}</Code>
 					</Button>
 				</CopyToClipboardPopover>
 			);
@@ -137,7 +140,7 @@ function createTitleComponent(Tag: "h1" | "h2" | "h3" | "h4", props: Omit<TitleP
 			<Title
 				{...props}
 				as={Tag}
-				variant={Title.variant.STYLED}
+				variant={TitleVariant.STYLED}
 			>
 				{children}
 			</Title>

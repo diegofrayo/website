@@ -1,16 +1,15 @@
-// TODO: Fix this eslint error
-/* eslint-disable react-hooks/set-state-in-effect */
-
-import { isValidElement, useCallback, useEffect, useRef, useState } from "react";
+import { isValidElement, useMemo } from "react";
 import { highlight } from "sugar-high";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { throwError } from "@diegofrayo-pkg/utilities/errors";
-import { isNonBlankString, isString } from "@diegofrayo-pkg/validator";
+import { isNonEmptyString, isString } from "@diegofrayo-pkg/validator";
 
 import { Box, Button, Icon, InlineText, Link, Paragraph, Pre } from "~/components/primitive";
+import { ButtonVariant } from "~/components/primitive/button";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
 
 import CopyToClipboardPopover from "./copy-to-clipboard-popover";
 
@@ -29,53 +28,14 @@ function SourceCode({
 	title = "",
 	language: languageProp = "code",
 }: SourceCodeProps): ReactTypes.JSXElement {
-	// --- STATE & REFS ---
-	const [highlightedCode, setHighlightedCode] = useState("");
-	const [containerHeight, setContainerHeight] = useState<number | "auto">("auto");
-	const [language, setLanguage] = useState(languageProp);
-	const containerRef = useRef<null | HTMLDivElement>(null);
-
-	// --- UTILS ---
-	const extractChildren = useCallback(function extractChildren(codeParam: SourceCodeProps["code"]) {
-		const result = isValidElement<CodeChildElementProps>(codeParam)
-			? codeParam.props.children
-			: codeParam;
-
-		return isString(result) ? result : throwError("Invalid text to copy or highlight");
-	}, []);
-
-	const extractLanguage = useCallback(function extractChildren(codeParam: SourceCodeProps["code"]) {
-		if (!isValidElement<CodeChildElementProps>(codeParam)) return;
-
-		const language = codeParam.props.className.replace("language-", "");
-		setLanguage(language);
-	}, []);
-
-	// --- EFFECTS ---
-	useEffect(
-		function highlightCode() {
-			extractLanguage(code);
-			setHighlightedCode(highlight(extractChildren(code)));
-		},
-		[code, extractChildren, extractLanguage],
-	);
-
-	useEffect(
-		function onHighlightedCode() {
-			if (highlightedCode && containerRef.current) {
-				const sourceCodeHeight = containerRef.current.querySelector("pre")?.offsetHeight || 500;
-				setContainerHeight(sourceCodeHeight > 500 ? 500 : "auto");
-			}
-		},
-		[highlightedCode],
-	);
+	// --- COMPUTED STATES ---
+	const language = extractLanguage(code) ?? languageProp;
+	const highlightedCode = useMemo(() => highlight(extractChildren(code)), [code]);
 
 	return (
 		<Box
 			as="section"
-			className={cn("dr-source-code", "flex flex-col border bg-zinc-900", className)}
-			style={{ height: containerHeight }}
-			ref={containerRef}
+			className={cn("dr-source-code", "flex max-h-125 flex-col border bg-zinc-900", className)}
 			data-markdown-block
 		>
 			<Box
@@ -88,10 +48,10 @@ function SourceCode({
 				</Paragraph>
 
 				<Box className="flex items-center gap-2 px-2 text-white">
-					{isNonBlankString(sourceURL) && (
+					{isNonEmptyString(sourceURL) && (
 						<Link
 							className="leading-0"
-							variant={Link.variant.SMOOTH}
+							variant={LinkVariant.SMOOTH}
 							href={sourceURL}
 							isExternalLink
 						>
@@ -99,7 +59,7 @@ function SourceCode({
 						</Link>
 					)}
 					<CopyToClipboardPopover textToCopy={extractChildren(code)}>
-						<Button variant={Button.variant.SMOOTH}>
+						<Button variant={ButtonVariant.SMOOTH}>
 							<Icon name={IconCatalog.COPY} />
 						</Button>
 					</CopyToClipboardPopover>
@@ -116,6 +76,20 @@ function SourceCode({
 }
 
 export default SourceCode;
+
+// --- UTILS ---
+
+function extractChildren(code: SourceCodeProps["code"]): string {
+	const result = isValidElement<CodeChildElementProps>(code) ? code.props.children : code;
+
+	return isString(result) ? result : throwError("Invalid text to copy or highlight");
+}
+
+function extractLanguage(code: SourceCodeProps["code"]): string | undefined {
+	if (!isValidElement<CodeChildElementProps>(code)) return undefined;
+
+	return code.props.className.replace("language-", "");
+}
 
 // --- TYPES ---
 

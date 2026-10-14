@@ -24,7 +24,10 @@ import {
 	Pre,
 	Title,
 } from "~/components/primitive";
+import { ButtonVariant } from "~/components/primitive/button";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleSize, TitleVariant } from "~/components/primitive/title";
 import { PORTFOLIO_IMAGES_PATH } from "~/constants/assets";
 import AnalyticsService from "~/features/analytics";
 
@@ -137,7 +140,7 @@ function ProjectRow({ item }: { item: Project }): ReactTypes.JSXElement {
 				className="flex gap-4"
 			>
 				<Button
-					variant={Button.variant.UNSTYLED}
+					variant={ButtonVariant.UNSTYLED}
 					className={classes.thumbnailButton}
 					onClick={handleThumbnailClick}
 				>
@@ -196,7 +199,7 @@ function ProjectRow({ item }: { item: Project }): ReactTypes.JSXElement {
 				<Box className="relative flex w-full items-center justify-center gap-2 bg-zinc-100 py-2">
 					<Paragraph className="px-2 text-sm font-bold">{item.title}</Paragraph>
 					<Button
-						variant={Button.variant.UNSTYLED}
+						variant={ButtonVariant.UNSTYLED}
 						className="absolute right-2 flex size-4 items-center justify-center rounded-full bg-red-600"
 						onClick={handleModalClose}
 					>
@@ -223,8 +226,8 @@ function ProjectTitle({ item }: { item: Project }): ReactTypes.JSXElement {
 		<Box className="flex items-center justify-between gap-2">
 			<Title
 				as="h2"
-				size={Title.size.SM}
-				variant={Title.variant.SIMPLE}
+				size={TitleSize.SM}
+				variant={TitleVariant.SIMPLE}
 				className="leading-tight text-black"
 			>
 				{item.title}
@@ -234,7 +237,7 @@ function ProjectTitle({ item }: { item: Project }): ReactTypes.JSXElement {
 				{item.github && (
 					<Link
 						href={`https://github.com/diegofrayo/${item.id}`}
-						variant={Link.variant.SMOOTH}
+						variant={LinkVariant.SMOOTH}
 						className="flex w-fit items-center gap-1.5"
 						onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_GITHUB", {
 							project: item.id,
@@ -257,7 +260,7 @@ const ProjectUrlLink = withRenderInBrowser(function ProjectUrlLink({ item }: { i
 	return (
 		<Link
 			href={item.url as string}
-			variant={Link.variant.SMOOTH}
+			variant={LinkVariant.SMOOTH}
 			isExternalLink={isPWA() === false || !(item.url as string).startsWith("/")}
 			className="flex w-fit items-center gap-1.5"
 			onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT_URL", {

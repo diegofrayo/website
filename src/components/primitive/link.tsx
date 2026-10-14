@@ -7,12 +7,12 @@ import { keyMirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
-type Variant = keyof typeof VARIANTS;
+export const LinkVariant = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+type LinkVariant = keyof typeof LinkVariant;
 
 type AnchorHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["a"];
 type LinkBase = {
-	variant?: Variant;
+	variant?: LinkVariant;
 };
 
 interface NativeLink extends AnchorHtmlAttributes, LinkBase {
@@ -32,7 +32,7 @@ type LinkProps = NativeLink | NextLink;
 // --- COMPONENT DEFINITION ---
 
 function Link({
-	variant = VARIANTS.UNSTYLED,
+	variant = LinkVariant.UNSTYLED,
 	href,
 	className,
 	...props
@@ -69,8 +69,6 @@ function Link({
 	);
 }
 
-Link.variant = VARIANTS;
-
 export default Link;
 
 // --- STYLES ---
@@ -78,9 +76,9 @@ export default Link;
 const styles = cva("", {
 	variants: {
 		variant: {
-			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.SMOOTH]: "u-transition-opacity",
-			[VARIANTS.STYLED]: "u-transition-opacity font-bold text-blue-700 underline",
+			[LinkVariant.UNSTYLED]: "",
+			[LinkVariant.SMOOTH]: "u-transition-opacity",
+			[LinkVariant.STYLED]: "u-transition-opacity font-bold text-blue-700 underline",
 		},
 	},
 });

@@ -7,6 +7,7 @@ import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, Button, Icon, InlineText, Paragraph } from "~/components/primitive";
+import { ButtonVariant } from "~/components/primitive/button";
 import { IconCatalog } from "~/components/primitive/icon";
 
 import SourceCode, { type SourceCodeProps } from "./source-code";
@@ -90,7 +91,7 @@ function Playground({
 			</Box>
 			<Box className="flex-no-wrap flex border-t-4 border-zinc-700 text-sm">
 				<Button
-					variant={Button.variant.SMOOTH}
+					variant={ButtonVariant.SMOOTH}
 					className={cn(
 						"flex-1 cursor-pointer px-2 py-4 text-center",
 						isOutputTabSelected && "bg-zinc-700 font-bold text-white",
@@ -100,7 +101,7 @@ function Playground({
 					<Icon name={IconCatalog.APP_WINDOW} /> <InlineText>Preview</InlineText>
 				</Button>
 				<Button
-					variant={Button.variant.SMOOTH}
+					variant={ButtonVariant.SMOOTH}
 					className={cn(
 						"flex-1 cursor-pointer px-2 py-4 text-center",
 						isSourceCodeTabSelected && "bg-zinc-700 font-bold text-white",

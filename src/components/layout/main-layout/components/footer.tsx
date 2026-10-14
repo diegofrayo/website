@@ -3,7 +3,9 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser/scrolling";
 
 import { Box, Button, Icon, InlineText, Link, Paragraph } from "~/components/primitive";
+import { ButtonVariant } from "~/components/primitive/button";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
 import AnalyticsService from "~/features/analytics";
 import { Routes } from "~/features/routing";
 
@@ -18,7 +20,7 @@ function Footer(): ReactTypes.JSXElement {
 				<Link
 					href={Routes.INDEX}
 					className="font-bold underline"
-					variant={Link.variant.SMOOTH}
+					variant={LinkVariant.SMOOTH}
 				>
 					Diego Rayo
 				</Link>
@@ -56,7 +58,7 @@ function GoToTopButton(): ReactTypes.JSXElementNullable {
 
 	return (
 		<Button
-			variant={Button.variant.SMOOTH}
+			variant={ButtonVariant.SMOOTH}
 			className="fixed right-3 bottom-3 z-50 flex h-12 w-12 items-center justify-center rounded-md border border-zinc-800 bg-black text-2xl text-white sm:right-4 sm:bottom-4"
 			onClick={handleGoToTheTopClick}
 		>

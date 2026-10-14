@@ -2,6 +2,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Icon, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleVariant } from "~/components/primitive/title";
 
 type MFMAMGitHubRepoProps = {
 	name: string;
@@ -16,7 +18,7 @@ function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps): Reac
 			data-markdown-block
 		>
 			<Link
-				variant={Link.variant.SMOOTH}
+				variant={LinkVariant.SMOOTH}
 				className="relative inline-flex items-center rounded-md border border-zinc-300 bg-zinc-100 p-4 pr-8"
 				href={url}
 				isExternalLink
@@ -30,7 +32,7 @@ function MFMAMGitHubRepo({ name, url, description }: MFMAMGitHubRepoProps): Reac
 					<Title
 						as="h3"
 						className="text-base font-bold text-black sm:text-lg"
-						variant={Title.variant.UNSTYLED}
+						variant={TitleVariant.UNSTYLED}
 					>
 						{name}
 					</Title>

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import Code from "~/components/primitive/code";
+import Code, { CodeVariant } from "~/components/primitive/code";
 
 // --- META ---
 
@@ -14,7 +14,7 @@ const meta: Meta<typeof Code> = {
 		children: { control: "text" },
 		variant: {
 			control: "radio",
-			options: Object.values(Code.variant),
+			options: Object.values(CodeVariant),
 		},
 		className: { control: "text" },
 	},

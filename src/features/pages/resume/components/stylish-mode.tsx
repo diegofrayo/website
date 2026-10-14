@@ -3,6 +3,8 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, Image, InlineText, Link, Paragraph, Pre, Separator, Title } from "~/components/primitive";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleSize, TitleVariant } from "~/components/primitive/title";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -30,8 +32,8 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 			>
 				<Title
 					as="h1"
-					variant={Title.variant.SIMPLE}
-					size={Title.size.XL}
+					variant={TitleVariant.SIMPLE}
+					size={TitleSize.XL}
 				>
 					{data.contactInfo.name}
 				</Title>
@@ -87,7 +89,7 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 										{`${item.studyType} (${item.area})`}
 									</Title>
 									<Link
-										variant={Link.variant.SMOOTH}
+										variant={LinkVariant.SMOOTH}
 										href={item.institutionWebsite}
 										className="underline"
 										onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {

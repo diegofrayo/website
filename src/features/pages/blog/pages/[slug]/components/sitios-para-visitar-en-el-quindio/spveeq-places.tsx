@@ -6,6 +6,7 @@ import { isEmptyArray, isNonBlankString, isNonEmptyArray } from "@diegofrayo-pkg
 import { BoxWithTitle, ImageGallery } from "~/components/common";
 import { Box, Collapsible, Icon, InlineText, Link, Separator, Title } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
 import AnalyticsService from "~/features/analytics";
 
 type SPVEEQPlacesProps = {
@@ -184,7 +185,7 @@ function PlaceLinksInfo({
 			<Box className="flex flex-wrap items-center gap-1">
 				{isNonBlankString(instagram) ? (
 					<Link
-						variant={Link.variant.SMOOTH}
+						variant={LinkVariant.SMOOTH}
 						href={instagram}
 						className="inline-block"
 						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
@@ -203,7 +204,7 @@ function PlaceLinksInfo({
 
 				{isNonBlankString(maps) ? (
 					<Link
-						variant={Link.variant.SMOOTH}
+						variant={LinkVariant.SMOOTH}
 						href={maps}
 						className="inline-block"
 						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
@@ -222,7 +223,7 @@ function PlaceLinksInfo({
 
 				{isNonBlankString(website) ? (
 					<Link
-						variant={Link.variant.SMOOTH}
+						variant={LinkVariant.SMOOTH}
 						href={website}
 						className="inline-block"
 						onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
@@ -244,7 +245,7 @@ function PlaceLinksInfo({
 							return (
 								<Link
 									key={link}
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									href={link}
 									className="mb-1 flex flex-nowrap items-center last:mb-0"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {

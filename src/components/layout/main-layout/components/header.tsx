@@ -7,6 +7,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, InlineText, Link, List, Title } from "~/components/primitive";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
+import { TitleVariant } from "~/components/primitive/title";
 import { WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
 import { Routes, useRouting } from "~/features/routing";
@@ -34,11 +36,11 @@ function Header({ height }: HeaderProps): ReactTypes.JSXElement {
 			<Box className="u-body-max-width mx-auto flex w-full items-center justify-between gap-4">
 				<Title
 					as="h1"
-					variant={Title.variant.SIMPLE}
+					variant={TitleVariant.SIMPLE}
 					className="flex shrink-0"
 				>
 					<Link
-						variant={Link.variant.SMOOTH}
+						variant={LinkVariant.SMOOTH}
 						href={Routes.INDEX}
 						className="font-special block font-bold text-black"
 						onClick={AnalyticsService.trackClickEvent("GENERAL|HEADER_LINK")}
@@ -170,7 +172,7 @@ const NavigationMenuItem = forwardRef<HTMLAnchorElement, NavigationMenuItemProps
 					className="font-titles block px-1 text-left text-xl font-bold uppercase sm:text-right sm:text-base md:px-0"
 					href={href}
 					ref={forwardedRef}
-					variant={Link.variant.SMOOTH}
+					variant={LinkVariant.SMOOTH}
 					onClick={AnalyticsService.trackClickEvent("GENERAL|NAVIGATION_MENU", { item: href })}
 				>
 					<Box className={classes.item}>

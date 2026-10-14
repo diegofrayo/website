@@ -4,6 +4,7 @@ import { isNonBlankString } from "@diegofrayo-pkg/validator";
 import { BoxWithTitle } from "~/components/common";
 import { Blockquote, Box, Collapsible, Icon, Link, Pre } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
+import { LinkVariant } from "~/components/primitive/link";
 import AnalyticsService from "~/features/analytics";
 
 type SPVEEQRecommendationsProps = {
@@ -43,7 +44,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.website) ? (
 								<Link
 									href={recommendation.website}
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -60,7 +61,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.instagram) ? (
 								<Link
 									href={recommendation.instagram}
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -77,7 +78,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.airbnb) ? (
 								<Link
 									href={recommendation.airbnb}
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -94,7 +95,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.whatsapp) && (
 								<Link
 									href={`https://api.whatsapp.com/send?phone=${recommendation.whatsapp}`}
-									variant={Link.variant.SMOOTH}
+									variant={LinkVariant.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,

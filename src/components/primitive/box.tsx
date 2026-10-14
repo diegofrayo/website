@@ -5,7 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 // --- PROPS & TYPES ---
 
 type BoxProps = ReactTypes.DOM.HTMLElementAttributes["div"] & {
-	as?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer" | "span";
+	as?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer" | "span" | "nav";
 };
 
 // --- COMPONENT DEFINITION ---
