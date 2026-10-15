@@ -6,8 +6,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MainLayout } from "~/components/layout";
 import { Box, Button, Paragraph, Separator, Title } from "~/components/primitive";
-import { ButtonVariant } from "~/components/primitive/button";
-import { TitleSize } from "~/components/primitive/title";
+import { ButtonVariants } from "~/components/primitive/button";
+import { TitleSizes } from "~/components/primitive/title";
 
 type ErrorPageProps = {
 	variant: "404" | "500";
@@ -32,7 +32,7 @@ function ErrorPage({ variant, onRetry }: ErrorPageProps): ReactTypes.JSXElement 
 				<Paragraph className="text-10xl mb-4 leading-none">{is404Error ? "👀" : "🙉"}</Paragraph>
 				<Title
 					as="h1"
-					size={TitleSize.LG}
+					size={TitleSizes.LG}
 				>
 					{is404Error ? "404 " : ""}ERROR
 				</Title>
@@ -44,7 +44,7 @@ function ErrorPage({ variant, onRetry }: ErrorPageProps): ReactTypes.JSXElement 
 				<Box className="flex flex-col gap-2">
 					{onRetry && (
 						<Button
-							variant={ButtonVariant.SMOOTH}
+							variant={ButtonVariants.SMOOTH}
 							className="inline-block border-b border-dashed border-zinc-700 pb-0.5 font-bold"
 							onClick={onRetry}
 						>
@@ -52,7 +52,7 @@ function ErrorPage({ variant, onRetry }: ErrorPageProps): ReactTypes.JSXElement 
 						</Button>
 					)}
 					<Button
-						variant={ButtonVariant.SMOOTH}
+						variant={ButtonVariants.SMOOTH}
 						className="inline-block border-b border-dashed border-zinc-700 pb-0.5 font-bold"
 						onClick={handleGoToHomeClick}
 					>

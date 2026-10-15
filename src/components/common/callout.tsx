@@ -7,23 +7,29 @@ import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { Box, Icon } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
 
-const Variant = keyMirror(["WARNING", "ERROR"]);
-type Variant = keyof typeof Variant;
+const CalloutVariants = keyMirror(["WARNING", "ERROR"]);
+type CalloutVariant = keyof typeof CalloutVariants;
 
 type CalloutProps = {
 	children: ReactTypes.Children;
-	variant?: Variant;
+
+	variant?: CalloutVariant;
 };
 
-function Callout({ children, variant = Variant.ERROR }: CalloutProps): ReactTypes.JSXElement {
-	const isWarningVariant = variant === Variant.WARNING;
+function Callout({ children, variant = CalloutVariants.ERROR }: CalloutProps): ReactTypes.JSXElement {
+	// --- COMPUTED STATES ---
+	const isWarningVariant = variant === CalloutVariants.WARNING;
+	const iconName = isWarningVariant ? IconCatalog.TRIANGLE_ALERT : IconCatalog.X;
 
+	// --- STYLES ---
 	const classes = {
 		container: cn(
 			`dr-callout dr-callout--${variant.toLowerCase()}`,
 			"flex items-center justify-start rounded-lg p-4",
 			styles({ variant }),
 		),
+		icon: cn("mr-4 shrink-0"),
+		content: cn("flex-1"),
 	};
 
 	return (
@@ -31,25 +37,18 @@ function Callout({ children, variant = Variant.ERROR }: CalloutProps): ReactType
 			className={classes.container}
 			data-markdown-block
 		>
-			<Box className="mr-4 shrink-0">
-				{isWarningVariant ? (
-					<Icon
-						name={IconCatalog.TRIANGLE_ALERT}
-						size={24}
-					/>
-				) : (
-					<Icon
-						name={IconCatalog.X}
-						size={24}
-					/>
-				)}
+			<Box className={classes.icon}>
+				<Icon
+					name={iconName}
+					size={24}
+				/>
 			</Box>
-			<Box className="flex-1">{children}</Box>
+			<Box className={classes.content}>{children}</Box>
 		</Box>
 	);
 }
 
-Callout.variant = Variant;
+export { CalloutVariants, type CalloutVariant };
 
 export default Callout;
 
@@ -58,8 +57,8 @@ export default Callout;
 const styles = cva("", {
 	variants: {
 		variant: {
-			[Variant.ERROR]: "border border-red-300 bg-red-100 text-red-700",
-			[Variant.WARNING]: "border border-amber-300 bg-amber-100 text-amber-700",
+			[CalloutVariants.ERROR]: "border border-red-300 bg-red-100 text-red-700",
+			[CalloutVariants.WARNING]: "border border-amber-300 bg-amber-100 text-amber-700",
 		},
 	},
 });

@@ -3,8 +3,9 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, Image, InlineText, Link, Paragraph, Pre, Separator, Title } from "~/components/primitive";
-import { LinkVariant } from "~/components/primitive/link";
-import { TitleSize, TitleVariant } from "~/components/primitive/title";
+import { LinkVariants } from "~/components/primitive/link";
+import { PreVariants } from "~/components/primitive/pre";
+import { TitleSizes, TitleVariants } from "~/components/primitive/title";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -32,8 +33,8 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 			>
 				<Title
 					as="h1"
-					variant={TitleVariant.SIMPLE}
-					size={TitleSize.XL}
+					variant={TitleVariants.SIMPLE}
+					size={TitleSizes.XL}
 				>
 					{data.contactInfo.name}
 				</Title>
@@ -56,7 +57,7 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 				title={texts.SUMMARY}
 			>
 				<Pre
-					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+					variant={PreVariants.BREAK_WITH_BLANK_LINES}
 					className="font-texts text-justify"
 				>
 					{contentMode === "SHORT" ? data.summary.short : data.summary.full}
@@ -89,7 +90,7 @@ export function StylishMode({ data, contentMode }: StylishModeProps): ReactTypes
 										{`${item.studyType} (${item.area})`}
 									</Title>
 									<Link
-										variant={LinkVariant.SMOOTH}
+										variant={LinkVariants.SMOOTH}
 										href={item.institutionWebsite}
 										className="underline"
 										onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {

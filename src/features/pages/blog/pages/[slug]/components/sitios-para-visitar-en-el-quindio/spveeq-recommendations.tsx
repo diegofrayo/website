@@ -4,7 +4,8 @@ import { isNonBlankString } from "@diegofrayo-pkg/validator";
 import { BoxWithTitle } from "~/components/common";
 import { Blockquote, Box, Collapsible, Icon, Link, Pre } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
+import { LinkVariants } from "~/components/primitive/link";
+import { PreVariants } from "~/components/primitive/pre";
 import AnalyticsService from "~/features/analytics";
 
 type SPVEEQRecommendationsProps = {
@@ -44,7 +45,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.website) ? (
 								<Link
 									href={recommendation.website}
-									variant={LinkVariant.SMOOTH}
+									variant={LinkVariants.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -61,7 +62,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.instagram) ? (
 								<Link
 									href={recommendation.instagram}
-									variant={LinkVariant.SMOOTH}
+									variant={LinkVariants.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -78,7 +79,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.airbnb) ? (
 								<Link
 									href={recommendation.airbnb}
-									variant={LinkVariant.SMOOTH}
+									variant={LinkVariants.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -95,7 +96,7 @@ function SPVEEQRecommendations({
 							{isNonBlankString(recommendation.whatsapp) && (
 								<Link
 									href={`https://api.whatsapp.com/send?phone=${recommendation.whatsapp}`}
-									variant={LinkVariant.SMOOTH}
+									variant={LinkVariants.SMOOTH}
 									className="mr-2 inline-block"
 									onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 										place: recommendation.name,
@@ -112,7 +113,7 @@ function SPVEEQRecommendations({
 						</BoxWithTitle>
 
 						<Blockquote>
-							<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>{recommendation.description}</Pre>
+							<Pre variant={PreVariants.BREAK_WITH_BLANK_LINES}>{recommendation.description}</Pre>
 						</Blockquote>
 					</Collapsible>
 				);

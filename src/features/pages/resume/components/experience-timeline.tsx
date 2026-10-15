@@ -4,7 +4,8 @@ import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNonBlankString, isNonEmptyArray } from "@diegofrayo-pkg/validator";
 
 import { Box, Image, InlineText, Link, List, Paragraph, Title } from "~/components/primitive";
-import { LinkVariant } from "~/components/primitive/link";
+import { LinkVariants } from "~/components/primitive/link";
+import { ListVariants } from "~/components/primitive/list";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -55,7 +56,7 @@ export function ExperienceTimeline({
 										>
 											{isNonBlankString(company.website) ? (
 												<Link
-													variant={LinkVariant.SMOOTH}
+													variant={LinkVariants.SMOOTH}
 													className="text-black underline"
 													href={company.website}
 													onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
@@ -86,7 +87,7 @@ export function ExperienceTimeline({
 
 								{isNonEmptyArray(content.achievements) ? (
 									<List
-										variant={List.variant.SIMPLE}
+										variant={ListVariants.SIMPLE}
 										className="mx-1"
 									>
 										{content.achievements.map((item, index) => {

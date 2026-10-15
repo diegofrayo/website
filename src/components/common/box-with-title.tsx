@@ -6,15 +6,20 @@ import { Box, Paragraph } from "~/components/primitive";
 type BoxWithTitleProps = {
 	children: ReactTypes.Children;
 	title: string;
+
 	className?: string;
 };
 
 function BoxWithTitle({ children, title, className }: BoxWithTitleProps): ReactTypes.JSXElement {
+	// --- STYLES ---
+	const classes = {
+		container: cn("relative border border-black bg-white", className),
+		title: cn("absolute -top-2 left-3 border bg-black px-2 text-xs font-bold text-white italic"),
+	};
+
 	return (
-		<Box className={cn("relative border border-black bg-white", className)}>
-			<Paragraph className="absolute -top-2 left-3 border bg-black px-2 text-xs font-bold text-white italic">
-				{title}
-			</Paragraph>
+		<Box className={classes.container}>
+			<Paragraph className={classes.title}>{title}</Paragraph>
 
 			{children}
 		</Box>

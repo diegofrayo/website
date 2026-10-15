@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Button, { ButtonVariant } from "~/components/primitive/button";
+import Button, { ButtonVariants } from "~/components/primitive/button";
 
 // --- META ---
 
@@ -15,7 +15,7 @@ const meta: Meta<typeof Button> = {
 		},
 		variant: {
 			control: "radio",
-			options: Object.values(ButtonVariant),
+			options: Object.values(ButtonVariants),
 		},
 		disabled: {
 			control: "boolean",

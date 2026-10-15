@@ -9,30 +9,32 @@ import { modalStyles } from "./modal.styles";
 
 type ModalProps = {
 	children: ReactTypes.Children;
-	className?: string;
 	visible: boolean;
-	onOpenHandler?: () => void;
+	className?: string;
 	onCloseHandler: () => void;
+	onOpenHandler?: () => void;
 };
 
 // --- COMPONENT DEFINITION ---
 
 function Modal({
 	children,
-	className,
 	visible,
+	className,
 	onCloseHandler,
 	onOpenHandler,
 }: ModalProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		backdrop: cn(
+			"dr-modal__backdrop",
 			"fixed inset-0 z-50 transition-opacity duration-200",
 			"data-closed:opacity-0 data-open:opacity-100 data-starting-style:opacity-0",
 			modalStyles.backdrop,
 		),
 		viewport: cn("fixed inset-0 z-50 flex w-full items-center justify-center", modalStyles.viewport),
 		popup: cn(
+			"dr-modal",
 			"transition-all duration-200",
 			"data-open:scale-100 data-open:opacity-100",
 			"data-closed:scale-95 data-closed:opacity-0",

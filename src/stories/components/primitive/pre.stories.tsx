@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Pre from "~/components/primitive/pre";
+import Pre, { PreVariants } from "~/components/primitive/pre";
 
 // --- META ---
 
@@ -11,7 +11,7 @@ const meta: Meta<typeof Pre> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: Object.values(Pre.variant),
+			options: Object.values(PreVariants),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

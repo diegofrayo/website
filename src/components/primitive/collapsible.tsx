@@ -6,7 +6,7 @@ import { isBoolean, isNonEmptyString, isString } from "@diegofrayo-pkg/validator
 
 import Box from "./box";
 import InlineText from "./inline-text";
-import Title, { TitleVariant } from "./title";
+import Title, { TitleVariants } from "./title";
 
 // --- PROPS & TYPES ---
 
@@ -54,9 +54,7 @@ function Collapsible({
 	};
 
 	// --- HANDLERS ---
-	function handleTitleClick(event: ReactTypes.Events.OnClickEvent<HTMLElement>): void {
-		event.stopPropagation();
-
+	function handleTitleToggle(): void {
 		const newIsOpen = !isOpen;
 
 		if (isControlled === false) {
@@ -80,7 +78,7 @@ function Collapsible({
 				showIcon={showIcon}
 				title={title}
 				titleClassName={titleClassName}
-				onClick={handleTitleClick}
+				onToggle={handleTitleToggle}
 			/>
 			{isOpen && <Box className={classes.content}>{children}</Box>}
 		</Box>
@@ -96,7 +94,7 @@ type CollapsibleTitleProps = {
 	showIcon: boolean;
 	title: string | ReactTypes.JSXElement;
 	titleClassName: string;
-	onClick: (event: ReactTypes.Events.OnClickEvent<HTMLElement>) => void;
+	onToggle: () => void;
 };
 
 function CollapsibleTitle({
@@ -104,33 +102,53 @@ function CollapsibleTitle({
 	showIcon,
 	title,
 	titleClassName,
-	onClick,
+	onToggle,
 }: CollapsibleTitleProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
+	const isCustomTitle = isValidElement<CustomTitleProps>(title);
 	const computedTitle = isNonEmptyString(title) ? title : isOpen ? "Hide" : "Show";
 
 	// --- STYLES ---
 	const classes = {
 		title: cn("flex cursor-pointer items-start font-bold", titleClassName),
+		customTitle: cn("cursor-pointer", isCustomTitle && title.props.className, titleClassName),
 		icon: cn("relative top-1 mr-2 text-xs", isOpen && "rotate-90"),
 	};
 
-	if (isValidElement<CustomTitleProps>(title)) {
+	// --- HANDLERS ---
+	function handleTitleClick(event: ReactTypes.Events.OnClickEvent<HTMLElement>): void {
+		event.stopPropagation();
+		onToggle();
+	}
+
+	function handleTitleKeyDown(event: ReactTypes.Events.OnKeyDownEvent<HTMLElement>): void {
+		if (event.key !== "Enter" && event.key !== " ") return;
+
+		event.preventDefault();
+		event.stopPropagation();
+		onToggle();
+	}
+
+	if (isCustomTitle) {
 		return cloneElement(title as ReactTypes.JSXElement, {
-			onClick,
 			role: "button",
-			className: cn("cursor-pointer", title.props.className, titleClassName),
-			opened: isOpen,
+			tabIndex: 0,
+			className: classes.customTitle,
+			"data-opened": isOpen,
+			onClick: handleTitleClick,
+			onKeyDown: handleTitleKeyDown,
 		});
 	}
 
 	return (
 		<Title
-			variant={TitleVariant.UNSTYLED}
+			variant={TitleVariants.UNSTYLED}
 			as="h2"
 			role="button"
+			tabIndex={0}
 			className={classes.title}
-			onClick={onClick}
+			onClick={handleTitleClick}
+			onKeyDown={handleTitleKeyDown}
 		>
 			{showIcon && <InlineText className={classes.icon}>&#9654;</InlineText>}
 			<InlineText>{computedTitle}</InlineText>

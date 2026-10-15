@@ -7,7 +7,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, InlineText } from "~/components/primitive";
-import { ButtonVariant } from "~/components/primitive/button";
+import { ButtonVariants } from "~/components/primitive/button";
 import { IconCatalog } from "~/components/primitive/icon";
 
 import type { ContentMode, Design, DownloadMode, Lang } from "../resume.types";
@@ -150,7 +150,7 @@ export function DownloadActions({
 				</RadioGroup>
 
 				<Button
-					variant={ButtonVariant.SMOOTH}
+					variant={ButtonVariants.SMOOTH}
 					className={classes.downloadButton}
 					onClick={handleDownloadClick}
 				>

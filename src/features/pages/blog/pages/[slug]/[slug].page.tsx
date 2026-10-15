@@ -31,7 +31,8 @@ import {
 	Separator,
 } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
+import { LinkVariants } from "~/components/primitive/link";
+import { ListVariants } from "~/components/primitive/list";
 import { BLOG_IMAGES_PATH } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/features/analytics";
@@ -200,14 +201,14 @@ function BlogPostSources({ sources }: Pick<BlogPost, "sources">): ReactTypes.JSX
 			title="Sources"
 			className="border-zinc-300 p-4 pb-2"
 		>
-			<List variant={List.variant.SIMPLE}>
+			<List variant={ListVariants.SIMPLE}>
 				{sources.map((source) => {
 					const { host } = new URL(source.url);
 
 					return (
 						<List.Item key={generateSlug(source.title)}>
 							<Link
-								variant={LinkVariant.STYLED}
+								variant={LinkVariants.STYLED}
 								href={source.url}
 								isExternalLink
 							>

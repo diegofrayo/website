@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Title } from "~/components/primitive";
-import { TitleSize, TitleVariant } from "~/components/primitive/title";
+import { TitleSizes, TitleVariants } from "~/components/primitive/title";
 
 type ResumeBoxProps = {
 	title: string;
@@ -20,7 +20,7 @@ export function ResumeBox({ title, children, variant, style }: ResumeBoxProps): 
 			>
 				<Title
 					as="h2"
-					variant={TitleVariant.UNSTYLED}
+					variant={TitleVariants.UNSTYLED}
 					className="mb-3 border-b border-dashed text-left text-xl uppercase"
 				>
 					{title}
@@ -39,7 +39,7 @@ export function ResumeBox({ title, children, variant, style }: ResumeBoxProps): 
 			<Title
 				as="h2"
 				className="mb-4 border-black bg-black px-4 py-2 text-left text-white uppercase"
-				size={TitleSize.LG}
+				size={TitleSizes.LG}
 			>
 				{title}
 			</Title>

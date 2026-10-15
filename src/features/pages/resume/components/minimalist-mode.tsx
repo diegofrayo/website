@@ -3,8 +3,10 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, Link, List, Paragraph, Pre, Separator, Title } from "~/components/primitive";
-import { LinkVariant } from "~/components/primitive/link";
-import { TitleSize, TitleVariant } from "~/components/primitive/title";
+import { LinkVariants } from "~/components/primitive/link";
+import { ListVariants } from "~/components/primitive/list";
+import { PreVariants } from "~/components/primitive/pre";
+import { TitleSizes, TitleVariants } from "~/components/primitive/title";
 import AnalyticsService from "~/features/analytics";
 
 import { useIntl } from "../resume.context";
@@ -32,7 +34,7 @@ export function MinimalistMode({ data, contentMode }: MinimalistModeProps): Reac
 			>
 				<Title
 					as="h1"
-					size={TitleSize.LG}
+					size={TitleSizes.LG}
 				>
 					{data.contactInfo.name}
 				</Title>
@@ -55,7 +57,7 @@ export function MinimalistMode({ data, contentMode }: MinimalistModeProps): Reac
 					title={texts.SUMMARY}
 				>
 					<Pre
-						variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+						variant={PreVariants.BREAK_WITH_BLANK_LINES}
 						className="font-texts text-justify"
 					>
 						{contentMode === "SHORT" ? data.summary.short : data.summary.full}
@@ -97,7 +99,7 @@ function EducationList({ education }: { education: Resume["education"] }): React
 			>
 				<Paragraph className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Paragraph>
 				<Link
-					variant={LinkVariant.SMOOTH}
+					variant={LinkVariants.SMOOTH}
 					href={item.institutionWebsite}
 					className="text-sm underline"
 					onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
@@ -139,12 +141,12 @@ function ExperienceList({
 					<Box className="flex items-end justify-between gap-4">
 						<Title
 							as="h3"
-							variant={TitleVariant.UNSTYLED}
+							variant={TitleVariants.UNSTYLED}
 							className="truncate leading-tight text-black"
 						>
 							{company.website ? (
 								<Link
-									variant={LinkVariant.SMOOTH}
+									variant={LinkVariants.SMOOTH}
 									href={company.website}
 									className="underline"
 									onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", { item: name })}
@@ -172,7 +174,7 @@ function ExperienceList({
 
 						{content.achievements.length > 0 ? (
 							<List
-								variant={List.variant.SIMPLE}
+								variant={ListVariants.SIMPLE}
 								className="mx-1"
 							>
 								{content.achievements.map((achievement, index) => (

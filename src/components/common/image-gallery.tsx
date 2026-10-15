@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -14,72 +14,65 @@ import { IconCatalog } from "~/components/primitive/icon";
 type ImageGalleryProps = {
 	id: string;
 	images: { url: string; alt: string }[];
-	noBounds?: boolean;
+
 	className?: string;
+	noBounds?: boolean;
 };
 
 function ImageGallery({
 	id,
 	images,
-	noBounds,
 	className,
+	noBounds,
 }: ImageGalleryProps): ReactTypes.JSXElementNullable {
-	// --- STATE & REFS ---
+	// --- STATES & REFS ---
 	const [activeIndex, setActiveIndex] = useState(0);
-	const touchEventRef = useRef({ start: 0, end: 0 });
+	const touchEventRef = useRef<TouchEventPositions>({ start: 0, end: 0 });
 	const imagesContainerRef = useRef<HTMLDivElement>(null);
 
 	// --- COMPUTED STATES ---
 	const totalNumberOfImages = images.length;
+	const hasMultipleImages = totalNumberOfImages > 1;
+
+	// --- STYLES ---
+	const classes = {
+		container: cn("relative overflow-hidden rounded-md border border-zinc-300 bg-white p-2", className),
+		viewport: cn(
+			"relative flex h-90 w-full max-w-full items-center justify-center overflow-hidden bg-black md:h-142",
+		),
+		swipeArea: cn("absolute top-0 left-0 h-full w-full", hasMultipleImages && "cursor-grab"),
+		image: (index: number): string =>
+			cn("mx-auto max-h-full max-w-full", activeIndex !== index && "hidden"),
+	};
+
+	// --- HANDLERS ---
+	function handleControlClick(event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>): void {
+		changeActivePhoto({
+			dataIndex: safeCastNumber(event.currentTarget.getAttribute("data-index"), null),
+			dataDirection: event.currentTarget.getAttribute("data-direction"),
+		});
+	}
 
 	// --- UTILS ---
-	const changeActivePhoto = useCallback(
-		function changeActivePhoto({
-			dataIndex,
-			dataDirection,
-		}: {
-			dataIndex?: number | null;
-			dataDirection?: string | null;
-		}) {
-			if (isNumber(dataIndex)) {
-				setActiveIndex(Number(dataIndex));
-			} else if (isString(dataDirection)) {
-				const isRightDirection = dataDirection === "right";
+	function changeActivePhoto({ dataIndex, dataDirection }: ChangeActivePhotoParams): void {
+		if (isNumber(dataIndex)) {
+			setActiveIndex(dataIndex);
+			return;
+		}
 
-				setActiveIndex((currentIndex) => {
-					const newIndex = isRightDirection ? currentIndex + 1 : currentIndex - 1;
+		if (isString(dataDirection)) {
+			setActiveIndex(
+				createIndexUpdater({
+					isRightDirection: dataDirection === "right",
+					noBounds: Boolean(noBounds),
+					totalNumberOfImages,
+				}),
+			);
+			return;
+		}
 
-					if (noBounds) {
-						return newIndex < 0
-							? totalNumberOfImages - 1
-							: newIndex === totalNumberOfImages
-								? 0
-								: newIndex;
-					}
-
-					return newIndex < 0 ? 0 : newIndex === totalNumberOfImages ? currentIndex : newIndex;
-				});
-			} else {
-				throw new Error(`Invalid params: ${JSON.stringify({ dataIndex, dataDirection })}`);
-			}
-		},
-		[setActiveIndex, totalNumberOfImages, noBounds],
-	);
-
-	const checkSwipeDirection = useCallback(
-		function checkSwipeDirection({ start, end }: typeof touchEventRef.current) {
-			const diff = Math.abs(start - end);
-
-			if (diff > 15) {
-				if (end < start) {
-					changeActivePhoto({ dataDirection: "right" });
-				} else if (end > start) {
-					changeActivePhoto({ dataDirection: "left" });
-				}
-			}
-		},
-		[changeActivePhoto],
-	);
+		throw new Error(`Invalid params: ${JSON.stringify({ dataIndex, dataDirection })}`);
+	}
 
 	// --- EFFECTS ---
 	useEffect(
@@ -90,14 +83,14 @@ function ImageGallery({
 				return (): undefined => undefined;
 			}
 
-			function onTouchStart(event: TouchEvent): void {
+			function handleTouchStart(event: TouchEvent): void {
 				const [touch] = event.changedTouches;
 				if (!touch) return;
 
 				touchEventRef.current.start = touch.screenX;
 			}
 
-			function onTouchEnd(event: TouchEvent): void {
+			function handleTouchEnd(event: TouchEvent): void {
 				const [touch] = event.changedTouches;
 				if (!touch) return;
 
@@ -105,60 +98,60 @@ function ImageGallery({
 				checkSwipeDirection(touchEventRef.current);
 			}
 
-			function onClickStart(event: MouseEvent): void {
+			function handleMouseDown(event: MouseEvent): void {
 				touchEventRef.current.start = event.clientX;
 			}
 
-			function onClickEnd(event: MouseEvent): void {
+			function handleMouseUp(event: MouseEvent): void {
 				touchEventRef.current.end = event.clientX;
 				checkSwipeDirection(touchEventRef.current);
 			}
 
-			if (isMobileDevice()) {
-				imagesContainer.addEventListener("touchstart", onTouchStart);
-				imagesContainer.addEventListener("touchend", onTouchEnd);
-			} else {
-				imagesContainer.addEventListener("mousedown", onClickStart);
-				imagesContainer.addEventListener("mouseup", onClickEnd);
+			function checkSwipeDirection({ start, end }: TouchEventPositions): void {
+				const isSwipe = Math.abs(start - end) > 15;
+				if (!isSwipe) return;
+
+				setActiveIndex(
+					createIndexUpdater({
+						isRightDirection: end < start,
+						noBounds: Boolean(noBounds),
+						totalNumberOfImages,
+					}),
+				);
 			}
 
-			return function dettachTouchEvents(): void {
-				if (isMobileDevice()) {
-					imagesContainer.removeEventListener("touchstart", onTouchStart);
-					imagesContainer.removeEventListener("touchend", onTouchEnd);
+			const isMobile = isMobileDevice();
+
+			if (isMobile) {
+				imagesContainer.addEventListener("touchstart", handleTouchStart);
+				imagesContainer.addEventListener("touchend", handleTouchEnd);
+			} else {
+				imagesContainer.addEventListener("mousedown", handleMouseDown);
+				imagesContainer.addEventListener("mouseup", handleMouseUp);
+			}
+
+			return function detachTouchEvents(): void {
+				if (isMobile) {
+					imagesContainer.removeEventListener("touchstart", handleTouchStart);
+					imagesContainer.removeEventListener("touchend", handleTouchEnd);
 				} else {
-					imagesContainer.removeEventListener("mousedown", onClickStart);
-					imagesContainer.removeEventListener("mouseup", onClickEnd);
+					imagesContainer.removeEventListener("mousedown", handleMouseDown);
+					imagesContainer.removeEventListener("mouseup", handleMouseUp);
 				}
 			};
 		},
-		[imagesContainerRef, checkSwipeDirection],
+		[noBounds, totalNumberOfImages],
 	);
-
-	// --- HANDLERS ---
-	function handleChangeImage(event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>): void {
-		const dataIndex = safeCastNumber(event.currentTarget.getAttribute("data-index"), null);
-
-		changeActivePhoto({
-			dataIndex,
-			dataDirection: event.currentTarget.getAttribute("data-direction"),
-		});
-	}
 
 	if (totalNumberOfImages === 0) {
 		return null;
 	}
 
 	return (
-		<Box
-			className={cn(
-				"relative overflow-hidden rounded-md border border-zinc-300 bg-white p-2",
-				className,
-			)}
-		>
-			<Box className="relative flex h-90 w-full max-w-full items-center justify-center overflow-hidden bg-black md:h-142">
+		<Box className={classes.container}>
+			<Box className={classes.viewport}>
 				<Box
-					className={cn("absolute top-0 left-0 h-full w-full", totalNumberOfImages > 1 && "cursor-grab")}
+					className={classes.swipeArea}
 					ref={imagesContainerRef}
 				/>
 
@@ -168,7 +161,7 @@ function ImageGallery({
 							key={image.url}
 							src={image.url}
 							alt={image.alt}
-							className={cn("mx-auto max-h-full max-w-full", activeIndex !== index && "hidden")}
+							className={classes.image(index)}
 							loading={Math.abs(activeIndex - index) <= 1 ? "eager" : "lazy"}
 							useNativeElement
 						/>
@@ -181,7 +174,7 @@ function ImageGallery({
 				activeIndex={activeIndex}
 				noBounds={noBounds}
 				totalNumberOfImages={totalNumberOfImages}
-				onClick={handleChangeImage}
+				onClick={handleControlClick}
 			/>
 		</Box>
 	);
@@ -196,6 +189,7 @@ type GalleryControlsProps = {
 	id: string;
 	noBounds: boolean | undefined;
 	totalNumberOfImages: number;
+
 	onClick: ReactTypes.Events.OnMouseEventHandler<HTMLButtonElement>;
 };
 
@@ -227,9 +221,9 @@ function GalleryControls({
 		<Box className={classes.container}>
 			<Box className={classes.leftArrow}>
 				<NavigationArrow
+					activeIndex={activeIndex}
 					direction="left"
 					noBounds={noBounds}
-					activeIndex={activeIndex}
 					totalNumberOfImages={totalNumberOfImages}
 					onClick={onClick}
 				/>
@@ -250,9 +244,9 @@ function GalleryControls({
 
 			<Box className={classes.rightArrow}>
 				<NavigationArrow
+					activeIndex={activeIndex}
 					direction="right"
 					noBounds={noBounds}
-					activeIndex={activeIndex}
 					totalNumberOfImages={totalNumberOfImages}
 					onClick={onClick}
 				/>
@@ -262,25 +256,34 @@ function GalleryControls({
 }
 
 type NavigationArrowProps = {
-	direction: "right" | "left";
 	activeIndex: number;
-	totalNumberOfImages: number;
+	direction: "right" | "left";
 	noBounds: boolean | undefined;
+	totalNumberOfImages: number;
+
 	onClick: ReactTypes.Events.OnMouseEventHandler<HTMLButtonElement>;
 };
 
 function NavigationArrow({
-	direction,
 	activeIndex,
-	totalNumberOfImages,
+	direction,
 	noBounds,
+	totalNumberOfImages,
 	onClick,
 }: NavigationArrowProps): ReactTypes.JSXElementNullable {
+	// --- COMPUTED STATES ---
+	const isRightDirection = direction === "right";
 	const isFirstIndex = activeIndex === 0;
 	const isLastIndex = activeIndex === totalNumberOfImages - 1;
-	const isRightDirection = direction === "right";
+	const isAtBoundary = (isLastIndex && isRightDirection) || (isFirstIndex && !isRightDirection);
+	const iconName = isRightDirection ? IconCatalog.CHEVRON_RIGHT : IconCatalog.CHEVRON_LEFT;
 
-	if (!noBounds && ((isLastIndex && isRightDirection) || (isFirstIndex && !isRightDirection))) {
+	// --- STYLES ---
+	const classes = {
+		icon: cn("text-black"),
+	};
+
+	if (!noBounds && isAtBoundary) {
 		return null;
 	}
 
@@ -290,10 +293,47 @@ function NavigationArrow({
 			onClick={onClick}
 		>
 			<Icon
-				name={isRightDirection ? IconCatalog.CHEVRON_RIGHT : IconCatalog.CHEVRON_LEFT}
-				className="text-black"
+				name={iconName}
+				className={classes.icon}
 				size={20}
 			/>
 		</Button>
 	);
 }
+
+// --- UTILS ---
+
+type CreateIndexUpdaterParams = {
+	isRightDirection: boolean;
+	noBounds: boolean;
+	totalNumberOfImages: number;
+};
+
+function createIndexUpdater({
+	isRightDirection,
+	noBounds,
+	totalNumberOfImages,
+}: CreateIndexUpdaterParams): (currentIndex: number) => number {
+	return function getNextIndex(currentIndex) {
+		const newIndex = isRightDirection ? currentIndex + 1 : currentIndex - 1;
+
+		if (newIndex < 0) {
+			return noBounds ? totalNumberOfImages - 1 : 0;
+		}
+
+		if (newIndex === totalNumberOfImages) {
+			return noBounds ? 0 : currentIndex;
+		}
+
+		return newIndex;
+	};
+}
+
+// --- TYPES ---
+
+type TouchEventPositions = { start: number; end: number };
+
+type ChangeActivePhotoParams = {
+	dataDirection?: string | null;
+	dataIndex?: number | null;
+};

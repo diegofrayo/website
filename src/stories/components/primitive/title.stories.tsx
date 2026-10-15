@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Title, { TitleVariant } from "~/components/primitive/title";
+import Title, { TitleVariants } from "~/components/primitive/title";
 
 // --- META ---
 
@@ -19,7 +19,7 @@ const meta: Meta<typeof Title> = {
 		},
 		variant: {
 			control: "radio",
-			options: Object.values(TitleVariant),
+			options: Object.values(TitleVariants),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

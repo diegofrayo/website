@@ -9,9 +9,9 @@ import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment"
 import { CopyToClipboardPopover } from "~/components/common";
 import { type CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
 import { Button, Icon, InlineText, Link, List } from "~/components/primitive";
-import { ButtonVariant } from "~/components/primitive/button";
+import { ButtonVariants } from "~/components/primitive/button";
 import { IconCatalog, type IconName } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
+import { LinkVariants } from "~/components/primitive/link";
 import AuthService, { withAuth } from "~/features/auth";
 import { Routes } from "~/features/routing";
 
@@ -148,7 +148,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps): ReactTypes.JSXElement {
 			<ToolsMenuItemWrapper popoverConfig={props.popoverConfig}>
 				{isLinkElement ? (
 					<Link
-						variant={LinkVariant.SMOOTH}
+						variant={LinkVariants.SMOOTH}
 						href={props.url}
 						className={classes.element}
 						isExternalLink={props.isExternalLink || false}
@@ -158,7 +158,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps): ReactTypes.JSXElement {
 					</Link>
 				) : (
 					<Button
-						variant={ButtonVariant.SMOOTH}
+						variant={ButtonVariants.SMOOTH}
 						className={classes.element}
 						onClick={props.onClick}
 					>

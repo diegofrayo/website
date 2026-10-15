@@ -5,13 +5,13 @@ import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS ---
 
-const ButtonVariant = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
-type ButtonVariant = keyof typeof ButtonVariant;
+const ButtonVariants = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+type ButtonVariant = keyof typeof ButtonVariants;
 
-const ButtonSize = keyMirror(["SM", "BASE"]);
-type ButtonSize = keyof typeof ButtonSize;
+const ButtonSizes = keyMirror(["SM", "BASE"]);
+type ButtonSize = keyof typeof ButtonSizes;
 
-export { ButtonVariant, ButtonSize };
+export { ButtonVariants, type ButtonVariant, ButtonSizes, type ButtonSize };
 
 // --- STYLES ---
 
@@ -21,13 +21,13 @@ export const buttonStyles = cva("", {
 			true: "pointer-events-none opacity-50",
 		},
 		size: {
-			[ButtonSize.SM]: "",
-			[ButtonSize.BASE]: "",
+			[ButtonSizes.SM]: "",
+			[ButtonSizes.BASE]: "",
 		},
 		variant: {
-			[ButtonVariant.UNSTYLED]: "",
-			[ButtonVariant.SMOOTH]: "u-transition-opacity",
-			[ButtonVariant.STYLED]: cn([
+			[ButtonVariants.UNSTYLED]: "",
+			[ButtonVariants.SMOOTH]: "u-transition-opacity",
+			[ButtonVariants.STYLED]: cn([
 				"transition-all",
 				"bg-white",
 				"rounded-sm px-2",
@@ -39,13 +39,13 @@ export const buttonStyles = cva("", {
 	},
 	compoundVariants: [
 		{
-			variant: ButtonVariant.STYLED,
-			size: ButtonSize.SM,
+			variant: ButtonVariants.STYLED,
+			size: ButtonSizes.SM,
 			class: "h-8 border-x-2 border-b-4 text-sm duration-150 active:translate-y-0.5 active:border-b-2",
 		},
 		{
-			variant: ButtonVariant.STYLED,
-			size: ButtonSize.BASE,
+			variant: ButtonVariants.STYLED,
+			size: ButtonSizes.BASE,
 			class: "h-10 border-x-4 border-b-8 text-base duration-300 active:translate-y-1 active:border-b-4",
 		},
 	],

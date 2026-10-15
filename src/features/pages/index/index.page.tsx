@@ -7,8 +7,8 @@ import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { TypingTextEffect } from "~/components/common";
 import { Box, Icon, InlineText, Link, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
-import { TitleSize, TitleVariant } from "~/components/primitive/title";
+import { LinkVariants } from "~/components/primitive/link";
+import { TitleSizes, TitleVariants } from "~/components/primitive/title";
 import { WEBSITE_METADATA } from "~/constants";
 import AnalyticsService from "~/features/analytics";
 import { Routes } from "~/features/routing";
@@ -43,8 +43,8 @@ function Header(): ReactTypes.JSXElement {
 			<Title
 				as="h1"
 				className="font-special text-center"
-				size={TitleSize.XL}
-				variant={TitleVariant.SIMPLE}
+				size={TitleSizes.XL}
+				variant={TitleVariants.SIMPLE}
 			>
 				{mainTitle}
 			</Title>
@@ -76,7 +76,7 @@ function NavigationLinks(): ReactTypes.JSXElement {
 						className="flex-1 shrink-0 text-center"
 					>
 						<Link
-							variant={LinkVariant.SMOOTH}
+							variant={LinkVariants.SMOOTH}
 							href={item.url}
 							className="inline-flex items-center justify-center gap-0.5 font-mono text-sm font-bold text-zinc-600"
 							onClick={AnalyticsService.trackClickEvent("HOME_PAGE|MAIN_LINKS", {

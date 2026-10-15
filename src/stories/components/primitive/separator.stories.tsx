@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import Separator, { SeparatorVariant } from "~/components/primitive/separator";
+import Separator, { SeparatorVariants } from "~/components/primitive/separator";
 
 // --- META ---
 
@@ -13,7 +13,7 @@ const meta: Meta<typeof Separator> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: Object.values(SeparatorVariant),
+			options: Object.values(SeparatorVariants),
 		},
 		orientation: {
 			control: "radio",

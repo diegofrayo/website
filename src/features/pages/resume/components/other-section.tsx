@@ -3,6 +3,7 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
 import { Box, List, Paragraph, Separator } from "~/components/primitive";
+import { ListVariants } from "~/components/primitive/list";
 
 import { useIntl } from "../resume.context";
 import { ResumeBox } from "./resume-box";
@@ -26,7 +27,7 @@ export function OtherSection({
 				style={{ pageBreakInside: "avoid" }}
 			>
 				<List
-					variant={List.variant.SIMPLE}
+					variant={ListVariants.SIMPLE}
 					className="ml-1"
 				>
 					{data.skills.map((item, index) => {
@@ -52,7 +53,7 @@ export function OtherSection({
 				style={{ pageBreakInside: "avoid" }}
 			>
 				<List
-					variant={List.variant.SIMPLE}
+					variant={ListVariants.SIMPLE}
 					className="ml-1"
 				>
 					{data.languages.map((item) => {

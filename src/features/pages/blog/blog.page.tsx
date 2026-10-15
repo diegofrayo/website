@@ -5,8 +5,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { MainLayout } from "~/components/layout";
 import { Box, Icon, Image, InlineText, Link, Paragraph, Title } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
-import { TitleSize, TitleVariant } from "~/components/primitive/title";
+import { LinkVariants } from "~/components/primitive/link";
+import { TitleSizes, TitleVariants } from "~/components/primitive/title";
 import { BLOG_IMAGES_PATH } from "~/constants/assets";
 import { Routes } from "~/features/routing";
 
@@ -28,7 +28,7 @@ function BlogPage({ data: posts }: BlogPageProps): ReactTypes.JSXElement {
 						<Link
 							key={post.slug}
 							href={Routes.BLOG_POST(post.slug)}
-							variant={LinkVariant.SMOOTH}
+							variant={LinkVariants.SMOOTH}
 							className="mx-auto flex w-full max-w-lg flex-col overflow-hidden rounded-md border border-zinc-200 shadow-md"
 						>
 							<Image
@@ -42,9 +42,9 @@ function BlogPage({ data: posts }: BlogPageProps): ReactTypes.JSXElement {
 
 							<Box className="flex flex-1 flex-col gap-2 p-3">
 								<Title
-									variant={TitleVariant.SIMPLE}
+									variant={TitleVariants.SIMPLE}
 									as="h2"
-									size={TitleSize.SM}
+									size={TitleSizes.SM}
 									className="leading-tight text-black"
 								>
 									{post.title}

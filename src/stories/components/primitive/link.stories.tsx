@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Link, { LinkVariant } from "~/components/primitive/link";
+import Link, { LinkVariants } from "~/components/primitive/link";
 
 // --- META ---
 
@@ -12,7 +12,7 @@ const meta: Meta<typeof Link> = {
 		href: { control: "text" },
 		variant: {
 			control: "radio",
-			options: Object.values(LinkVariant),
+			options: Object.values(LinkVariants),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

@@ -1,7 +1,7 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { codeStyles, CodeVariant } from "./code.styles";
+import { codeStyles, CodeVariants, type CodeVariant } from "./code.styles";
 
 // --- PROPS & TYPES ---
 
@@ -15,7 +15,7 @@ type CodeProps = ReactTypes.DOM.HTMLElementAttributes["code"] & {
 function Code({
 	children,
 	className,
-	variant = CodeVariant.UNSTYLED,
+	variant = CodeVariants.UNSTYLED,
 }: CodeProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
@@ -24,7 +24,5 @@ function Code({
 
 	return <code className={classes.codeElement}>{children}</code>;
 }
-
-Code.variant = CodeVariant;
 
 export default Code;

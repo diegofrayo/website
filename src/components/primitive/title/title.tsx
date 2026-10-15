@@ -1,7 +1,13 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { titleStyles, TitleVariant, type TitleAs, type TitleSize } from "./title.styles";
+import {
+	titleStyles,
+	TitleVariants,
+	type TitleAs,
+	type TitleSize,
+	type TitleVariant,
+} from "./title.styles";
 
 // --- PROPS & TYPES ---
 
@@ -18,7 +24,7 @@ function Title({
 	className = "",
 	as: Tag,
 	size,
-	variant = TitleVariant.UNSTYLED,
+	variant = TitleVariants.UNSTYLED,
 	...rest
 }: TitleProps): ReactTypes.JSXElement {
 	// --- STYLES ---

@@ -11,31 +11,52 @@ import Popover from "./popover";
 
 export type CopyToClipboardPopoverProps = PopoverPositionerProps & {
 	textToCopy: string | (() => string);
-	popoverText?: string;
+
 	popoverInnerWrapperClassName?: string;
+	popoverText?: string;
 };
 
 function CopyToClipboardPopover({
 	children,
 	textToCopy,
-	popoverText = "copied!",
 	popoverInnerWrapperClassName,
+	popoverText = "copied!",
 	...rest
 }: CopyToClipboardPopoverProps): ReactTypes.JSXElement {
-	// --- STATE & REFS ---
+	// --- STATES & REFS ---
 	const [showPopover, setShowPopover] = useState(false);
 
 	// --- HANDLERS ---
-	function handleClick(): void {
-		void copyToClipboard(isString(textToCopy) ? textToCopy : textToCopy());
-		setShowPopover((currentValue) => {
-			if (currentValue) {
-				return true;
-			}
+	function handleChildClick(childOnClick: ChildElementProps["onClick"]): ChildClickHandler {
+		return function handleClick(event) {
+			copyText();
 
-			setTimeout(() => setShowPopover(false), 2000);
-			return !currentValue;
-		});
+			if (isFunction(childOnClick)) {
+				childOnClick(event);
+			}
+		};
+	}
+
+	// --- UTILS ---
+	function copyText(): void {
+		void copyToClipboard(isString(textToCopy) ? textToCopy : textToCopy());
+
+		if (showPopover) {
+			return;
+		}
+
+		setShowPopover(true);
+		setTimeout(function hidePopover() {
+			setShowPopover(false);
+		}, 2000);
+	}
+
+	function renderChild(child: ReactTypes.Children): ReactTypes.JSXElementNullable {
+		if (isValidElement<ChildElementProps>(child)) {
+			return cloneElement(child, { onClick: handleChildClick(child.props.onClick) });
+		}
+
+		return null;
 	}
 
 	return (
@@ -49,21 +70,7 @@ function CopyToClipboardPopover({
 				as="span"
 				className={popoverInnerWrapperClassName}
 			>
-				{Children.map(children, (child) => {
-					if (isValidElement<ChildElementProps>(child)) {
-						return cloneElement(child as ReactTypes.JSXElement, {
-							onClick: (event: ReactTypes.Events.OnChangeEvent<HTMLButtonElement>) => {
-								handleClick();
-
-								if (isFunction(child.props.onClick)) {
-									child.props.onClick(event);
-								}
-							},
-						});
-					}
-
-					return null;
-				})}
+				{Children.map(children, renderChild)}
 			</Box>
 		</Popover>
 	);
@@ -73,6 +80,8 @@ export default CopyToClipboardPopover;
 
 // --- TYPES ---
 
+type ChildClickHandler = (event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>) => void;
+
 type ChildElementProps = {
-	onClick?: (event: ReactTypes.Events.OnChangeEvent<HTMLButtonElement>) => void;
+	onClick?: ChildClickHandler;
 };

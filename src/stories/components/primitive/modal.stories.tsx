@@ -4,7 +4,7 @@ import { useArgs } from "storybook/preview-api";
 import cn from "@diegofrayo-pkg/cn";
 
 import { Button } from "~/components/primitive";
-import { ButtonVariant } from "~/components/primitive/button";
+import { ButtonVariants } from "~/components/primitive/button";
 import Modal from "~/components/primitive/modal";
 
 // --- META ---
@@ -47,7 +47,7 @@ export const Visible: StoryObj<typeof Modal> = {
 					onCloseHandler={() => setArgs({ ...args, visible: false })}
 				>
 					<Button
-						variant={ButtonVariant.SMOOTH}
+						variant={ButtonVariants.SMOOTH}
 						className="ml-auto block font-bold text-white"
 						onClick={() => setArgs({ ...args, visible: false })}
 					>

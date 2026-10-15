@@ -7,8 +7,8 @@ import { keyMirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-export const LinkVariant = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
-type LinkVariant = keyof typeof LinkVariant;
+const LinkVariants = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+type LinkVariant = keyof typeof LinkVariants;
 
 type AnchorHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["a"];
 type LinkBase = {
@@ -32,7 +32,7 @@ type LinkProps = NativeLink | NextLink;
 // --- COMPONENT DEFINITION ---
 
 function Link({
-	variant = LinkVariant.UNSTYLED,
+	variant = LinkVariants.UNSTYLED,
 	href,
 	className,
 	...props
@@ -69,6 +69,8 @@ function Link({
 	);
 }
 
+export { LinkVariants, type LinkVariant };
+
 export default Link;
 
 // --- STYLES ---
@@ -76,9 +78,9 @@ export default Link;
 const styles = cva("", {
 	variants: {
 		variant: {
-			[LinkVariant.UNSTYLED]: "",
-			[LinkVariant.SMOOTH]: "u-transition-opacity",
-			[LinkVariant.STYLED]: "u-transition-opacity font-bold text-blue-700 underline",
+			[LinkVariants.UNSTYLED]: "",
+			[LinkVariants.SMOOTH]: "u-transition-opacity",
+			[LinkVariants.STYLED]: "u-transition-opacity font-bold text-blue-700 underline",
 		},
 	},
 });

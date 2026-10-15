@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import List from "~/components/primitive/list";
+import List, { ListVariants } from "~/components/primitive/list";
 
 // --- META ---
 
@@ -11,7 +11,7 @@ const meta: Meta<typeof List> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: Object.values(List.variant),
+			options: Object.values(ListVariants),
 		},
 		className: { control: "text" },
 		children: { control: "object" },

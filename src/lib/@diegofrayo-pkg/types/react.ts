@@ -53,6 +53,10 @@ declare namespace ReactTypes {
 		export type OnFocusEventHandler<HTMLElement = HTMLInputElement> =
 			ReactLibrary.FocusEventHandler<HTMLElement>;
 
+		export type OnKeyDownEvent<HTMLElement> = ReactLibrary.KeyboardEvent<HTMLElement>;
+
+		export type OnKeyDownEventHandler<HTMLElement> = ReactLibrary.KeyboardEventHandler<HTMLElement>;
+
 		export type OnKeyUpEvent<HTMLElement> = ReactLibrary.KeyboardEvent<HTMLElement>;
 
 		export type OnKeyUpEventHandler<HTMLElement> = ReactLibrary.KeyboardEventHandler<HTMLElement>;

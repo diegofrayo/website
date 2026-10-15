@@ -1,34 +1,29 @@
+import { useEffect, useRef, useState } from "react";
+
 import cn from "@diegofrayo-pkg/cn";
+import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import { InlineText, Paragraph } from "~/components/primitive";
-import { useTypingTextEffect } from "~/hooks";
 
-// --- PROPS DEFINITIONS ---
-
-const Align = keyMirror(["CENTER", "LEFT"]);
-type Align = keyof typeof Align;
+const TypingTextEffectAligns = keyMirror(["CENTER", "LEFT"]);
+type TypingTextEffectAlign = keyof typeof TypingTextEffectAligns;
 
 type TypingTextEffectProps = {
-	align: Align;
+	align: TypingTextEffectAlign;
 	text: string;
+
 	className?: string;
 };
 
-// --- COMPONENT DEFINITION ---
-
-function TypingTextEffect({
-	align,
-	className = "",
-	text,
-}: TypingTextEffectProps): ReactTypes.JSXElement {
+function TypingTextEffect({ align, text, className }: TypingTextEffectProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const textForTyping = useTypingTextEffect(text);
 
 	// --- COMPUTED STATES ---
 	const isCursorVisible = text === textForTyping;
-	const isCenterAlign = align === "CENTER";
+	const isCenterAlign = align === TypingTextEffectAligns.CENTER;
 
 	// --- STYLES ---
 	const classes = {
@@ -48,6 +43,53 @@ function TypingTextEffect({
 	);
 }
 
-TypingTextEffect.align = Align;
+TypingTextEffect.align = TypingTextEffectAligns;
+
+export { TypingTextEffectAligns, type TypingTextEffectAlign };
 
 export default TypingTextEffect;
+
+// --- HOOKS ---
+
+function useTypingTextEffect(text: string): string {
+	// --- STATES & REFS ---
+	const [output, setOutput] = useState(text.charAt(0));
+	const outputIndexRef = useRef<number>(1);
+	const intervalRef = useRef<UtilsTypes.SetTimeout | null>(null);
+
+	// --- EFFECTS ---
+	useEffect(
+		function startInterval() {
+			if (!intervalRef.current) {
+				intervalRef.current = setInterval(function typeNextCharacter() {
+					setOutput((currentState) => {
+						const newState = `${currentState}${text.charAt(outputIndexRef.current)}`;
+						outputIndexRef.current += 1;
+
+						return newState;
+					});
+				}, 250);
+			}
+
+			return function clearTypingInterval(): void {
+				if (intervalRef.current) {
+					clearInterval(intervalRef.current);
+					intervalRef.current = null;
+				}
+			};
+		},
+		[text],
+	);
+
+	useEffect(
+		function stopInterval() {
+			if (output === text && intervalRef.current) {
+				clearInterval(intervalRef.current);
+				intervalRef.current = null;
+			}
+		},
+		[output, text],
+	);
+
+	return output;
+}

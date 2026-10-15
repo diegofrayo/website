@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import Callout from "~/components/common/callout";
+import Callout, { CalloutVariants } from "~/components/common/callout";
 
 // --- META ---
 
@@ -11,7 +11,7 @@ const meta: Meta<typeof Callout> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: Object.values(Callout.variant),
+			options: Object.values(CalloutVariants),
 		},
 		children: { control: "text" },
 	},

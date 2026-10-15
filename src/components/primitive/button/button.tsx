@@ -4,7 +4,13 @@ import { useRender } from "@base-ui/react/use-render";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { ButtonSize, buttonStyles, ButtonVariant } from "./button.styles";
+import {
+	ButtonSizes,
+	buttonStyles,
+	ButtonVariants,
+	type ButtonSize,
+	type ButtonVariant,
+} from "./button.styles";
 
 // --- PROPS & TYPES ---
 
@@ -16,17 +22,18 @@ type ButtonProps = useRender.ComponentProps<"button"> & {
 
 // --- COMPONENT DEFINITION ---
 
-const Button = function Button({
+function Button({
 	children,
 	className = "",
 	disabled = false,
-	size = ButtonSize.BASE,
+	size = ButtonSizes.BASE,
 	type = "button",
-	variant = ButtonVariant.UNSTYLED,
+	variant = ButtonVariants.UNSTYLED,
 	render,
 	onClick,
 	...otherProps
 }: ButtonProps): ReactTypes.JSXElement {
+	// --- STYLES ---
 	const classes = {
 		element: cn(
 			`dr-button dr-button--${variant.toLowerCase()}`,
@@ -43,13 +50,11 @@ const Button = function Button({
 		onClick,
 	};
 
-	const element = useRender({
+	return useRender({
 		defaultTagName: "button",
 		props: mergeProps<"button">(defaultProps, otherProps),
 		render,
 	});
-
-	return element;
-};
+}
 
 export default Button;

@@ -7,102 +7,99 @@ import { isNumber } from "@diegofrayo-pkg/validator";
 
 // --- PROPS & TYPES ---
 
-const SeparatorVariant = keyMirror(["UNSTYLED", "SIMPLE", "DASHED"]);
+const SeparatorVariants = keyMirror(["UNSTYLED", "SIMPLE", "DASHED"]);
 
-type SeparatorVariant = keyof typeof SeparatorVariant;
+type SeparatorVariant = keyof typeof SeparatorVariants;
 
-type SeparatorProps =
-	| {
-			orientation?: "HORIZONTAL";
-			className?: string;
-			variant?: SeparatorVariant;
-			size?: number;
-			sizeTop?: number;
-			sizeBottom?: number;
-	  }
-	| {
-			orientation: "VERTICAL";
-			className?: string;
-			variant?: SeparatorVariant;
-			size?: number;
-			sizeLeft?: number;
-			sizeRight?: number;
-	  };
+type HorizontalSeparatorProps = {
+	className?: string;
+	orientation?: "HORIZONTAL";
+	size?: number;
+	sizeBottom?: number;
+	sizeTop?: number;
+	variant?: SeparatorVariant;
+};
+
+type VerticalSeparatorProps = {
+	orientation: "VERTICAL";
+	className?: string;
+	size?: number;
+	sizeLeft?: number;
+	sizeRight?: number;
+	variant?: SeparatorVariant;
+};
+
+type SeparatorProps = HorizontalSeparatorProps | VerticalSeparatorProps;
 
 // --- COMPONENT DEFINITION ---
 
-function Separator({
-	variant = SeparatorVariant.UNSTYLED,
-	className = "",
-	size,
-	...props
-}: SeparatorProps): ReactTypes.JSXElement {
+function Separator(props: SeparatorProps): ReactTypes.JSXElement {
+	const { className = "", variant = SeparatorVariants.UNSTYLED } = props;
+
 	// --- COMPUTED STATES ---
 	const isVerticalOrientation = props.orientation === "VERTICAL";
-	const hasBorder = variant !== SeparatorVariant.UNSTYLED;
+	const hasBorder = variant !== SeparatorVariants.UNSTYLED;
 
-	// --- UTILS ---
-	function composeStyles(): string {
-		return cn(
-			`dr-space dr-space--${variant.toLowerCase()}`,
+	// --- STYLES ---
+	const classes = {
+		root: cn(
+			`dr-separator dr-separator--${variant.toLowerCase()}`,
 			"shrink-0",
-			{ "border-0": variant === SeparatorVariant.UNSTYLED },
-			{ "border-dashed border-zinc-400": variant === SeparatorVariant.DASHED },
-			{ "border-zinc-400": variant === SeparatorVariant.SIMPLE },
+			{ "border-0": variant === SeparatorVariants.UNSTYLED },
+			{ "border-dashed border-zinc-400": variant === SeparatorVariants.DASHED },
+			{ "border-zinc-400": variant === SeparatorVariants.SIMPLE },
 			{ "w-px": isVerticalOrientation },
 			{ "h-px": !isVerticalOrientation },
 			{ "border-l": hasBorder && isVerticalOrientation },
 			{ "border-t": hasBorder && !isVerticalOrientation },
-			composeSizeStyles(),
+			composeSizeStyles(props),
 			className,
-		);
-	}
-
-	function composeSizeStyles(): string {
-		if (props.orientation === "HORIZONTAL" || props.orientation === undefined) {
-			if (props.sizeTop || props.sizeBottom) {
-				return cn(
-					composeSingleSideStyles("mt", props.sizeTop),
-					composeSingleSideStyles("mb", props.sizeBottom),
-				);
-			}
-
-			return composeSingleSideStyles("my", size);
-		}
-
-		if (props.orientation === "VERTICAL") {
-			if (props.sizeLeft || props.sizeRight) {
-				return cn(
-					composeSingleSideStyles("ml", props.sizeLeft),
-					composeSingleSideStyles("mr", props.sizeRight),
-				);
-			}
-
-			return composeSingleSideStyles("mx", size);
-		}
-
-		return "";
-	}
-
-	function composeSingleSideStyles(
-		singleSide: "my" | "mt" | "mb" | "mx" | "ml" | "mr",
-		singleSideSize?: number,
-	): string {
-		if (isNumber(singleSideSize)) {
-			return `${singleSide}-${singleSideSize}`;
-		}
-
-		return "";
-	}
+		),
+	};
 
 	return (
 		<BaseUISeparator
-			className={composeStyles()}
+			className={classes.root}
 			orientation={isVerticalOrientation ? "vertical" : "horizontal"}
 		/>
 	);
 }
 
+export { SeparatorVariants, type SeparatorVariant };
+
 export default Separator;
 
-export { SeparatorVariant };
+// --- UTILS ---
+
+function composeSizeStyles(props: SeparatorProps): string {
+	if (props.orientation === "VERTICAL") {
+		if (isNumber(props.sizeLeft) || isNumber(props.sizeRight)) {
+			return cn(
+				composeSingleSideStyles("ml", props.sizeLeft),
+				composeSingleSideStyles("mr", props.sizeRight),
+			);
+		}
+
+		return composeSingleSideStyles("mx", props.size);
+	}
+
+	if (isNumber(props.sizeTop) || isNumber(props.sizeBottom)) {
+		return cn(
+			composeSingleSideStyles("mt", props.sizeTop),
+			composeSingleSideStyles("mb", props.sizeBottom),
+		);
+	}
+
+	return composeSingleSideStyles("my", props.size);
+}
+
+function composeSingleSideStyles(
+	singleSide: "my" | "mt" | "mb" | "mx" | "ml" | "mr",
+	singleSideSize?: number,
+): string {
+	if (isNumber(singleSideSize)) {
+		return `${singleSide}-${singleSideSize}`;
+	}
+
+	return "";
+}

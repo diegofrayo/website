@@ -4,7 +4,7 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 
 import { Box, Icon, InlineText, Link } from "~/components/primitive";
 import { IconCatalog } from "~/components/primitive/icon";
-import { LinkVariant } from "~/components/primitive/link";
+import { LinkVariants } from "~/components/primitive/link";
 
 export function ContactInfo({
 	contactInfo,
@@ -25,7 +25,7 @@ export function ContactInfo({
 	return (
 		<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
 			<Link
-				variant={LinkVariant.SMOOTH}
+				variant={LinkVariants.SMOOTH}
 				href={`mailto:${contactInfo.email}`}
 				className={classes.item}
 				isExternalLink
@@ -44,7 +44,7 @@ export function ContactInfo({
 				<InlineText className="text-sm font-semibold">{contactInfo.email}</InlineText>
 			</Link>
 			<Link
-				variant={LinkVariant.SMOOTH}
+				variant={LinkVariants.SMOOTH}
 				href={contactInfo.website}
 				className={classes.item}
 				isExternalLink
@@ -66,7 +66,7 @@ export function ContactInfo({
 			</Link>
 			{linkedInProfile ? (
 				<Link
-					variant={LinkVariant.SMOOTH}
+					variant={LinkVariants.SMOOTH}
 					href={linkedInProfile.url}
 					className={classes.item}
 					isExternalLink
@@ -90,7 +90,7 @@ export function ContactInfo({
 			) : null}
 			{gitHubProfile ? (
 				<Link
-					variant={LinkVariant.SMOOTH}
+					variant={LinkVariants.SMOOTH}
 					href={gitHubProfile.url}
 					className={classes.item}
 					isExternalLink

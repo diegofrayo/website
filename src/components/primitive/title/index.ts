@@ -1,2 +1,2 @@
 export { default, type TitleProps } from "./title";
-export { TitleVariant, TitleSize } from "./title.styles";
+export { TitleVariants, type TitleVariant, TitleSizes, type TitleSize } from "./title.styles";

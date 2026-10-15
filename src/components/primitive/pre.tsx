@@ -6,15 +6,15 @@ import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = keyMirror([
+const PreVariants = keyMirror([
 	"UNSTYLED",
 	"BREAK_WITH_BLANK_LINES",
 	"BREAK_WITH_BLANK_SPACES",
 	"BREAK_WORDS",
 ]);
-type Variant = keyof typeof VARIANTS;
+type PreVariant = keyof typeof PreVariants;
 type PreProps = ReactTypes.DOM.HTMLElementAttributes["pre"] & {
-	variant?: Variant;
+	variant?: PreVariant;
 };
 
 // --- COMPONENT DEFINITION ---
@@ -22,12 +22,17 @@ type PreProps = ReactTypes.DOM.HTMLElementAttributes["pre"] & {
 function Pre({
 	children,
 	className,
-	variant = VARIANTS.UNSTYLED,
+	variant = PreVariants.UNSTYLED,
 	...rest
 }: PreProps): ReactTypes.JSXElement {
+	// --- STYLES ---
+	const classes = {
+		root: cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className),
+	};
+
 	return (
 		<pre
-			className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
+			className={classes.root}
 			{...rest}
 		>
 			{children}
@@ -35,7 +40,7 @@ function Pre({
 	);
 }
 
-Pre.variant = VARIANTS;
+export { PreVariants, type PreVariant };
 
 export default Pre;
 
@@ -44,10 +49,10 @@ export default Pre;
 const styles = cva("", {
 	variants: {
 		variant: {
-			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.BREAK_WITH_BLANK_LINES]: "wrap-break-word whitespace-pre-line",
-			[VARIANTS.BREAK_WITH_BLANK_SPACES]: "wrap-break-word whitespace-pre-wrap",
-			[VARIANTS.BREAK_WORDS]: "break-all whitespace-normal",
+			[PreVariants.UNSTYLED]: "",
+			[PreVariants.BREAK_WITH_BLANK_LINES]: "wrap-break-word whitespace-pre-line",
+			[PreVariants.BREAK_WITH_BLANK_SPACES]: "wrap-break-word whitespace-pre-wrap",
+			[PreVariants.BREAK_WORDS]: "break-all whitespace-normal",
 		},
 	},
 });
